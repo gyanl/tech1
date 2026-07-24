@@ -1,38 +1,30 @@
-# Jekyll Garden v 0.4!
-![Slide 4_3 - 1 (1)](https://user-images.githubusercontent.com/1788677/169704768-65c32d93-7884-47fa-b98c-bc8329acc6a7.png)
+# Tech 1 — Web & Mobile Ecosystem Fundamentals
 
+Course website for **Tech 1**, a course that gives design students a foundational understanding of the core technologies, platforms, and concepts that underpin the modern web and mobile ecosystems.
 
-Jekyll Garden theme lets you publish your [Obsidian](https://obsidian.md/) vault (or a subset of it) as a Jekyll static website. The theme is markdown and Obsidian setup friendly. You can use your own server or Github page to set up your SSG. Check out the demo.
+The course is AI-heavy by design: students **generate code with AI tools** instead of writing it by hand, shipping a live webpage in the very first session and using each thing they build to understand what's happening under the hood — HTML/CSS/JS, HTTP and DNS, back-ends and databases, APIs, mobile ecosystems, cloud computing, and the software development lifecycle. The course converges into a final group project presented at a Demo Day.
 
-<a href="https://www.buymeacoffee.com/hiran" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height= "48" width="173"></a>
+## Structure
 
-## Documents and links
--  [Demo website](https://jekyll-garden.github.io/)
--  [Personal Website](https://hiran.in/)
--  [Feature List](https://jekyll-garden.github.io/post/features)
--  [How to Setup](https://jekyll-garden.github.io/post/how-to)
+- `_notes/` — all course content: syllabus, grading, 13 lecture notes, exercises, and the final project brief
+- `assets/` — images, css, js
+- `pages/` — index and utility pages
 
-## Credits & Thanks
--  See [Credits page](https://jekyll-garden.github.io/credits)
+## Running locally
 
-## Contribution
+This site is built with [Jekyll](https://jekyllrb.com/) using the [Jekyll Garden](https://github.com/Jekyll-Garden/jekyll-garden.github.io) theme, which publishes an [Obsidian](https://obsidian.md/) vault as a static website.
 
-To set up your environment to develop this theme, run `bundle install` after cloning this repository in your local machine.
-
-Your theme is set up just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. `_notes` contain all atomic notes. If you want to use this for blog, add posts inside `_posts` folder, following standard Jekyll frontamtter.
-
-### Hosting in a Docker Container
-For hosting on your local network, inside a docker container, install `docker` and `docker-compose` and run,
-```Terminal
-$ docker-compose up -d
 ```
-> **Note**:-
-> 
-> This container is built upon on alpine based ruby image. There's an official Jekyll image available in docker hub which only support `amd64` images. You can opt to use that if you are running the container on an 64bit PC. If you want to run this on an ARM based system like Raspberry Pi, this would be a better option.
->
-> The directories which will be frequently modified, are mapped as local volumes so that any changes made to those will be immediately picked up by the server and built. If you fancy changing content in other folders regularly, feel free to add them to the `volumes` section in `docker-compose.yml` before deploying.
+bundle install
+bundle exec jekyll serve
+```
 
+Then open `http://localhost:4000`. Alternatively, with Docker:
+
+```
+docker-compose up -d
+```
 
 ## License
 
-The theme is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+Course content (notes, exercises) is licensed under [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/). The Jekyll Garden theme is MIT-licensed — see [LICENSE](LICENSE) and credits to [Hiran Venugopalan](https://github.com/hfactor).
