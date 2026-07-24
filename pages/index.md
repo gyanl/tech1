@@ -4,7 +4,7 @@
 
 layout: Post
 feedformat: card
-title: DD 324 - Data Visualisation
+title: Tech 1 - Web & Mobile Ecosystem Fundamentals
 permalink: /
 ---
 
