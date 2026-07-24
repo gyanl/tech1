@@ -1,5 +1,5 @@
 ---
-date: 24-07-2026
+date: 10-08-2026
 date modified: 24-07-2026
 feed: show
 tag: lecture
@@ -17,6 +17,31 @@ Last week you shipped a page. This week we open the hood.
 - **JavaScript** — interactivity (events, changing the page after it loads)
 - Why this separation exists — content vs presentation vs behaviour
 - Browser DevTools as a designer's x-ray machine
+
+The same button, in all three languages:
+
+```html
+<!-- HTML: what it IS -->
+<button id="say-hi" class="primary">Say hi</button>
+```
+
+```css
+/* CSS: what it LOOKS like */
+.primary {
+  background: #16181d;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+}
+```
+
+```js
+// JavaScript: what it DOES
+const button = document.getElementById("say-hi");
+button.addEventListener("click", () => {
+  alert("Hello from Lecture 2!");
+});
+```
 
 #### Hour 2 — Dissection lab
 - **Exercise:** [[Exercise - Web Page Anatomy]] — pick a complex real-world page, identify its structure, styling, and interactions using DevTools

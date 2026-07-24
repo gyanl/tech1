@@ -47,7 +47,7 @@
     <!-- show only items tagged lecture -->
     <div class="related-wrapper">
         <h5 class="meta-title centre-title">Lectures</h5>
-    {% assign note_items = site.notes | sort: "date" | reverse %}
+    {% assign note_items = site.notes | sort: "date" %}
     {% for note_items in note_items %}
         {%- if note_items.feed == "show" and note_items.tags contains "lecture" -%}
                 <div class="notelist-feed">
@@ -66,7 +66,7 @@
         <!-- show only items tagged exercise -->
         <div class="related-wrapper">
             <h5 class="meta-title centre-title">Exercises</h5>
-            {% assign note_items = site.notes | sort: "date" | reverse %}
+            {% assign note_items = site.notes | sort: "date" %}
             {% for note_items in note_items %}
                 {%- if note_items.feed == "show" and note_items.tags contains "exercise" -%}
                         <div class="notelist-feed">
