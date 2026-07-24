@@ -5,7 +5,7 @@ feed: show
 title: "Syllabus"
 ---
 
-See also: [[Lectures]] · [[Grading]]
+See also: [[Lectures]] · [[Grading]] · [[AI Policy]]
 
 **Course Title:** Tech 1 — Web & Mobile Ecosystem Fundamentals
 

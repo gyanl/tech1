@@ -45,7 +45,7 @@ Group project (up to 3 people), built over the last third of the course and pres
 
 ### A note on AI and academic integrity
 
-In this course, using AI to generate code is not just allowed — it's the expected way of working. What *is* dishonest:
+See the full [[AI Policy]]. In this course, using AI to generate code is not just allowed — it's the expected way of working. What *is* dishonest:
 
 - Presenting work you can't explain. If you shipped it, you should be able to answer "how does this part work?" at the level this course teaches.
 - Hiding your process. Prompt logs and iteration history are part of every submission.
