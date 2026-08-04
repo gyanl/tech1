@@ -2047,16 +2047,29 @@ body.deck-mode #deck {
     max-height: 60vh;
 }
 
-/* Slide separators on the regular page: small racing stripe ⫽⫽⫽ */
+/* Slide separators on the regular page: small checkered racing flag */
 .content hr {
-    width: 42px;
-    height: 9px;
+    --stripe-cell: 6px;
+    width: calc(var(--stripe-cell) * 7);
+    height: calc(var(--stripe-cell) * 2);
     border: none;
-    background: repeating-linear-gradient(
-        115deg,
-        var(--color-text-link) 0 5px,
-        transparent 5px 11px
+    background-image: conic-gradient(
+        var(--color-text-link) 90deg,
+        transparent 90deg 180deg,
+        var(--color-text-link) 180deg 270deg,
+        transparent 270deg
     );
+    background-size: calc(var(--stripe-cell) * 2) calc(var(--stripe-cell) * 2);
     margin: 2.5rem auto;
     opacity: 0.85;
+}
+
+/* On hover the checkerboard swaps phase — waving the flag */
+.content hr:hover {
+    animation: stripe-race 0.4s steps(2, end) infinite;
+}
+
+@keyframes stripe-race {
+    from { background-position-x: 0; }
+    to   { background-position-x: calc(var(--stripe-cell) * 2); }
 }

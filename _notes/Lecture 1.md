@@ -25,6 +25,15 @@ Gain a foundational understanding of the core technologies, platforms, and conce
 - [[AI Policy]]
 
 ---
+## How this course works
+
+This is not a coding course. You will not be asked to memorise syntax or write programs from scratch. Instead:
+
+- **You will build from week one.** Using AI tools, you will generate, modify, and deploy real web applications — starting with a personal webpage in the very first session.
+- **Fundamentals follow experience.** Each week we dissect something you have already built: "you made this — now let's understand what HTML, hosting, and DNS actually did for you."
+- **AI is the medium, not a module.** You are expected to generate most of your code with AI tools (Claude, Cursor, v0, Lovable, etc.). The skill we are building is *directing* these tools well — which requires understanding the stack conceptually.
+- **The course converges into a final project.** The last third of the course is a build sprint where you take a product idea to a working, deployed application, presented at a Demo Day.
+
 ## Setup
 
 - Who is the Class Rep?
