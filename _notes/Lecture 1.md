@@ -97,13 +97,12 @@ The labels are called **tags**. They usually come in pairs — one to open, one 
 - `h1` = biggest heading
 - `p` = paragraph
 
-Some tags don't need a closing tag — like the image tag. It just points at a file:
+Some tags don't need closing tags - like the image tag
 
 ```html
-<img src="photo.jpg">
+<img src>My name is Gyan</h1>
+<p>I like making websites.</p>
 ```
-
-That's it. That's HTML.
 
 ---
 ## What tag is what?
@@ -135,11 +134,9 @@ Read it out loud: *"Every `h1` on the page: make it red, make it big."*
 ---
 ## The loop you'll use all semester
 
-1. Change something in `style.css` — try the `background` color
+1. Change something in one of the files like `style.css` — try the `background` color
 2. Save the file
 3. Refresh the browser
-
-That's the whole workflow. Nothing to install, nothing to run.
 
 ---
 ## JavaScript makes it respond
