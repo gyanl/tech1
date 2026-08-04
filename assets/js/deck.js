@@ -2,8 +2,9 @@
 document.addEventListener("DOMContentLoaded", function () {
   var content = document.querySelector(".note-page-section .content");
   if (!content) return;
-  var separators = content.querySelectorAll("hr");
-  if (separators.length < 1) return; // nothing deck-worthy
+  // Split on --- separators when present, else fall back to #### headings
+  var splitTag = content.querySelectorAll("hr").length >= 1 ? "HR" : "H4";
+  if (splitTag === "H4" && content.querySelectorAll("h4").length < 2) return; // nothing deck-worthy
 
   var btn = document.createElement("button");
   btn.id = "present-toggle";
@@ -25,11 +26,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var nodes = Array.prototype.slice.call(content.childNodes);
     nodes.forEach(function (node) {
-      if (node.nodeType === 1 && node.tagName === "HR") {
+      if (node.nodeType === 1 && node.tagName === splitTag) {
         deck.appendChild(slide);
         slide = document.createElement("section");
         slide.className = "slide";
-        return; // the separator itself doesn't appear on any slide
+        if (splitTag === "HR") return; // the separator itself doesn't appear on any slide
       }
       slide.appendChild(node.cloneNode(true));
     });
