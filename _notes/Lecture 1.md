@@ -57,9 +57,15 @@ Get your toolkit working — we use all of this every week:
 
 # [gyanl/web-starter](https://github.com/gyanl/web-starter)
 
+> Use this template → Create a new repository
+> 
 ![](assets/img/use-gh-template.png)
 
-> Use this template -> Create a new repository
+
+---
+## We just used some new terms
+
+In this course I will frequently make you do something and explain later why you did it.
 
 - **What's Github?**
   A code storing and sharing site. You can also use it to make your website live on the internet.
@@ -68,41 +74,94 @@ Get your toolkit working — we use all of this every week:
   A repository is a folder of code. You can store it on GitHub. There are some very good reasons to do this that we'll get into later.
 
 ---
-## HTML, CSS and JS
+## Every web page is made of 3 things
 
-- **HTML** — structure and meaning (headings, lists, links, semantics)
-- **CSS** — styling (selectors, the box model as a layout designer's mental model, typography on the web)
-- **JavaScript** — interactivity (events, changing the page after it loads)
+Think of a web page like a person:
+
+- **HTML** is the skeleton — what parts exist, and in what order
+- **CSS** is the appearance — clothes, colours, style
+- **JavaScript** is the muscles — it makes things move and respond
+
+Your new repo has one file for each: `index.html`, `style.css`, `scripts.js`
 
 ---
+## HTML is your content, with labels
 
-The same button, in all three languages:
+The labels are called **tags**. They come in pairs — one to open, one to close:
 
 ```html
-<!-- HTML: what it IS -->
-<button id="say-hi" class="primary">Say hi</button>
+<h1>My name is Gyan</h1>
+<p>I like making websites.</p>
 ```
 
+- `h1` = biggest heading
+- `p` = paragraph
+
+That's it. That's HTML.
+
+---
+## What tag is what?
+
+You already know this from design — it's just hierarchy:
+
+- `<h1>` to `<h6>` — headings, big to small
+- `<p>` — a paragraph of text
+- `<a>` — a link to another page
+- `<img>` — a picture
+- `<li>` — one item in a list
+
+When you're unsure, ask AI: *"what tag should I use for ___?"*
+
+---
+## CSS describes how things look
+
+Point at something, then describe it:
+
 ```css
-/* CSS: what it LOOKS like */
-.primary {
-  background: #16181d;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 6px;
+h1 {
+  color: red;
+  font-size: 60px;
 }
 ```
 
+Read it out loud: *"Every `h1` on the page: make it red, make it big."*
+
+---
+## The loop you'll use all semester
+
+1. Change something in `style.css` — try the `background` color
+2. Save the file
+3. Refresh the browser
+
+That's the whole workflow. Nothing to install, nothing to run.
+
+---
+## JavaScript makes it respond
+
+JavaScript is instructions that run **when something happens**:
+
 ```js
-// JavaScript: what it DOES
-const button = document.getElementById("say-hi");
-button.addEventListener("click", () => {
-  alert("Hello from Lecture 2!");
-});
+alert("Hello!");
 ```
 
+This shows a popup the moment the page opens.
 
---- 
+Open `scripts.js` in your repo — this line is waiting inside, switched off. Remove the `//` and refresh.
+
+---
+## Do you need to memorise this?
+
+**No.** AI will write most of your HTML, CSS and JS this semester.
+
+But now, when you open a file, you'll know:
+
+- `.html` → the content
+- `.css` → the looks
+- `.js` → the behaviour
+
+That's enough to *direct* the machine.
+
+---
 
 #### Ship something (rest of class)
 
