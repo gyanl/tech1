@@ -2055,9 +2055,9 @@ body.deck-mode #deck {
     border: none;
     background-image: conic-gradient(
         var(--color-text-link) 90deg,
-        transparent 90deg 180deg,
+        var(--color-bg-main) 90deg 180deg,
         var(--color-text-link) 180deg 270deg,
-        transparent 270deg
+        var(--color-bg-main) 270deg
     );
     background-size: calc(var(--stripe-cell) * 2) calc(var(--stripe-cell) * 2);
     margin: 2.5rem auto;
