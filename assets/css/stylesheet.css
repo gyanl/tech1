@@ -2046,3 +2046,11 @@ body.deck-mode #deck {
 .slide .video-embed {
     max-height: 60vh;
 }
+
+/* Slide separators on the regular page: short centered rule */
+.content hr {
+    width: 100px;
+    border: none;
+    border-top: 2px solid var(--color-border);
+    margin: 2.5rem auto;
+}
