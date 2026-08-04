@@ -2012,3 +2012,24 @@ body.deck-mode #deck {
 
 /* Don't drag page-level artifacts into the deck */
 .slide .tooltip .right { display: none !important; }
+
+/* Deck slides live outside .content — restore list markers */
+.slide ul {
+    list-style: disc;
+    padding-left: 1.4em;
+    margin: 0.4em 0 1em 0;
+}
+
+.slide ul ul {
+    list-style: circle;
+}
+
+.slide ol {
+    list-style: decimal;
+    padding-left: 1.6em;
+    margin: 0.4em 0 1em 0;
+}
+
+.slide li::marker {
+    color: var(--color-text-link);
+}
