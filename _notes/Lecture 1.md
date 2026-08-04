@@ -47,10 +47,22 @@ I will not follow the syllabus too strictly - this will be a hands on course whe
 
 Get your toolkit working — we use all of this every week:
 
-1. **Create a GitHub account** — [github.com](https://github.com) (use an email you'll keep; your username will be public and part of your project URLs)
+1. **Create a GitHub account** — [github.com](https://github.com) (use an email you'll keep)
 2. **Apply for the GitHub Student Developer Pack** — [GitHub Education · GitHub](https://github.com/education) (free credits and tools; needs your university email/ID)
 3. **Download GitHub Desktop** — [desktop.github.com](https://desktop.github.com) (Mac/Windows)
 4. **Download a code editor** — [VS Code](https://code.visualstudio.com) (or Cursor if you want AI built in)
+
+---
+## Pick your username carefully
+
+Your username becomes your **address on the internet**:
+
+> `github.com/`**`yourname`**
+> **`yourname`**`.github.io` ← your website will live here
+
+- Lowercase, short, easy to type
+- Something you'd put on a CV — recruiters *will* see it
+- `gyanl` ✓ · `xX_gamer_2007_Xx` ✗
 
 ---
 ## Create a repo from this template
@@ -98,6 +110,30 @@ Some tags don't need closing tags - like the image tag
 ```html
 <img src="photo.jpg">
 ```
+---
+## What tag is what?
+
+You already know this from design — it's just hierarchy:
+
+- `<h1>` to `<h6>` — headings, big to small
+- `<p>` — a paragraph of text
+- `<a>` — a link to another page
+- `<img>` — a picture
+- `<li>` — one item in a list
+
+When you're unsure, ask AI: *"what tag should I use for ___?"*
+
+---
+## CSS describes how things look
+
+Point at something, then describe it:
+
+```css
+h1 {
+  color: red;
+  font-size: 60px;
+}
+```
 
 Read it out loud: *"Every `h1` on the page: make it red, make it big."*
 
@@ -135,10 +171,35 @@ But now, when you open a file, you'll know:
 That's enough to *direct* the machine.
 
 ---
+## Deploy: put it on the real internet
+
+Right now your page only exists on your laptop. **GitHub Pages** serves it to the whole world, free:
+
+1. On your repo's page: **Settings → Pages**
+2. Under *Build and deployment*: Source = **Deploy from a branch**
+3. Branch: **main**, folder: **/ (root)** → **Save**
+4. Wait a minute, refresh — GitHub shows your URL:
+
+> `https://`**`yourname`**`.github.io/`**`your-repo`**`/`
+
+---
+## The publish loop
+
+From now on, updating your live site is:
+
+> **edit → save → commit → push → live**
+
+- **Commit** = save a snapshot of your changes (in GitHub Desktop)
+- **Push** = send it to GitHub
+- About a minute later, the live site updates
+
+If you see a 404: wait, refresh, and check your homepage is called exactly `index.html`.
+
+---
 
 #### Ship something (rest of class)
 
-- **Exercise:** [[Exercise - Ship a Page]] — use an AI tool to build and deploy a personal webpage, live in class
+- **Exercise:** [[Exercise - Ship a Page with GitHub Pages]] — personalise your page, push it, and put it live
 - Everyone leaves with a URL that works on their phone
 
 ---

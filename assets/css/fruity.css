@@ -57,8 +57,13 @@ html[data-theme="dark"] {
     }
 }
 
-/* Block container */
-.highlight,
+/* Block container: only the pre draws the box —
+   the wrapper divs stay invisible */
+.highlighter-rouge,
+div.highlight {
+    background: transparent !important;
+}
+
 .highlight pre {
     background-color: var(--hl-bg);
     color: var(--hl-text);
