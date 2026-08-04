@@ -12,15 +12,49 @@ title: "Lecture 1"
 
 #### Theory — What's a Computer? (20 min)
 
-A whirlwind history of computing, told through what each moment adds to your mental model:
+A whirlwind history of computing — not for the dates, but for what each moment adds to your mental model of the machine in front of you.
 
-- Jacquard's loom & Babbage — machines that follow **instructions**
-- Turing — one machine that can pretend to be **any** machine
-- The transistor → the chip — instructions get **fast and cheap**
-- The personal computer & GUI — computers for **people**, not operators
-- The mental model: **input → processing → memory/storage → output**
-- The CPU is very fast and very dumb; software is just instructions; the OS is the manager
-- Live: open Activity Monitor / Task Manager — look at what your machine is doing *right now*
+#### 1801 — Machines can follow instructions
+
+- Jacquard's loom weaves patterns from **punched cards**
+- The pattern isn't in the machine — it's in the card
+- First separation of **machine** and **instructions**
+
+#### 1837 — Machines can compute anything
+
+- Babbage designs the Analytical Engine; Ada Lovelace writes what may be the first program
+- Her bigger insight: a computing machine could manipulate **any symbols** — music, text, not just numbers
+
+#### 1936 — One machine to rule them all
+
+- Turing: one machine that can imitate **any other machine**, given the right instructions
+- This is why your laptop can be a typewriter, a cinema, a studio, and a piano
+- Software = the machine pretending
+
+#### 1947 — Instructions get fast and cheap
+
+- The transistor: a switch with no moving parts
+- Then the chip: billions of switches, effectively free
+- Everything since is mostly *more, smaller, cheaper*
+
+#### 1984 — Computers for people
+
+- Xerox PARC → Macintosh: the GUI
+- Designers enter the story: the interface becomes a **designed artifact**
+- The machine adapts to humans, not the other way around
+
+#### The mental model
+
+> **input → processing → memory/storage → output**
+
+- Every device you own is this loop: phone, smartwatch, ATM, washing machine
+- Memory (fast, forgets when off) vs storage (slow, remembers)
+
+#### The machine is fast and dumb
+
+- The CPU does billions of tiny, stupid steps per second — it never "understands"
+- Software is just instructions; the OS is the manager juggling them
+- **Live:** open Activity Monitor / Task Manager — look at what your machine is doing *right now*
 
 #### Setup (45 min)
 
