@@ -10,8 +10,8 @@ See also: [[Syllabus]] · [[Grading]]
 
 One 2-hour session per week. Dates may shift — treat the week numbers as canonical.
 
-#### [[Lecture 1]] - Hello, Internet
-*Week 1 — 3 August 2026* — Ship a personal webpage before you understand it.
+#### [[Lecture 1]] - What's a Computer?
+*Week 1 — 3 August 2026* — 20 minutes of computing history and a mental model, then setup and ship a page.
 
 #### [[Lecture 2]] - Anatomy of a Web Page
 *Week 2 — 10 August 2026* — HTML, CSS, JavaScript — dissected via what you built.

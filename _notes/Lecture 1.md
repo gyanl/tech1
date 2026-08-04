@@ -6,20 +6,38 @@ tag: lecture
 title: "Lecture 1"
 ---
 
-## Hello, Internet
+## What's a Computer?
 
-The premise of this course, stated out loud: you can build and ship real things on the web *today*, and we will spend the rest of the semester understanding what you did.
+20 minutes of theory, then hands-on: get your tools set up and ship something before you leave.
 
-#### Hour 1 — What is this course?
-- Introductions, course structure, [[Grading]]
-- Why designers need to understand the stack — the difference between *using* AI tools and *directing* them
-- A live demo: from a sentence to a deployed webpage in 15 minutes
-- The map we'll fill in over 13 weeks: browser → network → server → database → cloud
+#### Theory — What's a Computer? (20 min)
 
-#### Hour 2 — Ship something
-- **Exercise:** [[Exercise - Ship a Page]] — build and deploy a personal webpage using an AI tool, live in class
+A whirlwind history of computing, told through what each moment adds to your mental model:
+
+- Jacquard's loom & Babbage — machines that follow **instructions**
+- Turing — one machine that can pretend to be **any** machine
+- The transistor → the chip — instructions get **fast and cheap**
+- The personal computer & GUI — computers for **people**, not operators
+- The mental model: **input → processing → memory/storage → output**
+- The CPU is very fast and very dumb; software is just instructions; the OS is the manager
+- Live: open Activity Monitor / Task Manager — look at what your machine is doing *right now*
+
+#### Setup (45 min)
+
+Get your toolkit working — we use all of this every week:
+
+1. **Create a GitHub account** — [github.com](https://github.com) (use an email you'll keep; your username will be public and part of your project URLs)
+2. **Apply for the GitHub Student Developer Pack** — [education.github.com/pack](https://education.github.com/pack) (free credits and tools; needs your university email/ID)
+3. **Download GitHub Desktop** — [desktop.github.com](https://desktop.github.com) (Mac/Windows)
+4. **Download a code editor** — [VS Code](https://code.visualstudio.com) (or Cursor if you want AI built in)
+5. Sign in to an AI tool you'll build with (Claude, v0, Lovable — your choice)
+
+#### Ship something (rest of class)
+
+- **Exercise:** [[Exercise - Ship a Page]] — use an AI tool to build and deploy a personal webpage, live in class
 - Everyone leaves with a URL that works on their phone
 
 #### Homework
-- Finish and polish your page if you didn't in class
-- Bring the URL next week — we're going to dissect it
+
+- Finish any setup that got stuck (Student Pack approval can take a few days — apply today)
+- Polish your page and bring the URL next week — we're going to dissect it
