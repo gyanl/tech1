@@ -2047,10 +2047,16 @@ body.deck-mode #deck {
     max-height: 60vh;
 }
 
-/* Slide separators on the regular page: short centered rule */
+/* Slide separators on the regular page: small racing stripe ⫽⫽⫽ */
 .content hr {
-    width: 100px;
+    width: 42px;
+    height: 9px;
     border: none;
-    border-top: 2px solid var(--color-border);
+    background: repeating-linear-gradient(
+        115deg,
+        var(--color-text-link) 0 5px,
+        transparent 5px 11px
+    );
     margin: 2.5rem auto;
+    opacity: 0.85;
 }
