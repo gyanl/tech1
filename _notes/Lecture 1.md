@@ -14,6 +14,8 @@ title: "Lecture 1"
 
 A whirlwind history of computing — not for the dates, but for what each moment adds to your mental model of the machine in front of you.
 
+<iframe class="video-embed" src="https://www.youtube.com/embed/3S5BLs51yDQ" title="What's a Computer?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 #### 1801 — Machines can follow instructions
 
 - Jacquard's loom weaves patterns from **punched cards**
