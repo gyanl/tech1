@@ -58,9 +58,9 @@ Get your toolkit working — we use all of this every week:
 # [gyanl/web-starter](https://github.com/gyanl/web-starter)
 
 > Use this template → Create a new repository
-> 
-![](assets/img/use-gh-template.png)
+>
 
+![](assets/img/use-gh-template.png)
 
 ---
 ## We just used some new terms
@@ -78,16 +78,16 @@ In this course I will frequently make you do something and explain later why you
 
 Think of a web page like a person:
 
-- **HTML** is the skeleton — what parts exist, and in what order
-- **CSS** is the appearance — clothes, colours, style
-- **JavaScript** is the muscles — it makes things move and respond
+- **HTML** is the content — what should be on the page and in what order
+- **CSS** is the styling — fonts, colours, borders, padding
+- **JavaScript** is the interactivity — it makes things move and respond
 
 Your new repo has one file for each: `index.html`, `style.css`, `scripts.js`
 
 ---
 ## HTML is your content, with labels
 
-The labels are called **tags**. They come in pairs — one to open, one to close:
+The labels are called **tags**. They usually come in pairs — one to open, one to close:
 
 ```html
 <h1>My name is Gyan</h1>
@@ -96,6 +96,12 @@ The labels are called **tags**. They come in pairs — one to open, one to close
 
 - `h1` = biggest heading
 - `p` = paragraph
+
+Some tags don't need a closing tag — like the image tag. It just points at a file:
+
+```html
+<img src="photo.jpg">
+```
 
 That's it. That's HTML.
 
