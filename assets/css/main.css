@@ -366,7 +366,7 @@ span {
 }
 
 strong {
-  color: var(--color-text-main);
+  color: var(--color-text-strong);
   font-weight: 700;
 }
 
