@@ -22,7 +22,7 @@ html[data-theme="light"] {
 html[data-theme="dark"] {
     --color-bg-main: #0A0B0E;
     --color-bg-sub: #1A1E24;
-    --color-text-main: #D6DAE3;
+    --color-text-main: #B9BFCA;
     --color-text-strong: #FFFFFF;
     --color-text-sub: #A2A9B8;
     --color-text-link: #A8E6B8;
@@ -38,7 +38,7 @@ html[data-theme="dark"] {
     html[data-theme="dark"] {
         --color-bg-main: #0A0B0E;
         --color-bg-sub: #1A1E24;
-        --color-text-main: #D6DAE3;
+        --color-text-main: #B9BFCA;
     --color-text-strong: #FFFFFF;
         --color-text-sub: #A2A9B8;
         --color-text-link: #A8E6B8;
