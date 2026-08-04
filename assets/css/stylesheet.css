@@ -2073,3 +2073,14 @@ body.deck-mode #deck {
     from { background-position-x: 0; }
     to   { background-position-x: calc(var(--stripe-cell) * 2); }
 }
+
+/* Code blocks: one box, not two — the pre carries the styling,
+   the inner code element is invisible */
+pre code,
+.highlight pre code {
+    display: block;
+    padding: 0;
+    border: none;
+    background: transparent;
+    vertical-align: baseline;
+}

@@ -94,39 +94,9 @@ The labels are called **tags**. They usually come in pairs — one to open, one 
 <p>I like making websites.</p>
 ```
 
-- `h1` = biggest heading
-- `p` = paragraph
-
 Some tags don't need closing tags - like the image tag
-
 ```html
-<img src>My name is Gyan</h1>
-<p>I like making websites.</p>
-```
-
----
-## What tag is what?
-
-You already know this from design — it's just hierarchy:
-
-- `<h1>` to `<h6>` — headings, big to small
-- `<p>` — a paragraph of text
-- `<a>` — a link to another page
-- `<img>` — a picture
-- `<li>` — one item in a list
-
-When you're unsure, ask AI: *"what tag should I use for ___?"*
-
----
-## CSS describes how things look
-
-Point at something, then describe it:
-
-```css
-h1 {
-  color: red;
-  font-size: 60px;
-}
+<img src="photo.jpg">
 ```
 
 Read it out loud: *"Every `h1` on the page: make it red, make it big."*
