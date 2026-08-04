@@ -1,6 +1,6 @@
 ---
 date: 24-07-2026
-date modified: 24-07-2026
+date modified: 04-08-2026
 feed: show
 tag: lecture
 title: "Lectures"
@@ -10,10 +10,10 @@ See also: [[Syllabus]] · [[Grading]]
 
 One 2-hour session per week. Dates may shift — treat the week numbers as canonical.
 
-#### [[Lecture 1]] - What's a Computer?
+#### [[Lecture 1]] - Welcome to Tech1
 *Week 1 — 3 August 2026* — 20 minutes of computing history and a mental model, then setup and ship a page.
 
-#### [[Lecture 2]] - Anatomy of a Web Page
+#### [[Lecture 2]] - What's a computer?
 *Week 2 — 10 August 2026* — HTML, CSS, JavaScript — dissected via what you built.
 
 #### [[Lecture 3]] - Talking to Servers
