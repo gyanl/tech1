@@ -1899,3 +1899,116 @@ b, strong,
 .related-group h6 {
     color: var(--color-text-strong);
 }
+
+/* ============================================================
+   Present mode — deck-like view of a note's #### sections
+   ============================================================ */
+
+#present-toggle {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-sub);
+    background: var(--color-bg-sub);
+    border: 1px solid var(--color-border-light);
+    padding: 6px 14px;
+    cursor: pointer;
+    float: right;
+}
+
+#present-toggle:hover {
+    color: var(--color-text-link);
+    border-color: var(--color-text-link);
+}
+
+@supports (corner-shape: bevel) {
+    #present-toggle {
+        corner-shape: bevel;
+        border-radius: 0 10px 0 0;
+    }
+}
+
+#deck { display: none; }
+
+body.deck-mode {
+    overflow: hidden;
+}
+
+body.deck-mode main > section,
+body.deck-mode #copyright {
+    display: none;
+}
+
+body.deck-mode #present-toggle {
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    z-index: 10001;
+    float: none;
+}
+
+body.deck-mode #deck {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: var(--color-bg-main);
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+}
+
+.slide {
+    min-height: 100vh;
+    min-height: 100dvh;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6vh 10vw;
+    position: relative;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+/* Deck typography: everything a size up */
+.slide h4 {
+    font-size: var(--text-xl);
+    letter-spacing: -0.02em;
+    color: var(--color-text-link);
+}
+
+.slide h1 {
+    font-size: var(--text-jumbo);
+}
+
+.slide p,
+.slide li {
+    font-size: var(--text-l);
+    line-height: 1.5;
+}
+
+.slide li {
+    margin-bottom: 0.4em;
+}
+
+.slide code {
+    font-size: 0.85em;
+}
+
+.slide .slide-number {
+    position: absolute;
+    bottom: 20px;
+    right: 24px;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-sub);
+    letter-spacing: 0.08em;
+}
+
+.slide-title {
+    align-items: flex-start;
+}
+
+/* Don't drag page-level artifacts into the deck */
+.slide .tooltip .right { display: none !important; }
