@@ -1,5 +1,5 @@
 ---
-date: 13-10-2026
+date: 27-10-2026
 date modified: 24-07-2026
 feed: show
 tag: lecture

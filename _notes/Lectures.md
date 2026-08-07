@@ -26,25 +26,25 @@ One 2-hour session per week. Dates may shift — treat the week numbers as canon
 *Week 5 — 1 September 2026* — Servers, SQL vs NoSQL, where your data actually lives.
 
 #### [[Lecture 6]] - APIs
-*Week 6 — 8 September 2026* — REST, GraphQL, keys, and how software talks to software.
+*Week 6 — 22 September 2026* — REST, GraphQL, keys, and how software talks to software.
 
 #### [[Lecture 7]] - AI in the Stack
-*Week 7 — 15 September 2026* — LLM APIs, what models can and can't do, AI features.
+*Week 7 — 29 September 2026* — LLM APIs, what models can and can't do, AI features.
 
 #### [[Lecture 8]] - Mobile Ecosystems
-*Week 8 — 22 September 2026* — iOS vs Android, native vs hybrid vs web, app stores.
+*Week 8 — 6 October 2026* — iOS vs Android, native vs hybrid vs web, app stores.
 
 #### [[Lecture 9]] - Cloud Computing
-*Week 9 — 29 September 2026* — IaaS, PaaS, SaaS; hosting, deployment, domains.
+*Week 9 — 13 October 2026* — IaaS, PaaS, SaaS; hosting, deployment, domains.
 
 #### [[Lecture 10]] - How Software Gets Built
-*Week 10 — 6 October 2026* — SDLC, agile, version control. **Final project kickoff.**
+*Week 10 — 20 October 2026* — SDLC, agile, version control. **Final project kickoff.**
 
 #### [[Lecture 11]] - Studio 1
-*Week 11 — 13 October 2026* — Build sprint and crits.
+*Week 11 — 27 October 2026* — Build sprint and crits.
 
 #### [[Lecture 12]] - Studio 2
-*Week 12 — 20 October 2026* — Ship-ready: performance, security, privacy basics.
+*Week 12 — 3 November 2026* — Ship-ready: performance, security, privacy basics.
 
 #### [[Lecture 13]] - Demo Day
-*Week 13 — 27 October 2026* — Final project presentations.
+*Week 13 — 10 November 2026* — Final project presentations.
