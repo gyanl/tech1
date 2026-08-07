@@ -2446,7 +2446,8 @@ main > .section { padding-top: 2.2rem; }
 }
 
 /* on note pages the nav sits inside the content column, below the title */
-.note-page-section .navbar {
+.note-page-section .navbar,
+.inpage-nav .navbar {
     margin-left: -2.5rem;
     margin-right: -2.5rem;
     padding-left: 2.5rem;
@@ -2454,7 +2455,8 @@ main > .section { padding-top: 2.2rem; }
     margin-bottom: 1.6rem;
 }
 
-.note-page-section .navbar-inner {
+.note-page-section .navbar-inner,
+.inpage-nav .navbar-inner {
     max-width: none !important;
     width: 100% !important;
     flex: none !important;
@@ -2464,3 +2466,6 @@ main > .section { padding-top: 2.2rem; }
 
 /* more room above the page title */
 main > .section { padding-top: 3.6rem; }
+
+/* wrapper must not become the sticky containing block */
+.inpage-nav { display: contents; }

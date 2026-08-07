@@ -66,7 +66,7 @@
 
 <body>
     <main>
-        {%- unless page.content-type == "notes" -%}
+        {%- unless page.content-type == "notes" or page.feedformat -%}
         {%- include Nav.html -%}
         {%- endunless -%}
         <section class="section">
