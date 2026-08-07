@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body { width: 1200px; height: 630px; }
+
+  body {
+    background: #0A0B0E;
+    color: #F2F4F8;
+    font-family: 'TASA Orbiter', -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 96px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* checkered racing flag, oversized and quiet, bleeding off the right edge */
+  .flag {
+    position: absolute;
+    top: -40px;
+    right: -60px;
+    width: 520px;
+    height: 420px;
+    --cell: 30px;
+    background-image: conic-gradient(
+      #A8E6B8 90deg,
+      transparent 90deg 180deg,
+      #A8E6B8 180deg 270deg,
+      transparent 270deg
+    );
+    background-size: calc(var(--cell) * 2) calc(var(--cell) * 2);
+    opacity: 0.11;
+    -webkit-mask-image: linear-gradient(200deg, #000 35%, transparent 78%);
+    mask-image: linear-gradient(200deg, #000 35%, transparent 78%);
+  }
+
+  .brand {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 104px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  /* the cursor, shown lit */
+  .cursor {
+    display: inline-block;
+    width: 34px;
+    height: 84px;
+    background: #A8E6B8;
+    transform: translateY(2px);
+  }
+
+  .title {
+    font-size: 52px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.12;
+    margin-top: 34px;
+    max-width: 900px;
+  }
+
+  .meta {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 20px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #A2A9B8;
+    margin-top: 40px;
+  }
+
+  .rule {
+    width: 96px;
+    height: 3px;
+    background: #A8E6B8;
+    margin-top: 44px;
+  }
+</style>
+</head>
+<body>
+  <div class="flag"></div>
+
+  <div class="brand">TECH 1<span class="cursor"></span></div>
+
+  <div class="title">Web &amp; Mobile Ecosystem Fundamentals</div>
+
+  <div class="rule"></div>
+
+  <div class="meta">A course for designers · 2026</div>
+</body>
+</html>

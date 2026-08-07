@@ -31,21 +31,54 @@
 
 <head>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="Tech 1: Web & Mobile Ecosystem Fundamentals" property="og:site_name" />
-    <meta content="Notes for Tech 1: Web & Mobile Ecosystem Fundamentals" property="og:description">
+    {%- comment -%} ---- Open Graph / Twitter ---- {%- endcomment -%}
+    {%- assign og_image = site.url | append: site.baseurl | append: "/assets/img/OGImg.png" -%}
+    {%- if page.image -%}
+      {%- assign og_image = site.url | append: site.baseurl | append: page.image -%}
+    {%- endif -%}
+
+    {%- assign site_desc = "A hands-on course on the technologies behind the modern web and mobile ecosystems — built for designers, using AI to generate the code." -%}
+    {%- assign body_text = page.content | strip_html | replace: "&amp;", "&" | replace: "&lt;", "<" | replace: "&gt;", ">" | remove: "[[" | remove: "]]" | normalize_whitespace | strip -%}
+
+    {%- if page.description -%}
+      {%- assign og_desc = page.description -%}
+    {%- elsif page.key_areas -%}
+      {%- assign ka_list = page.key_areas | join: " · " -%}
+      {%- assign og_desc = "Key areas: " | append: ka_list -%}
+    {%- elsif body_text != "" -%}
+      {%- assign og_desc = body_text | truncate: 180 -%}
+    {%- else -%}
+      {%- assign og_desc = site_desc -%}
+    {%- endif -%}
+
+    {%- if page.title -%}
+      {%- assign og_title = page.title | append: " — " | append: site.heading -%}
+    {%- else -%}
+      {%- assign og_title = site.heading | append: " — Web & Mobile Ecosystem Fundamentals" -%}
+    {%- endif -%}
+
+    <meta property="og:site_name" content="{{ site.heading }}">
+    <meta property="og:title" content="{{ og_title | escape }}">
+    <meta property="og:description" content="{{ og_desc | escape }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:type" content="{% if page.title %}article{% else %}website{% endif %}">
+    <meta property="og:image" content="{{ og_image }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{ og_title | escape }}">
+    <meta property="og:locale" content="en_GB">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ og_title | escape }}">
+    <meta name="twitter:description" content="{{ og_desc | escape }}">
+    <meta name="twitter:image" content="{{ og_image }}">
+
+    <meta name="description" content="{{ og_desc | escape }}">
     <meta content="{{ site.url }}/about/" property="article:author">
-    <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/OGImg.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    {%- if page.title -%}
-    <meta content="{{ page.title }}" property="og:title">
-    <meta content="article" property="og:type">
-    <meta content="{{ site.url }}{{ page.url }}" property="og:url">
-    {%- else -%}
-    <meta content="website" property="og:type">
-    <meta content="{{ site.url }}{{ page.url }}" property="og:url">
-    {%- endif -%}
 
     <title>{{page.title}} - {{site.heading}}</title>
     <link rel="canonical" href="{{site.url}}{{page.url}}" />
