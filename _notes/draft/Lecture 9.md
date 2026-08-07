@@ -4,6 +4,9 @@ date modified: 24-07-2026
 feed: show
 tag: lecture
 title: "Lecture 9"
+key_areas:
+  - "Design systems"
+  - "Figma to code"
 ---
 
 ## Design Engineering

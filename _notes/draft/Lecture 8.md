@@ -4,6 +4,10 @@ date modified: 24-07-2026
 feed: show
 tag: lecture
 title: "Lecture 8"
+key_areas:
+  - "iOS vs Android platforms"
+  - "Native vs hybrid vs web apps"
+  - "App stores and distribution"
 ---
 
 ## Mobile Ecosystems

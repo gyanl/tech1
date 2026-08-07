@@ -4,6 +4,9 @@ date modified: 08-08-2026
 feed: show
 tag: lecture
 title: "Lecture 1"
+key_areas:
+  - "Client-server architecture"
+  - "HTML — structure"
 ---
 
 # Welcome to Tech 1!

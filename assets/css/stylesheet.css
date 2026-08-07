@@ -2170,3 +2170,32 @@ body.view-board .excerpt {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 }
+
+/* Key areas shown as chips on feed cards */
+.key-areas {
+    list-style: none !important;
+    padding: 0;
+    margin: 2px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.key-areas li {
+    font-size: var(--text-xs);
+    line-height: 1.3;
+    color: var(--color-text-sub);
+    background: var(--color-bg-main);
+    border: 1px solid var(--color-border-light);
+    border-left: 2px solid var(--color-text-link);
+    padding: 3px 7px;
+    list-style: none;
+}
+
+body.view-board .key-areas li { background: var(--color-bg-main); }
+
+.notelist-feed:hover .key-areas li { border-left-color: var(--color-text-link); }
+
+@supports (corner-shape: bevel) {
+    .key-areas li { corner-shape: bevel; border-radius: 0 6px 0 0; }
+}

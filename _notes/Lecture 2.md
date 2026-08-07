@@ -4,6 +4,11 @@ date modified: 04-08-2026
 feed: show
 tag: lecture
 title: "Lecture 2"
+key_areas:
+  - "CSS — styling"
+  - "Responsive web design"
+  - "Hosting and deployment"
+  - "Version control (Git)"
 ---
 
 ## Designing your Website

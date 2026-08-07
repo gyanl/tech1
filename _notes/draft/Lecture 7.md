@@ -4,6 +4,11 @@ date modified: 24-07-2026
 feed: show
 tag: lecture
 title: "Lecture 7"
+key_areas:
+  - "APIs — REST"
+  - "APIs — GraphQL"
+  - "LLM APIs"
+  - "AI features in products"
 ---
 
 ## APIs

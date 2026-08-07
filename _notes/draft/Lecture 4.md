@@ -4,6 +4,10 @@ date modified: 24-07-2026
 feed: show
 tag: lecture
 title: "Lecture 4"
+key_areas:
+  - "DNS"
+  - "Server-side languages"
+  - "Software development lifecycle"
 ---
 
 ## Shipping Software

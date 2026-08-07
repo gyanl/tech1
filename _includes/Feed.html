@@ -61,9 +61,17 @@
                     <a href="{{ site.baseurl }}{{note_items.url}}">
                         <h6>{{ note_items.title }}</h6>
                         <p>{{ note_items.date | date: "%d %B %Y" }}</p>
+                        {%- if note_items.key_areas -%}
+                        <ul class="key-areas">
+                            {%- for ka in note_items.key_areas -%}
+                            <li>{{ ka }}</li>
+                            {%- endfor -%}
+                        </ul>
+                        {%- else -%}
                         <p class="excerpt">
                             {{ note_items.content | strip_html | strip | remove: "[[" | remove: "]]" | remove: "-" | escape | truncate: 200 }}
                         </p>
+                        {%- endif -%}
                     </a>
                 </div>
         {%- endif -%}

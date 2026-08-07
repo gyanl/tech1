@@ -4,6 +4,11 @@ date modified: 24-07-2026
 feed: show
 tag: lecture
 title: "Lecture 5"
+key_areas:
+  - "How the internet works"
+  - "HTTP / HTTPS"
+  - "IP addresses"
+  - "Web browsers and their role"
 ---
 
 ## Internet Infrastructure

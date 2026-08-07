@@ -4,6 +4,9 @@ date modified: 24-07-2026
 feed: show
 tag: lecture
 title: "Lecture 3"
+key_areas:
+  - "JavaScript — interactivity"
+  - "Prompting as design"
 ---
 
 ## Javascript & Interactivity

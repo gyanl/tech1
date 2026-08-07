@@ -4,6 +4,11 @@ date modified: 24-07-2026
 feed: show
 tag: lecture
 title: "Lecture 6"
+key_areas:
+  - "Databases — SQL"
+  - "Databases — NoSQL"
+  - "Understanding data flow"
+  - "AI-assisted development"
 ---
 
 ## Data & Databases
