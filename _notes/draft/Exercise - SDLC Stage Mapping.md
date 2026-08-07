@@ -1,5 +1,5 @@
 ---
-date: 05-10-2026
+date: 06-10-2026
 date modified: 24-07-2026
 feed: show
 tag: exercise

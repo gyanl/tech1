@@ -1,6 +1,6 @@
 ---
-date: 03-08-2026
-date modified: 04-08-2026
+date: 04-08-2026
+date modified: 08-08-2026
 feed: show
 tag: lecture
 title: "Lecture 1"
@@ -107,6 +107,7 @@ The labels are called **tags**. They usually come in pairs — one to open, one 
 ```
 
 Some tags don't need closing tags - like the image tag
+
 ```html
 <img src="photo.jpg">
 ```

@@ -108,6 +108,7 @@ exclude:
   - _notes/200 Private
   - _notes/300 Templates
   - _notes/Private
+  - _notes/draft
 #   - .sass-cache/
 #   - .jekyll-cache/
 #   - gemfiles/
