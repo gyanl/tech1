@@ -207,4 +207,6 @@ If you see a 404: wait, refresh, and check your homepage is called exactly `inde
 #### Homework
 
 - Finish any setup that got stuck (Student Pack approval can take a few days — apply today)
-- Polish your page and bring the URL next week — we're going to dissect it
+- Polish your page by importing the design into Figma. Next week, we'll learn how to change the look of the page with CSS.
+
+--- 
