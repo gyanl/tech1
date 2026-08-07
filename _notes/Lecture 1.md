@@ -52,9 +52,8 @@ I will not follow the syllabus too strictly - this will be a hands on course whe
 Get your toolkit working — we use all of this every week:
 
 1. **Create a GitHub account** — [github.com](https://github.com) (use an email you'll keep)
-2. **Apply for the GitHub Student Developer Pack** — [GitHub Education · GitHub](https://github.com/education) (free credits and tools; needs your university email/ID)
-3. **Download GitHub Desktop** — [desktop.github.com](https://desktop.github.com) (Mac/Windows)
-4. **Download a code editor** — [VS Code](https://code.visualstudio.com) (or Cursor if you want AI built in)
+2. **Download GitHub Desktop** — [desktop.github.com](https://desktop.github.com) (Mac/Windows)
+3. **Download a code editor** — [VS Code](https://code.visualstudio.com) (or Cursor if you want AI built in)
 
 ---
 ## Pick your username carefully
@@ -210,7 +209,7 @@ If you see a 404: wait, refresh, and check your homepage is called exactly `inde
 ---
 #### Homework
 
-- Finish any setup that got stuck (Student Pack approval can take a few days — apply today)
-- Polish your page by importing the design into Figma. Next week, we'll learn how to change the look of the page with CSS.
-
+- Finish any setup that got stuck 
+- **Apply for the GitHub Student Developer Pack** at [GitHub Education · GitHub](https://github.com/education) (free credits and tools; needs your university email/ID)(Student Pack approval can take a few days — apply today)
+- **Exercise:** [[Exercise - Redesign your Page in Figma]] — bring your page into Figma and design it properly. Next week we turn it into CSS.
 --- 
