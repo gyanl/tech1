@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 512px; height: 512px; }
+  body {
+    background: #0A0B0E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .t1 {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-weight: 700;
+    font-size: 320px;
+    line-height: 1;
+    color: #F2F4F8;
+    letter-spacing: -0.06em;
+    /* optical centring — the glyphs sit high in the em box */
+    transform: translateY(-10px);
+  }
+  .cursor {
+    width: 68px;
+    height: 258px;
+    background: #A8E6B8;
+    transform: translateY(-8px);
+  }
+</style>
+</head>
+<body>
+  <div class="t1">T1</div>
+  <div class="cursor"></div>
+</body>
+</html>

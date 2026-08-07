@@ -112,6 +112,8 @@ exclude:
   # tooling — kept in the repo, not published
   - tools
   - assets/og-template.html
+  - assets/favicon-template.html
+  - assets/favicon-small-template.html
 #   - .sass-cache/
 #   - .jekyll-cache/
 #   - gemfiles/

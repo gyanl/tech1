@@ -54,3 +54,22 @@ docker-compose up -d
 ## License
 
 Course content (notes, exercises) is licensed under [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/). The Jekyll Garden theme is MIT-licensed — see [LICENSE](LICENSE) and credits to [Hiran Venugopalan](https://github.com/hfactor).
+
+## Favicon
+
+Icons are generated the same way as the OG images, from
+`assets/favicon-template.html` (full mark, for large sizes) and
+`assets/favicon-small-template.html` (simplified, for 16/32px):
+
+```
+CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+"$CHROME" --headless=new --window-size=512,512 --virtual-time-budget=8000 \
+  --screenshot=/tmp/icon512.png assets/favicon-template.html
+sips -z 180 180 /tmp/icon512.png --out assets/img/apple-touch-icon.png
+sips -z 512 512 /tmp/icon512.png --out assets/img/icon-512.png
+
+"$CHROME" --headless=new --window-size=512,512 --virtual-time-budget=8000 \
+  --screenshot=/tmp/small512.png assets/favicon-small-template.html
+sips -z 32 32 /tmp/small512.png --out assets/img/favicon-32.png
+sips -z 16 16 /tmp/small512.png --out assets/img/favicon-16.png
+```
