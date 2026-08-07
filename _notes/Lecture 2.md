@@ -1,18 +1,17 @@
 ---
 date: 11-08-2026
-date modified: 04-08-2026
+date modified: 08-08-2026
 feed: show
-tag: lecture
-title: "Lecture 2"
 key_areas:
   - "CSS — styling"
   - "Responsive web design"
   - "Hosting and deployment"
   - "Version control (Git)"
+tag: lecture
+title: "Lecture 2"
 ---
 
 ## Designing your Website
-
 
 Last week you shipped a page. This week we open the hood.
 

@@ -2282,13 +2282,32 @@ ul.key-areas li {
    ============================================================ */
 
 .navbar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: nowrap;
-    padding: 10px 18px;
+    display: block;
+    padding: 16px 12px 14px;
     min-height: 0;
     border-bottom: 1px solid var(--color-border-light);
+}
+
+/* nav contents track the width of the article column */
+.navbar-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 7px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 769px) {
+    .navbar-inner { max-width: 66.6666%; }
+}
+
+@media screen and (min-width: 1024px) {
+    .navbar-inner { max-width: 50%; }
+}
+
+@media screen and (min-width: 1216px) {
+    .navbar-inner { max-width: 41.6666%; }
 }
 
 .navbar-brand {
@@ -2326,7 +2345,7 @@ ul.key-areas li {
 .navbar-menu .navbar-item {
     font-size: 11px;
     letter-spacing: 0.06em;
-    padding: 4px 0;
+    padding: 2px 0;
     line-height: 1.2;
 }
 
@@ -2347,7 +2366,101 @@ ul.key-areas li {
 .navbar-end .button { border: none; background: transparent; padding: 4px; }
 
 @media (max-width: 560px) {
-    .navbar { flex-wrap: wrap; gap: 6px; }
+    .navbar-inner { flex-wrap: wrap; gap: 6px; }
     .navbar-start { gap: 12px; }
     .navbar-menu .navbar-item { font-size: 10px; }
 }
+
+/* brand on its own line, links beneath */
+.navbar-inner > .navbar-brand { width: 100%; }
+.navbar-inner > .navbar-menu { width: 100%; display: flex; align-items: center; }
+.navbar-inner .navbar-start { flex: 0 1 auto; min-width: 0; flex-wrap: wrap; margin-right: auto; }
+.navbar-inner .navbar-end { margin-left: 0; padding-left: 24px; flex: none; }
+
+/* theme toggle: no Bulma button chrome, box sized to the icon */
+.navbar-end .buttons,
+.navbar-end .button.is-text,
+.navbar-end .button.is-text:hover,
+.navbar-end .button.is-text:focus,
+.navbar-end .button.is-text:active,
+.navbar-end .button.is-text.is-active {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    height: auto;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-end .icon,
+.navbar-end .icon.is-small {
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+.navbar-end .icon img {
+    display: block;
+    width: 17px;
+    height: 17px;
+}
+
+.navbar-end .navbar-item { padding: 2px 0; cursor: pointer; }
+.navbar-end .button.is-text:hover img { opacity: 0.6; }
+
+/* breathing room between the header and the page content */
+main > .section { padding-top: 2.2rem; }
+
+/* kill Bulma's navbar min-heights so the header is only as tall as its content */
+.navbar,
+.navbar-brand,
+.navbar-menu,
+.navbar-item,
+.navbar-start,
+.navbar-end {
+    min-height: 0 !important;
+}
+
+.navbar-brand { align-items: center; }
+
+/* theme toggle sits on the text baseline row, optically centred */
+.navbar-end .navbar-item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar-end .buttons { display: flex; align-items: center; }
+.navbar-end .icon img { position: relative; top: -3px; }
+
+/* ---- sticky header ---- */
+.navbar {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 0;
+    z-index: 50;
+    background: var(--color-bg-main);
+}
+
+/* on note pages the nav sits inside the content column, below the title */
+.note-page-section .navbar {
+    margin-left: -2.5rem;
+    margin-right: -2.5rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    margin-bottom: 1.6rem;
+}
+
+.note-page-section .navbar-inner {
+    max-width: none !important;
+    width: 100% !important;
+    flex: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* more room above the page title */
+main > .section { padding-top: 3.6rem; }

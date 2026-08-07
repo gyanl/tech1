@@ -200,7 +200,7 @@ If you see a 404: wait, refresh, and check your homepage is called exactly `inde
 
 ---
 
-#### Ship something (rest of class)
+#### Ship something
 
 - **Exercise:** [[Exercise - Ship a Page with GitHub Pages]] — personalise your page, push it, and put it live
 - Everyone leaves with a URL that works on their phone
@@ -209,6 +209,7 @@ If you see a 404: wait, refresh, and check your homepage is called exactly `inde
 #### Homework
 
 - Finish any setup that got stuck
-- **Apply for the GitHub Student Developer Pack** at [GitHub Education · GitHub](https://github.com/education) -free credits and tools; needs your university email/ID - approval can take a few days — apply today.
-- **Exercise:** [[Exercise - Redesign your Home Page in Figma]] — bring your page into Figma and design it properly. Next week we turn it into CSS.
+- [[Exercise - Redesign your Home Page in Figma]] — bring your page into Figma and design it properly. Next week we turn it into CSS.
+- Apply for the GitHub Student Developer Pack at [GitHub Education · GitHub](https://github.com/education) - free credits and tools; needs your university email/ID - approval can take a few days — apply today.
+
 ---
