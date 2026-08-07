@@ -61,7 +61,7 @@
     <![endif]-->
     <!--<link href="/assets/css/prism.css" rel="stylesheet" />-->
     <link rel="alternate" type="application/rss+xml" href="{{ site.url }}/feed.xml">
-    <script src="{{ site.baseurl }}/assets/js/deck.js" defer></script>
+    <script src="{{ site.baseurl }}/assets/js/deck.js?v=3" defer></script>
 </head>
 
 <body>
@@ -102,6 +102,16 @@
                             </style>
                             {%- endif -%}
                             <h1>{{page.title}}</h1>
+                            {%- if page.key_areas -%}
+                            <div class="key-areas-block">
+                                <h5 class="meta-title">Key areas covered</h5>
+                                <ul class="key-areas">
+                                    {%- for ka in page.key_areas -%}
+                                    <li>{{ ka }}</li>
+                                    {%- endfor -%}
+                                </ul>
+                            </div>
+                            {%- endif -%}
                             {%- include Content.html -%}
                             {%- include Backlinks.html -%}
                         </div>

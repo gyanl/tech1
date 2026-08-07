@@ -12,13 +12,6 @@ key_areas:
 
 ## Shipping Software
 
----
-## Key areas covered
-
-- DNS
-- Server-side languages
-- Software development lifecycle
-
 
 From "a page that works" to "an interface that's designed."
 

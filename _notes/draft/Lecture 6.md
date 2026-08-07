@@ -13,14 +13,6 @@ key_areas:
 
 ## Data & Databases
 
----
-## Key areas covered
-
-- Databases — SQL
-- Databases — NoSQL
-- Understanding data flow
-- AI-assisted development
-
 
 How software talks to software — and why every product you design is really a bundle of APIs.
 

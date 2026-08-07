@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
     slide.className = "slide slide-title";
     var h1 = document.querySelector(".note-page-section h1");
     if (h1) slide.appendChild(h1.cloneNode(true));
+    var ka = document.querySelector(".key-areas-block");
+    if (ka) slide.appendChild(ka.cloneNode(true));
 
     var nodes = Array.prototype.slice.call(content.childNodes);
     nodes.forEach(function (node) {

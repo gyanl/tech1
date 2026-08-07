@@ -11,12 +11,6 @@ key_areas:
 
 ## Design Engineering
 
----
-## Key areas covered
-
-- Design systems
-- Figma to code
-
 
 "The cloud" is someone else's computer — but which one, and what are you paying for?
 

@@ -1,0 +1,111 @@
+# Single source of truth for the course plan.
+# Syllabus, Class Schedule and the Lectures index all render from this.
+
+- num: 1
+  title: "Welcome to Tech 1"
+  date: "4 August 2026"
+  slug: "lecture-1"
+  key_areas:
+    - "Client-server architecture"
+    - "HTML — structure"
+
+- num: 2
+  title: "Designing your Website"
+  date: "11 August 2026"
+  slug: "lecture-2"
+  key_areas:
+    - "CSS — styling"
+    - "Responsive web design"
+    - "Hosting and deployment"
+    - "Version control (Git)"
+
+- num: 3
+  title: "Javascript & Interactivity"
+  date: "18 August 2026"
+  slug: "lecture-3"
+  key_areas:
+    - "JavaScript — interactivity"
+    - "Prompting as design"
+
+- num: 4
+  title: "Shipping Software"
+  date: "25 August 2026"
+  slug: "lecture-4"
+  key_areas:
+    - "DNS"
+    - "Server-side languages"
+    - "Software development lifecycle"
+
+- num: 5
+  title: "Internet Infrastructure"
+  date: "1 September 2026"
+  slug: "lecture-5"
+  key_areas:
+    - "How the internet works"
+    - "HTTP / HTTPS"
+    - "IP addresses"
+    - "Web browsers and their role"
+
+- num: 6
+  title: "Data & Databases"
+  date: "22 September 2026"
+  slug: "lecture-6"
+  key_areas:
+    - "Databases — SQL"
+    - "Databases — NoSQL"
+    - "Understanding data flow"
+    - "AI-assisted development"
+
+- num: 7
+  title: "APIs"
+  date: "29 September 2026"
+  slug: "lecture-7"
+  key_areas:
+    - "APIs — REST"
+    - "APIs — GraphQL"
+    - "LLM APIs"
+    - "AI features in products"
+
+- num: 8
+  title: "Mobile Ecosystems"
+  date: "6 October 2026"
+  slug: "lecture-8"
+  key_areas:
+    - "iOS vs Android platforms"
+    - "Native vs hybrid vs web apps"
+    - "App stores and distribution"
+
+- num: 9
+  title: "Design Engineering"
+  date: "13 October 2026"
+  slug: "lecture-9"
+  key_areas:
+    - "Design systems"
+    - "Figma to code"
+
+- num: 10
+  title: "Start a Startup"
+  date: "20 October 2026"
+  slug: "lecture-10"
+  key_areas:
+    - "IaaS, PaaS, SaaS"
+    - "Scaling and cost"
+    - "Agile / Scrum"
+
+- num: 11
+  title: "Studio 1"
+  date: "27 October 2026"
+  slug: "lecture-11"
+  key_areas: []
+
+- num: 12
+  title: "Studio 2"
+  date: "3 November 2026"
+  slug: "lecture-12"
+  key_areas: []
+
+- num: 13
+  title: "Demo Day"
+  date: "10 November 2026"
+  slug: "lecture-13"
+  key_areas: []

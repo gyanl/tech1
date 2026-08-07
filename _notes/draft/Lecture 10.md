@@ -12,13 +12,6 @@ key_areas:
 
 ## Start a Startup
 
----
-## Key areas covered
-
-- IaaS, PaaS, SaaS
-- Scaling and cost
-- Agile / Scrum
-
 
 The people part: how ideas become products, and how teams avoid chaos.
 

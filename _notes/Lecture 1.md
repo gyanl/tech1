@@ -31,12 +31,6 @@ I will not follow the syllabus too strictly - this will be a hands on course whe
 - [[Syllabus]]
 - [[AI Policy]]
 
----
-## Key areas covered
-
-- Client-server architecture
-- HTML — structure
-
 
 ---
 ## How this course works

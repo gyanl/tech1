@@ -13,14 +13,6 @@ key_areas:
 
 ## Designing your Website
 
----
-## Key areas covered
-
-- CSS — styling
-- Responsive web design
-- Hosting and deployment
-- Version control (Git)
-
 
 Last week you shipped a page. This week we open the hood.
 

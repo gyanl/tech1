@@ -2199,3 +2199,173 @@ body.view-board .key-areas li { background: var(--color-bg-main); }
 @supports (corner-shape: bevel) {
     .key-areas li { corner-shape: bevel; border-radius: 0 6px 0 0; }
 }
+
+/* Key areas block on a note page */
+.key-areas-block {
+    margin: 0 0 1.4rem;
+}
+
+.key-areas-block .meta-title {
+    margin-bottom: 8px;
+}
+
+.key-areas-block .key-areas li {
+    background: var(--color-bg-sub);
+    font-size: var(--text-s);
+    padding: 5px 10px;
+}
+
+.slide .key-areas-block .key-areas li {
+    font-size: var(--text-m);
+    padding: 7px 14px;
+}
+
+/* ---- Syllabus rendered from _data/lectures.yml ---- */
+
+.syllabus-list { margin: 0 0 1.5rem; }
+
+.syllabus-row {
+    border: 1px solid var(--color-border-light);
+    background: var(--color-bg-sub);
+    padding: 10px 12px;
+    margin-bottom: 8px;
+}
+
+@supports (corner-shape: bevel) {
+    .syllabus-row { corner-shape: bevel; border-radius: 0 14px 0 0; }
+}
+
+.syllabus-head {
+    display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+}
+
+.syllabus-num {
+    font-family: var(--font-mono); font-size: var(--text-xs);
+    color: var(--color-text-link); flex: none;
+}
+
+.syllabus-title {
+    font-weight: 600; color: var(--color-text-strong);
+    text-decoration: none; flex: 1;
+}
+
+.syllabus-title:hover { color: var(--color-text-link); }
+
+.syllabus-date {
+    font-family: var(--font-mono); font-size: var(--text-xs);
+    color: var(--color-text-sub); text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+.syllabus-row .key-areas { margin-top: 8px; }
+
+/* coverage map: area -> lectures */
+.coverage { margin: 0 0 1.5rem; }
+
+.coverage-row {
+    display: flex; align-items: baseline; gap: 10px;
+    padding: 7px 0; border-bottom: 1px solid var(--color-border-light);
+}
+
+.coverage-area { flex: 1; font-size: var(--text-s); }
+
+.coverage-links { display: flex; gap: 5px; flex: none; }
+
+.coverage-links a {
+    font-family: var(--font-mono); font-size: var(--text-xs);
+    text-decoration: none; color: var(--color-text-link);
+    border: 1px solid var(--color-border-light);
+    padding: 2px 7px;
+}
+
+.coverage-links a:hover {
+    border-color: var(--color-text-link);
+    background: var(--color-text-link-light);
+}
+
+@supports (corner-shape: bevel) {
+    .coverage-links a { corner-shape: bevel; border-radius: 0 6px 0 0; }
+}
+
+/* .content ul in the theme overrides display — win it back */
+ul.key-areas {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding-left: 0 !important;
+    margin-left: 0;
+}
+
+ul.key-areas li {
+    display: inline-block !important;
+    width: auto !important;
+    flex: 0 0 auto;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+/* ============================================================
+   Top nav — flat, single row, mono labels
+   ============================================================ */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    padding: 10px 18px;
+    min-height: 0;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    flex: none;
+    min-height: 0;
+    margin-right: 6px;
+}
+
+.navbar-brand .navbar-item { padding: 0; }
+.navbar-brand h3 { padding: 0; margin: 0; }
+
+/* the menu sits inline and takes the remaining room */
+.navbar-menu {
+    display: flex !important;
+    align-items: center;
+    flex: 1;
+    padding: 0;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+.navbar-start {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.navbar-end { margin-left: auto; flex: none; }
+
+.navbar-item {
+    padding: 5px 9px;
+    line-height: 1.2;
+}
+
+.navbar-item:hover {
+    background: transparent;
+    color: var(--color-text-link);
+}
+
+/* the theme's mobile duplicate of the theme toggle */
+.navbar-dark-mode__mobile { display: none !important; }
+.navbar-burger { display: none !important; }
+
+.navbar-end .buttons { margin: 0; }
+.navbar-end .button { border: none; background: transparent; padding: 4px; }
+
+@media (max-width: 560px) {
+    .navbar { flex-wrap: wrap; gap: 4px; }
+    .navbar-start { gap: 0; }
+    .navbar-item { padding: 4px 7px; font-size: 10px; }
+}

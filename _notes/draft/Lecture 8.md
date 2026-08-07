@@ -12,13 +12,6 @@ key_areas:
 
 ## Mobile Ecosystems
 
----
-## Key areas covered
-
-- iOS vs Android platforms
-- Native vs hybrid vs web apps
-- App stores and distribution
-
 
 Why the app on your phone is a different animal from the site in your browser.
 
