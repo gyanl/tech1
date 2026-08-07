@@ -2,11 +2,11 @@
 date: 04-08-2026
 date modified: 08-08-2026
 feed: show
-tag: lecture
-title: "Lecture 1"
 key_areas:
   - "Client-server architecture"
   - "HTML — structure"
+tag: lecture
+title: "Lecture 1"
 ---
 
 # Welcome to Tech 1!
@@ -30,7 +30,6 @@ I will not follow the syllabus too strictly - this will be a hands on course whe
 
 - [[Syllabus]]
 - [[AI Policy]]
-
 
 ---
 ## How this course works
@@ -209,7 +208,7 @@ If you see a 404: wait, refresh, and check your homepage is called exactly `inde
 ---
 #### Homework
 
-- Finish any setup that got stuck 
-- **Apply for the GitHub Student Developer Pack** at [GitHub Education · GitHub](https://github.com/education) (free credits and tools; needs your university email/ID)(Student Pack approval can take a few days — apply today)
-- **Exercise:** [[Exercise - Redesign your Page in Figma]] — bring your page into Figma and design it properly. Next week we turn it into CSS.
---- 
+- Finish any setup that got stuck
+- **Apply for the GitHub Student Developer Pack** at [GitHub Education · GitHub](https://github.com/education) -free credits and tools; needs your university email/ID - approval can take a few days — apply today.
+- **Exercise:** [[Exercise - Redesign your Home Page in Figma]] — bring your page into Figma and design it properly. Next week we turn it into CSS.
+---
