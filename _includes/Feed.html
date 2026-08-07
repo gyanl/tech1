@@ -42,8 +42,15 @@
         <script type="text/javascript" src="{{ site.baseurl }}/assets/js/vendor/lunr.min.js"></script>
         <script src="{{ site.baseurl }}/assets/js/Search.js"></script>
     {%- endif -%}
+    <!-- list / board view switch -->
+    <div class="view-switch">
+        <button type="button" data-view="list" class="vs-btn">List</button>
+        <button type="button" data-view="board" class="vs-btn">Board</button>
+    </div>
+    <script src="{{ site.baseurl }}/assets/js/viewswitch.js"></script>
+
     <!-- feed with filter-->
-     
+
     <!-- show only items tagged lecture -->
     <div class="related-wrapper">
         <h5 class="meta-title centre-title">Lectures</h5>

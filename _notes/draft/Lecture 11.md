@@ -6,7 +6,7 @@ tag: lecture
 title: "Lecture 11"
 ---
 
-## Studio 1 — Build Sprint
+## Studio 1
 
 Full working session for [[Project - Final Project]].
 

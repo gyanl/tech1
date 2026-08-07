@@ -2084,3 +2084,89 @@ pre code,
     background: transparent;
     vertical-align: baseline;
 }
+
+/* ============================================================
+   Feed: list / board view switch
+   ============================================================ */
+
+.view-switch {
+    display: flex; gap: 6px; justify-content: center;
+    margin: 18px 0 4px;
+}
+
+.vs-btn {
+    font-family: var(--font-mono); font-size: var(--text-xs);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--color-text-sub); background: var(--color-bg-sub);
+    border: 1px solid var(--color-border-light);
+    padding: 6px 14px; cursor: pointer;
+    border-radius: 0;
+}
+
+.vs-btn:hover { color: var(--color-text-link); border-color: var(--color-text-link); }
+
+.vs-btn.is-active {
+    color: var(--color-text-link);
+    border-color: var(--color-text-link);
+    background: var(--color-text-link-light);
+}
+
+@supports (corner-shape: bevel) {
+    .vs-btn { corner-shape: bevel; border-radius: 0 10px 0 0; }
+}
+
+/* ---- board view: the planner's card treatment ---- */
+
+body.view-board .related-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 12px;
+    align-items: stretch;
+}
+
+/* section headings span the whole grid */
+body.view-board .related-wrapper > .meta-title {
+    grid-column: 1 / -1;
+    text-align: left;
+    padding: 18px 0 2px;
+}
+
+body.view-board .notelist-feed {
+    background: var(--color-bg-sub);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    transform: none;
+}
+
+body.view-board .notelist-feed:hover { transform: translateY(-1px); }
+
+body.view-board .notelist-feed a {
+    display: flex; flex-direction: column; height: 100%;
+}
+
+body.view-board .notelist-feed h6 {
+    font-size: var(--text-s);
+    line-height: 1.25;
+    padding-bottom: 2px;
+}
+
+/* the date reads as a slot label, like the planner */
+body.view-board .notelist-feed p:not(.excerpt) {
+    margin-bottom: 6px;
+}
+
+body.view-board .excerpt {
+    font-size: var(--text-xs) !important;
+    color: var(--color-text-sub) !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@media (max-width: 600px) {
+    body.view-board .related-wrapper {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}

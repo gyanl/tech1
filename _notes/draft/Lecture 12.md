@@ -6,7 +6,7 @@ tag: lecture
 title: "Lecture 12"
 ---
 
-## Studio 2 — Ship-Ready
+## Studio 2
 
 Second working session for [[Project - Final Project]] — from "works on my machine" to "works for everyone."
 

@@ -29,6 +29,13 @@ I will not follow the syllabus too strictly - this will be a hands on course whe
 - [[AI Policy]]
 
 ---
+## Key areas covered
+
+- Client-server architecture
+- HTML — structure
+
+
+---
 ## How this course works
 
 - **You will build from week one.** Using AI tools, you will generate, modify, and deploy real web applications — starting with a personal webpage in the very first session.

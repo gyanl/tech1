@@ -6,7 +6,16 @@ tag: lecture
 title: "Lecture 5"
 ---
 
-## Back-Ends and Databases
+## Internet Infrastructure
+
+---
+## Key areas covered
+
+- How the internet works
+- HTTP / HTTPS
+- IP addresses
+- Web browsers and their role
+
 
 Everything before this week disappeared when you refreshed. Let's fix that.
 

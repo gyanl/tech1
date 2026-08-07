@@ -6,7 +6,16 @@ tag: lecture
 title: "Lecture 7"
 ---
 
-## AI in the Stack
+## APIs
+
+---
+## Key areas covered
+
+- APIs — REST
+- APIs — GraphQL
+- LLM APIs
+- AI features in products
+
 
 You've been using AI to build all semester. Now: AI as an ingredient *inside* the products you design.
 

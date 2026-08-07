@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tech 1 — Syllabus Planner</title>
+<link href="https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFFFFF; --sub: #F6F7F9; --text: #2A2F38; --strong: #0B0C10;
+    --muted: #545A66; --accent: #0F6B33; --line: #E6E8EC; --pop: #EFF1F4;
+    --font: 'TASA Orbiter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0A0B0E; --sub: #1A1E24; --text: #B9BFCA; --strong: #FFFFFF;
+      --muted: #A2A9B8; --accent: #A8E6B8; --line: #23262D; --pop: #23272E;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--font); font-size: 15px; line-height: 1.5;
+    height: 100vh; overflow: hidden; display: flex; flex-direction: column;
+  }
+  h1, h2 { color: var(--strong); letter-spacing: -0.02em; margin: 0; }
+  a { color: var(--accent); }
+
+  header {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    padding: 14px 20px; border-bottom: 1px solid var(--line);
+    background: var(--bg); flex: none;
+  }
+  header h1 { font-family: var(--mono); font-size: 14px; font-weight: 500; }
+  .hint { color: var(--muted); font-size: 12px; }
+  .spacer { flex: 1; }
+
+  button {
+    font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--muted); background: var(--sub);
+    border: 1px solid var(--line); padding: 7px 14px; cursor: pointer;
+  }
+  button:hover { color: var(--accent); border-color: var(--accent); }
+  @supports (corner-shape: bevel) { button { corner-shape: bevel; border-radius: 0 10px 0 0; } }
+
+  .layout { flex: 1; min-height: 0; display: grid; grid-template-columns: 270px 1fr; }
+  @media (max-width: 620px) { .layout { grid-template-columns: 1fr; } }
+
+  /* ---- pool ---- */
+  .pool { overflow-y: auto; min-height: 0; padding: 16px; border-right: 1px solid var(--line); }
+  .pool-title, .board-title {
+    font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--muted); margin-bottom: 12px;
+  }
+  .area { margin-bottom: 16px; }
+  .area-name {
+    font-size: 12px; font-weight: 600; color: var(--strong);
+    display: flex; align-items: center; gap: 7px; margin-bottom: 6px;
+  }
+  .dot { width: 9px; height: 9px; flex: none; }
+  .sec-split { border-top: 1px solid var(--line); margin: 22px 0 16px; }
+  .addbtn { width: 100%; padding: 8px; margin-top: 4px; }
+
+  /* ---- chips ---- */
+  .chip {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--sub); border: 1px solid var(--line);
+    border-left: 3px solid var(--chip, var(--line));
+    padding: 6px 8px 6px 10px; margin-bottom: 5px; cursor: grab;
+    font-size: 13px; color: var(--text);
+  }
+  .chip:hover { border-color: var(--accent); color: var(--strong); }
+  .chip.selected { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .chip.dragging { opacity: 0.4; }
+  .chip.ex { border-left-style: dashed; }
+  .chip .label { flex: 1; outline: none; user-select: none; }
+  .chip .label[contenteditable="true"] { user-select: text; cursor: text; }
+  .chip .tag {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em;
+    color: var(--muted); flex: none;
+  }
+  .chip .x {
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+    flex: none; cursor: pointer; opacity: 0; padding: 0 2px;
+  }
+  .chip:hover .x { opacity: 1; }
+  .chip .x:hover { color: #EF4444; }
+  @supports (corner-shape: bevel) { .chip { corner-shape: bevel; border-radius: 0 8px 0 0; } }
+
+  /* ---- board ---- */
+  .board { overflow-y: auto; min-height: 0; padding: 16px 20px 40px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; }
+  .lecture {
+    background: var(--sub); border: 1px solid var(--line);
+    padding: 10px 12px 12px; min-height: 130px; display: flex; flex-direction: column;
+  }
+  .lecture.over { border-color: var(--accent); background: var(--pop); }
+  .lecture.shift { border-style: dashed; border-color: var(--accent); }
+  .lecture.lifting { opacity: 0.4; }
+  @supports (corner-shape: bevel) { .lecture { corner-shape: bevel; border-radius: 0 16px 0 0; } }
+
+  .lec-head { display: flex; align-items: baseline; gap: 6px; }
+  .grip {
+    font-family: var(--mono); color: var(--muted); cursor: grab;
+    font-size: 12px; flex: none; padding: 0 2px; user-select: none;
+  }
+  .grip:hover { color: var(--accent); }
+  .lec-num { font-family: var(--mono); font-size: 11px; color: var(--accent); flex: none; }
+  .lec-title {
+    font-size: 14px; font-weight: 600; color: var(--strong); line-height: 1.25;
+    flex: 1; outline: none; border-bottom: 1px dashed transparent; cursor: text;
+  }
+  .lec-title:hover { border-bottom-color: var(--line); }
+  .lec-title:focus { border-bottom-color: var(--accent); }
+  .lec-date {
+    font-family: var(--mono); font-size: 10px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.06em; margin: 2px 0 8px 22px;
+  }
+  .drop { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+  .empty { color: var(--muted); font-size: 12px; font-style: italic; opacity: 0.7; }
+  .count { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-top: 8px; text-align: right; }
+
+  dialog {
+    background: var(--bg); color: var(--text); border: 1px solid var(--line);
+    max-width: 720px; width: 90vw; padding: 0;
+  }
+  dialog::backdrop { background: rgba(0,0,0,0.5); }
+  dialog .bar { display: flex; gap: 10px; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+  dialog h2 { font-size: 15px; }
+  textarea {
+    width: 100%; height: 60vh; border: none; resize: vertical;
+    background: var(--sub); color: var(--text);
+    font-family: var(--mono); font-size: 12px; line-height: 1.6; padding: 16px;
+  }
+  textarea:focus { outline: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>TECH 1 ▮ SYLLABUS PLANNER</h1>
+  <span class="hint">Drag into lectures · ⠿ reorders · click a lecture title to rename · double-click an exercise to rename</span>
+  <span class="spacer"></span>
+  <button id="export">Export markdown</button>
+  <button id="reset">Reset</button>
+</header>
+
+<div class="layout">
+  <aside class="pool">
+    <div class="pool-title">Unplaced · <span id="left">0</span></div>
+    <div id="pool"></div>
+    <div class="sec-split"></div>
+    <div class="area-name"><span class="dot" style="background:var(--accent)"></span>Exercises</div>
+    <div id="expool"></div>
+    <button class="addbtn" id="addex">+ New exercise</button>
+  </aside>
+  <main class="board">
+    <div class="board-title">Lectures</div>
+    <div class="grid" id="grid"></div>
+  </main>
+</div>
+
+<dialog id="dlg">
+  <div class="bar">
+    <h2>Markdown</h2>
+    <span class="spacer"></span>
+    <button id="copy">Copy</button>
+    <button id="close">Close</button>
+  </div>
+  <textarea id="out" spellcheck="false"></textarea>
+</dialog>
+
+<script>
+const AREAS = [
+  { id: 'web',    name: 'Internet & Web Basics',  color: '#3B82F6' },
+  { id: 'front',  name: 'Front-End Technologies', color: '#8B5CF6' },
+  { id: 'back',   name: 'Back-End Technologies',  color: '#F59E0B' },
+  { id: 'ai',     name: 'AI in the Stack',        color: '#10B981' },
+  { id: 'mobile', name: 'Mobile Ecosystems',      color: '#EC4899' },
+  { id: 'cloud',  name: 'Cloud Computing',        color: '#06B6D4' },
+  { id: 'sdlc',   name: 'Development Methods',    color: '#EF4444' },
+];
+
+const TOPICS = [
+  ['web-1', 'web', 'How the internet works'],
+  ['web-2', 'web', 'HTTP / HTTPS'],
+  ['web-3', 'web', 'DNS'],
+  ['web-4', 'web', 'IP addresses'],
+  ['web-5', 'web', 'Client-server architecture'],
+  ['web-6', 'web', 'Web browsers and their role'],
+
+  ['front-1', 'front', 'HTML — structure'],
+  ['front-2', 'front', 'CSS — styling'],
+  ['front-3', 'front', 'JavaScript — interactivity'],
+  ['front-4', 'front', 'Responsive web design'],
+  ['front-5', 'front', 'Design systems'],
+  ['front-6', 'front', 'Figma to code'],
+
+  ['back-1', 'back', 'Server-side languages'],
+  ['back-2', 'back', 'Databases — SQL'],
+  ['back-3', 'back', 'Databases — NoSQL'],
+  ['back-4', 'back', 'APIs — REST'],
+  ['back-5', 'back', 'APIs — GraphQL'],
+  ['back-6', 'back', 'Understanding data flow'],
+
+  ['ai-1', 'ai', 'LLM APIs'],
+  ['ai-2', 'ai', 'AI features in products'],
+  ['ai-3', 'ai', 'AI-assisted development'],
+  ['ai-4', 'ai', 'Prompting as design'],
+
+  ['mob-1', 'mobile', 'iOS vs Android platforms'],
+  ['mob-2', 'mobile', 'Native vs hybrid vs web apps'],
+  ['mob-3', 'mobile', 'App stores and distribution'],
+
+  ['cloud-1', 'cloud', 'IaaS, PaaS, SaaS'],
+  ['cloud-2', 'cloud', 'Hosting and deployment'],
+  ['cloud-3', 'cloud', 'Scaling and cost'],
+
+  ['sdlc-1', 'sdlc', 'Software development lifecycle'],
+  ['sdlc-2', 'sdlc', 'Agile / Scrum'],
+  ['sdlc-3', 'sdlc', 'Version control (Git)'],
+];
+
+const SLOTS = [
+  [1, '4 Aug'], [2, '11 Aug'], [3, '18 Aug'], [4, '25 Aug'], [5, '1 Sep'],
+  [6, '22 Sep'], [7, '29 Sep'], [8, '6 Oct'], [9, '13 Oct'], [10, '20 Oct'],
+  [11, '27 Oct'], [12, '3 Nov'], [13, '10 Nov'],
+];
+
+const DEFAULT_LECTURES = [
+  ['l1', 'Welcome to Tech 1'], ['l2', "What's a Computer?"], ['l3', 'Talking to Servers'],
+  ['l4', 'Front-End in Practice'], ['l5', 'Back-Ends and Databases'], ['l6', 'APIs'],
+  ['l7', 'AI in the Stack'], ['l8', 'Mobile Ecosystems'], ['l9', 'Cloud Computing'],
+  ['l10', 'How Software Gets Built'], ['l11', 'Studio 1'], ['l12', 'Studio 2'], ['l13', 'Demo Day'],
+];
+
+const KEY = 'tech1-planner-v3';
+let state = load();
+let selected = null;
+
+function freshState() {
+  return {
+    assign: {}, order: DEFAULT_LECTURES.map(l => l[0]),
+    titles: Object.fromEntries(DEFAULT_LECTURES),
+    exercises: [], exSeq: 0,
+  };
+}
+
+function load() {
+  try {
+    const raw = localStorage.getItem(KEY);
+    if (raw) {
+      const s = JSON.parse(raw);
+      if (s && s.assign && s.order && s.titles) {
+        s.exercises = s.exercises || []; s.exSeq = s.exSeq || 0;
+        return s;
+      }
+    }
+  } catch (e) {}
+  // carry over the previous version if present
+  const s = freshState();
+  try {
+    const v2 = JSON.parse(localStorage.getItem('tech1-planner-v2') || 'null');
+    if (v2 && v2.assign) { s.assign = v2.assign; s.order = v2.order; s.titles = v2.titles; return s; }
+    const v1 = JSON.parse(localStorage.getItem('tech1-planner-v1') || '{}');
+    Object.entries(v1).forEach(([topic, num]) => {
+      const id = DEFAULT_LECTURES[num - 1] && DEFAULT_LECTURES[num - 1][0];
+      if (!id) return;
+      s.assign[topic] = id;
+      if (topic === 'front-5') s.assign['front-6'] = id;
+    });
+  } catch (e) {}
+  return s;
+}
+
+function save() { localStorage.setItem(KEY, JSON.stringify(state)); }
+const colorOf = a => (AREAS.find(x => x.id === a) || {}).color || 'var(--line)';
+const titleOf = id => state.titles[id] || 'Untitled';
+const isEx = id => id.startsWith('ex-');
+const exOf = id => state.exercises.find(e => e.id === id);
+const labelOf = id => isEx(id) ? (exOf(id) || {}).name : (TOPICS.find(t => t[0] === id) || [])[2];
+
+function makeChip(id, opts) {
+  opts = opts || {};
+  const ex = isEx(id);
+  const el = document.createElement('div');
+  el.className = 'chip' + (ex ? ' ex' : '') + (selected === id ? ' selected' : '');
+  el.draggable = true;
+  el.style.setProperty('--chip', ex ? 'var(--accent)' : colorOf((TOPICS.find(t => t[0] === id) || [])[1]));
+
+  const label = document.createElement('span');
+  label.className = 'label';
+  label.textContent = labelOf(id) || '';
+  el.appendChild(label);
+
+  if (ex) {
+    const tag = document.createElement('span');
+    tag.className = 'tag';
+    tag.textContent = 'EX';
+    el.appendChild(tag);
+
+    const x = document.createElement('span');
+    x.className = 'x';
+    x.textContent = '✕';
+    x.title = 'Delete exercise';
+    x.addEventListener('click', e => {
+      e.stopPropagation();
+      state.exercises = state.exercises.filter(v => v.id !== id);
+      delete state.assign[id];
+      save(); render();
+    });
+    el.appendChild(x);
+
+    // double-click to rename
+    el.addEventListener('dblclick', e => {
+      e.stopPropagation();
+      startEdit(el, label, id);
+    });
+    if (opts.editNow) setTimeout(() => startEdit(el, label, id), 0);
+  }
+
+  el.addEventListener('dragstart', e => {
+    e.stopPropagation();
+    e.dataTransfer.setData('chip', id);
+    e.dataTransfer.setData('text/plain', id);
+    e.dataTransfer.effectAllowed = 'move';
+    el.classList.add('dragging');
+  });
+  el.addEventListener('dragend', () => el.classList.remove('dragging'));
+  el.addEventListener('click', e => {
+    if (label.isContentEditable) return;
+    e.stopPropagation();
+    selected = selected === id ? null : id;
+    render();
+  });
+  return el;
+}
+
+function startEdit(chipEl, label, id) {
+  label.contentEditable = 'true';
+  chipEl.draggable = false;
+  label.focus();
+  document.execCommand('selectAll', false, null);
+  const finish = () => {
+    label.contentEditable = 'false';
+    chipEl.draggable = true;
+    const v = label.textContent.trim();
+    const e = exOf(id);
+    if (e) e.name = v || 'Untitled exercise';
+    save(); render();
+  };
+  label.addEventListener('blur', finish, { once: true });
+  label.addEventListener('keydown', ev => {
+    if (ev.key === 'Enter') { ev.preventDefault(); label.blur(); }
+  });
+}
+
+function assign(itemId, lectureId) {
+  if (lectureId === null) delete state.assign[itemId];
+  else state.assign[itemId] = lectureId;
+  selected = null;
+  save(); render();
+}
+
+function moveLecture(dragId, targetId) {
+  if (dragId === targetId) return;
+  const from = state.order.indexOf(dragId), to = state.order.indexOf(targetId);
+  if (from < 0 || to < 0) return;
+  state.order.splice(from, 1);
+  state.order.splice(to, 0, dragId);
+  save(); render();
+}
+
+function render(editId) {
+  // ---- topic pool ----
+  const pool = document.getElementById('pool');
+  pool.innerHTML = '';
+  let unplaced = 0;
+
+  AREAS.forEach(area => {
+    const mine = TOPICS.filter(t => t[1] === area.id && !state.assign[t[0]]);
+    if (!mine.length) return;
+    unplaced += mine.length;
+    const wrap = document.createElement('div');
+    wrap.className = 'area';
+    const h = document.createElement('div');
+    h.className = 'area-name';
+    const dot = document.createElement('span');
+    dot.className = 'dot';
+    dot.style.background = area.color;
+    h.append(dot, document.createTextNode(area.name));
+    wrap.appendChild(h);
+    mine.forEach(t => wrap.appendChild(makeChip(t[0])));
+    pool.appendChild(wrap);
+  });
+  if (!unplaced) pool.innerHTML = '<div class="empty">All key areas placed. 🏁</div>';
+
+  // ---- exercise pool ----
+  const expool = document.getElementById('expool');
+  expool.innerHTML = '';
+  const freeEx = state.exercises.filter(e => !state.assign[e.id]);
+  unplaced += freeEx.length;
+  if (!freeEx.length) {
+    const e = document.createElement('div');
+    e.className = 'empty';
+    e.textContent = state.exercises.length ? 'All exercises placed.' : 'None yet — create one below.';
+    expool.appendChild(e);
+  }
+  freeEx.forEach(e => expool.appendChild(makeChip(e.id, { editNow: e.id === editId })));
+  document.getElementById('left').textContent = unplaced;
+
+  // ---- board ----
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+
+  state.order.forEach((lid, i) => {
+    const [num, date] = SLOTS[i] || [i + 1, ''];
+    const box = document.createElement('div');
+    box.className = 'lecture';
+
+    const head = document.createElement('div');
+    head.className = 'lec-head';
+
+    const grip = document.createElement('span');
+    grip.className = 'grip';
+    grip.textContent = '⠿';
+    grip.title = 'Drag to reorder';
+    grip.addEventListener('mousedown', () => { box.draggable = true; });
+    grip.addEventListener('mouseup', () => { box.draggable = false; });
+
+    const n = document.createElement('span');
+    n.className = 'lec-num';
+    n.textContent = 'L' + num;
+
+    const title = document.createElement('span');
+    title.className = 'lec-title';
+    title.contentEditable = 'true';
+    title.spellcheck = false;
+    title.textContent = titleOf(lid);
+    title.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); title.blur(); } });
+    title.addEventListener('blur', () => {
+      const v = title.textContent.trim();
+      state.titles[lid] = v || 'Untitled';
+      if (!v) title.textContent = 'Untitled';
+      save();
+    });
+    title.addEventListener('click', e => e.stopPropagation());
+
+    head.append(grip, n, title);
+    box.appendChild(head);
+
+    const d = document.createElement('div');
+    d.className = 'lec-date';
+    d.textContent = date;
+    box.appendChild(d);
+
+    const drop = document.createElement('div');
+    drop.className = 'drop';
+    const topics = TOPICS.filter(t => state.assign[t[0]] === lid);
+    const exs = state.exercises.filter(e => state.assign[e.id] === lid);
+    if (!topics.length && !exs.length) {
+      const e = document.createElement('div');
+      e.className = 'empty';
+      e.textContent = 'Drop here';
+      drop.appendChild(e);
+    }
+    topics.forEach(t => drop.appendChild(makeChip(t[0])));
+    exs.forEach(e => drop.appendChild(makeChip(e.id)));
+    box.appendChild(drop);
+
+    const c = document.createElement('div');
+    c.className = 'count';
+    const bits = [];
+    if (topics.length) bits.push(topics.length + ' topic' + (topics.length > 1 ? 's' : ''));
+    if (exs.length) bits.push(exs.length + ' ex');
+    c.textContent = bits.join(' · ');
+    box.appendChild(c);
+
+    box.addEventListener('dragstart', e => {
+      if (!box.draggable) return;
+      e.dataTransfer.setData('lecture', lid);
+      e.dataTransfer.effectAllowed = 'move';
+      box.classList.add('lifting');
+    });
+    box.addEventListener('dragend', () => { box.draggable = false; box.classList.remove('lifting'); });
+    box.addEventListener('dragover', e => {
+      e.preventDefault();
+      box.classList.add(e.dataTransfer.types.includes('lecture') ? 'shift' : 'over');
+    });
+    box.addEventListener('dragleave', () => box.classList.remove('over', 'shift'));
+    box.addEventListener('drop', e => {
+      e.preventDefault();
+      box.classList.remove('over', 'shift');
+      const moved = e.dataTransfer.getData('lecture');
+      if (moved) { moveLecture(moved, lid); return; }
+      const chip = e.dataTransfer.getData('chip') || e.dataTransfer.getData('text/plain');
+      if (chip) assign(chip, lid);
+    });
+    box.addEventListener('click', e => {
+      if (selected && !e.target.closest('.chip')) assign(selected, lid);
+    });
+
+    grid.appendChild(box);
+  });
+}
+
+// unassign by dropping back on the pool
+const poolEl = document.querySelector('.pool');
+poolEl.addEventListener('dragover', e => { if (!e.dataTransfer.types.includes('lecture')) e.preventDefault(); });
+poolEl.addEventListener('drop', e => {
+  e.preventDefault();
+  const chip = e.dataTransfer.getData('chip') || e.dataTransfer.getData('text/plain');
+  if (chip) assign(chip, null);
+});
+
+// new exercise
+document.getElementById('addex').addEventListener('click', () => {
+  state.exSeq = (state.exSeq || 0) + 1;
+  const id = 'ex-' + state.exSeq;
+  state.exercises.push({ id: id, name: 'New exercise' });
+  save(); render(id);
+});
+
+// export
+document.getElementById('export').addEventListener('click', () => {
+  let md = '';
+  state.order.forEach((lid, i) => {
+    const [num, date] = SLOTS[i] || [i + 1, ''];
+    const topics = TOPICS.filter(t => state.assign[t[0]] === lid);
+    const exs = state.exercises.filter(e => state.assign[e.id] === lid);
+    md += '## Lecture ' + num + ' — ' + titleOf(lid) + '  (' + date + ')\n\n';
+    if (topics.length) {
+      md += '### Key areas covered\n\n';
+      topics.forEach(t => { md += '- ' + t[2] + '\n'; });
+      md += '\n';
+    }
+    if (exs.length) {
+      md += '### Exercises\n\n';
+      exs.forEach(e => { md += '- ' + e.name + '\n'; });
+      md += '\n';
+    }
+    if (!topics.length && !exs.length) md += '_nothing assigned_\n\n';
+  });
+  const leftT = TOPICS.filter(t => !state.assign[t[0]]);
+  const leftE = state.exercises.filter(e => !state.assign[e.id]);
+  if (leftT.length || leftE.length) {
+    md += '## Not yet placed\n\n';
+    leftT.forEach(t => { md += '- ' + t[2] + '\n'; });
+    leftE.forEach(e => { md += '- ' + e.name + ' (exercise)\n'; });
+  }
+  document.getElementById('out').value = md;
+  document.getElementById('dlg').showModal();
+});
+
+document.getElementById('copy').addEventListener('click', async () => {
+  const ta = document.getElementById('out');
+  ta.select();
+  try { await navigator.clipboard.writeText(ta.value); } catch (e) { document.execCommand('copy'); }
+  const b = document.getElementById('copy');
+  b.textContent = 'Copied';
+  setTimeout(() => b.textContent = 'Copy', 1200);
+});
+document.getElementById('close').addEventListener('click', () => document.getElementById('dlg').close());
+
+document.getElementById('reset').addEventListener('click', () => {
+  if (confirm('Clear everything — assignments, titles, ordering and exercises?')) {
+    state = freshState(); selected = null; save(); render();
+  }
+});
+
+save();
+render();
+</script>
+</body>
+</html>

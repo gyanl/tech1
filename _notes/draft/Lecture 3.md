@@ -6,7 +6,14 @@ tag: lecture
 title: "Lecture 3"
 ---
 
-## Talking to Servers
+## Javascript & Interactivity
+
+---
+## Key areas covered
+
+- JavaScript — interactivity
+- Prompting as design
+
 
 Your page lives somewhere. What happens when someone types your URL?
 

@@ -6,7 +6,15 @@ tag: lecture
 title: "Lecture 10"
 ---
 
-## How Software Gets Built
+## Start a Startup
+
+---
+## Key areas covered
+
+- IaaS, PaaS, SaaS
+- Scaling and cost
+- Agile / Scrum
+
 
 The people part: how ideas become products, and how teams avoid chaos.
 
