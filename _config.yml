@@ -109,6 +109,9 @@ exclude:
   - _notes/300 Templates
   - _notes/Private
   - _notes/draft
+  # tooling — kept in the repo, not published
+  - tools
+  - assets/og-template.html
 #   - .sass-cache/
 #   - .jekyll-cache/
 #   - gemfiles/
