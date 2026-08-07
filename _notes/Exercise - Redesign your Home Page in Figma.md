@@ -20,7 +20,7 @@ You have a live website, but it looks like the template. Before we learn CSS nex
 
 ### Things to keep in mind
 
-- Design for a **browser**, not a poster: it will be viewed at many widths, and text reflows. Sketch a phone-width version too.
+- Design for a **browser**, not a poster: it will be viewed at many widths, and text reflows. Make a phone-width version too.
 - Don't worry about how anything will be done in code, but note down any thoughts or questions — next week is exactly about turning this into CSS.
 - Keep your Figma file. In [[Lecture 2]] you'll rebuild your live page to match it, and we'll compare the two.
 

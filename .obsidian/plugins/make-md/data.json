@@ -39,7 +39,8 @@
     "//_notes",
     "//_layouts",
     "_notes/Private",
-    "_site/assets/img"
+    "_site/assets/img",
+    "_notes"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",

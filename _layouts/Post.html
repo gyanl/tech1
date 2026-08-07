@@ -33,6 +33,10 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     {%- comment -%} ---- Open Graph / Twitter ---- {%- endcomment -%}
     {%- assign og_image = site.url | append: site.baseurl | append: "/assets/img/OGImg.png" -%}
+    {%- assign og_slug = page.url | split: "/" | last | remove: ".html" -%}
+    {%- if site.data.og.slugs contains og_slug -%}
+      {%- assign og_image = site.url | append: site.baseurl | append: "/assets/img/og/" | append: og_slug | append: ".png" -%}
+    {%- endif -%}
     {%- if page.image -%}
       {%- assign og_image = site.url | append: site.baseurl | append: page.image -%}
     {%- endif -%}

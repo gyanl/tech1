@@ -10,6 +10,32 @@ The course is AI-heavy by design: students **generate code with AI tools** inste
 - `assets/` — images, css, js
 - `pages/` — index and utility pages
 
+## Social preview (OG) images
+
+Every published note gets its own 1200×630 share image, generated from its
+title, date and key areas.
+
+```
+python3 tools/generate-og.py            # render any that are missing
+python3 tools/generate-og.py --force    # re-render everything
+```
+
+Images are written to `assets/img/og/<slug>.png` and the script updates
+`_data/og.yml`, which the layout reads to decide whether a page has one.
+Pages without an image fall back to `assets/img/OGImg.png` (built from
+`assets/og-template.html`).
+
+The generator runs automatically before every Jekyll build, but only renders
+what's missing, so normal builds are unaffected. Control it with:
+
+```
+OG=skip bundle exec jekyll serve     # don't run it at all
+OG=force bundle exec jekyll build    # re-render everything
+```
+
+Rendering uses headless Chrome, so it only works locally — commit the PNGs
+so deployed builds (e.g. GitHub Pages) serve them.
+
 ## Running locally
 
 This site is built with [Jekyll](https://jekyllrb.com/) using the [Jekyll Garden](https://github.com/Jekyll-Garden/jekyll-garden.github.io) theme, which publishes an [Obsidian](https://obsidian.md/) vault as a static website.
