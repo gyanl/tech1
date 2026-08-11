@@ -8,7 +8,7 @@ key_areas:
   - "Hosting and deployment"
   - "Version control (Git)"
 tag: lecture
-title: "Lecture 2 - CSS and Responsivemness"
+title: "Lecture 2 - CSS and Responsiveness"
 ---
 
 ## Designing your Website
