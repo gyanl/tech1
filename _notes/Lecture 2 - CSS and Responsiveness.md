@@ -73,7 +73,7 @@ Nothing else changes. Every rule already says `var(--bg)`, so the whole page fli
 
 - **Don't just invert.** Pure white text on pure black is harsh. Use a near-black and a near-white — like `#0a0a0a` and `#f0f0f0`.
 - **Your accent probably needs adjusting.** A colour with enough contrast on white is often too dark on black. That's why `--accent` is lighter in the dark set above.
-- **Test both.** Your OS has a toggle, or use DevTools → the three dots → More tools → Rendering → *Emulate prefers-color-scheme*.
+- **Test both.** Your OS has a toggle - for now just use that. We will also 
 - **Images and screenshots** with white backgrounds will glow in dark mode. Consider a PNG with a transparent background.
 
 This site does exactly this — try the ☀ toggle at the top and then look at `style.css`.

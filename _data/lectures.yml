@@ -5,6 +5,7 @@
   title: "Welcome to Tech 1"
   date: "4 August 2026"
   slug: "lecture-1-welcome-to-tech1"
+  summary: "Set up your tools, ship a real page, and get a mental model of how the web fits together."
   key_areas:
     - "Client-server architecture"
     - "HTML — structure"
@@ -13,6 +14,7 @@
   title: "CSS and Responsiveness"
   date: "11 August 2026"
   slug: "lecture-2-css-and-responsiveness"
+  summary: "Styling with CSS — type, colour, dark mode, and making it work on every screen."
   key_areas:
     - "CSS — styling"
     - "Responsive web design"
@@ -23,6 +25,7 @@
   title: "Javascript & Interactivity"
   date: "18 August 2026"
   slug: "lecture-3"
+  summary: "Making pages respond to people, and treating prompting as a design skill."
   key_areas:
     - "JavaScript — interactivity"
     - "Prompting as design"
@@ -31,6 +34,7 @@
   title: "Shipping Software"
   date: "25 August 2026"
   slug: "lecture-4"
+  summary: "How software actually gets built and released, from DNS to the lifecycle."
   key_areas:
     - "DNS"
     - "Server-side languages"
@@ -40,6 +44,7 @@
   title: "Internet Infrastructure"
   date: "1 September 2026"
   slug: "lecture-5"
+  summary: "What really happens between typing a URL and seeing a page."
   key_areas:
     - "How the internet works"
     - "HTTP / HTTPS"
@@ -50,6 +55,7 @@
   title: "Data & Databases"
   date: "22 September 2026"
   slug: "lecture-6"
+  summary: "Where data lives — SQL, NoSQL, and building with AI assistance."
   key_areas:
     - "Databases — SQL"
     - "Databases — NoSQL"
@@ -60,6 +66,7 @@
   title: "APIs"
   date: "29 September 2026"
   slug: "lecture-7"
+  summary: "How software talks to software: REST, GraphQL, and LLM APIs."
   key_areas:
     - "APIs — REST"
     - "APIs — GraphQL"
@@ -70,6 +77,7 @@
   title: "Mobile Ecosystems"
   date: "6 October 2026"
   slug: "lecture-8"
+  summary: "iOS vs Android, native vs hybrid vs web, and how app stores work."
   key_areas:
     - "iOS vs Android platforms"
     - "Native vs hybrid vs web apps"
@@ -79,6 +87,7 @@
   title: "Design Engineering"
   date: "13 October 2026"
   slug: "lecture-9"
+  summary: "Design systems, and getting from Figma to working code."
   key_areas:
     - "Design systems"
     - "Figma to code"
@@ -87,6 +96,7 @@
   title: "Start a Startup"
   date: "20 October 2026"
   slug: "lecture-10"
+  summary: "Cloud, scale, cost, and how product teams actually work."
   key_areas:
     - "IaaS, PaaS, SaaS"
     - "Scaling and cost"
@@ -96,16 +106,19 @@
   title: "Studio 1"
   date: "27 October 2026"
   slug: "lecture-11"
+  summary: "Build sprint and crits on your final project."
   key_areas: []
 
 - num: 12
   title: "Studio 2"
   date: "3 November 2026"
   slug: "lecture-12"
+  summary: "Ship-ready: polish, performance, security and privacy."
   key_areas: []
 
 - num: 13
   title: "Demo Day"
   date: "10 November 2026"
   slug: "lecture-13"
+  summary: "Final project presentations."
   key_areas: []
