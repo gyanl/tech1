@@ -1,6 +1,6 @@
 ---
 date: 11-08-2026
-date modified: 08-08-2026
+date modified: 11-08-2026
 feed: show
 key_areas:
   - "CSS — styling"
@@ -31,7 +31,7 @@ Last week we shipped a page! This week we'll figure out how to ship your page.
 
 > Git is the tool. GitHub is a place that keeps what the tool makes. GitHub Desktop is just a nicer way to use the tool.
 
-**Repo:** A folder (usually code files) synced to Github 
+**Repo:** A folder (usually code files) synced to Github
 
 **Clone:** Download a repo from Github onto your computer for the first time, set up so the two stay connected.
 
@@ -73,7 +73,7 @@ So read the buttons like this:
 
 ### Isn't this just cloud storage then?
 
-Cloud storage options like Google Drive, Dropbox, iCloud Drive and OneDrive also keep one copy on your machine and one in the cloud. 
+Cloud storage options like Google Drive, Dropbox, iCloud Drive and OneDrive also keep one copy on your machine and one in the cloud.
 
 The differences are the whole point:
 
@@ -98,31 +98,7 @@ Honestly, for one person, you nearly could. What you'd be giving up:
 
 ### Commits are a chain, not a pile
 
-Each commit records what came before it. Your project's history is a chain of checkpoints in a specific order.
-
-This matters because it's why Git can't just mash two versions together — it needs to know what order things happened in.
-
-### Your computer only *remembers* what's on GitHub
-
-Here's the part that surprises people.
-
-GitHub Desktop is not watching GitHub. It's showing you what GitHub looked like **the last time it checked**. It has no live connection.
-
-**Fetch** is the act of asking, rather than assuming:
-
-- **Fetch** — "GitHub, anything new?" Changes nothing in your files. Completely safe.
-- **Pull** — "Send it down, and merge it into my work."
-- **Push** — "Here are my commits."
-
-### Why a push sometimes gets rejected
-
-If GitHub has commits you don't have, *and* you have commits GitHub doesn't have, the chain has **forked**. Two versions of history now exist.
-
-Git refuses to push, because to accept it, it would have to throw one side away — and it doesn't know which one is precious to you.
-
-> **A rejected push is Git protecting your work, not Git breaking.** Read the message, don't start clicking buttons.
-
-The fix is always the same: **pull first**, let the two histories merge, then push.
+Each commit records what came before it. Your project's history is a chain of checkpoints in a specific order. This matters because it's why Git can't just mash two versions together — it needs to know what order things happened in, which option you want to keep.
 
 ### A merge conflict is a question, not an error
 
@@ -142,32 +118,11 @@ Delete the markers, keep the lines you want, save, commit. That's it.
 
 ### When this will actually happen to you
 
-Right now you're one person on one laptop, so this may never bite. It will the moment any of these is true:
+Right now you're one person on one laptop, so this may never happen. It will start to happen the moment any of these is true:
 
-1. **You edit a file on github.com** — fixing a typo in the browser is the fastest way to make the two copies disagree. This one gets people in week one.
-2. **You use two computers** — a lab machine and your own.
-3. **Your final project is a team of up to three.** This is the real reason we're covering it now: by Week 11 it needs to be a reflex.
-
-### The habit
-
-Not "fetch before you push" — that's fixing the problem. Do this instead:
-
-> **Before you start working, hit Fetch origin. If the button changes to Pull origin, pull before you touch anything.**
-
-Sync at the start, not at the end. Then a rejected push mostly stops happening.
-
-### Let's break it on purpose
-
-*(In class — watch, then do it yourself.)*
-
-1. On **github.com**, edit `index.html` in the browser and commit the change there.
-2. In **VS Code**, edit a *different* line of the same file. Commit in GitHub Desktop.
-3. Hit **Push**. Watch it get rejected — the two copies have diverged.
-4. **Pull**. Git merges both changes by itself, because they touched different lines.
-5. **Push** again. It works.
-
-Now do it a second time, but in step 2 edit **the same line** you edited in the browser. This time you get a conflict, and you decide who wins.
-
+1. **You edit a file on github.com** — this change doesn't automatically get synced to your laptop
+2. **You use two computers** — a college machine and your own.
+3. **You are working with other people in a repo.** — group projects
 
 # CSS, Responsiveness, Color Theming
 
@@ -227,6 +182,63 @@ Nothing else changes. Every rule already says `var(--bg)`, so the whole page fli
 
 This site does exactly this — try the ☀ toggle at the top and then look at `style.css`.
 
+## Units: px, em, rem, %, vw, vh
+
+In Figma everything is in pixels, because a Figma frame is one fixed size. A web page isn't — it has to work on a 6-inch phone and a 27-inch monitor. So CSS gives you units that *respond* to something.
+
+| Unit | Relative to | Use it for |
+| --- | --- | --- |
+| `px` | Nothing — fixed | Borders, small fixed details |
+| `rem` | The page's base font size (16px by default) | **Font sizes, spacing — your default choice** |
+| `em` | The font size of *this* element | Spacing that should scale with its own text |
+| `%` | The parent element's size | Widths inside a layout |
+| `vw` / `vh` | 1% of the window's width / height | Full-screen sections, huge display type |
+
+### The short version
+
+Use **`rem`** for type and spacing. Use **`px`** for hairlines and borders. Use **`%`** for widths. Reach for `vw`/`vh` only when you mean "a portion of the screen".
+
+```css
+h1 {
+  font-size: 2rem;      /* 32px, but scales if the user changes their font size */
+  margin-bottom: 1rem;  /* 16px */
+  border-bottom: 1px solid black;   /* hairline — px is right here */
+}
+```
+
+### Why rem instead of px?
+
+`1rem` = the base font size of the page, normally **16px**. So `2rem` is 32px — until someone who can't read small text turns their browser font up to 20px, at which point your whole layout grows with them.
+
+Sizes in `px` ignore that setting completely. Using `rem` is an accessibility decision, not a style preference.
+
+> **Sidenote:** `rem` stands for *root em* — an em measured against the root of the document instead of the current element.
+
+### em is relative to itself
+
+`em` is measured against the element's *own* font size, which is why it's handy inside a component:
+
+```css
+.button {
+  font-size: 1.2rem;
+  padding: 0.5em 1em;   /* padding grows automatically with the text */
+}
+```
+
+Make that button bigger and the padding scales too — nothing else to change. The catch is that `em` compounds when elements nest, which is why it's a bad default for font sizes and a good one for local spacing.
+
+### vw and vh
+
+`100vh` is exactly the height of the window, `100vw` its width. Great for a full-screen hero section:
+
+```css
+.hero {
+  height: 100vh;
+}
+```
+
+Careful on phones: `100vh` used to be taller than the visible area because of the address bar. If you hit that, `100dvh` (*dynamic* viewport height) is the modern fix.
+
 ## CSS Properties
 
 ### Font name
@@ -274,9 +286,9 @@ body {
 
 **Things worth knowing**
 
-- The font is downloaded on every visit, so more weights means a slower page. Two or three is plenty.
+- The font is downloaded on every visit, so more weights means a slower page. Two or three is usually enough.
 - `display=swap` in that URL means text shows in a fallback font immediately, then swaps when the real one arrives — better than staring at invisible text.
-- The font name in your CSS must match the name in the link exactly, spelling and capitalisation.
+- The font name in your CSS must match the name in the link exactly, spelling and capitalisation.w
 - Fonts you buy or download elsewhere can be self-hosted with `@font-face` — same idea, but the file lives in your repo. Ask AI to set it up when you need it.
 
 ### Font weight
@@ -453,7 +465,91 @@ a:hover { text-decoration: underline; }
 a:active { color: #000000; }
 ```
 
-### Responsive Design
+## Responsive Design
+
+You designed one artboard. Your visitor could be on a phone held in one hand, a laptop, or a TV. **Responsive design** means one page that reshapes itself to fit, instead of you making three separate sites.
+
+The good news: HTML is responsive by default. A paragraph already fills whatever width it's given and rewraps. You mostly break responsiveness by fixing widths in `px` — then fix it back with a couple of rules.
+
+### First, one line you can't skip
+
+Put this in the `<head>` of your HTML. Without it phones pretend to be a 980px-wide desktop and shrink your whole page down to unreadable:
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1">
+```
+
+It's already in your `index.html` from web-starter. Don't delete it.
+
+### Two habits that do most of the work
+
+```css
+/* let things shrink, but not stretch too wide to read */
+.container {
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+/* images never overflow their container */
+img {
+  max-width: 100%;
+  height: auto;
+}
+```
+
+`max-width` instead of `width` is the whole idea: *"be as wide as you can, up to this limit."*
 
 ### Breakpoints
+
+A **breakpoint** is a screen width at which your layout needs to change — a point where the design breaks if you don't do something.
+
+You write them with a **media query**: a block of CSS the browser only applies when a condition is true.
+
+```css
+/* base styles — written for narrow screens first */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* from 40rem (640px) and up, go to two columns */
+@media (min-width: 40rem) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* from 64rem (1024px) and up, three */
+@media (min-width: 64rem) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+```
+
+Read `@media (min-width: 40rem)` as: **"from 640px wide and upwards, also apply these rules."**
+
+### Mobile first
+
+Notice the base styles are the *phone* layout, and each media query adds complexity as the screen grows. This is called **mobile first**, and it's the convention because:
+
+- The simplest layout is the one that works everywhere, so it's a safe default.
+- Phones do the least work — they never even read the desktop rules.
+- It's easier to add columns as you gain space than to unpick them as you lose it.
+
+### Choosing breakpoints
+
+Don't copy a list of device sizes. iPhone 15, iPad Pro, MacBook Air — that list changes every year and you'll never catch them all.
+
+> **Add a breakpoint where *your design* stops looking right.** Drag your browser window slowly narrower and watch. The width where your line lengths go silly or your grid gets cramped — that's your breakpoint.
+
+Most sites need two or three. Common starting points are `40rem` (640px), `48rem` (768px) and `64rem` (1024px).
+
+### Test it properly
+
+- **Drag your window.** Fastest possible feedback loop.
+- **DevTools device toolbar** — the phone/tablet icon in Inspect, or ⌘⇧M / Ctrl+Shift+M.
+- **Your actual phone.** Use Simple Web Server from earlier, or your live github.io URL. Nothing else tells you how it really feels in the hand.
 

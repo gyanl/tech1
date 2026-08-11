@@ -1,6 +1,6 @@
 ---
 date: 18-08-2026
-date modified: 24-07-2026
+date modified: 11-08-2026
 feed: show
 tag: exercise
 title: "Exercise - Trace a Request"
