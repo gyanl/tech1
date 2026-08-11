@@ -11,24 +11,23 @@
     - "HTML — structure"
 
 - num: 2
-  title: "CSS and Responsiveness"
+  title: "Git and Web Typography"
   date: "11 August 2026"
-  slug: "lecture-2-css-and-responsiveness"
-  summary: "Styling with CSS — type, colour, dark mode, and making it work on every screen."
+  slug: "lecture-2-git-and-web-typography"
+  summary: "Version control with Git and GitHub, and setting type on the web."
   key_areas:
-    - "CSS — styling"
-    - "Responsive web design"
-    - "Hosting and deployment"
     - "Version control (Git)"
+    - "Hosting and deployment"
+    - "CSS — styling"
 
 - num: 3
-  title: "Javascript & Interactivity"
+  title: "Responsive Web Design"
   date: "18 August 2026"
-  slug: "lecture-3"
-  summary: "Making pages respond to people, and treating prompting as a design skill."
+  slug: "lecture-3-responsive-web-design"
+  summary: "Divs, classes and flexbox — arranging a page that works on every screen."
   key_areas:
-    - "JavaScript — interactivity"
-    - "Prompting as design"
+    - "Responsive web design"
+    - "CSS — styling"
 
 - num: 4
   title: "Shipping Software"
