@@ -21,9 +21,19 @@ Last week we shipped a page! This week we'll figure out how to ship your page.
 
 ![](assets/img/Pasted image 20260811131706.png)
 
+## Git terms
+
+**Git:** The tool that tracks changes to your files and lets you go back to any earlier version. It runs **on your computer**, works with no internet, and needs no account. Made in 2005 to manage the code of Linux.
+
+**Github:** A **website** that stores Git projects online — so you have a backup, other people can see your work, and a team can work on the same project. Owned by Microsoft. It's not the only one: GitLab and Bitbucket do the same job.
+
+> Git is the tool. GitHub is a place that keeps what the tool makes. You could use Git for the rest of your life and never open GitHub — you'd just be the only person who ever sees your work.
+
+**Repo:** A folder (usually code files) synced to Github 
+
 **Commit:** Make a checkpoint (locally)
 
-**Fetch:** Check if any changes have been made on Github online since you last fetched, download them locally. This matters more when you are working collaboratively with other people on a repo. So far it's just you.
+**Fetch:** Check if any changes have been made on Github online, download them locally. This matters more when you are working collaboratively with other people on a repo. So far it's just you.
 
 **Pull:** Bring those changes down and merge them into your copy.
 
@@ -36,24 +46,32 @@ Last week we shipped a page! This week we'll figure out how to ship your page.
 3. Push to Github to push your changes online to Github.
 4. Your updated website is now live at yourgithubusername.github.io
 
-
-**Download Simple Web Server app**
-[Download Simple Web Server](https://simplewebserver.org/)
-This app is a quick and easy way to start a server on your computer, and allows you to test your website on your computer or any other device on the same wifi network - like your phone!
-
 ## Your computer and GitHub are two different places
 
-This is the idea everything else depends on, and it's the one Figma has trained out of you.
-
-In Figma, there is **one file** and everyone is inside it at once. You see other people's cursors. You never "send" your work anywhere.
+In Figma, there is **one cloud file** and everyone is inside it at once. You see other people's cursors. You never "send" your work anywhere.
 
 Git is the opposite. There are **two separate copies** of your project — the one on your laptop, and the one on GitHub — and they only talk to each other when you tell them to. Nothing is automatic.
 
 > **Sidenote:** Why would anyone want this? Because you can work offline, try something terrible, and throw it away without anyone seeing. The copies are a feature.
 
-### "Isn't this just Dropbox?"
+### What "origin" means
 
-Closer than Figma, and a fair question. Dropbox, iCloud Drive and OneDrive also keep one copy on your machine and one in the cloud. The differences are the whole point:
+You'll notice every button says *origin*: **Fetch origin**, **Pull origin**, **Push origin**.
+
+`origin` is just a **nickname for the GitHub copy** of your project.
+
+When you cloned the repo, Git saved its web address and needed something to call it. The default nickname is `origin` — as in *the place this originally came from*.
+
+So read the buttons like this:
+
+- **Push origin** → send my commits to GitHub
+- **Pull origin** → bring GitHub's commits down to me
+
+### Isn't this just cloud storage then?
+
+Cloud storage options like Google Drive, Dropbox, iCloud Drive and OneDrive also keep one copy on your machine and one in the cloud. 
+
+The differences are the whole point:
 
 | | Dropbox / iCloud / OneDrive | Git + GitHub |
 | --- | --- | --- |
@@ -65,25 +83,14 @@ Closer than Figma, and a fair question. Dropbox, iCloud Drive and OneDrive also 
 
 You have all seen `Document (conflicted copy 2).docx`. That file is Dropbox admitting defeat: it can't work out how to combine two versions, so it keeps both and makes it your problem. Git actually reads what changed on each side and puts them together.
 
-**So why not just use Dropbox for a website?** Honestly, for one person, you nearly could. What you'd be giving up:
+## So why not just use Dropbox for a website?
+
+Honestly, for one person, you nearly could. What you'd be giving up:
 
 - GitHub **serves** your site to the internet. Dropbox only stores it.
 - Checkpoints *you* chose, labelled with why you made them — not just "3:47pm".
 - Three people working on one project without overwriting each other. That's your final project.
 - The thing every design studio and engineering team already uses.
-
-### What "origin" means
-
-You'll notice every button says *origin*: **Fetch origin**, **Pull origin**, **Push origin**.
-
-`origin` is just a **nickname for the GitHub copy** of your project.
-
-When you cloned the repo, Git saved its web address and needed something to call it. The default nickname is `origin` — as in *the place this originally came from*. That's the whole story. There's no magic in the word.
-
-So read the buttons like this:
-
-- **Push origin** → send my commits to GitHub
-- **Pull origin** → bring GitHub's commits down to me
 
 ### Commits are a chain, not a pile
 
@@ -156,6 +163,12 @@ Sync at the start, not at the end. Then a rejected push mostly stops happening.
 5. **Push** again. It works.
 
 Now do it a second time, but in step 2 edit **the same line** you edited in the browser. This time you get a conflict, and you decide who wins.
+
+
+
+**Download Simple Web Server app**
+[Download Simple Web Server](https://simplewebserver.org/)
+This app is a quick and easy way to start a server on your computer, and allows you to test your website on your computer or any other device on the same wifi network - like your phone!
 
 ## Colour variables, and dark mode
 
