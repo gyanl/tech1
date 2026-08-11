@@ -27,9 +27,13 @@ Last week we shipped a page! This week we'll figure out how to ship your page.
 
 **Github:** A **website** that stores Git projects online — so you have a backup, other people can see your work, and a team can work on the same project. Owned by Microsoft. It's not the only one: GitLab and Bitbucket do the same job.
 
-> Git is the tool. GitHub is a place that keeps what the tool makes. You could use Git for the rest of your life and never open GitHub — you'd just be the only person who ever sees your work.
+**Github Desktop:** The **app** we're using. Git itself has no buttons — it was built to be typed at in a terminal. GitHub Desktop is a friendly face on top of it, so you can click Commit and Push instead of memorising commands. It's optional; the Git underneath is the real thing.
+
+> Git is the tool. GitHub is a place that keeps what the tool makes. GitHub Desktop is just a nicer way to use the tool.
 
 **Repo:** A folder (usually code files) synced to Github 
+
+**Clone:** Download a repo from Github onto your computer for the first time, set up so the two stay connected.
 
 **Commit:** Make a checkpoint (locally)
 
@@ -165,10 +169,13 @@ Sync at the start, not at the end. Then a rejected push mostly stops happening.
 Now do it a second time, but in step 2 edit **the same line** you edited in the browser. This time you get a conflict, and you decide who wins.
 
 
+# CSS, Responsiveness, Color Theming
+
+Pushing to Github Pages means you can now start seeing your work on your phone over the internet at username.github.io. But it takes a while to push to Github and then for Github to update the live version of your site. There is a faster way to do this - you can just run a server on your laptop!
 
 **Download Simple Web Server app**
 [Download Simple Web Server](https://simplewebserver.org/)
-This app is a quick and easy way to start a server on your computer, and allows you to test your website on your computer or any other device on the same wifi network - like your phone!
+This app is a quick and easy way to start a server on your computer, and allows you to test your website on your computer or any other device on the same wifi network - like your phone.
 
 ## Colour variables, and dark mode
 
