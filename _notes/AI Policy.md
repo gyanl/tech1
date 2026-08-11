@@ -14,6 +14,8 @@ Design as a career is changing - along with many other lines of work. Using AI i
 ### The short version
 
 > Use AI for everything. Understand everything you ship. Show your process. Never present work you can't explain.
+>
+> **AI writes the code. You write the words.**
 
 ### What is encouraged
 
@@ -21,6 +23,26 @@ Design as a career is changing - along with many other lines of work. Using AI i
 - **Using AI to learn** — asking it to explain code it (or someone else) wrote, decode error messages, compare approaches, or quiz you before a presentation.
 - **Using AI as a research assistant** — for exercises like [[Exercise - Mobile Ecosystem Comparison]], with the caveat below about verification.
 - **Iterating in plain language** — a well-written prompt log is a design artifact. Keep yours.
+
+### Writing is different from code
+
+AI will write most of your code in this course. It should not write most of your words.
+
+Code is judged by whether it works. Writing is judged by whether it gets an idea from your head into someone else's — and a model can't do that for you, because it doesn't know what you were trying to say.
+
+- **Stand behind every sentence.**
+  If I ask "what did you mean here?", *"the AI wrote that, ignore it"* is not an answer. Everything you hand in should represent your actual thinking. Readers either notice the parts that aren't yours, or — worse — believe them.
+- **Writing is thinking.**
+  Your proposal, your process documentation, your reflection: the document is not the point, the thinking is. Deciding what matters and what order to say it in is how you come to understand your own project. Outsource the writing and you skip the understanding.
+- **Respect your reader's time.**
+  Generating a long document from a short prompt doesn't save work, it moves work from you to your reader — and one person writes while everyone reads. If your document says less than the prompt that produced it, share the prompt instead.
+- **Longer is not better.**
+  Pascal: *"I have made this letter longer than usual because I have not had time to make it shorter."* There is no lossless rewrite — every rephrasing shifts the meaning, and when it's done by something that doesn't know what you meant, meaning is lost. I would rather read your words than polished ones.
+- **Quoting AI is fine if you mark it.**
+  *"Claude suggested this approach — worth exploring?"* is honest and often useful. The same sentence presented as your own thinking is not.
+
+**This applies to:** proposals, process documentation, reflections, comparison write-ups, crit feedback, and anything you present.
+**Not to:** code, boilerplate, and the plumbing nobody writes by hand any more.
 
 ### What is required
 
@@ -39,6 +61,7 @@ Design as a career is changing - along with many other lines of work. Using AI i
 - Hiding or fabricating your process
 - Submitting another student's project, prompts, or documentation with cosmetic changes
 - Having AI (or anyone) impersonate you in things that must be your own voice — peer feedback, reflections, exam answers where stated
+- Handing in AI-written prose as your own thinking, unmarked, in a proposal, write-up or reflection
 
 ### Practical safety rules
 

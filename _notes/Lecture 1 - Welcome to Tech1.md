@@ -6,7 +6,7 @@ key_areas:
   - "Client-server architecture"
   - "HTML — structure"
 tag: lecture
-title: "Lecture 1"
+title: "Lecture 1 - Welcome to Tech1"
 ---
 
 # Welcome to Tech 1!

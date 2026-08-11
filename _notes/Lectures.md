@@ -10,10 +10,10 @@ See also: [[Syllabus]] · [[Grading]]
 
 One 2-hour session per week. Dates may shift — treat the week numbers as canonical.
 
-#### [[Lecture 1]] - Welcome to Tech 1
+#### [[Lecture 1 - Welcome to Tech1]] - Welcome to Tech 1
 *Week 1 — 4 August 2026* — 20 minutes of computing history and a mental model, then setup and ship a page.
 
-#### [[Lecture 2]] - Designing your Website
+#### [[Lecture 2 - CSS and Responsivemness]] - Designing your Website
 *Week 2 — 11 August 2026* — HTML, CSS, JavaScript — dissected via what you built.
 
 #### [[Lecture 3]] - Javascript & Interactivity

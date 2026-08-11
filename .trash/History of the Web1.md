@@ -8,7 +8,7 @@ key_areas:
   - "Hosting and deployment"
   - "Version control (Git)"
 tag: lecture
-title: "Lecture 2"
+title: "History of the Web"
 ---
 
 ## Designing your Website
