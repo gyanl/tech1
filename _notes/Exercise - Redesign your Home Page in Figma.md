@@ -1,6 +1,6 @@
 ---
 date: 04-08-2026
-date modified: 08-08-2026
+date modified: 11-08-2026
 feed: show
 tag: exercise
 title: "Exercise - Redesign your Home Page in Figma"

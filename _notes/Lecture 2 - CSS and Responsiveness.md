@@ -553,3 +553,7 @@ Most sites need two or three. Common starting points are `40rem` (640px), `48rem
 - **DevTools device toolbar** — the phone/tablet icon in Inspect, or ⌘⇧M / Ctrl+Shift+M.
 - **Your actual phone.** Use Simple Web Server from earlier, or your live github.io URL. Nothing else tells you how it really feels in the hand.
 
+
+## Homework
+
+- **Exercise:** [[Exercise - Build the Page You Designed]] — build your Figma design as a real, responsive page, with colour variables, dark mode and a breakpoint you chose yourself. Includes making Git diverge on purpose and fixing it.
