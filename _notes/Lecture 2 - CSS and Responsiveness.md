@@ -51,6 +51,27 @@ Git is the opposite. There are **two separate copies** of your project — the o
 
 > **Sidenote:** Why would anyone want this? Because you can work offline, try something terrible, and throw it away without anyone seeing. The copies are a feature.
 
+### "Isn't this just Dropbox?"
+
+Closer than Figma, and a fair question. Dropbox, iCloud Drive and OneDrive also keep one copy on your machine and one in the cloud. The differences are the whole point:
+
+| | Dropbox / iCloud / OneDrive | Git + GitHub |
+| --- | --- | --- |
+| When it syncs | Constantly, by itself | Only when you say so |
+| What it keeps | The current version of the file | Every checkpoint you made, with a message and your name on it |
+| Going back | One file, recent versions | The **whole project**, at any point in its history |
+| Two people edit one file | `index (conflicted copy 2).html` — good luck | Merges line by line; only asks you if the *same lines* changed |
+| Trying something risky | Everyone sees it immediately | Stays on your machine until you push |
+
+You have all seen `Document (conflicted copy 2).docx`. That file is Dropbox admitting defeat: it can't work out how to combine two versions, so it keeps both and makes it your problem. Git actually reads what changed on each side and puts them together.
+
+**So why not just use Dropbox for a website?** Honestly, for one person, you nearly could. What you'd be giving up:
+
+- GitHub **serves** your site to the internet. Dropbox only stores it.
+- Checkpoints *you* chose, labelled with why you made them — not just "3:47pm".
+- Three people working on one project without overwriting each other. That's your final project.
+- The thing every design studio and engineering team already uses.
+
 ### What "origin" means
 
 You'll notice every button says *origin*: **Fetch origin**, **Pull origin**, **Push origin**.
