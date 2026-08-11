@@ -132,112 +132,12 @@ Pushing to Github Pages means you can now start seeing your work on your phone o
 [Download Simple Web Server](https://simplewebserver.org/)
 This app is a quick and easy way to start a server on your computer, and allows you to test your website on your computer or any other device on the same wifi network - like your phone.
 
-## Colour variables, and dark mode
-
-Before we style anything: decide your colours **once**, in one place.
-
-CSS lets you name a value and reuse it. These are called *custom properties*, or just variables:
-
-```css
-:root {
-  --bg: #ffffff;
-  --text: #1a1a1a;
-  --accent: #ff4343;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-}
-
-a {
-  color: var(--accent);
-}
-```
-
-`:root` just means "the whole page". Now changing `--accent` in one line recolours every link on your site. This is a design system in four lines — the same idea as styles in Figma.
-
-### Dark mode is (almost) free
-
-Because your colours are named, you can hand the browser a second set for people whose device is in dark mode:
-
-```css
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0a0a0a;
-    --text: #f0f0f0;
-    --accent: #ff7a7a;
-  }
-}
-```
-
-Nothing else changes. Every rule already says `var(--bg)`, so the whole page flips.
-
-**Things to watch out for**
-
-- **Don't just invert.** Pure white text on pure black is harsh. Use a near-black and a near-white — like `#0a0a0a` and `#f0f0f0`.
-- **Your accent probably needs adjusting.** A colour with enough contrast on white is often too dark on black. That's why `--accent` is lighter in the dark set above.
-- **Test both.** Your OS has a toggle - for now just use that. It's also possible to have a manual toggle but we'll cover that later.
-- **Images and screenshots** with white backgrounds will look very bright in dark mode. Consider a png/webp with a transparent background.
-
-This site does exactly this — try the ☀ toggle at the top and then look at `style.css`.
-
-## Units: px, em, rem, %, vw, vh
-
-In Figma everything is in pixels, because a Figma frame is one fixed size. A web page isn't — it has to work on a 6-inch phone and a 27-inch monitor. So CSS gives you units that *respond* to something.
-
-| Unit | Relative to | Use it for |
-| --- | --- | --- |
-| `px` | Nothing — fixed | Borders, small fixed details |
-| `rem` | The page's base font size (16px by default) | **Font sizes, spacing — your default choice** |
-| `em` | The font size of *this* element | Spacing that should scale with its own text |
-| `%` | The parent element's size | Widths inside a layout |
-| `vw` / `vh` | 1% of the window's width / height | Full-screen sections, huge display type |
-
-### The short version
-
-Use **`rem`** for type and spacing. Use **`px`** for hairlines and borders. Use **`%`** for widths. Reach for `vw`/`vh` only when you mean "a portion of the screen".
-
-```css
-h1 {
-  font-size: 2rem;      /* 32px, but scales if the user changes their font size */
-  margin-bottom: 1rem;  /* 16px */
-  border-bottom: 1px solid black;   /* hairline — px is right here */
-}
-```
-
-### Why rem instead of px?
-
-`1rem` = the base font size of the page, normally **16px**. So `2rem` is 32px — until someone who can't read small text turns their browser font up to 20px, at which point your whole layout grows with them.
-
-Sizes in `px` ignore that setting completely. Using `rem` is an accessibility decision, not a style preference.
-
-> **Sidenote:** `rem` stands for *root em* — an em measured against the root of the document instead of the current element.
-
-### em is relative to itself
-
-`em` is measured against the element's *own* font size, which is why it's handy inside a component:
-
-```css
-.button {
-  font-size: 1.2rem;
-  padding: 0.5em 1em;   /* padding grows automatically with the text */
-}
-```
-
-Make that button bigger and the padding scales too — nothing else to change. The catch is that `em` compounds when elements nest, which is why it's a bad default for font sizes and a good one for local spacing.
-
-### vw and vh
-
-`100vh` is exactly the height of the window, `100vw` its width. Great for a full-screen hero section:
-
-```css
-.hero {
-  height: 100vh;
-}
-```
-
-Careful on phones: `100vh` used to be taller than the visible area because of the address bar. If you hit that, `100dvh` (*dynamic* viewport height) is the modern fix.
+1. Click New Server
+2. Choose folder and pick username.github.io
+3. Enable "Accessible on local network"
+4. Click "Create Server"
+5. Pick the server from the list, make sure the toggle is turned on
+6. One of the two links should work on your phone as long as you are on the same wifi
 
 ## CSS Properties
 
@@ -464,6 +364,113 @@ a:visited { color: #333333; }
 a:hover { text-decoration: underline; }
 a:active { color: #000000; }
 ```
+
+## Colour variables, and dark mode
+
+Before we style anything: decide your colours **once**, in one place.
+
+CSS lets you name a value and reuse it. These are called *custom properties*, or just variables:
+
+```css
+:root {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --accent: #ff4343;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: var(--accent);
+}
+```
+
+`:root` just means "the whole page". Now changing `--accent` in one line recolours every link on your site. This is a design system in four lines — the same idea as styles in Figma.
+
+### Dark mode is (almost) free
+
+Because your colours are named, you can hand the browser a second set for people whose device is in dark mode:
+
+```css
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a0a0a;
+    --text: #f0f0f0;
+    --accent: #ff7a7a;
+  }
+}
+```
+
+Nothing else changes. Every rule already says `var(--bg)`, so the whole page flips.
+
+**Things to watch out for**
+
+- **Don't just invert.** Pure white text on pure black is harsh. Use a near-black and a near-white — like `#0a0a0a` and `#f0f0f0`.
+- **Your accent probably needs adjusting.** A colour with enough contrast on white is often too dark on black. That's why `--accent` is lighter in the dark set above.
+- **Test both.** Your OS has a toggle - for now just use that. It's also possible to have a manual toggle but we'll cover that later.
+- **Images and screenshots** with white backgrounds will look very bright in dark mode. Consider a png/webp with a transparent background.
+
+This site does exactly this — try the ☀ toggle at the top and then look at `style.css`.
+
+## Units: px, em, rem, %, vw, vh
+
+In Figma everything is in pixels, because a Figma frame is one fixed size. A web page isn't — it has to work on a 6-inch phone and a 27-inch monitor. So CSS gives you units that *respond* to something.
+
+| Unit | Relative to | Use it for |
+| --- | --- | --- |
+| `px` | Nothing — fixed | Borders, small fixed details |
+| `rem` | The page's base font size (16px by default) | **Font sizes, spacing — your default choice** |
+| `em` | The font size of *this* element | Spacing that should scale with its own text |
+| `%` | The parent element's size | Widths inside a layout |
+| `vw` / `vh` | 1% of the window's width / height | Full-screen sections, huge display type |
+
+### The short version
+
+Use **`rem`** for type and spacing. Use **`px`** for hairlines and borders. Use **`%`** for widths. Reach for `vw`/`vh` only when you mean "a portion of the screen".
+
+```css
+h1 {
+  font-size: 2rem;      /* 32px, but scales if the user changes their font size */
+  margin-bottom: 1rem;  /* 16px */
+  border-bottom: 1px solid black;   /* hairline — px is right here */
+}
+```
+
+### Why rem instead of px?
+
+`1rem` = the base font size of the page, normally **16px**. So `2rem` is 32px — until someone who can't read small text turns their browser font up to 20px, at which point your whole layout grows with them.
+
+Sizes in `px` ignore that setting completely. Using `rem` is an accessibility decision, not a style preference.
+
+> **Sidenote:** `rem` stands for *root em* — an em measured against the root of the document instead of the current element.
+
+### em is relative to itself
+
+`em` is measured against the element's *own* font size, which is why it's handy inside a component:
+
+```css
+.button {
+  font-size: 1.2rem;
+  padding: 0.5em 1em;   /* padding grows automatically with the text */
+}
+```
+
+Make that button bigger and the padding scales too — nothing else to change. The catch is that `em` compounds when elements nest, which is why it's a bad default for font sizes and a good one for local spacing.
+
+### vw and vh
+
+`100vh` is exactly the height of the window, `100vw` its width. Great for a full-screen hero section:
+
+```css
+.hero {
+  height: 100vh;
+}
+```
+
+Careful on phones: `100vh` used to be taller than the visible area because of the address bar. If you hit that, `100dvh` (*dynamic* viewport height) is the modern fix.
 
 ## Responsive Design
 
