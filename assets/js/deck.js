@@ -2,9 +2,12 @@
 document.addEventListener("DOMContentLoaded", function () {
   var content = document.querySelector(".note-page-section .content");
   if (!content) return;
-  // Split on --- separators when present, else fall back to #### headings
-  var splitTag = content.querySelectorAll("hr").length >= 1 ? "HR" : "H4";
-  if (splitTag === "H4" && content.querySelectorAll("h4").length < 2) return; // nothing deck-worthy
+  // Split on --- separators when present, else on whatever headings the note uses
+  var splitTags = content.querySelectorAll("hr").length >= 1
+    ? ["HR"]
+    : ["H2", "H3", "H4"];
+  if (splitTags[0] !== "HR" &&
+      content.querySelectorAll("h2, h3, h4").length < 2) return; // nothing deck-worthy
 
   var btn = document.createElement("button");
   btn.id = "present-toggle";
@@ -28,11 +31,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var nodes = Array.prototype.slice.call(content.childNodes);
     nodes.forEach(function (node) {
-      if (node.nodeType === 1 && node.tagName === splitTag) {
+      if (node.nodeType === 1 && splitTags.indexOf(node.tagName) !== -1) {
         deck.appendChild(slide);
         slide = document.createElement("section");
         slide.className = "slide";
-        if (splitTag === "HR") return; // the separator itself doesn't appear on any slide
+        if (node.tagName === "HR") return; // the rule itself isn't part of a slide
       }
       slide.appendChild(node.cloneNode(true));
     });

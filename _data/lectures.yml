@@ -4,15 +4,15 @@
 - num: 1
   title: "Welcome to Tech 1"
   date: "4 August 2026"
-  slug: "lecture-1"
+  slug: "lecture-1-welcome-to-tech1"
   key_areas:
     - "Client-server architecture"
     - "HTML — structure"
 
 - num: 2
-  title: "Designing your Website"
+  title: "CSS and Responsivemness"
   date: "11 August 2026"
-  slug: "lecture-2"
+  slug: "lecture-2-css-and-responsivemness"
   key_areas:
     - "CSS — styling"
     - "Responsive web design"

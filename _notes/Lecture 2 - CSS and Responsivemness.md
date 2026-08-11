@@ -28,6 +28,56 @@ Last week we shipped a page! This week we'll figure out how to ship your page.
 [Download Simple Web Server](https://simplewebserver.org/)
 This app is a quick and easy way to start a server on your computer, and allows you to test your website on your computer or any other device on the same wifi network - like your phone!
 
+## Colour variables, and dark mode
+
+Before we style anything: decide your colours **once**, in one place.
+
+CSS lets you name a value and reuse it. These are called *custom properties*, or just variables:
+
+```css
+:root {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --accent: #ff4343;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: var(--accent);
+}
+```
+
+`:root` just means "the whole page". Now changing `--accent` in one line recolours every link on your site. This is a design system in four lines — the same idea as styles in Figma.
+
+### Dark mode is (almost) free
+
+Because your colours are named, you can hand the browser a second set for people whose device is in dark mode:
+
+```css
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a0a0a;
+    --text: #f0f0f0;
+    --accent: #ff7a7a;
+  }
+}
+```
+
+Nothing else changes. Every rule already says `var(--bg)`, so the whole page flips.
+
+**Things to watch out for**
+
+- **Don't just invert.** Pure white text on pure black is harsh. Use a near-black and a near-white — like `#0a0a0a` and `#f0f0f0`.
+- **Your accent probably needs adjusting.** A colour with enough contrast on white is often too dark on black. That's why `--accent` is lighter in the dark set above.
+- **Test both.** Your OS has a toggle, or use DevTools → the three dots → More tools → Rendering → *Emulate prefers-color-scheme*.
+- **Images and screenshots** with white backgrounds will glow in dark mode. Consider a PNG with a transparent background.
+
+This site does exactly this — try the ☀ toggle at the top and then look at `style.css`.
+
 ## CSS Properties
 
 ### Font name
@@ -51,6 +101,34 @@ body {
 ```
 
 ### Loading fonts from Google Fonts
+
+Your computer has fonts installed. Your visitor's computer probably doesn't have the same ones. So if you write `font-family: "Roboto Condensed"` and they don't have it, they get a fallback — your design breaks on someone else's machine.
+
+The fix: tell the browser where to *download* the font from. [Google Fonts](https://fonts.google.com) hosts hundreds for free.
+
+1. Go to [fonts.google.com](https://fonts.google.com) and pick a font.
+2. Choose the weights you actually need (each one is another download — don't tick all nine).
+3. Copy the `<link>` it gives you into the `<head>` of your HTML, above your stylesheet:
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+```
+
+4. Now use it in your CSS, with a fallback in case it fails to load:
+
+```css
+body {
+  font-family: "Roboto Condensed", sans-serif;
+}
+```
+
+**Things worth knowing**
+
+- The font is downloaded on every visit, so more weights means a slower page. Two or three is plenty.
+- `display=swap` in that URL means text shows in a fallback font immediately, then swaps when the real one arrives — better than staring at invisible text.
+- The font name in your CSS must match the name in the link exactly, spelling and capitalisation.
+- Fonts you buy or download elsewhere can be self-hosted with `@font-face` — same idea, but the file lives in your repo. Ask AI to set it up when you need it.
 
 ### Font weight
 
