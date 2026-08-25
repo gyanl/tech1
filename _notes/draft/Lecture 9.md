@@ -1,16 +1,15 @@
 ---
 date: 13-10-2026
-date modified: 24-07-2026
+date modified: 25-08-2026
 feed: show
-tag: lecture
-title: "Lecture 9"
 key_areas:
   - "Design systems"
   - "Figma to code"
+tag: lecture
+title: "Lecture 9"
 ---
 
 ## Design Engineering
-
 
 "The cloud" is someone else's computer — but which one, and what are you paying for?
 

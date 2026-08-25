@@ -1,6 +1,6 @@
 ---
 date: 11-08-2026
-date modified: 11-08-2026
+date modified: 25-08-2026
 feed: show
 key_areas:
   - "Version control (Git)"
@@ -185,6 +185,26 @@ body {
 - `display=swap` in that URL means text shows in a fallback font immediately, then swaps when the real one arrives — better than staring at invisible text.
 - The font name in your CSS must match the name in the link exactly, spelling and capitalisation.w
 - Fonts you buy or download elsewhere can be self-hosted with `@font-face` — same idea, but the file lives in your repo. Ask AI to set it up when you need it.
+
+### Color
+
+The color of the text in the block.
+
+```
+p {
+  color: #ff4343;
+}
+```
+
+### Background color
+
+The background color of the block.
+
+```
+p {
+  background-color: #ff4343;
+}
+```
 
 ### Font weight
 

@@ -1,13 +1,13 @@
 ---
 date: 11-08-2026
-date modified: 08-08-2026
+date modified: 25-08-2026
 feed: show
 tag: exercise
 title: "Exercise - Build the Page You Designed"
 ---
 ### Make the real page match your Figma
 
-Last week you designed your home page in Figma. This week you build it. The design already exists, so this is a translation exercise — which is exactly the job.
+Last week you designed your home page in Figma. This week you build it. The design already exists, so the exercise is to translate your designs into implementations in code.
 
 ### What it must have
 
@@ -16,30 +16,13 @@ Last week you designed your home page in Figma. This week you build it. The desi
 3. **A font from Google Fonts,** loaded with a `<link>`, with a fallback in your `font-family`. Only the weights you actually use.
 4. **`rem` for type and spacing.** `px` only where it belongs — borders and hairlines.
 5. **At least one breakpoint** that you chose by dragging your window until the design stopped working. Not a number you copied from a blog post.
-6. **At least 5 commits** with messages that say what changed and why. "update" ×5 doesn't count.
-7. **One deliberate divergence, resolved.** Details below.
-
-### The Git part
-
-You've been pushing in a straight line so far. This week you make the two copies disagree on purpose, and fix it — so the first time it happens by accident, in your group project, it's boring.
-
-1. Work locally as usual. Commit as you go.
-2. At some point, go to **github.com** and edit a file **in the browser** — change a line of your CSS, commit it there.
-3. Back in GitHub Desktop, make a change locally too, and commit.
-4. Try to **Push**. It should be rejected — GitHub has a commit you don't.
-5. **Pull**, deal with whatever Git says, then push.
-
-Do it once where the two edits touch **different lines** (Git merges it for you), and once where they touch **the same line** (you get a conflict and decide who wins).
-
-**Write down what you saw.** What did the rejection message say? What did the conflict markers look like? Which version did you keep?
-
-> **Commit messages:** write them for the version of you that comes back in three weeks. *"Add dark mode colours"* is useful. *"changes"* is not. This is the "checkpoints labelled with why" thing from class — practise it here where nothing is at stake.
+6. **At least descriptive 10 commits** with messages that say what changed and why. "update" ×5 doesn't count.
 
 ### Steps
 
 1. Open your Figma file next to your editor. Start with the type and colours before you touch layout.
-2. Get it right at **one width first** — narrow. Then widen your window until it looks wrong, and add your breakpoint there.
-3. Test on your actual phone, over your github.io URL or Simple Web Server. Things always feel different in the hand.
+2. Get it right at **one width first** — you can start on narrow/phone. Then widen your window until it looks wrong, and add your breakpoint there.
+3. Test on your actual phone, over your github.io URL or Simple Web Server. Things can feel different on an actual device.
 4. Push. Check the live site, not just your laptop.
 
 ### Things to keep in mind
