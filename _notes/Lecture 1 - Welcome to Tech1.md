@@ -203,6 +203,7 @@ If you see a 404: wait, refresh, and check your homepage is called exactly `inde
 #### Ship something
 
 - **Exercise:** [[Exercise - Ship a Page with GitHub Pages]] — personalise your page, push it, and put it live
+- Step-by-step reference you can keep coming back to: [[Help - Publish a Page with GitHub Pages]]
 - Everyone leaves with a URL that works on their phone
 
 ---

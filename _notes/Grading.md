@@ -27,13 +27,13 @@ Attendance is recorded each session. I have an open door policy — if you need 
 
 Weekly build exercises, done mostly in class and finished as homework:
 
-1. [[Exercise - Ship a Page]]
-2. [[Exercise - Web Page Anatomy]]
-3. [[Exercise - Trace a Request]]
-4. [[Exercise - Figma to Code]]
-5. [[Exercise - Add a Database]]
-6. [[Exercise - API Mashup]]
-7. [[Exercise - Add an AI Feature]]
+1. [[Exercise - Ship a Page with GitHub Pages]]
+2. [[Exercise - Redesign your Home Page in Figma]]
+3. [[Exercise - Figma to Code]]
+4. [[Exercise - Unusual Interactions]]
+5. [[Exercise - Trace a Request]]
+6. [[Exercise - Add a Database]]
+7. [[Exercise - API Mashup]] or [[Exercise - Add an AI Feature]]
 8. [[Exercise - Mobile Ecosystem Comparison]]
 9. [[Exercise - SDLC Stage Mapping]]
 

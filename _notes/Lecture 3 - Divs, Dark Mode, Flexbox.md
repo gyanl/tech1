@@ -3,17 +3,19 @@ date: 18-08-2026
 date modified: 25-08-2026
 feed: show
 key_areas:
-  - "Responsive web design"
   - "CSS — styling"
+  - "Design systems"
 tag: lecture
 title: "Lecture 3 - Divs, Dark Mode, Flexbox"
 ---
 
-## Responsive Web Design
+## Laying Out a Page
 
-Last week you used CSS to style your *text*. This week we will look into layouts - how you arrange things on a page. Then we will make that arrangement work for every screen size it lands on (desktop, tablet, mobile).
+Last week you used CSS to style your *text*. This week we look at layout — how you arrange things on a page.
 
-To do that you need three things: a way to group elements (**divs**), a way to name them (**classes**), and a way to lay them out (**flexbox**).
+To do that you need three things: a way to group elements (**divs**), a way to name them (**classes**), and a way to lay them out (**flexbox**). Then we'll set up your colours properly, which gets you dark mode almost for free.
+
+> Next week we take this layout and make it work at every screen size.
 
 ## Divs: Frames to group things
 
@@ -59,7 +61,7 @@ A class is a label you put on an element so you can style it:
 ```css
 .card {
   padding: 1.5rem;
-  background: var(--bg-sub);
+  background: #f4f4f4;
   border-radius: 8px;
 }
 ```
@@ -150,49 +152,70 @@ That `flex: 1 1 16rem` reads as: *take a fair share of the space, shrink if you 
 
 Three cards on a laptop, two on a tablet, one on a phone — **with no media query at all**. Try to get this far before reaching for breakpoints.
 
-## Pseudo classes
+## Pseudo-classes and pseudo-elements
 
-### :hover
+A **pseudo-class** (one colon) targets an element in a particular *state* — being hovered, being visited. A **pseudo-element** (two colons) targets a *part* of an element — its first letter, its first line.
+
+### :hover — a pseudo-class
 
 Add this to a class and these rules will be activated only when the mouse pointer is hovering over the class.
 
-```
+```css
+
 p:hover {
+
   background-color: #ff4343;
+
 }
+
 ```
 
-### :first-letter
+### ::first-letter — a pseudo-element
 
 Affects only the first letter of the div.
 
-```
+```css
+
 p::first-letter {
+
   font-weight: bold;
+
   text-transform: uppercase;
+
 }
+
 ```
 
-### :first-line
+### ::first-line — a pseudo-element
 
 Affects only the first line of the div.
 
-```
+```css
+
 p::first-line {
+
   font-weight: bold;
+
   text-transform: uppercase;
+
 }
+
 ```
 
 ## Links
 
 Links can be styled using the following properties
 
-```
+```css
+
 a:link { color: #666666; text-decoration: none; }
+
 a:visited { color: #333333; }
+
 a:hover { text-decoration: underline; }
+
 a:active { color: #000000; }
+
 ```
 
 ## Colour variables, and dark mode
@@ -245,12 +268,10 @@ Nothing else changes. Every rule already says `var(--bg)`, so the whole page fli
 
 This site does exactly this — try the ☀ toggle at the top and then look at `style.css`.
 
-### Test it properly
+### Check both schemes before you leave
 
-- **Drag your window.** Fastest possible feedback loop.
-- **DevTools device toolbar** — the phone/tablet icon in Inspect, or ⌘⇧M / Ctrl+Shift+M.
-- **Your actual phone.** Use Simple Web Server from earlier, or your live github.io URL. Nothing else tells you how it really feels in the hand.
+Toggle your OS between light and dark and reload. Every colour in your page should still be readable, and your accent should still stand out against the background in both. If something disappears, it's a colour you hardcoded instead of putting in `:root`.
 
 ## Homework
 
-- Rebuild your home page layout using divs, classes and flexbox. You are free to use AI coding agents for this exercise. See [[Exercise - Build the Page You Designed]] for more details.
+- Rebuild your home page layout using divs, classes and flexbox. You are free to use AI coding agents for this exercise. See [[Exercise - Figma to Code]] for more details.

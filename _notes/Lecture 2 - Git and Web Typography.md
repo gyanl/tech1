@@ -43,7 +43,9 @@ Last week we shipped a page! This week we'll figure out how to ship your page.
 1. Make changes.
 2. Use Github to commit changes. This creates a checkpoint "locally".
 3. Push to Github to push your changes online to Github.
-4. Your updated website is now live at yourgithubusername.github.io
+4. About a minute later your updated website is live at `https://yourusername.github.io/your-repo-name/`
+
+> Your URL only drops the repo name if you named the repo exactly `yourusername.github.io`. Most of you didn't, so expect the repo name in the address.
 
 ## Your computer and GitHub are two different places
 
@@ -101,7 +103,7 @@ Most of the time Git merges the two sides by itself — if you changed the CSS a
 
 It only stops and asks when **the same lines** changed on both sides. It can't know whose version is right, so it shows you both and waits:
 
-```
+```text
 <<<<<<< YOUR VERSION
 background: #ff4343;
 =======
@@ -121,14 +123,14 @@ Right now you're one person on one laptop, so this may never happen. It will sta
 
 # Web Typography
 
-Pushing to Github Pages means you can now start seeing your work on your phone over the internet at username.github.io. But it takes a while to push to Github and then for Github to update the live version of your site. There is a faster way to do this - you can just run a server on your laptop!
+Pushing to Github Pages means you can now start seeing your work on your phone over the internet at your github.io URL. But it takes a while to push to Github and then for Github to update the live version of your site. There is a faster way to do this - you can just run a server on your laptop!
 
 **Download Simple Web Server app**
 [Download Simple Web Server](https://simplewebserver.org/)
 This app is a quick and easy way to start a server on your computer, and allows you to test your website on your computer or any other device on the same wifi network - like your phone.
 
 1. Click New Server
-2. Choose folder and pick username.github.io
+2. Choose folder and pick the repo folder you cloned
 3. Enable "Accessible on local network"
 4. Click "Create Server"
 5. Pick the server from the list, make sure the toggle is turned on
@@ -140,7 +142,7 @@ This app is a quick and easy way to start a server on your computer, and allows 
 
 The font-family property specifies the font you want to use.
 
-```
+```css
 p {
   font-family: "Work Sans", Times, "Times New Roman", serif;
 }
@@ -148,9 +150,9 @@ p {
 
 ### Font Stack
 
-If the first font in the stack is not available, the second one is used and so on. It is good practice to specify ‘serif’ or ‘sans-serif’ as a fallback in case your custom font doesn’t load.
+If the first font in the stack is not available, the second one is used and so on. It is good practice to specify `serif` or `sans-serif` as a fallback in case your custom font doesn’t load.
 
-```
+```css
 body {
   font-family: Georgia, Times, "Times New Roman", serif;
 }
@@ -183,14 +185,14 @@ body {
 
 - The font is downloaded on every visit, so more weights means a slower page. Two or three is usually enough.
 - `display=swap` in that URL means text shows in a fallback font immediately, then swaps when the real one arrives — better than staring at invisible text.
-- The font name in your CSS must match the name in the link exactly, spelling and capitalisation.w
+- The font name in your CSS must match the name in the link exactly, spelling and capitalisation.
 - Fonts you buy or download elsewhere can be self-hosted with `@font-face` — same idea, but the file lives in your repo. Ask AI to set it up when you need it.
 
 ### Color
 
 The color of the text in the block.
 
-```
+```css
 p {
   color: #ff4343;
 }
@@ -200,7 +202,7 @@ p {
 
 The background color of the block.
 
-```
+```css
 p {
   background-color: #ff4343;
 }
@@ -222,7 +224,7 @@ The weight of the font you want to use. Typical nomenclature is:
 
 If the font family doesn’t provide the requested weight, it will use the closest available one.
 
-```
+```css
 p {
   font-family: "Roboto Condensed";
   font-weight: 800;
@@ -233,7 +235,7 @@ p {
 
 The size of the font you want to use.
 
-```
+```css
 p {
   font-family: "Roboto Condensed";
   font-size: 12px;
@@ -244,7 +246,7 @@ p {
 
 Left, center, right or justify alignment.
 
-```
+```css
 .center{
   text-align: center;
 }
@@ -266,7 +268,7 @@ Left, center, right or justify alignment.
 
 The text-indent property indents the first line of a text block.
 
-```
+```css
 p {
   text-indent: 50px;
 }
@@ -276,7 +278,7 @@ p {
 
 The letter-spacing property controls the tracking between characters. It is convenient to use em as em is dependent on the current text size.
 
-```
+```css
 p {
   letter-spacing: 0.1em;
 }
@@ -286,7 +288,7 @@ p {
 
 The line-height property can be used to control the leading of the text. It is convenient to use em as em is dependent on the current text size.
 
-```
+```css
 p {
   line-height: 1.5em; //1.5 em is 150% of text size.
 }
@@ -296,7 +298,7 @@ p {
 
 Add an underline, overline or strikethrough to text. You can specify the type and color of the line.
 
-```
+```css
 p {
   text-decoration: underline;
   text-decoration: underline overline wavy red;
@@ -305,11 +307,11 @@ p {
 
 ### Text Transform
 
-Capitalise first word, convert to upper or lowecase.
+Capitalise the first letter of each word, or convert to upper or lower case. Note the CSS keyword is spelled `capitalize`, American-style — `capitalise` does nothing.
 
-```
+```css
 p {
-  text-transform: capitalise;
+  text-transform: capitalize;
   text-transform: uppercase;
   text-transform: lowercase;  
 }
@@ -317,4 +319,4 @@ p {
 
 ## Homework
 
-- **Exercise:** [[Exercise - Build the Page You Designed]] — build your Figma design as a real page: a Google Font loaded properly, `rem` for type and spacing, and at least 5 commits with real messages. Includes making Git diverge on purpose and fixing it.
+- **Exercise:** [[Exercise - Figma to Code]] — build your Figma design as a real page: a Google Font loaded properly, `rem` for type and spacing, and at least 5 commits with real messages. Includes making Git diverge on purpose and fixing it.

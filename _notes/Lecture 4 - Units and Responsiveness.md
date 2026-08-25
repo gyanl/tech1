@@ -3,12 +3,20 @@ date: 25-08-2026
 date modified: 25-08-2026
 feed: show
 key_areas:
-  - "DNS"
-  - "Server-side languages"
-  - "Software development lifecycle"
+  - "Responsive web design"
+  - "CSS — styling"
 tag: lecture
 title: "Lecture 4 - Units and Responsiveness"
 ---
+
+## Recap
+
+Last week you learned to group things (`<div>`), name them (`class`), arrange them (`display: flex`) and define your colours once in `:root`. Two questions were left hanging:
+
+- You sized everything in pixels. What happens on a screen that isn't your laptop?
+- Your flex row looks right at one width. What makes it look right at *every* width?
+
+That's this week.
 
 ## Units: px, em, rem, %, vw, vh
 
@@ -111,25 +119,22 @@ You write them with a **media query**: a block of CSS the browser only applies w
 ```css
 /* base styles — written for narrow screens first */
 .cards {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;   /* stacked on a phone */
   gap: 1rem;
 }
 
-/* from 40rem (640px) and up, go to two columns */
+/* from 40rem (640px) and up, put them in a row */
 @media (min-width: 40rem) {
   .cards {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-/* from 64rem (1024px) and up, three */
-@media (min-width: 64rem) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    flex-direction: row;
   }
 }
 ```
+
+Same flexbox from last week — the media query just changes one property at one width.
+
+> **Sidenote:** CSS has a second layout system, **grid**, which is better for actual two-dimensional grids. Everything here works the same way with it. Ask AI for a grid version once your flexbox instincts are solid.
 
 Read `@media (min-width: 40rem)` as: **"from 640px wide and upwards, also apply these rules."**
 
@@ -149,10 +154,18 @@ Don't copy a list of device sizes. iPhone 15, iPad Pro, MacBook Air — that lis
 
 Most sites need two or three. Common starting points are `40rem` (640px), `48rem` (768px) and `64rem` (1024px).
 
+### Test it properly
+
+- **Drag your window.** Fastest possible feedback loop.
+- **DevTools device toolbar** — the phone/tablet icon in Inspect, or ⌘⇧M / Ctrl+Shift+M.
+- **Your actual phone.** Use Simple Web Server from [[Lecture 2 - Git and Web Typography]], or your live github.io URL. Nothing else tells you how it really feels in the hand.
+
 ## Class Activity
 
 Finish building your home page designs. Instructor will help with any issues you are running into.
 
 ## Homework
 
-[[Exercise - Build the Page You Designed]]
+Make sure you have finished [[Exercise - Figma to Code]]
+
+[[Exercise - Unusual Interactions]]

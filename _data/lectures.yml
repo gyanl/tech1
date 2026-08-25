@@ -21,103 +21,108 @@
     - "CSS — styling"
 
 - num: 3
-  title: "Responsive Web Design"
+  title: "Divs, Dark Mode, Flexbox"
   date: "18 August 2026"
-  slug: "lecture-3-responsive-web-design"
-  summary: "Divs, classes and flexbox — arranging a page that works on every screen."
+  slug: "lecture-3-divs-dark-mode-flexbox"
+  summary: "Grouping, naming and arranging things on a page — and a colour system that gets you dark mode for free."
+  key_areas:
+    - "CSS — styling"
+    - "Design systems"
+
+- num: 4
+  title: "Units and Responsiveness"
+  date: "25 August 2026"
+  slug: "lecture-4-units-and-responsiveness"
+  summary: "px, rem, em and vw — and one page that reshapes itself for every screen."
   key_areas:
     - "Responsive web design"
     - "CSS — styling"
 
-- num: 4
-  title: "Shipping Software"
-  date: "25 August 2026"
-  slug: "lecture-4"
-  summary: "How software actually gets built and released, from DNS to the lifecycle."
-  key_areas:
-    - "DNS"
-    - "Server-side languages"
-    - "Software development lifecycle"
-
 - num: 5
-  title: "Internet Infrastructure"
+  title: "Databases and APIs"
   date: "1 September 2026"
-  slug: "lecture-5"
+  slug: "lecture-5-databases-and-apis"
+  summary: "Where data lives once a page stops being the whole app — JSON, APIs, and your first database."
+  key_areas:
+    - "JavaScript — interactivity"
+    - "APIs — REST"
+    - "APIs — GraphQL"
+    - "Databases — SQL"
+    - "Databases — NoSQL"
+    - "Server-side languages"
+    - "Understanding data flow"
+
+- num: 6
+  title: "Internet Infrastructure"
+  date: "22 September 2026"
+  slug: "lecture-6-internet-infrastructure"
   summary: "What really happens between typing a URL and seeing a page."
   key_areas:
     - "How the internet works"
+    - "DNS"
     - "HTTP / HTTPS"
     - "IP addresses"
     - "Web browsers and their role"
 
-- num: 6
-  title: "Data & Databases"
-  date: "22 September 2026"
-  slug: "lecture-6"
-  summary: "Where data lives — SQL, NoSQL, and building with AI assistance."
-  key_areas:
-    - "Databases — SQL"
-    - "Databases — NoSQL"
-    - "Understanding data flow"
-    - "AI-assisted development"
-
 - num: 7
-  title: "APIs"
+  title: "AI Features"
   date: "29 September 2026"
-  slug: "lecture-7"
-  summary: "How software talks to software: REST, GraphQL, and LLM APIs."
+  slug: "lecture-7-ai-features"
+  summary: "AI as an ingredient inside the products you design, not just the tool you build them with."
   key_areas:
-    - "APIs — REST"
-    - "APIs — GraphQL"
     - "LLM APIs"
     - "AI features in products"
+    - "AI-assisted development"
+    - "Prompting as design"
 
 - num: 8
-  title: "Mobile Ecosystems"
+  title: "Mobile and the Cloud"
   date: "6 October 2026"
-  slug: "lecture-8"
-  summary: "iOS vs Android, native vs hybrid vs web, and how app stores work."
+  slug: "lecture-8-mobile-and-the-cloud"
+  summary: "iOS vs Android, native vs hybrid vs web — and whose computer all of this actually runs on."
   key_areas:
     - "iOS vs Android platforms"
     - "Native vs hybrid vs web apps"
     - "App stores and distribution"
+    - "IaaS, PaaS, SaaS"
+    - "Scaling and cost"
 
 - num: 9
   title: "Design Engineering"
   date: "13 October 2026"
-  slug: "lecture-9"
-  summary: "Design systems, and getting from Figma to working code."
+  slug: "lecture-9-design-engineering"
+  summary: "Design systems in code, frameworks in one slide each, and getting from Figma to something real."
   key_areas:
     - "Design systems"
     - "Figma to code"
+    - "Accessibility"
 
 - num: 10
   title: "Start a Startup"
   date: "20 October 2026"
-  slug: "lecture-10"
-  summary: "Cloud, scale, cost, and how product teams actually work."
+  slug: "lecture-10-start-a-startup"
+  summary: "How ideas become products: the lifecycle, Agile, and your final project kickoff."
   key_areas:
-    - "IaaS, PaaS, SaaS"
-    - "Scaling and cost"
+    - "Software development lifecycle"
     - "Agile / Scrum"
 
 - num: 11
   title: "Studio 1"
   date: "27 October 2026"
-  slug: "lecture-11"
+  slug: "lecture-11-studio-1"
   summary: "Build sprint and crits on your final project."
   key_areas: []
 
 - num: 12
   title: "Studio 2"
   date: "3 November 2026"
-  slug: "lecture-12"
+  slug: "lecture-12-studio-2"
   summary: "Ship-ready: polish, performance, security and privacy."
   key_areas: []
 
 - num: 13
   title: "Demo Day"
   date: "10 November 2026"
-  slug: "lecture-13"
+  slug: "lecture-13-demo-day"
   summary: "Final project presentations."
   key_areas: []

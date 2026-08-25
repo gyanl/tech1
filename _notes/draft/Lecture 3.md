@@ -1,16 +1,15 @@
 ---
 date: 18-08-2026
-date modified: 24-07-2026
+date modified: 25-08-2026
 feed: show
-tag: lecture
-title: "Lecture 3"
 key_areas:
   - "JavaScript — interactivity"
   - "Prompting as design"
+tag: lecture
+title: "Lecture 3"
 ---
 
 ## Javascript & Interactivity
-
 
 Your page lives somewhere. What happens when someone types your URL?
 

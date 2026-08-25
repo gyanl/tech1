@@ -11,10 +11,10 @@ You will use an AI tool to generate a personal webpage and put it on the real in
 
 ### Steps
 
-1. **Pick a tool.** Any of: Claude, v0, Lovable, Figma Make, Cursor. (If one fights you, switch — tool fluency is part of the point.)
-2. **Describe the page you want** in plain language: who you are, what it should feel like, what sections it needs. Be opinionated — you're the designer.
-3. **Iterate at least 3 times.** Change the layout, the type, the colour, the copy. Notice which prompts move the design and which get ignored.
-4. **Deploy it.** Use the tool's publish button, or GitHub Pages/Vercel if your tool doesn't have one.
+1. **Make the page yours.** In your repo from [web-starter](https://github.com/gyanl/web-starter), open `index.html` and put your actual name and words in it. Open `style.css` and change a colour. Save, refresh the browser.
+2. **Iterate at least 3 times.** Change the layout, the type, the colour, the copy. Use AI (Claude, Cursor, v0) to make changes you can't write yourself — but you decide what changes. Notice which prompts move the design and which get ignored.
+3. **Commit and push.** In GitHub Desktop: summary → **Commit to main** → **Push origin**.
+4. **Turn on GitHub Pages** and get your URL. Full step-by-step in [[Help - Publish a Page with GitHub Pages]].
 5. **Open it on your phone.** If it breaks on mobile, that's your first responsive-design lesson — ask the AI to fix it and note what changed.
 
 ### Things to keep in mind

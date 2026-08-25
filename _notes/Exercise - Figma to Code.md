@@ -3,7 +3,7 @@ date: 11-08-2026
 date modified: 25-08-2026
 feed: show
 tag: exercise
-title: "Exercise - Build the Page You Designed"
+title: "Exercise - Figma to Code"
 ---
 ### Make the real page match your Figma
 
