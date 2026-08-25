@@ -68,7 +68,7 @@
   title: "AI Features"
   date: "29 September 2026"
   slug: "lecture-7-ai-features"
-  summary: "AI as an ingredient inside the products you design, not just the tool you build them with."
+  summary: "AI as an ingredient inside the products you design, not just the tool you build them with — calling a model API by hand."
   key_areas:
     - "LLM APIs"
     - "AI features in products"

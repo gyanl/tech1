@@ -202,6 +202,26 @@ This is what makes it worth teaching you. You don't fetch the data — you **sub
 
 Open your guestbook on your laptop and your phone. Type on the phone. The laptop updates. Nobody refreshed anything. That is the thing your pages have never been able to do.
 
+### This breaks the diagram you just learnt
+
+Look back at the round trip: browser → server → database. Now count the boxes in what we're about to build. There is no server. Your page talks to the database *directly*.
+
+That's not a shortcut we're taking because you're beginners — it's what Firebase is for, and it makes it an unusual database in four ways worth knowing:
+
+| Normal database | Firebase Realtime Database |
+| --- | --- |
+| Your back-end talks to it; the browser never does | The browser holds a connection straight to it |
+| You **request**, it **responds**, done | You **subscribe**, it **pushes**, forever |
+| Tables, rows, and a query language | One JSON tree, addressed by path |
+| Writes go to the server, then come back | Writes apply on your device first, sync after |
+
+Two consequences you should carry out of this room:
+
+- **Security rules are the back-end.** With no server in the middle, the only thing standing between a stranger and your data is that rules file. Everywhere else, that job is done by code someone wrote and reviewed. Here it's a config you will be tempted to leave on `true`.
+- **Querying is deliberately weak.** No joins, no filtering on two fields at once. That poverty is the price of the live updates — it's a trade Firebase made on your behalf, not a feature they forgot.
+
+> **Sidenote:** It also works offline. Writes queue on the device and sync when the connection comes back, which is why the reply appears in your UI before the server has heard about it. Lovely when it works, confusing the first time a value appears and then changes a second later.
+
 ### Setting it up
 
 1. Go to [console.firebase.google.com](https://console.firebase.google.com) and **Add project**. Skip Google Analytics.
@@ -288,13 +308,113 @@ Every one of those choices shows up later as a form field, an empty state, or a 
 
 > **Sidenote:** Sketch the schema before anyone builds anything. It is much cheaper to add a field on paper than in a live database with ten thousand entries in it.
 
-## Class Activity
+## Class Activity — the class wall
 
-**First**, pick a public API — weather, movies, transit, cat pictures — and open its URL directly in your browser. Look at the raw JSON. Find one field you'd want on a page and say which element you'd put it in.
+We're going to build one thing together, into **one shared database**, and put it on the projector.
 
-**Then**, get a Firebase project created and a guestbook writing to it. Get it live on your github.io URL, open it on your laptop and your phone at once, and type on one.
+It's a grid of squares. You click a square, it becomes your colour. It becomes your colour *on everyone else's screen too*, immediately. Thirty of you, one JSON tree, no refreshing.
+
+> **Sidenote:** You already know what this feels like — it's the thing that makes Figma feel like Figma. Today you find out that multiplayer is not magic, it's a database that pushes.
+
+### How this works
+
+I've made one Firebase project for the class and I'll put the config on the screen. **Everyone uses my config**, so we're all pointed at the same tree. You each build your own page against it.
+
+The data model is about as small as a data model gets — one colour per square, keyed by its position:
+
+```json
+{
+  "wall": {
+    "0": "#ff4343",
+    "1": "#2b6cb0",
+    "47": "#1a1a1a"
+  }
+}
+```
+
+Note we're using `set` at a specific path here, not `push`. `push` is for *adding to a list* where the order matters and the keys should be unique. `set` is for *this exact path gets this exact value* — square 47 is one square, and writing to it replaces what was there. Which is why the last person to click a square wins it.
+
+### The HTML
+
+```html
+<input type="color" id="colour" value="#ff4343">
+<div id="wall"></div>
+```
+
+### The CSS
+
+```css
+#wall {
+  display: grid;
+  grid-template-columns: repeat(32, 1fr);
+  gap: 1px;
+  background: #ddd;
+  border: 1px solid #ddd;
+}
+
+#wall button {
+  aspect-ratio: 1;
+  border: 0;
+  padding: 0;
+  background: #fff;
+  cursor: pointer;
+}
+```
+
+That's the `grid` I mentioned in passing last week. A wall of equal squares is exactly what it's for — this is a genuine two-dimensional grid, not a row that wraps, so flexbox would be the wrong tool.
+
+### The JavaScript
+
+```html
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getDatabase, ref, set, onValue }
+    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+  const app = initializeApp({ /* the class config, from the screen */ });
+  const db  = getDatabase(app);
+
+  const COLS = 32, ROWS = 18;
+  const wallEl = document.querySelector("#wall");
+
+  // draw the empty grid once
+  for (let i = 0; i < COLS * ROWS; i++) {
+    const cell = document.createElement("button");
+    cell.dataset.index = i;
+    wallEl.append(cell);
+  }
+
+  // WRITE — one click, one square
+  wallEl.addEventListener("click", (event) => {
+    const i = event.target.dataset.index;
+    if (i === undefined) return;
+    set(ref(db, "wall/" + i), document.querySelector("#colour").value);
+  });
+
+  // READ — runs now, and again on every change anyone makes anywhere
+  onValue(ref(db, "wall"), (snapshot) => {
+    const pixels = snapshot.val() || {};
+    for (const cell of wallEl.children) {
+      cell.style.background = pixels[cell.dataset.index] || "#ffffff";
+    }
+  });
+</script>
+```
+
+Nothing here is new except `set`. It's the same three moves as the guestbook: point at a path, write to it, subscribe to it.
+
+### Things to notice while we're doing it
+
+- **Nobody wrote any code to receive other people's clicks.** You subscribed to a path. That's the whole of multiplayer.
+- **Turn off the wifi and keep clicking.** Your squares still fill in — that's the local cache. Turn it back on and watch them arrive on the projector at once.
+- **Somebody is going to draw something rude on the projector.** Good. That's `.write: true` in the rules, on a database with no server in front of it, and it's the most memorable security lesson available. What would you have to change to stop it?
+- **Watch what happens when two people click the same square.** Last write wins. Nobody's edit is merged — compare that to what Git did for you in week two.
+
+### Then, on your own
+
+Make your own Firebase project — your own config, your own tree — and get a **guestbook** working on your github.io page: a name, a message, a list that updates live. That's the shape you'll extend for homework.
 
 ## Homework
 
-- **Exercise:** [[Exercise - Add a Database]] — use AI to add persistence to a small page: a guestbook, a poll, or an RSVP. Something must survive a refresh.
+- **Exercise:** [[Exercise - Add a Database]] — build something small that more than one person can use at the same time. Something must survive a refresh, and something must show up on someone else's screen without them refreshing.
 - Sketch the data model of an app you use every day. What are its tables, and what fields does each one have? Bring the sketch — we'll compare.
