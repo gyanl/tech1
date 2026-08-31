@@ -1,9 +1,9 @@
 ---
 date: 25-08-2026
-date modified: 08-08-2026
+date modified: 01-09-2026
 feed: show
 tag: exercise
-title: "Exercise - Figma to Code"
+title: "Exercise - Figma to Code 2"
 ---
 ### Get an AI to build your design — then judge it
 

@@ -1,6 +1,6 @@
 ---
 date: 24-07-2026
-date modified: 08-08-2026
+date modified: 01-09-2026
 feed: show
 tag: lecture
 title: "Lectures"

@@ -1,6 +1,6 @@
 ---
 date: 01-09-2026
-date modified: 25-08-2026
+date modified: 01-09-2026
 feed: show
 key_areas:
   - "JavaScript — interactivity"
@@ -14,41 +14,35 @@ tag: lecture
 title: "Lecture 5 - Databases and APIs"
 ---
 
-## Recap
+## Homework Review
 
-Four weeks in, here's what you can do:
+Let's look at your submissions!
 
-- **L1** — HTML is content, CSS is looks, JS is behaviour. You shipped a page to a real URL.
-- **L2** — Git tracks versions, GitHub stores and serves them. You set type properly.
-- **L3** — Divs group, classes name, flexbox arranges. Colours live once in `:root`.
-- **L4** — `rem` for type, `%` and `max-width` for widths, media queries for the rest.
-
-Everything you have built so far has one thing in common: **it forgets.**
-
-Your page is the same three files for every visitor, and nothing anyone does on it is remembered. Refresh, and it's back to how it started. Today we fix that — and the fix is where most real products actually live.
-
-> **Sidenote:** Every site you use daily is a fairly plain page plus a large pile of data. Instagram is a grid of divs. What makes it Instagram is the database behind it.
+- [[Exercise - Figma to Code]]
+- [[Exercise - Unusual Interactions]]
 
 ## Two kinds of website
 
-| | **Static** (what you've built) | **Dynamic** (today) |
-| --- | --- | --- |
-| What the server sends | The same files to everyone | A page built for *you*, right now |
-| Where the content lives | In your HTML, typed by you | In a database, fetched when asked |
-| To change it | Edit, commit, push | Someone types something and hits Save |
-| Examples | Your portfolio, this course site | Instagram, Gmail, your bank |
+There are 2 types of websites: static sites and dynamic sites.
 
-Static is not the lesser option — this course site is static and that's the right call. But the moment your product needs a login, a comment, a booking, or a saved anything, you need the other half.
+Static sites are the same exact site for every viewer. The sites you have built so far are all static sites - even the ones with interactivity like button presses.
+
+Dynamic sites are different based on the viewer - for eg. Instagram (when you use the website version). They frequently have an account login and a database that saves information.
+
+|                         | **Static**                       | **Dynamic**                           |
+| ----------------------- | -------------------------------- | ------------------------------------- |
+| What the server sends   | The same files to everyone       | A page built for *you*, right now     |
+| Where the content lives | In your HTML, typed by you       | Usually in a database, fetched when asked     |
+| Where to deploy        | Github Pages     | Vercel, Netlify, Firebase, Cloudflare, etc. |
+| Examples                | Your portfolio, this course site | Instagram, Gmail, your bank           |
+
+Static sites are simpler to work with - they can be opened directly if you double click on the .html files, and the Simple Web Server app is "simple" because it serves static sites only. This course site is a static site as well (usually search needs a dynamic site - but there are some workarounds). But the moment your product needs a login, a comments system, booking, payments, or saved anything, you need to make a dynamic site.
 
 ## The two halves
 
-**Front-end** is code that runs in the visitor's browser, on their laptop or phone. HTML, CSS and JavaScript. You can read all of it — right-click any site and View Source. That's everything you've written so far.
+**Front-end** is code that runs in the visitor's browser, on their laptop or phone. HTML, CSS and JavaScript. React is also a js-based frontend technology. You can read all of it — right-click any site and View Source. That's everything you've written so far.
 
-**Back-end** is code that runs on a computer you control, somewhere else. The visitor never sees it. It's written in whatever the team likes — Python, Node.js, Ruby, Go — and its job is to hold the data and decide who gets what.
-
-> Front-end is the shop floor. Back-end is the stockroom and the till. Customers only ever see one of them, and you design both.
-
-You are not going to write a back-end from scratch in this course. You need to know it exists, what it's responsible for, and how to ask for things from it — because "who does this bit, the front or the back?" is a design question you'll be in the room for.
+**Back-end** is code that runs on the server - which is another computer you control, somewhere else. This code doesn't run on the visitor's computer and the visitor only sees the results. It's written in whatever the team likes — Python, Node.js (js based backed technology), Ruby, Go — and its job is to hold the data and decide who gets what.
 
 ## The round trip
 
@@ -63,7 +57,6 @@ This is the single most useful diagram in the course. Everything from here on is
    sees the list ◀─────────── sends back JSON ◀──────── here's every row
 ```
 
-Six steps. A guestbook, a checkout, a login and a social feed are all this shape. When something is broken, your first question is *which arrow failed?*
 
 ## APIs: how you ask for the data
 
@@ -75,6 +68,28 @@ Two things follow from that:
 
 - **The menu is a design decision.** Somebody chose what could be asked for and what comes back. That somebody should include a designer.
 - **You don't need to know how the kitchen works.** Which is exactly why APIs let you build far more than you could write yourself.
+
+
+### JSON is just a common format
+
+You’ll frequently see APIs returning JSON:
+~~~
+{
+
+  "name": "Gyan",
+
+  "age": 30,
+
+  "projects": [
+
+    "Website",
+
+    "Brand identity"
+
+  ]
+
+}
+~~~
 
 ### REST: nouns in the URL, verbs as methods
 
