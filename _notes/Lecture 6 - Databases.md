@@ -11,7 +11,7 @@ key_areas:
   - "Server-side languages"
   - "Understanding data flow"
 tag: lecture
-title: "Lecture 6 - WIP"
+title: "Lecture 6 - Databases"
 ---
 
 ## Homework Review

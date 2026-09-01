@@ -180,15 +180,20 @@ Read it out loud:
 2. **`.json()`** — turn the reply into data JavaScript can use.
 3. **`querySelector("#temp")`** — find the element with `id="temp"` and put the value in it.
 
-`querySelector` takes the exact same selectors you learnt in L3 — `#temp` for an id, `.card` for a class, `h1` for a tag.
+`querySelector` takes the exact same selectors you learnt in L3 —
 
-You will mostly have AI write this. But when it hands you fifty lines, you now know which three are doing the work.
+`h1` for a tag.
 
-### Class Exercise: Weather in the Footer
+`.card` for a class,
 
-[[Exercise - Weather in the Footer]]
+`#temp` for an id,
 
+You will mostly have AI write this - but you should know the rough shape of what is happening.
 
 ### Class Exercise: Anything API
 
 [[Exercise - Build with the Anything API]]
+
+### Homework: Weather in the Footer
+
+[[Exercise - Weather in the Footer]]

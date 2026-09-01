@@ -51,12 +51,12 @@ console.log(data);
 
 - **The API is slow.** It thinks before it answers — a second or two, sometimes more. A loading state isn't polish here, it's most of the experience. Design it properly.
 - **It can return something you didn't expect**, including fields you didn't ask for or a value where you assumed a list. Look at what you actually got before you trust it. This is true of every API; this one just makes it obvious sooner.
-- **The content is invented, and confidently so.** Fine for a pet name, not fine for a medication dose. That distinction is the whole lesson from [[Lecture 7 - AI Features]], arriving early.
-- **It's my personal API and it costs me money to run**, so keep it to a handful of requests. Don't put a fetch inside a loop or a `setInterval`.
-- If it goes down mid-exercise, tell me — and handle the error case in your page anyway.
+- **The content is invented, and confidently so.** Fine for a pet name, not fine for a medication dose.
+- **It's my personal API and it costs me money to run**, so keep it to a handful of requests. It will stop running when my API credits run out.
+- If it goes down mid-exercise, tell me and I will try and fix it.
 
 ### Submission
 
 - Live URL of your page.
-- A screenshot of the raw JSON from your endpoint, next to your rendered design. The point is the distance between the two.
+- A screenshot of the raw JSON from your endpoint, next to your rendered design.
 - One sentence on what your page does when the API fails, and why you chose that over a blank screen.
