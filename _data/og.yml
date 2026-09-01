@@ -6,6 +6,7 @@ slugs:
   - courses
   - exercise-add-a-database
   - exercise-add-an-ai-feature
+  - exercise-build-with-the-anything-api
   - exercise-figma-to-code
   - exercise-mobile-ecosystem-comparison
   - exercise-redesign-your-home-page-in-figma
@@ -19,9 +20,6 @@ slugs:
   - lecture-3-divs-dark-mode-flexbox
   - lecture-4-units-and-responsiveness
   - lecture-5-databases-and-apis
-  - lecture-6-internet-infrastructure
-  - lecture-7-ai-features
-  - lecture-8-mobile-and-the-cloud
   - lectures
   - rules-for-class-crits
   - syllabus
