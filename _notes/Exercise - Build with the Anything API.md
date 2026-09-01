@@ -1,5 +1,5 @@
 ---
-date: 08-09-2026
+date: 01-09-2026
 date modified: 01-09-2026
 feed: show
 tag: exercise
@@ -21,7 +21,7 @@ https://api.gyanl.com/pokemon/pikachu?fields=name,type,power
 https://api.gyanl.com/plant/monstera?fields=water_every,light,mood_today
 ```
 
-And in your page, it's the same `fetch` from [[Lecture 5 - Databases and APIs]]:
+And in your page, it's the same `fetch` from [[Lecture 5 - APIs]]:
 
 ```js
 const response = await fetch("https://api.gyanl.com/plant/monstera?fields=water_every,light,mood_today");

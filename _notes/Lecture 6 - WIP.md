@@ -11,7 +11,7 @@ key_areas:
   - "Server-side languages"
   - "Understanding data flow"
 tag: lecture
-title: "Lecture 5 - Databases and APIs"
+title: "Lecture 6 - WIP"
 ---
 
 ## Homework Review
@@ -44,8 +44,6 @@ Static sites are simpler to work with - they can be opened directly if you doubl
 
 **Back-end** is code that runs on the server - which is another computer you control, somewhere else. This code doesn't run on the visitor's computer and the visitor only sees the results. It's written in whatever the team likes — Python, Node.js (js based backed technology), Ruby, Go — and its job is to hold the data and decide who gets what.
 
-
-
 ## The round trip
 
 ```text
@@ -57,7 +55,7 @@ Static sites are simpler to work with - they can be opened directly if you doubl
    sees the list ◀─────────── sends back JSON ◀──────── here's every row
 ```
 
-
+However, it's not necessary to maintain your own server and backend - for simpler things, it's possible to use an API running on someone else's server with your static site to achieve some of the behaviour of dynamic sites.
 
 ## APIs
 
@@ -79,10 +77,9 @@ JSON stands for JavaScript Object notation. It's a data format that is easy to u
 
 You’ll frequently see APIs returning JSON:
 
-While API URLs look similiar to regular URLs, they return data in JSON (or some other format) instead of an HTML page. You get no fonts, no layout, no page. 
+While API URLs look similiar to regular URLs, they return data in JSON (or some other format) instead of an HTML page. You get no fonts, no layout, no page.
 
 Everything a person would actually *see* — that it's `27°`, that it's humid at 56%, whether that deserves a grey sky or a bright one — is still your job on the frontend. The weather API gives you data, but you still need to figure out how to design the weather app.
-
 
 ~~~
 {
@@ -116,6 +113,7 @@ That URL is an order, and it has parts:
 What comes back for Bengaluru, right now:
 
 ```json
+{
   "latitude": 12.970123,
   "longitude": 77.56364,
   "generationtime_ms": 0.13208389282226562,
@@ -140,29 +138,29 @@ What comes back for Bengaluru, right now:
 }
 ```
 
-
 Some things to note:
 
 - **We asked for latitude `12.97` and got back `12.970123`.** The forecast comes from a grid, so it answered for the nearest point it actually has. APIs answer the question they *can* answer, and tell you what they did.
-- **It says `"weather_code": 3`, not `"overcast"`.** A number is the same in every language and every app; the word is a presentation choice. They hand you the code and a table to look it up in — and leave the wording to you. (3 is overcast in this case.)
+- **It says `"weather_code": 53`, not `"moderate drizzle"`.** A number is the same in every language and every app; the word is a presentation choice. They hand you the code and a table to look it up in — and leave the wording to you. (53 is moderate drizzle in this case.)
 - **It sends `current_units` alongside `current`.** They could have assumed Celsius. Instead the response says what the numbers mean, so your code can label them without guessing.
 
 ### How APIs work
 
-The open-meteo API is a free API. 
+The open-meteo API is a free API.
+
 - no API Key needed
 - no sign-up
 - 10,000 calls a day free for non-commercial use
-- you credit them under a CC BY licence. 
+- you credit them under a CC BY licence.
 
-It costs money to run servers, so some APIs are paid and will require an API Key - which is like a password that lets you use your paid API. Every API has terms like these. Read them before you build on top of one.
+It costs money to run servers, so many APIs are paid and will require you to sign up and create an API Key - which is like an auto-generated password that lets you use your paid API. Every API has terms like these. Read them before you build on top of one.
 
 Two things follow from that:
 
 - **The menu is a design decision.** Somebody chose what could be asked for and what comes back. That somebody should include a designer.
 - **You don't need to know how the kitchen works.** Which is exactly why APIs let you build far more than you could write yourself.
 
-### How API keys
+### How API keys work
 
 Most useful APIs make you register and give you a **key**: a long string that identifies you, tracks your usage, and gets billed to you.
 
@@ -189,15 +187,13 @@ Read it out loud:
 2. **`.json()`** — turn the reply into data JavaScript can use.
 3. **`querySelector("#temp")`** — find the element with `id="temp"` and put the value in it.
 
-`querySelector` takes the exact same selectors you learnt in L3 — `#temp` for an id, `.card` for a class, `h1` for a tag. 
+`querySelector` takes the exact same selectors you learnt in L3 — `#temp` for an id, `.card` for a class, `h1` for a tag.
 
 You will mostly have AI write this. But when it hands you fifty lines, you now know which three are doing the work.
 
+### Class Exercise: Weather in your Footer
 
-
-
-
-
+Spend some time working on [[Exercise - Weather in the Footer]]
 
 ### REST: nouns in the URL, verbs as methods
 
@@ -238,8 +234,6 @@ Read it like a Figma layer panel: `{ }` is a group with named properties, `[ ]` 
 
 > **Sidenote:** When an AI tool builds you something API-powered and it renders blank, open the Network tab and look at the JSON. Nine times out of ten the data arrived fine and the code reached for a field name that doesn't exist.
 
-
-
 ### GraphQL, in one idea
 
 REST gives you whatever the endpoint gives you — often much more than you need, sometimes less, so you make three calls. **GraphQL** flips it: one endpoint, and the *request* says exactly which fields you want back.
@@ -249,8 +243,6 @@ REST gives you whatever the endpoint gives you — often much more than you need
 ```
 
 Fewer round trips, no wasted data. More work to set up. You should be able to tell them apart in a conversation; you don't need to write either by hand today.
-
-
 
 ## Databases: where it all sits
 

@@ -16,7 +16,7 @@ title: "Lecture 8 - Mobile and the Cloud"
 
 Two loose ends to tie off before the final project, and they're both about *where your product actually lives*.
 
-You've built a site that reshapes itself for a phone ([[Lecture 4 - Units and Responsiveness]]), remembers things ([[Lecture 5 - Databases and APIs]]), and can call a model ([[Lecture 7 - AI Features]]). It runs on machines you've never seen, in places you've never chosen.
+You've built a site that reshapes itself for a phone ([[Lecture 4 - Units and Responsiveness]]), remembers things ([[Lecture 5 - APIs]]), and can call a model ([[Lecture 7 - AI Features]]). It runs on machines you've never seen, in places you've never chosen.
 
 So: **if your site already works on a phone, why do apps exist?** And **whose computers is all of this running on?**
 

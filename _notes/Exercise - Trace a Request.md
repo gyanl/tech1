@@ -21,7 +21,7 @@ Use the browser's Network tab to observe everything that happens between typing 
 
 ### Things to keep in mind
 
-- The waterfall chart *is* the round trip from [[Lecture 5 - Databases and APIs]], drawn live on your own work.
+- The waterfall chart *is* the round trip from [[Lecture 5 - APIs]], drawn live on your own work.
 - Count your requests before you start optimising. Most "slow" pages are slow because there are too many things to fetch, not because any one of them is big.
 - HTTPS padlock ≠ trustworthy site. It only means the conversation is encrypted.
 

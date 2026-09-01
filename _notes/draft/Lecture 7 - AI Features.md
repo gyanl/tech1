@@ -15,7 +15,7 @@ title: "Lecture 7 - AI Features"
 
 You've used AI to *build* every week of this course. Today it becomes an ingredient **inside** the thing you're building — a feature your users touch, not a tool you use in private.
 
-The good news is you already know how. In [[Lecture 5 - Databases and APIs]] you learned that an API is a counter with a menu, that `fetch` is how you order from it, and that JSON is what comes back. An AI API is that same counter. The menu just has stranger items on it.
+The good news is you already know how. In [[Lecture 5 - APIs]] you learned that an API is a counter with a menu, that `fetch` is how you order from it, and that JSON is what comes back. An AI API is that same counter. The menu just has stranger items on it.
 
 ## What a language model actually is
 
