@@ -39,10 +39,10 @@
     - "CSS — styling"
 
 - num: 5
-  title: "Databases and APIs"
+  title: "APIs"
   date: "1 September 2026"
-  slug: "lecture-5-databases-and-apis"
-  summary: "Where data lives once a page stops being the whole app — JSON, APIs, and your first database."
+  slug: "lecture-5-apis"
+  summary: "How one program asks another for data — URLs as orders, JSON as the reply, and fetch as the way you ask."
   key_areas:
     - "JavaScript — interactivity"
     - "APIs — REST"

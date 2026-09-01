@@ -13,13 +13,15 @@ slugs:
   - exercise-ship-a-page-with-github-pages
   - exercise-trace-a-request
   - exercise-unusual-interactions
+  - exercise-weather-in-the-footer
   - grading
   - help-publish-a-page-with-github-pages
   - lecture-1-welcome-to-tech1
   - lecture-2-git-and-web-typography
   - lecture-3-divs-dark-mode-flexbox
   - lecture-4-units-and-responsiveness
-  - lecture-5-databases-and-apis
+  - lecture-5-apis
+  - lecture-6-databases
   - lectures
   - rules-for-class-crits
   - syllabus
