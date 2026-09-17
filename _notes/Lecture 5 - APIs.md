@@ -1,6 +1,6 @@
 ---
 date: 01-09-2026
-date modified: 01-09-2026
+date modified: 02-09-2026
 feed: show
 key_areas:
   - "JavaScript — interactivity"
@@ -193,6 +193,8 @@ You will mostly have AI write this - but you should know the rough shape of what
 ### Class Exercise: Anything API
 
 [[Exercise - Build with the Anything API]]
+
+---
 
 ### Homework: Weather in the Footer
 

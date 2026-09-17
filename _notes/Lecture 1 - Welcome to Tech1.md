@@ -1,6 +1,6 @@
 ---
 date: 04-08-2026
-date modified: 11-08-2026
+date modified: 02-09-2026
 feed: show
 key_areas:
   - "Client-server architecture"
