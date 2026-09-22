@@ -283,14 +283,34 @@ It's a grid of squares. You click a square, it becomes your colour. It becomes y
 
 I've made one Firebase project for the class and put a page on it. Everyone opens the same page, so we're all reading and writing the same tree.
 
-The data model is about as small as a data model gets — one colour per square, keyed by its position:
+![The class wall: a grid of dark squares, some coloured red, blue and green by different people](assets/img/class-wall.png)
+
+Here's what happens when you click a square:
+
+1. **Your page writes one entry.** Clicking square 47 saves your colour and name at the path `wall/47` in the database. Your own square changes straight away, without waiting for the database.
+2. **Firebase tells everyone.** Every page that has the wall open is subscribed to the `wall` path. When anything under it changes, Firebase sends the new data to all of them.
+3. **Every page repaints.** Each page gets the full list of coloured squares and colours its grid to match. That includes the projector, your phone, and your own page.
+4. **Every page recounts the leaderboard.** The leaderboard isn't saved anywhere. Each page counts how many squares each name owns, every time the wall changes.
+
+```text
+   YOUR PAGE                  FIREBASE                         EVERYONE'S PAGES
+
+   click square 47  ───────▶  wall/47 = { colour, name }  ───▶  repaint the grid
+                                                                 and recount the leaderboard
+```
+
+Compare it to the round trip from L5. There's no server of our own in the middle, and nobody asks for the new data: Firebase sends it as soon as it changes.
+
+When you open the page, it asks for your name and a colour. It saves them in localStorage, so it only asks once.
+
+The data is small: one entry per square, keyed by its position, with the colour and the name of whoever painted it last:
 
 ```json
 {
   "wall": {
-    "0": "#ff4343",
-    "1": "#2b6cb0",
-    "47": "#1a1a1a"
+    "0": { "colour": "#ff4343", "name": "Upasna" },
+    "1": { "colour": "#6694ff", "name": "Shivangi" },
+    "47": { "colour": "#ff4343", "name": "Upasna" }
   }
 }
 ```
@@ -299,7 +319,7 @@ Note we're using `set` at a specific path here, not `push`. `push` is for *addin
 
 ### The code
 
-The wall is at [gyanl.github.io/wall](https://gyanl.github.io/wall), and the code is at [github.com/gyanl/wall](https://github.com/gyanl/wall). Open the page on your laptop and your phone.
+The wall is at [gyanl.com/wall](https://gyanl.com/wall), and the code is at [github.com/gyanl/wall](https://github.com/gyanl/wall). Open the page on your laptop and your phone.
 
 Open `script.js` and you'll find the same three moves as the guestbook: `ref` to point at a path, `set` to write to it, and `onValue` to subscribe to it. The CSS uses `grid` rather than flexbox, because a wall of equal squares is a real two-dimensional grid, not a row that wraps.
 
