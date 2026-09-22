@@ -4,8 +4,25 @@
     {
       "name": "jekyll",
       "runtimeExecutable": "bundle",
-      "runtimeArgs": ["exec", "jekyll", "serve", "--livereload"],
+      "runtimeArgs": [
+        "exec",
+        "jekyll",
+        "serve",
+        "--livereload"
+      ],
       "port": 4000
+    },
+    {
+      "name": "wall",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8081",
+        "--directory",
+        "/Users/gyanlakhwani/Documents/GitHub/wall"
+      ],
+      "port": 8081
     }
   ]
 }

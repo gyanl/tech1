@@ -181,15 +181,41 @@ Suppose you wanted a guestbook where a vistor on your site could leave a message
 ```json
 {
   "guestbook": {
-    "-Nx8kQ2p": { "name": "Upasna",   "message": "hello!",    "at": 1756089600000 },
-    "-Nx8kR7t": { "name": "Shivangi", "message": "nice site", "at": 1756089900000 }
+    "-Nx8kQ2p": {
+      "name": "Upasna",
+      "message": "hello!",
+      "at": 1756089600000
+    },
+    "-Nx8kR7t": {
+      "name": "Shivangi",
+      "message": "nice site",
+      "at": 1756089900000
+    }
   }
 }
 ```
 
-`guestbook/-Nx8kQ2p/name` is a path, and it points at `"Aditya"`. There are no tables, no columns, and no `SELECT`. If you can navigate a Figma layer panel, you can navigate this.
+`guestbook/-Nx8kQ2p/name` is a path, and it points at `"Upasna"`. There are no tables, no columns, and no `SELECT`. If you can navigate a Figma layer panel, you can navigate this.
 
 Those random numbers (like 0Nx8kQ2p) are keys — are generated for you when you `push` a new item. They are unique and they sort chronologically (oldest first).
+
+In code, you point at a path with `ref`, and then read what's there with `get`:
+
+```js
+const nameRef = ref(db, "guestbook/-Nx8kQ2p/name");
+const snapshot = await get(nameRef);
+snapshot.val();   // "Upasna"
+```
+
+Read it out loud:
+
+1. **`ref(db, "guestbook/-Nx8kQ2p/name")`** — point at that path in the tree. It's the same path, written the same way.
+2. **`get(nameRef)`** — go and fetch whatever is there. Like `fetch` in L5, it comes over the internet, so we `await` it.
+3. **`snapshot.val()`** — the value itself.
+
+The path can stop at any level. `ref(db, "guestbook/-Nx8kQ2p")` gives you Upasna's whole entry — name, message and time. `ref(db, "guestbook")` gives you every entry. Whatever is below the path comes back with it, so point at the smallest part of the tree you need.
+
+`get` reads once. Further down, we'll use `onValue` instead, which reads now and again every time the data changes.
 
 ### The "realtime" part
 
@@ -214,56 +240,22 @@ Some unusual things to keep in mind.
 2. In the left sidebar, **Build → Realtime Database → Create Database**. Pick a location.
 3. Choose **Start in test mode** for now. Read the warning in the next section before you leave it that way.
 4. Back on the project overview, click the **`</>`** (web) icon to register a web app. Firebase gives you a config snippet — copy it.
+5. Paste the config into your AI coding agent and tell it to help you set up a feature. Some ideas below:
+
+| Idea | What it does | What's in the tree |
+| --- | --- | --- |
+| **Live Q&A for a talk** | The audience posts questions and upvotes them. The speaker's screen shows the top ones. | `questions/{id}` with the text and a vote count |
+| **Crit board** | Everyone pins a link to their work. Classmates leave short comments that appear on the projector as they're written. | `projects/{id}` and `comments/{projectId}/{id}` |
+| **Group order** | One link for the table. Everyone adds what they want from the menu, and the total updates for everyone. | `order/{id}` with name, item and price |
+| **Watch party remote** | One person presses play or pause, and the video pauses on everyone's screen. | `player` with `playing` and the current time |
+| **Collaborative moodboard** | Anyone can drop an image URL onto a shared canvas and drag it around. Everyone sees it move. | `images/{id}` with URL and x, y position |
+| **Live scoreboard** | Keep score for a match or a quiz night from your phone. The big screen updates. | `teams/{id}` with name and score |
+| **Seat or slot booker** | A grid of slots. Tap one to claim it; it's greyed out for everyone else straight away. | `slots/{id}` with who booked it |
+| **Presence** | A small "3 people are looking at this page" indicator for your portfolio. | `online/{visitorId}` — added on arrival, removed on leaving |
 
 > **Sidenote:** The console will try to steer you to **Cloud Firestore**, which is Firebase's newer, more capable database. It's the better choice for a real product, but you can ignore it for now.
 
-### Writing and reading
-
-Copy the version numbers from the snippet the console gave you rather than from here — they change.
-
-```html
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getDatabase, ref, push, onValue }
-    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-
-  const app = initializeApp({ /* the config object from the console */ });
-  const db  = getDatabase(app);
-  const guestbook = ref(db, "guestbook");
-
-  // WRITE — add one entry
-  document.querySelector("#form").addEventListener("submit", (event) => {
-    event.preventDefault();
-    push(guestbook, {
-      name:    document.querySelector("#name").value,
-      message: document.querySelector("#message").value,
-      at:      Date.now()
-    });
-    event.target.reset();
-  });
-
-  // READ — runs now, and again every time anything changes
-  onValue(guestbook, (snapshot) => {
-    const entries = Object.values(snapshot.val() || {});
-    document.querySelector("#list").innerHTML = entries
-      .map(e => `<li><strong>${e.name}</strong> ${e.message}</li>`)
-      .join("");
-  });
-</script>
-```
-
-Six things are happening, and you know most of them already:
-
-- **`ref(db, "guestbook")`** — a pointer to a path in the tree. Same instinct as `querySelector`, but for data instead of the page.
-- **`push`** — add a child with a generated key.
-- **`onValue`** — the subscription. Firebase calls your function immediately with the current data, then again on every change, forever. This is why nothing refreshes.
-- **`snapshot.val()`** — the plain JSON at that path. `|| {}` covers the empty database, which is otherwise `null` and a very common first bug.
-- **`Object.values(...)`** — turn `{key: entry, key: entry}` into a plain list you can map over.
-- **`event.preventDefault()`** — stop the browser doing its default form thing, which is to reload the page.
-
 ### Security rules, and the key that isn't a secret
-
-Two things that look contradictory, so read both:
 
 **Your Firebase config is public, and that's fine.** It goes straight into your HTML. It is not a password — it's an address, telling the browser which project to talk to. Everyone can see it and Google intends that.
 
@@ -279,21 +271,6 @@ Before your final project goes anywhere near real people, the rules need tighten
 
 > If strangers can write to your database, strangers will write anything to your database. Deciding what your app does about that is design work, and we'll come back to it.
 
-### Two habits that will save you
-
-- **Keep your tree shallow.** Reading a path downloads *everything underneath it*. Nesting all your messages inside each user means fetching one user fetches every message they ever wrote.
-- **Store what you'll display.** No joins here. If your list shows an author name, store the name on the entry, even though it's "duplicated". This is called denormalisation and in this world it's correct, not lazy.
-
-### The schema is a design decision
-
-The **schema** is the list of fields a thing has. Firebase won't enforce one — which makes deciding it deliberately more important, not less:
-
-> What is a "user" in your product? Name — one field or two? Is email required? Is there a pronouns field, and is it a dropdown or free text? Can someone have no photo?
-
-Every one of those choices shows up later as a form field, an empty state, or a bug. You have all seen a form that demanded a title from a list of four and none of them fit — that's a schema decision, made by someone who wasn't thinking about people.
-
-> **Sidenote:** Sketch the schema before anyone builds anything. It is much cheaper to add a field on paper than in a live database with ten thousand entries in it.
-
 ## Class Activity — the class wall
 
 We're going to build one thing together, into **one shared database**, and put it on the projector.
@@ -304,7 +281,7 @@ It's a grid of squares. You click a square, it becomes your colour. It becomes y
 
 ### How this works
 
-I've made one Firebase project for the class and I'll put the config on the screen. **Everyone uses my config**, so we're all pointed at the same tree. You each build your own page against it.
+I've made one Firebase project for the class and put a page on it. Everyone opens the same page, so we're all reading and writing the same tree.
 
 The data model is about as small as a data model gets — one colour per square, keyed by its position:
 
@@ -320,74 +297,11 @@ The data model is about as small as a data model gets — one colour per square,
 
 Note we're using `set` at a specific path here, not `push`. `push` is for *adding to a list* where the order matters and the keys should be unique. `set` is for *this exact path gets this exact value* — square 47 is one square, and writing to it replaces what was there. Which is why the last person to click a square wins it.
 
-### The HTML
+### The code
 
-```html
-<input type="color" id="colour" value="#ff4343">
-<div id="wall"></div>
-```
+The wall is at [gyanl.github.io/wall](https://gyanl.github.io/wall), and the code is at [github.com/gyanl/wall](https://github.com/gyanl/wall). Open the page on your laptop and your phone.
 
-### The CSS
-
-```css
-#wall {
-  display: grid;
-  grid-template-columns: repeat(32, 1fr);
-  gap: 1px;
-  background: #ddd;
-  border: 1px solid #ddd;
-}
-
-#wall button {
-  aspect-ratio: 1;
-  border: 0;
-  padding: 0;
-  background: #fff;
-  cursor: pointer;
-}
-```
-
-That's the `grid` I mentioned in passing last week. A wall of equal squares is exactly what it's for — this is a genuine two-dimensional grid, not a row that wraps, so flexbox would be the wrong tool.
-
-### The JavaScript
-
-```html
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getDatabase, ref, set, onValue }
-    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-
-  const app = initializeApp({ /* the class config, from the screen */ });
-  const db  = getDatabase(app);
-
-  const COLS = 32, ROWS = 18;
-  const wallEl = document.querySelector("#wall");
-
-  // draw the empty grid once
-  for (let i = 0; i < COLS * ROWS; i++) {
-    const cell = document.createElement("button");
-    cell.dataset.index = i;
-    wallEl.append(cell);
-  }
-
-  // WRITE — one click, one square
-  wallEl.addEventListener("click", (event) => {
-    const i = event.target.dataset.index;
-    if (i === undefined) return;
-    set(ref(db, "wall/" + i), document.querySelector("#colour").value);
-  });
-
-  // READ — runs now, and again on every change anyone makes anywhere
-  onValue(ref(db, "wall"), (snapshot) => {
-    const pixels = snapshot.val() || {};
-    for (const cell of wallEl.children) {
-      cell.style.background = pixels[cell.dataset.index] || "#ffffff";
-    }
-  });
-</script>
-```
-
-Nothing here is new except `set`. It's the same three moves as the guestbook: point at a path, write to it, subscribe to it.
+Open `script.js` and you'll find the same three moves as the guestbook: `ref` to point at a path, `set` to write to it, and `onValue` to subscribe to it. The CSS uses `grid` rather than flexbox, because a wall of equal squares is a real two-dimensional grid, not a row that wraps.
 
 ### Things to notice while we're doing it
 
@@ -404,16 +318,6 @@ Make your own Firebase project — your own config, your own tree — and get a 
 
 Some things you could build with Realtime Database. Each one works because several people see the same data change at the same time. The homework ([[Exercise - Add a Database]]) has smaller starting points; these are bigger, and some could grow into a final project.
 
-| Idea | What it does | What's in the tree |
-| --- | --- | --- |
-| **Live Q&A for a talk** | The audience posts questions and upvotes them. The speaker's screen shows the top ones. | `questions/{id}` with the text and a vote count |
-| **Crit board** | Everyone pins a link to their work. Classmates leave short comments that appear on the projector as they're written. | `projects/{id}` and `comments/{projectId}/{id}` |
-| **Group order** | One link for the table. Everyone adds what they want from the menu, and the total updates for everyone. | `order/{id}` with name, item and price |
-| **Watch party remote** | One person presses play or pause, and the video pauses on everyone's screen. | `player` with `playing` and the current time |
-| **Collaborative moodboard** | Anyone can drop an image URL onto a shared canvas and drag it around. Everyone sees it move. | `images/{id}` with URL and x, y position |
-| **Live scoreboard** | Keep score for a match or a quiz night from your phone. The big screen updates. | `teams/{id}` with name and score |
-| **Seat or slot booker** | A grid of slots. Tap one to claim it; it's greyed out for everyone else straight away. | `slots/{id}` with who booked it |
-| **Presence** | A small "3 people are looking at this page" indicator for your portfolio. | `online/{visitorId}` — added on arrival, removed on leaving |
 
 When you pick one, start by sketching the tree. Some things to think about:
 
