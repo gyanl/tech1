@@ -23,6 +23,9 @@ You should be able to demo the second one with a friend's phone next to your lap
 4. Back on the project overview, click the **`</>`** (web) icon to register a web app. Firebase gives you a config snippet — copy it.
 5. Paste the config into your AI coding agent and tell it to help you set up a feature. Some ideas below:
 
+### Some possible ideas
+
+You don't have to use any of these, and I would love to see more fun ones.
 
 | Idea | What it does | What's in the tree |
 | --- | --- | --- |
@@ -35,10 +38,7 @@ You should be able to demo the second one with a friend's phone next to your lap
 | **Seat or slot booker** | A grid of slots. Tap one to claim it; it's greyed out for everyone else straight away. | `slots/{id}` with who booked it |
 | **Presence** | A small "3 people are looking at this page" indicator for your portfolio. | `online/{visitorId}` — added on arrival, removed on leaving |
 
-
-If those feel too big, start smaller: a guestbook, a class poll with counts that move while people vote, or a shared to-do list anyone can tick. The interesting part is the liveness, not the feature list.
-
-When you pick one, start by sketching the tree. Some things to think about:
+Some things to think about:
 
 - **What does the page show before anyone has done anything?**
 People don't automatically expect websites to behave like this - do you need to explain how your app works?
