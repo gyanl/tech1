@@ -271,39 +271,17 @@ Before your final project goes anywhere near real people, the rules need tighten
 
 > If strangers can write to your database, strangers will write anything to your database. Deciding what your app does about that is design work, and we'll come back to it.
 
-## Class Activity — the class wall
+## Class Activity — The Wall
 
-We're going to build one thing together, into **one shared database**, and put it on the projector.
-
-It's a grid of squares. You click a square, it becomes your colour. It becomes your colour *on everyone else's screen too*, immediately. Thirty of you, one JSON tree, no refreshing.
+It's a grid of squares. You click a square, it becomes your colour. It becomes your colour *on everyone else's screen too*, immediately. All the students editing one JSON tree, no refreshing.
 
 > **Sidenote:** You already know what this feels like — it's the thing that makes Figma feel like Figma. Today you find out that multiplayer is not magic, it's a database that pushes.
 
-### How this works
+- The wall is at [gyanl.com/wall](https://gyanl.com/wall), and its code is public at [github.com/gyanl/wall](https://github.com/gyanl/wall).
 
-I've made one Firebase project for the class and put a page on it. Everyone opens the same page, so we're all reading and writing the same tree.
+- When you open the page, it asks for your name and a colour. It saves them in localStorage, so it only asks once.
 
-![The class wall: a grid of dark squares, some coloured red, blue and green by different people](assets/img/class-wall.png)
-
-Here's what happens when you click a square:
-
-1. **Your page writes one entry.** Clicking square 47 saves your colour and name at the path `wall/47` in the database. Your own square changes straight away, without waiting for the database.
-2. **Firebase tells everyone.** Every page that has the wall open is subscribed to the `wall` path. When anything under it changes, Firebase sends the new data to all of them.
-3. **Every page repaints.** Each page gets the full list of coloured squares and colours its grid to match. That includes the projector, your phone, and your own page.
-4. **Every page recounts the leaderboard.** The leaderboard isn't saved anywhere. Each page counts how many squares each name owns, every time the wall changes.
-
-```text
-   YOUR PAGE                  FIREBASE                         EVERYONE'S PAGES
-
-   click square 47  ───────▶  wall/47 = { colour, name }  ───▶  repaint the grid
-                                                                 and recount the leaderboard
-```
-
-Compare it to the round trip from L5. There's no server of our own in the middle, and nobody asks for the new data: Firebase sends it as soon as it changes.
-
-When you open the page, it asks for your name and a colour. It saves them in localStorage, so it only asks once.
-
-The data is small: one entry per square, keyed by its position, with the colour and the name of whoever painted it last:
+- The data is small: one entry per square, keyed by its position, with the colour and the name of whoever painted it last:
 
 ```json
 {
@@ -315,7 +293,21 @@ The data is small: one entry per square, keyed by its position, with the colour 
 }
 ```
 
-Note we're using `set` at a specific path here, not `push`. `push` is for *adding to a list* where the order matters and the keys should be unique. `set` is for *this exact path gets this exact value* — square 47 is one square, and writing to it replaces what was there. Which is why the last person to click a square wins it.
+- It uses Firebase Realtime Database. The database's address is in `firebase-config.js`, so anyone who looks can find it.
+
+- The leaderboard counts how many squares each name owns.
+
+That's everything a stranger would have too.
+
+## Class Activity 2 - Hack the Wall!
+
+The [class wall](https://gyanl.com/wall) is open on purpose. The page only lets you paint one square at a time in your own colour, but the page isn't what protects the data. The database rules are.
+
+Your goal is to get to the top of the leaderboard, by any means. You won't do it by clicking. You'll get your AI agent (Claude Code, Cursor, or whatever you use) to talk to the database directly, the way anyone on the internet could. Then we'll switch on some rules and try again.
+
+By the end you should be able to answer two questions for any app: **who should be able to read this data, and who should be able to write it?**
+
+> **Only do this to the class wall, and only in class.** It's our database and you have permission. Doing the same thing to someone else's site without permission could be illegal and chances are your AI agent will refuse.
 
 ### The code
 
