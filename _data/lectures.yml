@@ -47,22 +47,19 @@
     - "JavaScript — interactivity"
     - "APIs — REST"
     - "APIs — GraphQL"
+    - "Understanding data flow"
+
+- num: 6
+  title: "LocalStorage and Databases"
+  date: "22 September 2026"
+  slug: "lecture-6-localstorage-and-databases"
+  summary: "Giving your site a memory — a theme saved in the browser with localStorage, then one shared JSON tree with Firebase and a live class wall built on it."
+  key_areas:
+    - "Browser storage"
     - "Databases — SQL"
     - "Databases — NoSQL"
     - "Server-side languages"
     - "Understanding data flow"
-
-- num: 6
-  title: "Internet Infrastructure"
-  date: "22 September 2026"
-  slug: "lecture-6-internet-infrastructure"
-  summary: "What really happens between typing a URL and seeing a page."
-  key_areas:
-    - "How the internet works"
-    - "DNS"
-    - "HTTP / HTTPS"
-    - "IP addresses"
-    - "Web browsers and their role"
 
 - num: 7
   title: "AI Features"
@@ -86,6 +83,9 @@
     - "App stores and distribution"
     - "IaaS, PaaS, SaaS"
     - "Scaling and cost"
+    - "How the internet works"
+    - "DNS"
+    - "HTTP / HTTPS"
 
 - num: 9
   title: "Design Engineering"

@@ -6,9 +6,6 @@ key_areas:
   - "JavaScript — interactivity"
   - "APIs — REST"
   - "APIs — GraphQL"
-  - "Databases — SQL"
-  - "Databases — NoSQL"
-  - "Server-side languages"
   - "Understanding data flow"
 tag: lecture
 title: "Lecture 5 - APIs"
