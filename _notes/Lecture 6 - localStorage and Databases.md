@@ -9,7 +9,7 @@ key_areas:
   - "Server-side languages"
   - "Understanding data flow"
 tag: lecture
-title: "Lecture 6 - LocalStorage and Databases"
+title: "Lecture 6 - localStorage and Databases"
 ---
 
 ## Homework Review
@@ -18,7 +18,7 @@ Let's look at your submissions!
 
 - [[Exercise - Weather in the Footer]]
 
-All the sites you have made so far (even with interactivity) reset on refresh. 
+All the sites you have made so far (even with interactivity) reset on refresh.
 
 Imagine if Gmail forgot that an email is read after each refresh. Or that Instagram forgot that you liked a photo when you opened the app again.
 
@@ -104,7 +104,6 @@ Open DevTools while you do this. Under **Application**, expand **Local storage**
 })();
 </script>
 
-
 Some things to note:
 
 - **It's only on this browser, on this device.** Something saved on your laptop will not be available on your phone. Each website visitor has their own storage, and you can't see theirs.
@@ -121,7 +120,7 @@ Add a few colour themes to your site and save the visitor's choice in localStora
 
 ## Databases: memory for your app
 
-A database is a program that stores data safely and hands it back fast. There are two main types: 
+A database is a program that stores data safely and hands it back fast. There are two main types:
 
 **SQL** (pronounced Sequel) databases (Postgres, MySQL, SQLite) store **tables** — rows and columns, like a spreadsheet, except the rules are enforced. You declare up front that a `users` table has an `email` that is text and unique, and the database refuses anything else. Most serious products when the shape of your data is known and things relate to each other use **SQL**.
 
@@ -158,13 +157,13 @@ Here are the same two users as NoSQL documents:
 }
 ```
 
-Nidharna has two fields Aditya doesn't, and `portfolio` has more data nested inside it: a URL and a list of projects. In a SQL table you'd have to add columns for everyone first, and the projects would need a separate table of their own. Here, each document just has whatever it needs. 
+Nidharna has two fields Aditya doesn't, and `portfolio` has more data nested inside it: a URL and a list of projects. In a SQL table you'd have to add columns for everyone first, and the projects would need a separate table of their own. Here, each document just has whatever it needs.
 
-We will explore a NoSQL database, specifically **Firebase Realtime Database**. 
+We will explore a NoSQL database, specifically **Firebase Realtime Database**.
 
 ## Firebase Realtime Database
 
-Firebase is a set of back-end services run by Google. 
+Firebase is a set of back-end services run by Google.
 
 **Realtime Database** is one of them: a database that Google hosts for you, which your page can read from and write to directly with a few lines of JavaScript. You don't have to set up or run a server, and the free plan is more than enough for class projects.
 
@@ -234,27 +233,6 @@ Some unusual things to keep in mind.
 | Tables, rows, and a query language | One JSON tree, addressed by path |
 | Writes go to the server, then come back | Writes apply on your device first, sync after |
 
-### Setting it up
-
-1. Go to [console.firebase.google.com](https://console.firebase.google.com) and **Add project**. Skip Google Analytics.
-2. In the left sidebar, **Build → Realtime Database → Create Database**. Pick a location.
-3. Choose **Start in test mode** for now. Read the warning in the next section before you leave it that way.
-4. Back on the project overview, click the **`</>`** (web) icon to register a web app. Firebase gives you a config snippet — copy it.
-5. Paste the config into your AI coding agent and tell it to help you set up a feature. Some ideas below:
-
-| Idea | What it does | What's in the tree |
-| --- | --- | --- |
-| **Live Q&A for a talk** | The audience posts questions and upvotes them. The speaker's screen shows the top ones. | `questions/{id}` with the text and a vote count |
-| **Crit board** | Everyone pins a link to their work. Classmates leave short comments that appear on the projector as they're written. | `projects/{id}` and `comments/{projectId}/{id}` |
-| **Group order** | One link for the table. Everyone adds what they want from the menu, and the total updates for everyone. | `order/{id}` with name, item and price |
-| **Watch party remote** | One person presses play or pause, and the video pauses on everyone's screen. | `player` with `playing` and the current time |
-| **Collaborative moodboard** | Anyone can drop an image URL onto a shared canvas and drag it around. Everyone sees it move. | `images/{id}` with URL and x, y position |
-| **Live scoreboard** | Keep score for a match or a quiz night from your phone. The big screen updates. | `teams/{id}` with name and score |
-| **Seat or slot booker** | A grid of slots. Tap one to claim it; it's greyed out for everyone else straight away. | `slots/{id}` with who booked it |
-| **Presence** | A small "3 people are looking at this page" indicator for your portfolio. | `online/{visitorId}` — added on arrival, removed on leaving |
-
-> **Sidenote:** The console will try to steer you to **Cloud Firestore**, which is Firebase's newer, more capable database. It's the better choice for a real product, but you can ignore it for now.
-
 ### Security rules, and the key that isn't a secret
 
 **Your Firebase config is public, and that's fine.** It goes straight into your HTML. It is not a password — it's an address, telling the browser which project to talk to. Everyone can see it and Google intends that.
@@ -297,6 +275,13 @@ It's a grid of squares. You click a square, it becomes your colour. It becomes y
 
 - The leaderboard counts how many squares each name owns.
 
+### Things to notice while we're doing it
+
+- **Nobody wrote any code to receive other people's clicks.** You subscribed to a path. That's the whole of multiplayer.
+- **Turn off the wifi and keep clicking.** Your squares still fill in — that's the local cache. Turn it back on and watch them arrive on the projector at once.
+- **Somebody is going to draw something rude on the projector.** Good. That's `.write: true` in the rules, on a database with no server in front of it, and it's the most memorable security lesson available. What would you have to change to stop it?
+- **Watch what happens when two people click the same square.** Last write wins. Nobody's edit is merged — compare that to what Git did for you in week two.
+
 That's everything a stranger would have too.
 
 ## Class Activity 2 - Hack the Wall!
@@ -309,99 +294,10 @@ By the end you should be able to answer two questions for any app: **who should 
 
 > **Only do this to the class wall, and only in class.** It's our database and you have permission. Doing the same thing to someone else's site without permission could be illegal and chances are your AI agent will refuse.
 
-### The code
-
 The wall is at [gyanl.com/wall](https://gyanl.com/wall), and the code is at [github.com/gyanl/wall](https://github.com/gyanl/wall). Open the page on your laptop and your phone.
 
 Open `script.js` and you'll find the same three moves as the guestbook: `ref` to point at a path, `set` to write to it, and `onValue` to subscribe to it. The CSS uses `grid` rather than flexbox, because a wall of equal squares is a real two-dimensional grid, not a row that wraps.
 
-### Things to notice while we're doing it
-
-- **Nobody wrote any code to receive other people's clicks.** You subscribed to a path. That's the whole of multiplayer.
-- **Turn off the wifi and keep clicking.** Your squares still fill in — that's the local cache. Turn it back on and watch them arrive on the projector at once.
-- **Somebody is going to draw something rude on the projector.** Good. That's `.write: true` in the rules, on a database with no server in front of it, and it's the most memorable security lesson available. What would you have to change to stop it?
-- **Watch what happens when two people click the same square.** Last write wins. Nobody's edit is merged — compare that to what Git did for you in week two.
-
-### Then, on your own
-
-Make your own Firebase project — your own config, your own tree — and get a **guestbook** working on your github.io page: a name, a message, a list that updates live. That's the shape you'll extend for homework.
-
-## Project ideas
-
-Some things you could build with Realtime Database. Each one works because several people see the same data change at the same time. The homework ([[Exercise - Add a Database]]) has smaller starting points; these are bigger, and some could grow into a final project.
-
-
-When you pick one, start by sketching the tree. Some things to think about:
-
-- **What happens when two people do the same thing at once?** Two people booking the same slot is a real problem. Two people adding to an order isn't.
-- **Who's allowed to change what?** In the watch party, should everyone control the video, or only the host?
-- **What does the page show before anyone has done anything?**
-
-## Building it with AI
-
-You'll have AI write most of the Firebase code. These prompts work in Claude, Cursor or ChatGPT. Replace the parts in square brackets. Each one asks for small steps and explanations, so you can follow what the code does and spot when it's wrong.
-
-**1. Plan the data before any code**
-
-```text
-I'm building [a live Q&A board for a class talk] as a static website (HTML, CSS, JavaScript, no framework) using Firebase Realtime Database.
-
-Before writing any code, suggest the shape of the JSON tree: which paths exist and what goes at each one. Keep it as shallow and small as possible. Show an example of the tree with 2–3 items of sample data, and explain each choice in one line.
-```
-
-**2. Connect the page to Firebase**
-
-```text
-Here is my Firebase config:
-[paste the firebaseConfig object from the Firebase console]
-
-Write the smallest possible code to connect my index.html to Firebase Realtime Database, using the Firebase JavaScript SDK loaded from the CDN in a <script type="module">. No npm, no build step. Then add one button that writes a test value to the path "test" so I can check it appears in the Firebase console.
-```
-
-**3. Build the feature**
-
-```text
-My database tree looks like this:
-[paste your tree from prompt 1]
-
-Write the HTML and JavaScript so that:
-- [people can type a question and submit it]
-- [everyone sees the list of questions update live, without refreshing]
-- [clicking a question upvotes it]
-
-Use push() for new items, set() or runTransaction() for updates, and onValue() to subscribe. Put the Firebase code in its own section and add a short comment above each part saying what it does.
-```
-
-**4. Design the states AI usually skips**
-
-```text
-Improve this page so it handles:
-- the empty state, before anyone has added anything
-- the loading state, while data is still arriving
-- an empty or very long submission
-- losing the internet connection
-
-Keep my existing HTML and CSS classes. Tell me what you changed.
-```
-
-**5. Lock it down**
-
-```text
-My Realtime Database rules are currently read and write "true". Here's my tree:
-[paste your tree]
-
-Write security rules that allow anyone to read, and allow anyone to add new items, but stop people from deleting or editing other people's items, and limit text fields to 280 characters. Explain each rule in plain language.
-```
-
-When something doesn't work, paste the error from the browser console (DevTools → **Console**) into the chat along with the code. Most Firebase problems are a wrong path, a missing `await`, or rules that are blocking the read.
-
-### Where to host it
-
-Your site doesn't need anything new to use Realtime Database. The page talks to Firebase directly from the visitor's browser, so it works on GitHub Pages as it is. The Firebase config in your code is fine to publish — it says which database to use, and your rules decide what anyone can do with it.
-
-If you want to try a different host, [[Help - Host on Vercel]] walks through deploying the same repo to Vercel. You'll need something like Vercel later, once a project has back-end code or secret API keys.
-
 ## Homework
 
-- **Exercise:** [[Exercise - Add a Database]] — build something small that more than one person can use at the same time. Something must survive a refresh, and something must show up on someone else's screen without them refreshing.
-- Sketch the data model of an app you use every day. What are its tables, and what fields does each one have? Bring the sketch — we'll compare.
+- **Exercise:** [[Exercise - Realtime Web Experience]] — build something that more than one person can use at the same time. It can be a game or another interactive experience.

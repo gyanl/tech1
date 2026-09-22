@@ -32,7 +32,7 @@ Weekly build exercises, done mostly in class and finished as homework:
 3. [[Exercise - Figma to Code]]
 4. [[Exercise - Unusual Interactions]]
 5. [[Exercise - Trace a Request]]
-6. [[Exercise - Add a Database]]
+6. [[Exercise - Realtime Web Experience]]
 7. [[Exercise - API Mashup]] or [[Exercise - Add an AI Feature]]
 8. [[Exercise - Mobile Ecosystem Comparison]]
 9. [[Exercise - SDLC Stage Mapping]]

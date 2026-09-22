@@ -5,11 +5,12 @@ slugs:
   - class-schedule
   - courses
   - exercise-a-theme-that-remembers
-  - exercise-add-a-database
   - exercise-add-an-ai-feature
   - exercise-build-with-the-anything-api
   - exercise-figma-to-code
+  - exercise-hack-the-wall
   - exercise-mobile-ecosystem-comparison
+  - exercise-realtime-web-experience
   - exercise-redesign-your-home-page-in-figma
   - exercise-ship-a-page-with-github-pages
   - exercise-trace-a-request
