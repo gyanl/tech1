@@ -1,6 +1,6 @@
 ---
 date: 22-09-2026
-date modified: 22-09-2026
+date modified: 28-09-2026
 feed: show
 tag: exercise
 title: "Exercise - Realtime Web Experience"
@@ -59,7 +59,6 @@ Q&A with 5 questions is easy. What does it look like with 200?
 - **What if someone's connection drops?**
   Their change might arrive late, or after someone else's. Does it matter for your idea?
 
-
 ### Building it with AI
 
 You'll have AI write most of the Firebase code. These prompts work in Claude, Cursor or ChatGPT. Replace the parts in square brackets. Each one asks for small steps and explanations, so you can follow what the code does and spot when it's wrong.
@@ -112,7 +111,6 @@ When something doesn't work, paste the error from the browser console (DevTools 
 
 Your site doesn't need anything new to use Realtime Database. The page talks to Firebase directly from the visitor's browser, so it works on GitHub Pages as it is. The Firebase config in your code is fine to publish — it says which database to use, and your rules decide what anyone can do with it.
 
-
 ### Then answer these
 
 Write a short paragraph on each, and share it on whatsapp along with your link before next class.
@@ -120,7 +118,6 @@ Write a short paragraph on each, and share it on whatsapp along with your link b
 - **What did people do to your data that you didn't expect?** Rudeness, spam, empty submissions, thousand-character messages, all of the above?
 - **What did you set your rules to?** In plain language: what is the logic for who can read and write to your db?
 - **How do you explain to users how it works?** Is there anything a new user needs to understand about what you made? Did you put this into the app?
-
 
 ### Submission
 

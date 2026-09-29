@@ -58,8 +58,9 @@ html[data-theme="dark"] {
 }
 
 /* Block container: only the pre draws the box —
-   the wrapper divs stay invisible */
-.highlighter-rouge,
+   the wrapper divs stay invisible. Scoped to div so inline
+   code (code.highlighter-rouge) keeps its own background. */
+div.highlighter-rouge,
 div.highlight {
     background: transparent !important;
 }

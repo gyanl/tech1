@@ -1762,6 +1762,23 @@ code {
     border-radius: 0 !important;
 }
 
+/* Inline code: sized to sit inside a line of body text, as a soft
+   rounded chip. Mono faces run large, so it's set a step smaller.
+   Code blocks (pre > code) keep their own styling. */
+:not(pre) > code {
+    display: inline;
+    vertical-align: baseline;
+    font-size: 0.85em;
+    padding: 0.15em 0.4em;
+    background-color: var(--color-bg-sub);
+    border: none;
+    border-radius: 4px !important;
+    overflow: visible !important;
+    overflow-wrap: anywhere;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
 /* 45° corner cut, top right — progressive enhancement.
    corner-shape: bevel turns the radius into a straight diagonal
    and the border follows it correctly (Chromium 139+).
@@ -2058,6 +2075,14 @@ pre code,
     border: none;
     background: transparent;
     vertical-align: baseline;
+}
+
+/* Opt-in wrapping for code that is really one long line of prose,
+   like a prompt. Add {: .wrap} on the line after the closing fence. */
+.wrap pre,
+.wrap pre code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
 }
 
 /* ============================================================
