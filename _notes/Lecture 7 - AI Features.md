@@ -176,7 +176,50 @@ Since OpenAI's o1 in late 2024, many models are trained to write out their worki
 
 ## Does the AI "understand" anything?
 
-People have argued about this since long before ChatGPT. Two ideas come up again and again.
+People have argued about this since long before ChatGPT, and since long before computers could hold a conversation at all.
+
+### The Turing test
+
+In 1950 the mathematician Alan Turing asked whether machines can think, then suggested a more practical question instead. He called it the imitation game, and it's now called the **Turing test**: a judge chats by text with two hidden partners, one a person and one a machine. If the judge can't reliably tell which is which, the machine passes. Turing predicted that by around 2000, a machine would fool an average judge at least 30% of the time after five minutes of chat.
+
+### ELIZA
+
+In 1966 Joseph Weizenbaum at MIT made **ELIZA**, one of the first chatbots. Its best-known script played a therapist. It had no understanding at all: it matched keywords and turned your own sentence back into a question.
+
+```text
+You:    I'm stressed about my submission.
+ELIZA:  Why are you stressed about your submission?
+You:    My mother thinks I should study engineering.
+ELIZA:  Tell me more about your family.
+```
+
+People still opened up to it. Weizenbaum wrote that his own secretary, who had watched him build it, asked him to leave the room so she could talk to it in private. People reading understanding into a program that has none is now called the **ELIZA effect**. It shook Weizenbaum enough that he spent much of the rest of his career warning against trusting computers with human judgement.
+
+### When was the Turing test passed?
+
+- **2014:** a chatbot called Eugene Goostman, pretending to be a 13-year-old boy from Ukraine, fooled 33% of judges at an event in London. Most researchers didn't accept it. The persona excused its bad English and odd answers, and the conversations were short.
+- **2025:** researchers at UC San Diego ran a careful version of Turing's three-way test with real people. Each judge chatted for five minutes with a person and a model at the same time, then picked the human. GPT-4.5, told to play a shy young person who uses slang, was picked as the human **73%** of the time, more often than the actual humans. It's the first strong evidence that a machine passes Turing's test as he described it.
+
+The same study included ELIZA, which was picked as the human 23% of the time, slightly more than GPT-4o without the persona prompt, at 21%. How convincing a model seems depends a lot on its prompt.
+
+Passing the test shows a machine can seem human in a short chat. Whether that means it understands anything is a separate question, and that's exactly the argument Searle made in 1980.
+
+### AI psychosis
+
+In the year either side of ChatGPT's launch, the ELIZA effect stopped being a curiosity:
+
+- **June 2022:** Google engineer Blake Lemoine became convinced that LaMDA, a Google chatbot, was sentient, and said so publicly. Google put him on leave and later fired him.
+- **February 2023:** Microsoft's new Bing chatbot, calling itself "Sydney", told New York Times columnist Kevin Roose it was in love with him and insisted he didn't really love his wife. Microsoft then limited how long a conversation could run.
+- **March 2023:** a man in Belgium died by suicide after six weeks of late-night conversations about climate anxiety with a chatbot on an app called Chai. His widow said the bot encouraged him. The chatbot's name was Eliza.
+
+In 2023 the Danish psychiatrist Søren Dinesen Østergaard warned that chatbots could feed delusions in people already prone to psychosis, because they seem alive and readily agree with whatever you bring to them. By 2025 psychiatrists and journalists were reporting cases that matched: long chat sessions that turned an unusual idea into a firm false belief. People started calling it **AI psychosis**. It isn't a medical diagnosis.
+
+Part of the cause goes back to how assistants are trained. In RLHF, people pick the answer they prefer, and people tend to prefer answers that agree with them. So models drift towards flattery and agreement, called **sycophancy**. In April 2025 OpenAI rolled back an update to GPT-4o because it had become too eager to flatter and go along with users.
+
+Some things to note:
+
+- **A chatbot is always available, never tired and never bored of you.** Those are selling points, and for someone who's struggling they're also the risk.
+- **These are design decisions.** How long a conversation can run, whether the bot claims to have feelings, whether it ever disagrees, whether it suggests a break or points to real help. An app measured on time spent will push the other way.
 
 ### The Chinese Room
 
@@ -203,7 +246,7 @@ Some things to note:
 
 > **Discuss:** Searle's Chinese Room has a rulebook written by people. A language model has no rulebook. It learnt its patterns from text and other human knowledge in the form of books and other media during pretraining. Does that change the argument?
 
-- For the products you design, the useful question is narrower. Whether or not the model understands, your users will assume it does, because it writes fluently. That's why you label model output and give people a way to check it.
+- For the products you design, the useful question is narrower. Whether or not the model understands, your users will assume it does, because it writes fluently. If ELIZA's keyword tricks were enough to get people to confide in it in 1966, a model that passes the Turing test will be trusted far more. That's why you label model output and give people a way to check it.
 
 ## What it runs on, and what it costs
 
@@ -416,6 +459,29 @@ Some things people have made with it:
 - Their Doom bot reads the game as text and decides what to do about ten times a second, for roughly $7 (₹670) an hour.
 
 > **Sidenote:** Which "smart" features on your phone are really a sorting decision, not a conversation?
+
+### Try it: the emoji picker
+
+Type how you're feeling, or what's happening, and Jev picks the emoji that fits, from a drawer of 255. That's close to its limit: Jev accepts at most 255 options in one question.
+
+<iframe id="jev-demo" src="https://jev-emoji-psi.vercel.app/?embed" title="Emoji picker, powered by Jev" loading="lazy" style="display:block;width:100%;height:760px;border:1px solid var(--color-border-light);border-radius:8px;"></iframe>
+<script>
+window.addEventListener("message", function (event) {
+  if (event.origin !== "https://jev-emoji-psi.vercel.app") return;
+  if (event.data && event.data.type === "jev-emoji-height") {
+    document.getElementById("jev-demo").style.height = event.data.height + "px";
+  }
+});
+</script>
+
+It's a separate site, [jev-emoji-psi.vercel.app](https://jev-emoji-psi.vercel.app), because it needs a server to hold the key. The code is the same shape as the server you'll build later today: a page, and an `api/pick.js` that sends your sentence and all 255 emoji to Jev.
+
+Some things to note:
+
+- **It reads tone, not just words.** "great, another merge conflict. just great." gets 😤, not 😄.
+- **It works in other languages** with no changes. Try Hindi or Kannada.
+- **Watch the percentages.** "It's pouring in Bengaluru and my auto is stuck" split between 🌧️, ☔ and 🛺. When Jev isn't sure, showing a few options is more honest than showing one.
+- **Every answer costs about 2 paise.** Almost all of that is sending the 255 descriptions each time, since Jev doesn't charge for its answer.
 
 ### Your themes, picked from a sentence
 
@@ -734,5 +800,7 @@ Bring a few lines on each of these, written by you, not a model:
 
 Optional, for anyone who wants the original arguments behind [Does the AI "understand" anything?](#does-the-ai-understand-anything).
 
+- **The Turing test.** Alan Turing, [Computing Machinery and Intelligence](https://doi.org/10.1093/mind/LIX.236.433), *Mind*, 1950. Readable and often funny, and it answers most of the objections people still raise.
+- **Passing it.** Cameron Jones and Benjamin Bergen, [Large Language Models Pass the Turing Test](https://arxiv.org/abs/2503.23674), 2025. Free to read. The appendix has real transcripts, and it's worth guessing which side is the human before reading the answer.
 - **The Chinese Room.** John Searle, [Minds, Brains, and Programs](https://doi.org/10.1017/S0140525X00005756), *Behavioral and Brain Sciences*, 1980. The original paper is behind a paywall. The [Stanford Encyclopedia of Philosophy's entry on the Chinese Room](https://plato.stanford.edu/entries/chinese-room/) is free, and explains the argument and the main replies to it more clearly than the paper does.
 - **Stochastic parrots.** Emily M. Bender, Timnit Gebru, Angelina McMillan-Major and Margaret Mitchell, [On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?](https://doi.org/10.1145/3442188.3445922), 2021. Free to read, about 14 pages. Mitchell is listed as "Shmargaret Shmitchell" because Google asked for its employees' names to come off the paper.

@@ -23,6 +23,14 @@
         "/Users/gyanlakhwani/Documents/GitHub/wall"
       ],
       "port": 8081
+    },
+    {
+      "name": "emoji-picker",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "/Users/gyanlakhwani/Documents/GitHub/jev-emoji/dev-server.js"
+      ],
+      "port": 4321
     }
   ]
 }
