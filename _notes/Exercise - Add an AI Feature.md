@@ -7,7 +7,7 @@ title: "Exercise - Add an AI Feature"
 ---
 ### Put a model inside something you've built
 
-Add one AI feature to something you've already made this semester, through your own server on Vercel, as in [[Lecture 7 - AI Features]]. The bar: it should be better because it uses a model, not just have a model in it.
+Add one AI feature to something you've already made this semester, through your own server on Vercel, as in [[Lecture 7 - What are LLMs?]]. The bar: it should be better because it uses a model, not just have a model in it.
 
 ### Ideas
 

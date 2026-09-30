@@ -103,7 +103,7 @@ The status codes come in families, and knowing the family is usually enough:
 
 The 4xx/5xx split is the one to remember, because it decides whose problem it is. A 404 on your github.io URL means GitHub is fine and your filename is wrong. A 500 means stop debugging your own code.
 
-> **429** is the one that will bite you this term. It's what a free-tier API says when you've called it too often — you'll meet it in [[Lecture 7 - AI Features]].
+> **429** is the one that will bite you this term. It's what a free-tier API says when you've called it too often — you'll meet it in [[Lecture 7 - What are LLMs?]].
 
 ## Step 4 — The browser builds the page
 
@@ -149,7 +149,7 @@ The `s` is encryption. Everything between your browser and the server is scrambl
 
 - **The site itself.** A phishing site can have a perfect padlock. It's free to get one. The padlock means "nobody is listening," not "these people are honest." This is the single most widely misunderstood symbol in software, and users have been trained to read it as a trust badge.
 - **Anything after it arrives.** Your data is decrypted at the other end and stored however they store it.
-- **What's in your page.** Your API key from [[Lecture 7 - AI Features]] travels beautifully encrypted, then sits in the page source for anyone to read. Encryption in transit does nothing about a secret you published.
+- **What's in your page.** Your API key from [[Lecture 7 - What are LLMs?]] travels beautifully encrypted, then sits in the page source for anyone to read. Encryption in transit does nothing about a secret you published.
 
 > **Sidenote:** GitHub Pages gives you HTTPS free and on by default. Fifteen years ago this was expensive and fiddly and most small sites didn't bother. The web got meaningfully safer because someone made the secure option the lazy one — worth remembering next time you're designing a default.
 

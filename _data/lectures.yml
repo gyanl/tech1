@@ -62,9 +62,9 @@
     - "Understanding data flow"
 
 - num: 7
-  title: "AI Features"
+  title: "What are LLMs?"
   date: "29 September 2026"
-  slug: "lecture-7-ai-features"
+  slug: "lecture-7-what-are-llms"
   summary: "AI as an ingredient inside the products you design — what models are good and bad at, the system prompt as a design spec, and your own server to keep the key safe."
   key_areas:
     - "LLM APIs"

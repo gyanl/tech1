@@ -19,7 +19,7 @@ Compare and contrast the iOS and Android ecosystems for app development and dist
 	- **Audience** — market share where *your* users live; device diversity; who pays for apps
 	- **Distribution without a store** — could this be a PWA on a URL instead? What would you lose?
 3. **Make a recommendation.** For your imagined product: which platform first, or both, or PWA? One paragraph, defensible.
-4. **Use AI as a research assistant,** but verify anything that sounds like a number. Store fees, review times and market share all change, and a model will cite a stale figure with total confidence — you saw why in [[Lecture 7 - AI Features]]. Cite your sources with dates.
+4. **Use AI as a research assistant,** but verify anything that sounds like a number. Store fees, review times and market share all change, and a model will cite a stale figure with total confidence — you saw why in [[Lecture 7 - What are LLMs?]]. Cite your sources with dates.
 
 ### Submission
 

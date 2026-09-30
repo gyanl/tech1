@@ -6,6 +6,7 @@ slugs:
   - courses
   - exercise-a-theme-that-remembers
   - exercise-add-an-ai-feature
+  - exercise-build-with-jev
   - exercise-build-with-the-anything-api
   - exercise-figma-to-code
   - exercise-hack-the-wall
@@ -25,7 +26,7 @@ slugs:
   - lecture-4-units-and-responsiveness
   - lecture-5-apis
   - lecture-6-localstorage-and-databases
-  - lecture-7-ai-features
+  - lecture-7-what-are-llms
   - lecture-8
   - lectures
   - rules-for-class-crits
