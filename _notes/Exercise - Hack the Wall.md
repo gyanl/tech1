@@ -137,7 +137,7 @@ Run all six attacks again, and fill in this table:
 - **Which attacks did the rules stop, and which still work?** For each one that still works, why can't these rules stop it?
 - **The rules can check what the data looks like, but not who sent it.** Anyone can type any name. What would the database need to know about the person writing, to stop someone painting as you?
 - **Who should be able to read the wall, and who should be able to write to it?** Answer for the wall as it is now, and again for a version where only students in this class can paint.
-- **Would you ever want the same rules for a real product?** Pick one of the [[Lecture 6 - localStorage and Databases#Project ideas|project ideas]] and write, in plain language, who should be able to read and write each part of its tree.
+- **Would you ever want the same rules for a real product?** Pick one of the [[Exercise - Final Project Ideas|project ideas]] and write, in plain language, who should be able to read and write each part of its tree.
 
 ### Things to notice
 

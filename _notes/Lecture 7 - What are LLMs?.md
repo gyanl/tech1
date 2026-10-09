@@ -1,13 +1,12 @@
 ---
 date: 29-09-2026
-date modified: 30-09-2026
+date modified: 08-10-2026
 feed: show
 key_areas:
+  - "How LLMs work"
   - "LLM APIs"
   - "AI features in products"
-  - "AI-assisted development"
   - "Prompting as design"
-  - "Server-side languages"
 tag: lecture
 title: "Lecture 7 - What are LLMs?"
 ---
@@ -480,30 +479,8 @@ Some things to note:
 ## Homework
 
 - **Exercise:** [[Exercise - Build with Jev]]. Make something where Jev picks from answers you designed, using the class key.
-- **Project ideas:** three ideas for your final project, below. Bring them to Lecture 8.
+- **Project ideas:** [[Exercise - Final Project Ideas]]. Bring three ideas for your final project to Lecture 8.
 - **Reading:** The Bitter Lesson, below. We'll discuss it at the start of Lecture 8.
-
-### Project ideas
-
-Your final project is a small web app that a group of real people will use, built in the last three weeks of the course. Teams and topics get decided in Lecture 10, so start collecting ideas now.
-
-Bring three, each written like this:
-
-```text
-This is for ___, who currently ___.
-It lets them ___.
-It uses ___.
-```
-
-- **Who it's for** should be a group you can actually reach this month: your class, your hostel, your family, a club you're in. "Everyone" isn't a group.
-- **Who currently** is what they do today without your app: a WhatsApp group, a spreadsheet, shouting across the corridor.
-- **It uses** is which parts of this course it needs: saved data, data shared between people, an API, an AI feature. Most good ideas need at least two.
-
-Some things to note:
-
-- Small is better. One thing that fully works beats five that half work, and you'll have two studio sessions to build it.
-- The best ideas usually come from something you or your friends find annoying every week.
-- If one of your ideas has an AI feature, write its "When the user ___, the model ___, so that ___" sentence too.
 
 ### Reading: The Bitter Lesson
 

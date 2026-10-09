@@ -1,5 +1,5 @@
 ---
-date: 20-10-2026
+date: 13-10-2026
 date modified: 24-07-2026
 feed: show
 tag: exercise
@@ -11,7 +11,7 @@ Map a hypothetical product feature through the stages of a chosen software devel
 
 ### Steps
 
-1. **Invent a feature** for a product you know well — e.g., "add group expense-splitting to a payments app" or a feature from your final project.
+1. **Pick one feature from your final project**, like sign-up, or the core thing people do once they're in.
 2. **Choose a lifecycle.** Agile Scrum is the default; waterfall is allowed if you argue for it.
 3. **Map every stage.** For each: what happens, who's involved, what artifact comes out (user stories, designs, code, test results), and how long it plausibly takes.
 4. **Mark the designer's touchpoints.** Where does design lead, where does it support, where is it (dangerously) absent?

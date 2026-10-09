@@ -6,6 +6,7 @@ key_areas:
   - "Version control (Git)"
   - "Hosting and deployment"
   - "CSS — styling"
+  - "Web typography"
 tag: lecture
 title: "Lecture 2 - Git and Web Typography"
 ---

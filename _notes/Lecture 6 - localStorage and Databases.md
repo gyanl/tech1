@@ -6,7 +6,7 @@ key_areas:
   - "Browser storage"
   - "Databases — SQL"
   - "Databases — NoSQL"
-  - "Server-side languages"
+  - "Database security rules"
   - "Understanding data flow"
 tag: lecture
 title: "Lecture 6 - localStorage and Databases"

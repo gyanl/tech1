@@ -3,7 +3,9 @@ date: 18-08-2026
 date modified: 25-08-2026
 feed: show
 key_areas:
+  - "HTML — structure"
   - "CSS — styling"
+  - "CSS — layout"
   - "Design systems"
 tag: lecture
 title: "Lecture 3 - Divs, Dark Mode, Flexbox"

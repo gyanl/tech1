@@ -12,6 +12,15 @@ Tuesdays, **2:15–4:15pm**. Dates may shift if I'm travelling — I'll give as 
 | Week | Date | Lecture |
 | ---- | ---- | ------- |
 {% for l in site.data.lectures -%}
+{%- if l.num == 12 -%}
+| — | 10 November 2026 | *No class (Diwali break, 6–15 November)* |
+{% endif -%}
+{%- if l.num == 10 -%}
+| — | 20 October 2026 | *No class (Dussehra)* |
+{% endif -%}
+{%- if l.num == 8 -%}
+| — | 6 October 2026 | *No class (moved to Friday 9 October)* |
+{% endif -%}
 {%- if l.num == 6 -%}
 | — | 8 September 2026 | *No class (travelling)* |
 | — | 15 September 2026 | *No class (travelling)* |

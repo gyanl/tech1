@@ -8,7 +8,7 @@ title: "Lectures"
 
 See also: [[Syllabus]] · [[Class Schedule]] · [[Grading]]
 
-One 2-hour session per week, Tuesdays 2:15–4:15pm. No class on 8 and 15 September.
+One 2-hour session per week, Tuesdays 2:15–4:15pm. No class on 8 and 15 September, 6 October, 20 October (Dussehra), or 10 November (Diwali break).
 
 <div class="syllabus-list">
 {%- for l in site.data.lectures -%}

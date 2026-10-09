@@ -5,6 +5,7 @@ feed: show
 key_areas:
   - "Responsive web design"
   - "CSS — styling"
+  - "Accessibility"
 tag: lecture
 title: "Lecture 4 - Units and Responsiveness"
 ---

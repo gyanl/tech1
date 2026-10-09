@@ -219,7 +219,8 @@ def main():
         if fm.get("feed") != "show":
             continue
 
-        slug = slugify(name)
+        # A front matter slug overrides the filename, as it does in Jekyll.
+        slug = slugify(fm["slug"]) if fm.get("slug") else slugify(name)
         slugs.append(slug)
         out = os.path.join(OUT_DIR, slug + ".png")
         if os.path.exists(out) and not args.force:

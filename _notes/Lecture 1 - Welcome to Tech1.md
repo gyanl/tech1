@@ -3,8 +3,10 @@ date: 04-08-2026
 date modified: 02-09-2026
 feed: show
 key_areas:
-  - "Client-server architecture"
   - "HTML — structure"
+  - "CSS — styling"
+  - "JavaScript — interactivity"
+  - "Hosting and deployment"
 tag: lecture
 title: "Lecture 1 - Welcome to Tech1"
 ---

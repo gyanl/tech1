@@ -3,9 +3,10 @@ date: 01-09-2026
 date modified: 02-09-2026
 feed: show
 key_areas:
+  - "Client-server architecture"
+  - "Static vs dynamic sites"
+  - "APIs and JSON"
   - "JavaScript — interactivity"
-  - "APIs — REST"
-  - "APIs — GraphQL"
   - "Understanding data flow"
 tag: lecture
 title: "Lecture 5 - APIs"

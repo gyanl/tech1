@@ -11,7 +11,7 @@ See also: [[Lectures]] · [[Class Schedule]] · [[Grading]] · [[AI Policy]]
 
 **Course Objective:** Gain a foundational understanding of the core technologies, platforms, and concepts that underpin the modern web and mobile ecosystems, essential for product and design professionals.
 
-**Format:** 13 lectures, 2 hours each, once a week.
+**Format:** 12 lectures, 2 hours each, once a week.
 
 ### How this course works
 

@@ -7,8 +7,10 @@
   slug: "lecture-1-welcome-to-tech1"
   summary: "Set up your tools, ship a real page, and get a mental model of how the web fits together."
   key_areas:
-    - "Client-server architecture"
     - "HTML — structure"
+    - "CSS — styling"
+    - "JavaScript — interactivity"
+    - "Hosting and deployment"
 
 - num: 2
   title: "Git and Web Typography"
@@ -19,6 +21,7 @@
     - "Version control (Git)"
     - "Hosting and deployment"
     - "CSS — styling"
+    - "Web typography"
 
 - num: 3
   title: "Divs, Dark Mode, Flexbox"
@@ -26,7 +29,9 @@
   slug: "lecture-3-divs-dark-mode-flexbox"
   summary: "Grouping, naming and arranging things on a page — and a colour system that gets you dark mode for free."
   key_areas:
+    - "HTML — structure"
     - "CSS — styling"
+    - "CSS — layout"
     - "Design systems"
 
 - num: 4
@@ -37,6 +42,7 @@
   key_areas:
     - "Responsive web design"
     - "CSS — styling"
+    - "Accessibility"
 
 - num: 5
   title: "APIs"
@@ -44,9 +50,10 @@
   slug: "lecture-5-apis"
   summary: "How one program asks another for data — URLs as orders, JSON as the reply, and fetch as the way you ask."
   key_areas:
+    - "Client-server architecture"
+    - "Static vs dynamic sites"
+    - "APIs and JSON"
     - "JavaScript — interactivity"
-    - "APIs — REST"
-    - "APIs — GraphQL"
     - "Understanding data flow"
 
 - num: 6
@@ -58,72 +65,68 @@
     - "Browser storage"
     - "Databases — SQL"
     - "Databases — NoSQL"
-    - "Server-side languages"
+    - "Database security rules"
     - "Understanding data flow"
 
 - num: 7
   title: "What are LLMs?"
   date: "29 September 2026"
   slug: "lecture-7-what-are-llms"
-  summary: "AI as an ingredient inside the products you design — what models are good and bad at, the system prompt as a design spec, and your own server to keep the key safe."
+  summary: "AI as an ingredient inside the products you design: what models are, how they are made, what they cost, and the system prompt as a design spec."
   key_areas:
+    - "How LLMs work"
     - "LLM APIs"
     - "AI features in products"
-    - "AI-assisted development"
     - "Prompting as design"
-    - "Server-side languages"
 
 - num: 8
-  title: "Mobile and the Cloud"
-  date: "6 October 2026"
-  slug: "lecture-8-mobile-and-the-cloud"
-  summary: "iOS vs Android, native vs hybrid vs web — and whose computer all of this actually runs on."
+  title: "Logins and AI APIs"
+  date: "9 October 2026"
+  slug: "lecture-8-logins-and-ai-apis"
+  summary: "Proving who someone is with Sign in with Google, your own server to keep an AI key out of the browser, and your first deploy on Vercel."
   key_areas:
+    - "Authentication"
+    - "Hosting and deployment"
+    - "LLM APIs"
+    - "Server-side languages"
+    - "Serverless functions"
+    - "API keys and environment variables"
+    - "AI features in products"
+
+- num: 9
+  title: "Let's Start a Startup"
+  date: "13 October 2026"
+  slug: "lecture-9-lets-start-a-startup"
+  summary: "What a startup is, web or app and whose computer it runs on, the lifecycle and Agile, Git as a team, landing pages, and your final project kickoff."
+  key_areas:
+    - "Startups and MVPs"
     - "iOS vs Android platforms"
     - "Native vs hybrid vs web apps"
     - "App stores and distribution"
     - "IaaS, PaaS, SaaS"
     - "Scaling and cost"
-    - "How the internet works"
-    - "DNS"
-    - "HTTP / HTTPS"
-
-- num: 9
-  title: "Design Engineering"
-  date: "13 October 2026"
-  slug: "lecture-9-design-engineering"
-  summary: "Design systems in code, frameworks in one slide each, and getting from Figma to something real."
-  key_areas:
-    - "Design systems"
-    - "Figma to code"
-    - "Accessibility"
-
-- num: 10
-  title: "Start a Startup"
-  date: "20 October 2026"
-  slug: "lecture-10-start-a-startup"
-  summary: "How ideas become products: the lifecycle, Agile, and your final project kickoff."
-  key_areas:
     - "Software development lifecycle"
     - "Agile / Scrum"
+    - "Version control (Git)"
+    - "Landing pages"
 
-- num: 11
+- num: 10
   title: "Studio 1"
   date: "27 October 2026"
-  slug: "lecture-11-studio-1"
+  slug: "lecture-10-studio-1"
   summary: "Build sprint and crits on your final project."
   key_areas: []
 
-- num: 12
+- num: 11
   title: "Studio 2"
   date: "3 November 2026"
-  slug: "lecture-12-studio-2"
-  summary: "Ship-ready: polish, performance, security and privacy."
+  slug: "lecture-11-studio-2"
+  summary: "Ship-ready: the landing page, polish, performance, security and privacy."
   key_areas: []
 
-- num: 13
+- num: 12
   title: "Demo Day"
-  date: "10 November 2026"
-  slug: "lecture-13-demo-day"
+  date: "17 November 2026"
+  slug: "lecture-12-demo-day"
   summary: "Final project presentations."
   key_areas: []
