@@ -12,31 +12,108 @@ tag: lecture
 title: "Lecture 9 - API Keys and Vercel"
 ---
 
-## Homework Review
+## Follow up: how can a site check a password it never saves?
 
-- [[Exercise - Sign in with Google]]: show one. What do signed-out visitors see?
-- Your [[Exercise - Final Project Ideas|project ideas]]: read out "They'd sign up because ___" for one. Does the room believe it?
+Real apps never store your password, only a hash of it. Someone asked how the site can tell whether you typed the right password.
+
+A **hash function** turns any text into a fixed-length string, like a fingerprint. Open [this SHA-256 demo](https://andersbrownworth.com/blockchain/hash) and type into the box. SHA-256 is one of the most common hash functions. Type `Nidharna123!`, then change the first letter to lowercase:
+
+```text
+Nidharna123!  →  ef5a24be5e696b0670a070bb376616d2f4673d2b29d357dc78eac245221d21bc
+nidharna123!  →  bd65af5ab064cfc8431fd8304209ef57d9d4fbc4a2e6dfdabc42a8648c85f43b
+```
+
+Some things to note:
+
+- **The same text always gives the same hash.** Type `Nidharna123!` again and you get exactly the same string.
+- **One small change gives a completely different hash.** Nothing about the second one looks like the first.
+- **You can't work backwards.** There's no way to get `Nidharna123!` from the hash, except by guessing passwords and hashing each one.
+- **Two different pieces of text are, for all practical purposes, never going to have the same hash.**
+  This would be called a "collision"
+
+So this is what a site does with your password:
+
+| When you | The site |
+| --- | --- |
+| Sign up | Hashes your password and saves only the hash |
+| Sign in | Hashes whatever you just typed, and compares it with the saved hash |
+| Type the right password | Gets the same hash, so it lets you in |
+| Type anything else | Gets a different hash, so it doesn't |
+
+The site sees your password for a moment while it hashes it, but never keeps it. If someone steals its database, they get hashes, not passwords.
+
+Real sites go a bit further. They add some random text to each password before hashing it (called a **salt**), and use hash functions that are deliberately slow, so that guessing millions of passwords takes too long. The Computerphile video at the end of L8 covers this. With Sign in with Google, none of it is your problem: Google stores the hash, and your app never sees a password at all.
+
+### Hash functions do get broken
+
+SHA-256's older sibling, **SHA-1**, was the standard for years. In February 2017, researchers at Google and CWI Amsterdam published [two different PDF files with the same SHA-1 hash](https://shattered.io). Finding them took about nine quintillion attempts, roughly what one processor would do in 6,500 years. Once two different files can share a hash, the hash can't be trusted to tell them apart, so browsers, GitHub and others moved to SHA-256. Git named every commit with SHA-1 and is still slowly moving off it.
+
+"Broken" here means two inputs with the same hash. It doesn't mean anyone can work backwards from a hash to a password.
+
+### Could AI break SHA-256?
+
+- **It's an unlikely job for AI.** Models are good at finding patterns, and a good hash function is designed so its output has none. SHA-1 was broken by people finding a weakness in how it was designed, not by learning from examples.
+- **If SHA-256 did break**, a lot would have to move at once: Bitcoin, HTTPS certificates, the checks that make sure a software update is genuine. There's already a replacement, SHA-3, standardised in 2015.
+- **The more realistic long-term worry is quantum computers**, and they threaten encryption like RSA far more than they threaten hash functions.
 
 ---
 
-## API keys: how a program proves who it is
+## Homework Review
 
-- Sign-in is for people. When your server asks Jev/Gemini for an answer, there's no person to sign in, so the program shows a **key** instead. Back to "How API keys work" in L5.
-- In the three kinds of proof from L8, a key is "something you know", for a program. Whoever has it *is* you as far as Google is concerned. No second factor, no "was this you?" email.
-- So keeping it secret is its only protection. Google trusts the key, and it's your job to make sure only your server has it.
-- Where it can and can't live:
+- [[Exercise - Unusual Interactions]]
+- [[Exercise - Realtime Web Experience]]
+- [[Exercise - Sign in with Google]]
+- [[Exercise - Build with Jev]]
 
-| Where | Safe? |
-| --- | --- |
-| In your page or `scripts.js` | No. Anyone can View Source (L5). |
-| Committed to your repo | No. Bots scan GitHub, and history keeps it after you delete it. |
-| Pasted into a chat with your AI agent | No. It's sent to the AI company and can end up in your code. |
-| In `.env` on your laptop, ignored by Git | Yes |
-| In Vercel's environment variables | Yes |
+---
+
+## API keys
+
+- Sign-in is for people. When your app makes a request to an API that is not free, the program uses a **key** instead of an ID and password.
+- In the three kinds of proof from L8, a key is "something you know", for a program. Whoever has the key is should be able to access the service, as far as the API server is concerned. No second factor, no confirmation email.
+- So keeping it secret is its only protection. The API server trusts the key, and it's your job to make sure only your app has it.
+
+### What happens to a key
+
+An **API key** is a long, random string of letters and numbers. It works like an ID card and a password at once: it says which account is asking, and proves that account is allowed to. The company uses it to let you in, count how much you use, and bill you.
+
+From the dashboard to an answer, it goes through four steps:
+
+1. **You make it** in the company's dashboard - today we will use Google AI Studio. Their computer generates a random key. Many companies keep only a hashed copy of it (same idea as passwords in L8), which is why some dashboards, like OpenAI's, only show you a key once.
+2. **You keep it** in `.env` on your laptop and in Vercel's environment variables. Nowhere else.
+3. **Your server sends it with every request**, in a header. This line is in the `api/ask.js` you'll write later today:
+
+   ```js
+   "x-goog-api-key": process.env.GEMINI_API_KEY
+   ```
+
+   *Send the key from Vercel along with the question.* Jev's server does the same with `Authorization: Bearer ...`: a different label, the same idea.
+
+4. **The company checks it.** Their server looks the key up, checks it's still active and what it's allowed to do, counts the request against your limit, and only then answers. A missing or wrong key gets turned away, usually with `401 Unauthorized`, one of the status codes from [[Exercise - Trace a Request]]. Gemini answers a bad key with a `400` and "API key not valid".
+
+### Where it can and can't live
+
+**You can't commit your API key to your Github repo**
+- Github Pages free tier requires your projects to be public. Bots scan GitHub for things that look like API keys and they will steal it in minutes. Git commit history keeps a copy even if you delete it with a new commit.
+
+**Even if you don't use a public repo, you can't put your API key into your project.**
+- Anyone can View Source and find it and then start using your API billing.
+
+**You shouldn't paste your API key into a chat with your AI agent.**
+Your chat history is sent to the AI company and can end up in your code. Most AI agents will tell you to "rotate" a key if they think you have sent them an API key in the chat - this means disable the key from your API dashboard, then generate a new one.
 
 - Tell your agent the key's **name** (`GEMINI_API_KEY`), never its value.
-- If it leaks, delete it and make a new one. Unlike your Google password, a key takes a minute to replace, so don't hesitate.
-- We'll put all of this into practice today, with two real keys.
+- Save the value in the .env file using your text editor. This is one of the few things that you have to do manually instead of using an agent (for security reasons). Agents are told to specifically never read a .env directly.
+
+**Then where can an API key be stored?**
+In a special type of file called `.env` (short for environment) on your laptop, ignored by Git using a file called `.gitignore` that tells Github to ignore some files in your project.
+
+![[Add to Gitignore.png]]
+
+When you run the project locally, the code uses the .env saved only on your computer to access the API. When you deploy to Vercel, Vercel will not have the API key since it it's not in your repo, and you need to separately add the API key to Vercel in your project settings.
+
+- If it leaks, delete it and make a new one. Unlike your Google password, a key is quick to replace, so don't hesitate even if you are uncertain. Better safe than sorry.
+- **A leaked key spends your money.** Without billing, the worst case is someone using up your daily limit. With billing on, it's a bill.
 
 ## Where does the key go?
 
@@ -69,6 +146,24 @@ The key goes in an **environment variable**, a value you type into Vercel's dash
 
 - The live site reads keys from Vercel. But you, and the AI agent you build with, need them on your laptop too, to test before you push.
 - They go in a file called **`.env`**: one key per line, `NAME=value`. Your server code reads it with the same `process.env.NAME` it uses on Vercel.
+
+By the end of today, yours will look something like this. These keys are fake:
+
+```text
+# Gemini, from Google AI Studio
+GEMINI_API_KEY=fake-gemini-key-8f3k2m9x7q1w4e6r
+
+# Jev, the class key from the class group
+AI_GATEWAY_API_KEY=fake-gateway-key-2b7n5v1c9z3x8l4k
+```
+
+Some things to note:
+
+- **No quotes, and no spaces around the `=`.**
+- **Lines starting with `#` are notes to yourself.** Nothing reads them.
+- **The name on the left has to match exactly**, in your code (`process.env.GEMINI_API_KEY`) and in Vercel.
+- **Real keys look less friendly.** A Gemini key is 39 characters and starts with `AIza`. If you ever see `AIza...` in a file that isn't `.env`, it shouldn't be there.
+
 - **`.gitignore`** tells Git to pretend `.env` doesn't exist, so it never reaches GitHub. Make `.gitignore` first, before the key exists.
 - You make `.env` yourself, in your editor, and paste the key into it. Not through your agent.
 - Tell your agent only the key's name. "My key is in `.env` as `GEMINI_API_KEY`. Don't open or print `.env`."
@@ -248,7 +343,7 @@ Check it:
 ### What a startup is
 
 - A small team trying to find something people want, quickly, before the time or money runs out.
-- Bengaluru examples they know: Swiggy, Zerodha, Zepto. Each started as one small thing for one group of people.
+- Shaadi.com, Swiggy, Zerodha, Zepto. Each started as one small thing for one group of people.
 - A product is only part of it. A startup also has to answer: who is it for, how do they hear about it, why do they sign up, why do they come back?
 - That's why the final project is a product *and* a landing page.
 

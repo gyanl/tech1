@@ -16,7 +16,7 @@ In this exercise you'll keep the key in a file called `.env`, tell Git to ignore
 
 - **Your repo is public.** GitHub Pages needs your project to be public, and anyone can read every file in it.
 - **People search GitHub for keys.** Bots scan new commits for anything that looks like a key, often within minutes of a push.
-- **Deleting the file later doesn't help.** Every commit is kept in your repo's history (the chain from L2), so a key you pushed once can still be found after you remove it.
+- **Deleting the file later doesn't help.** Every commit is kept in your repo's history, so a key you pushed once can still be found after you remove it.
 - **A leaked key spends your money.** Without billing, the worst case is someone using up your daily limit. With billing on, it's a bill.
 
 Where a key can live, and who can see it:

@@ -16,8 +16,6 @@ title: "Lecture 8 - Authentication & Authorisation"
 - [[Exercise - Realtime Web Experience]]
 - [[Exercise - Build with Jev]]
 
-Any thoughts for final projects?
-
 ---
 
 ## Who are you?
@@ -85,19 +83,21 @@ Any thoughts for final projects?
 
 ### Why do so many sites offer Login with Google/Apple?
 
-- Why users pick it:
+- **Why users pick it:**
   - One tap, no new password to make up and forget.
   - Already signed in to Google on their phone.
   - Google's security (two-factor, "was this you?" alerts) now protects this account too.
-- Why companies offer it:
+
+- **Why companies offer it:**
   - More people finish signing up. Every form field loses some of them.
   - No passwords to store, no "forgot password" emails, a verified email for free.
   - Fewer fake accounts than a plain email form.
-- What it costs:
+
+- **What it costs:**
   - If you lose your Google account, you lose every app you signed in to with it.
   - Google learns which apps you use.
   - The app depends on Google. If Google changes the rules or goes down, sign-in goes down.
-- **Sign in with Apple** offers "Hide My Email": the app gets a made-up address that forwards to you. Apple pushes iOS apps that offer Google sign-in to also offer a privacy-focused option, which is why Apple's button keeps appearing. (More on app stores in L12.)
+
 
 ### Which type of login is a design decision
 
@@ -130,3 +130,10 @@ Ask these about your multiplayer experience once it has sign-in:
 ## Homework
 
 - [[Exercise - Sign in with Google]]
+
+### More: how hashing works
+
+- **Try it:** type into the box on [Anders Brownworth's hash demo](https://andersbrownworth.com/blockchain/hash) and watch the fingerprint change with every letter. Type your name, then change one letter.
+- **Watch:** [How NOT to Store Passwords!](https://www.youtube.com/watch?v=8ZtInClXe1Q) (Computerphile, with Tom Scott). Plain text, encryption, hashing, and why only the last one is right. About ten minutes.
+- **Watch:** [Hashing Algorithms and Security](https://www.youtube.com/watch?v=b4b8ktEV4Bg) (Computerphile, Tom Scott again). What a hash is for, and why the ones we use keep changing.
+- **Going further:** [SHA: Secure Hashing Algorithm](https://www.youtube.com/watch?v=DMtFhACPnTY) (Computerphile, with Mike Pound) goes inside one. Optional, and more technical than you need.
