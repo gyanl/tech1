@@ -35,7 +35,7 @@ Or anything else where one of Jev's three question types fits: yes or no, pick o
 
 I'll share a class key in the class group. It has a spending limit, and it's shared by everyone, so:
 
-- **It only ever goes in Vercel**, under **Settings → Environment Variables**, named `AI_GATEWAY_API_KEY`. Never in your page, your repo, a screenshot or a chat with an AI tool.
+- **It only goes in two places:** `.env` on your laptop and Vercel's **Settings → Environment Variables**, named `AI_GATEWAY_API_KEY` ([[Exercise - Keep Your Keys Out of Git]]). Never in your page, your repo, a screenshot or a chat with an AI tool.
 - **Every call spends from the same pot.** A small question costs a fraction of a paisa. The emoji picker, with 255 options, costs about 2 paise a pick. When the limit runs out, it stops working for the whole class.
 - **Don't call it on every keystroke, and don't loop it.** One call when someone presses a button.
 - If you think the key has leaked, tell me straight away and I'll replace it.

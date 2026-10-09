@@ -8,7 +8,7 @@ title: "Exercise - Final Project Ideas"
 
 ### Start collecting ideas for your final project
 
-Your final project is a startup: a digital product that people sign in to and use, and a landing page that tells them about it and lets them sign up. You'll build it in the last three weeks of the course. Teams and topics get decided in Lecture 9, so start collecting ideas now.
+Your final project is a startup: a digital product that people sign in to and use, and a landing page that tells them about it and lets them sign up. You'll build it in the last three weeks of the course. Teams and topics get decided in Lecture 10, so start collecting ideas now.
 
 Bring three, each written like this:
 
@@ -26,6 +26,6 @@ It uses ___.
 
 Some things to note:
 
-- Small is better. One thing that fully works beats five that half work, and you'll have two studio sessions to build it.
+- Small is better. One thing that fully works beats five that half work, and you'll have about four weeks to build it.
 - The best ideas usually come from something you or your friends find annoying every week.
 - If one of your ideas has an AI feature, write its "When the user ___, the model ___, so that ___" sentence too.

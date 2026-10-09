@@ -80,53 +80,66 @@
     - "Prompting as design"
 
 - num: 8
-  title: "Logins and AI APIs"
+  title: "Authentication & Authorisation"
   date: "9 October 2026"
-  slug: "lecture-8-logins-and-ai-apis"
-  summary: "Proving who someone is with Sign in with Google, your own server to keep an AI key out of the browser, and your first deploy on Vercel."
+  slug: "lecture-8-authentication-authorisation"
+  summary: "How you prove who you are online, trust and identity providers, and why Sign in with Google lets your rules finally tell people apart."
   key_areas:
     - "Authentication"
-    - "Hosting and deployment"
-    - "LLM APIs"
-    - "Server-side languages"
-    - "Serverless functions"
-    - "API keys and environment variables"
-    - "AI features in products"
+    - "Authorisation"
+    - "Identity providers"
 
 - num: 9
-  title: "Let's Start a Startup"
+  title: "API Keys and Vercel"
   date: "13 October 2026"
-  slug: "lecture-9-lets-start-a-startup"
-  summary: "What a startup is, web or app and whose computer it runs on, the lifecycle and Agile, Git as a team, landing pages, and your final project kickoff."
+  slug: "lecture-9-api-keys-and-vercel"
+  summary: "How a program proves who it is, keeping keys in .env and on Vercel, your own AI server with Gemini and Jev, and the startup brief for your final project."
   key_areas:
+    - "API keys and environment variables"
+    - "LLM APIs"
+    - "Serverless functions"
+    - "Hosting and deployment"
     - "Startups and MVPs"
-    - "iOS vs Android platforms"
-    - "Native vs hybrid vs web apps"
-    - "App stores and distribution"
-    - "IaaS, PaaS, SaaS"
-    - "Scaling and cost"
+
+- num: 10
+  title: "Let's Start a Startup"
+  date: "27 October 2026"
+  slug: "lecture-10-lets-start-a-startup"
+  summary: "Landing pages, how software gets made, Scrum for a team of three, Git as a team, and your final project kickoff."
+  key_areas:
+    - "Landing pages"
     - "Software development lifecycle"
     - "Agile / Scrum"
     - "Version control (Git)"
-    - "Landing pages"
-
-- num: 10
-  title: "Studio 1"
-  date: "27 October 2026"
-  slug: "lecture-10-studio-1"
-  summary: "Build sprint and crits on your final project."
-  key_areas: []
 
 - num: 11
-  title: "Studio 2"
+  title: "AI Features and the Cloud"
   date: "3 November 2026"
-  slug: "lecture-11-studio-2"
-  summary: "Ship-ready: the landing page, polish, performance, security and privacy."
-  key_areas: []
+  slug: "lecture-11-ai-features-and-the-cloud"
+  summary: "A project check-in, what people will do to your AI server, designing the feature, and whose computer it all runs on and what it costs."
+  key_areas:
+    - "AI features in products"
+    - "LLM APIs"
+    - "IaaS, PaaS, SaaS"
+    - "Scaling and cost"
 
 - num: 12
-  title: "Demo Day"
+  title: "Mobile and Shipping"
   date: "17 November 2026"
-  slug: "lecture-12-demo-day"
-  summary: "Final project presentations."
+  slug: "lecture-12-mobile-and-shipping"
+  summary: "Web, cross-platform or native, iOS vs Android and the app stores, then getting your project ready to ship: accessibility, speed, security and a real domain."
+  key_areas:
+    - "iOS vs Android platforms"
+    - "Native vs hybrid vs web apps"
+    - "App stores and distribution"
+    - "Accessibility"
+    - "Performance"
+    - "Security and privacy"
+    - "DNS"
+
+- num: 13
+  title: "Demo Day"
+  date: "27 November 2026"
+  slug: "lecture-13-demo-day"
+  summary: "Final project presentations and evaluation."
   key_areas: []

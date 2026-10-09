@@ -19,15 +19,16 @@ Both are deployed, built mostly by directing AI tools, and presented at Demo Day
 
 ### The shape of it
 
-- **Kickoff (L9, 13 October):** form teams, pitch ideas, submit a one-page proposal: the problem, who it's for, the core flow, and a sketch of your stack.
-- **Sprint 1 (L10, 27 October):** sign in and the core flow working end to end, however ugly. Live crit.
-- **Sprint 2 (L11, 3 November):** the landing page, and the product made ship-ready: empty and error states, a security check, polish. Feature freeze at the end of the week.
-- **Demo Day (L12, 17 November):** a 7-minute live demo, starting from your landing page, plus your process story, and 3 minutes of Q&A.
+- **Introduced (L9, 13 October):** the brief, and what a startup is. Sharpen your ideas.
+- **Kickoff (L10, 27 October):** form teams, pitch ideas, submit a one-page proposal: the problem, who it's for, the core flow, and a sketch of your stack.
+- **Sprint 1 (L11, 3 November):** sign in and the core flow working end to end, however ugly. Live crit.
+- **Sprint 2 (L12, 17 November):** the landing page, and the product made ship-ready: empty and error states, a security check, polish. Feature freeze at the end of the week.
+- **Demo Day (L13, Friday 27 November, from 2:15pm):** a 7-minute live demo, starting from your landing page, plus your process story, and 3 minutes of Q&A.
 
 ### Requirements
 
 1. **Deployed and public.** A URL that works on a phone on the day of the demo.
-2. **Sign in.** People sign in to use the product, with Sign in with Google or another provider, as in [[Lecture 8 - Logins and AI APIs]]. Your database rules use it, so people can only change their own things.
+2. **Sign in.** People sign in to use the product, with Sign in with Google or another provider, as in [[Lecture 8 - Authentication & Authorisation]] and [[Exercise - Sign in with Google]]. Your database rules use it, so people can only change their own things.
 3. **Has a back-end.** It stores or fetches real data: a database, an external API, or both.
 4. **A landing page** that:
    - says what the product is and who it's for, in the first screen
@@ -42,7 +43,7 @@ An AI feature is welcome if it earns its place, but it's not required.
 
 ### Scope advice
 
-The best projects are one small thing that fully works. "Splitwise for hostels" beats "a social network." You will cut scope in L10. Teams that pick a small idea get to spend L11 on the landing page and polish instead of fixing things.
+The best projects are one small thing that fully works. "Splitwise for hostels" beats "a social network." You will cut scope in L11. Teams that pick a small idea get to spend L12 on the landing page and polish instead of fixing things.
 
 A startup needs people who'll actually sign up. Pick a group you can reach this month, and get a few of them to sign up before Demo Day.
 

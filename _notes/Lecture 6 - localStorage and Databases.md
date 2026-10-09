@@ -1,6 +1,6 @@
 ---
 date: 22-09-2026
-date modified: 22-09-2026
+date modified: 09-10-2026
 feed: show
 key_areas:
   - "Browser storage"
