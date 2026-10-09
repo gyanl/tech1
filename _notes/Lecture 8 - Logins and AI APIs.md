@@ -1,6 +1,6 @@
 ---
 date: 09-10-2026
-date modified: 08-10-2026
+date modified: 09-10-2026
 feed: show
 key_areas:
   - "Authentication"
@@ -26,9 +26,19 @@ Any thoughts for final projects?
 
 ## Who are you?
 
-- Back to the wall from L6 and [[Exercise - Hack the Wall]]: anyone could paint as anyone, because "join with your name" is just a name you type.
-- The question L6 left open: "What would you have to change to stop it?" Rules can only check who someone is if the app knows who they are.
-- Every product they use has this: Instagram, Gmail, Swiggy. What does each one let you do before you sign in?
+- How can you prove that you are you?
+
+--- 
+
+## Proving Identity Offline
+
+- How do you prove who you are at the airport, the bank, a new SIM shop? ID card, signature, Aadhaar fingerprint, your face against the photo.
+
+---
+
+- When we tried The Wall from L6, anyone could paint as anyone, because "join with your name" was just a name you typed.
+- Rules can only check who someone is if the app knows who they are.
+- Every product they use has this: Instagram, Gmail, Swiggy, Google Flights, IRCTC. What does each one let you do before you sign in?
 
 ### Two words: authentication and authorisation
 
@@ -38,32 +48,32 @@ Any thoughts for final projects?
 
 ### How do you prove who you are?
 
-- Start offline: how do you prove who you are at the airport, the bank, a new SIM shop? ID card, signature, Aadhaar fingerprint, your face against the photo.
 - Online there are only three kinds of proof:
 
 | Kind | Examples | How it fails |
 | --- | --- | --- |
-| Something you **know** | Password, PIN, UPI PIN, "mother's maiden name" | Guessed, reused, phished, written on a sticky note |
+| Something you **know** | Password, PIN, UPI PIN, API Key, "mother's maiden name" | Guessed, reused, phished, written on a sticky note |
 | Something you **have** | Your phone (SMS OTP, an authenticator app), a security key, your laptop | Lost, stolen, SIM swapped |
 | Something you **are** | Face ID, fingerprint | Can't be changed if it leaks |
 
 - **Two-factor** means two different kinds, not two passwords. Password plus OTP is two factors; password plus security question is still one.
+
 - **Passkeys**: your phone or laptop proves it's you with Face ID or your fingerprint, and nothing is typed. No password to steal or reuse. Google, Apple and GitHub already offer them.
-- Ask the room: which of these does UPI use when you pay? Which does Instagram use? Why are they different?
+
+- Which of these does UPI use when you pay? Which does Instagram use? Why are they different?
 
 ### Trust
 
 - No login actually proves *who* you are. It proves you have something that someone trusted earlier: the password you set, the phone number the telecom company gave you, the Google account Google let you make.
 - So every login is a **chain of trust**. "Sign in with Google" means your app trusts Google, Google trusts your password and phone, and the phone OTP trusts Jio or Airtel. A SIM swap scam breaks the last link.
 - **Trust should match the stakes.** The wall can trust a Google account. A bank asks again before every transfer. Zerodha and PhonePe need KYC with Aadhaar and PAN because the law needs a real person. More proof means more friction, and choosing how much is a design decision.
-- **Identity isn't always a real name.** A Firebase `uid` means "the same person as last time", not "this is Priya". Reddit is pseudonymous and LinkedIn wants your real name. Which does your product need?
+- **Identity isn't always a real name.** Reddit is pseudonymous and LinkedIn wants your real name. Which does your product need?
 - **Trust goes the other way too.** Users have to trust your site before they type anything into it: the domain, HTTPS, a sign-in page that looks right. Phishing is a fake page that looks right. The blue tick on Instagram was a trust signal until anyone could buy one.
-
 > **Sidenote:** Think of the last time an app asked you to prove who you are and it felt like too much. Was it?
 
 ### Don't store passwords yourself
 
-- Passwords are the most dangerous data an app holds. Real apps never store the password itself (one line on hashing).
+- Passwords are the most dangerous data an app holds. Real apps never store the password itself - they instead "hash" the password and save the result.
 - Use someone else's proof instead: Sign in with Google or Apple, a magic link by email, an OTP by SMS.
 - Phone OTP is the norm in India (Swiggy, Zomato, PhonePe). Why? Who does that leave out?
 
@@ -73,10 +83,12 @@ Any thoughts for final projects?
 - What happens when you click it (do it live, watch the address bar):
   1. The app sends you to `accounts.google.com`. The app's page is gone, so the app never sees your Google password.
   2. Google checks it's you, the way it always does (password, phone, passkey).
-  3. Google asks what to share with the app: name, email, photo.
+  3. Google asks what to share with the app: name, email, photo (the first time, or if what the app is asking for has changed).
   4. Google sends you back with a signed note: "this is user 1234, their email is ___". The app trusts the note because it trusts Google.
-- The standard behind this is called **OAuth**. One line, no more.
-- Why users pick it:
+- The standard behind this is called **OAuth**.
+
+### Why do so many sites offer Login with Google/Apple?
+
   - One tap, no new password to make up and forget.
   - Already signed in to Google on their phone.
   - Google's security (two-factor, "was this you?" alerts) now protects this account too.
@@ -89,7 +101,11 @@ Any thoughts for final projects?
   - Google learns which apps you use.
   - The app depends on Google. If Google changes the rules or goes down, sign-in goes down.
 - **Sign in with Apple** offers "Hide My Email": the app gets a made-up address that forwards to you. Apple pushes iOS apps that offer Google sign-in to also offer a privacy-focused option, which is why Apple's button keeps appearing. (Links to the app stores section later.)
-- **Which buttons to show is a design decision**, and it depends on who your users are:
+
+
+## Which type of Login is a design decision**
+
+Depends on who your users are:
   - Indian consumer apps: phone OTP, and maybe Google.
   - Developer tools (Vercel, Figma plugins): GitHub.
   - Workplaces: Microsoft, or "Sign in with SSO", which is how Figma and Slack work at a company.
@@ -99,9 +115,27 @@ Any thoughts for final projects?
 
 ### How the site remembers you're signed in
 
-- After you sign in, the browser keeps a **token**: a signed pass saying who you are, stored in the browser like the localStorage theme from L6.
-- Every request to the database or your server carries the token. That's how a rule knows "this is gyanl".
-- Show it: DevTools → Application → Storage after signing in.
+- After you sign in, the browser keeps a **token**: a signed pass saying who you are, stored in the browser securely.
+- Every request to the database or your server carries the token. That's how a rule knows "this is gyanl" without needing the password again constantly.
+
+### API keys: how a program proves who it is
+
+- Sign-in is for people. When your server asks Jev/Gemini for an answer, there's no person to sign in, so the program shows a **key** instead. Back to "How API keys work" in L5.
+- In the three kinds of proof, a key is "something you know", for a program. Whoever has it *is* you as far as Google is concerned. No second factor, no "was this you?" email.
+- So keeping it secret is its only protection. Google trusts the key, and it's your job to make sure only your server has it.
+- Where it can and can't live:
+
+| Where | Safe? |
+| --- | --- |
+| In your page or `scripts.js` | No. Anyone can View Source (L5). |
+| Committed to your repo | No. Bots scan GitHub, and history keeps it after you delete it. |
+| Pasted into a chat with your AI agent | No. It's sent to the AI company and can end up in your code. |
+| In `.env` on your laptop, ignored by Git | Yes |
+| In Vercel's environment variables | Yes |
+
+- Tell your agent the key's **name** (`GEMINI_API_KEY`), never its value.
+- If it leaks, delete it and make a new one. Unlike your Google password, a key takes a minute to replace, so don't hesitate.
+- The details, step by step: [[Exercise - Keep Your Keys Out of Git]]. We'll use it for real in [Where does the key go?](#where-does-the-key-go).
 
 ---
 
@@ -194,7 +228,7 @@ You'll make a page with one text box. It sends a question to your server, your s
 
 1. Go to [aistudio.google.com/apikey](https://aistudio.google.com/apikey) and click **Create API key**.
 2. Don't add a billing account. Without one, the worst case is hitting the day's free limit. You can't get a bill.
-3. Keep the key somewhere private for now. Not in your code, not in the class group.
+3. Keep the key somewhere private for now. Not in your code, not in the class group, and not in a chat with your AI agent. [[Exercise - Keep Your Keys Out of Git]] shows where it goes on your laptop.
 4. Copy the exact name of the model you used in AI Studio. Model names change every few months, so take it from there, not from these notes.
 
 On the free tier, Google may use what you send to improve its products. Don't send anything private, yours or anyone else's.
@@ -394,6 +428,7 @@ And label anything the model wrote. People read more carefully when they know, w
 
 - Finish adding Sign in with Google to your multiplayer experience on Vercel, and share the live link.
 - Finish your AI server, and try everything in [Break it](#break-it).
+- [[Exercise - Keep Your Keys Out of Git]]
 - Come to L9 with 1–2 [[Exercise - Final Project Ideas|final project ideas]] and who you'd like to work with. What does someone get once they've signed up?
 
 ### Reading: who makes the models
