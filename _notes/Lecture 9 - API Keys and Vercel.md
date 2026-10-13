@@ -1,6 +1,6 @@
 ---
 date: 13-10-2026
-date modified: 09-10-2026
+date modified: 13-10-2026
 feed: show
 key_areas:
   - "API keys and environment variables"
@@ -10,11 +10,21 @@ key_areas:
   - "Startups and MVPs"
 tag: lecture
 title: "Lecture 9 - API Keys and Vercel"
+
+---
+
+## Homework Review
+
+- [[Exercise - Unusual Interactions]]
+- [[Exercise - Realtime Web Experience]]
+- [[Exercise - Sign in with Google]]
+- [[Exercise - Build with Jev]] - if you had trouble with this, some of today's lecture will help.
+
 ---
 
 ## Follow up: how can a site check a password it never saves?
 
-Real apps never store your password, only a hash of it. Someone asked how the site can tell whether you typed the right password.
+Real apps never store your password, only a hash of it. So how can the site can tell whether you typed the right password? Let's dig a bit deeper.
 
 A **hash function** turns any text into a fixed-length string, like a fingerprint. Open [this SHA-256 demo](https://andersbrownworth.com/blockchain/hash) and type into the box. SHA-256 is one of the most common hash functions. Type `Nidharna123!`, then change the first letter to lowercase:
 
@@ -46,18 +56,40 @@ Real sites go a bit further. They add some random text to each password before h
 
 SHA-256's older sibling, **SHA-1**, was the standard for years. In February 2017, researchers at Google and CWI Amsterdam published [two different PDF files with the same SHA-1 hash](https://shattered.io). Finding them took about nine quintillion attempts, roughly what one processor would do in 6,500 years. Once two different files can share a hash, the hash can't be trusted to tell them apart, so browsers, GitHub and others moved to SHA-256.
 
-"Broken" here means that people found two inputs with the same hash, i.e. a collision. It doesn't mean anyone can work backwards from a hash to a password.
+"Broken" here means that people found two inputs with the same hash, i.e. a collision. It doesn't mean anyone can work backwards from a hash to a password. But this is also a problem because many times a site publishes a hash for files like a software installer - if someone else was able to make a different file with malicious code with the same hash, the hash would no longer act as a security measure.
 
 ---
 
-## Homework Review
+## The Cloud is just someone else's computer
 
-- [[Exercise - Unusual Interactions]]
-- [[Exercise - Realtime Web Experience]]
-- [[Exercise - Sign in with Google]]
-- [[Exercise - Build with Jev]]
+Everything you've made this semester runs on someone else's computer:
 
----
+| What you made | Whose computer it runs on |
+| --- | --- |
+| Your github.io site | GitHub's (owned by Microsoft) |
+| Your wall and your multiplayer experience | Google's, through Firebase |
+| Your AI server | Vercel's, which rents its computers from Amazon |
+| Gemini | Google's |
+| Jev | TypeSafe's, reached through Vercel's AI Gateway |
+
+**The cloud** means renting computers from a company instead of owning them. What changes from one service to the next is how much of the work they do for you.
+
+## IaaS, PaaS, SaaS
+
+| | What you rent | What you look after | Examples | What you've used |
+| --- | --- | --- | --- | --- |
+| **IaaS** (infrastructure) | A computer in a data centre | Everything on it: the operating system, the server software, updates, security | AWS EC2, Google Compute Engine, DigitalOcean | Nothing yet |
+| **PaaS** (platform) | A place to run your code | Just your code | Vercel, Render | Your `api/ask.js` from L9 |
+| **Backend as a service** | A ready-made database, sign-in and storage | Your data and your rules | Firebase, Supabase | Your wall, and sign-in from L8 |
+| **SaaS** (software) | A finished product | Nothing. You just use it | Gmail, Figma, Notion | Every day |
+
+Some things to note:
+
+- **Each step down the table is less control and less work.** Startups usually start near the bottom and only rent raw computers when they have to.
+- **The layers stack.** Vercel is a PaaS that runs on Amazon's IaaS. Figma, a SaaS, runs on Amazon too.
+- **The more someone else runs, the more their limits become your limits.** Firebase decides how many people can be connected at once, not you. That's a design constraint like any other.
+- For the purpose of this class, we will mostly use Platforms and Backends as a service.
+
 
 ## API keys
 
@@ -106,7 +138,6 @@ With a wrong key, it sends back a `400` and an error instead:
 }
 ```
 
-
 ## Using API Keys
 
 #### You can't commit your API key to your Github repo
@@ -117,7 +148,7 @@ Github Pages free tier requires your projects to be public. Bots scan GitHub for
 
 Anyone can View Source and find it and then start using your API billing.
 
-#### You shouldn't paste your API key into a chat with your AI agent 
+#### You shouldn't paste your API key into a chat with your AI agent
 
 Your chat history is sent to the AI company and can end up in your code. Most AI agents will tell you to "rotate" a key if they think you have sent them an API key in the chat - this means disable the key from your API dashboard, then generate a new one.
 
@@ -132,7 +163,6 @@ Save the value in the .env file using your text editor. This is one of the few t
 When you run the project locally, the code uses the .env saved only on your computer to access the API. When you deploy to Vercel, Vercel will not have the API key since it it's not in your repo, and you need to separately add the API key to Vercel in your project settings.
 
 If it leaks, delete it and make a new one. Unlike your Google password, a key is quick to replace, so don't hesitate even if you are uncertain. Better safe than sorry.
-
 
 ## Environments
 
@@ -149,7 +179,6 @@ For your projects, Vercel gives you a smaller version of this:
 
 1. **Local** is your laptop, at `localhost`. It reads keys from the `.env` file.
 2. **Production** is your real `your-project.vercel.app`. It reads keys from Vercel's environment settings.
-
 
 ## Where does the key go?
 
@@ -172,7 +201,6 @@ So the key has to live somewhere visitors can't read: a **server**. Your page as
    sees the answer  ◀──────── sends back JSON ◀────────────────┘
 ```
 
-
 You don't have to rent a computer for this. On [Vercel](https://vercel.com), a JavaScript file in a folder called `api` becomes server code: `api/ask.js` in your repo runs at `your-project.vercel.app/api/ask`. This is called a **serverless function**. There is a server, but Vercel looks after it.
 
 The key goes in an **environment variable**, a value you type into Vercel's dashboard. Your server code can read it, and it never goes in your repo. The Anything API reads its key with `process.env.ANTHROPIC_API_KEY`.
@@ -192,18 +220,6 @@ GEMINI_API_KEY=fake-gemini-key-8f3k2m9x7q1w4e6r
 AI_GATEWAY_API_KEY=fake-gateway-key-2b7n5v1c9z3x8l4k
 ```
 
-Some things to note:
-
-- **No quotes, and no spaces around the `=`.**
-- **Lines starting with `#` are notes to yourself.** Nothing reads them.
-- **The name on the left has to match exactly**, in your code (`process.env.GEMINI_API_KEY`) and in Vercel.
-- **Real keys look less friendly.** A Gemini key is 39 characters and starts with `AIza`. If you ever see `AIza...` in a file that isn't `.env`, it shouldn't be there.
-
-- **`.gitignore`** tells Git to pretend `.env` doesn't exist, so it never reaches GitHub. Make `.gitignore` first, before the key exists.
-- You make `.env` yourself, in your editor, and paste the key into it. Not through your agent.
-- Tell your agent only the key's name. "My key is in `.env` as `GEMINI_API_KEY`. Don't open or print `.env`."
-- Before every commit, look at GitHub Desktop's list of changed files. `.env` should never be there.
-- The full version, step by step: [[Exercise - Keep Your Keys Out of Git]].
 
 ## Class Activity: your own AI server
 
@@ -220,27 +236,26 @@ On the free tier, Google may use what you send to improve its products. Don't se
 
 ### 2. Make a repo
 
-Create a new repo from [web-starter](https://github.com/gyanl/web-starter), like in [[Lecture 1 - Welcome to Tech1]]. Call it something like `ask-me` and clone it. This will be your first project on Vercel.
+Create a new repo from [ask-me](https://github.com/gyanl/ask-me) with **Use this template**, like you did with web-starter in [[Lecture 1 - Welcome to Tech1]], and clone it. This will be your first project on Vercel.
+
+It's web-starter with a few things added:
+
+- **`.gitignore`**, already set up to keep `.env` out of GitHub.
+- **`.env.example`**, which lists the key this project needs, with a fake value.
+- **An empty `api` folder**, for the server code in step 4.
 
 ### 3. Keep the key in `.env`
 
-1. In the top folder of the repo, make `.gitignore`:
-
-```text
-.env
-.env.local
-.vercel
-```
-
-2. Next to it, make `.env` by hand and paste your key in. No quotes, no spaces around the `=`:
+1. In your editor, copy `.env.example` and name the copy `.env`.
+2. Replace the fake value with your key. No quotes, no spaces around the `=`:
 
 ```text
 GEMINI_API_KEY=paste-your-key-here
 ```
 
-3. Open GitHub Desktop. `.gitignore` should be in the list of changes, and `.env` shouldn't. Commit `.gitignore`.
+3. Open GitHub Desktop. `.env` should not be in the list of changes. If it is, don't commit, and ask me.
 
-Files starting with a dot are hidden in Finder. Press **⌘⇧.** to see them.
+Files starting with a dot are hidden in Finder. Press **⌘⇧.** to see them, or `ls -a` in the Terminal.
 
 ### 4. Ask your agent for the server
 
@@ -291,6 +306,79 @@ Check:
 
 You can't test this by opening `index.html` on its own, because there's no server running `api/ask.js`. Ask your agent to run it with `vercel dev`, which runs your `api` folder and reads `.env` on your laptop, like a small local Vercel.
 
+#### The Terminal
+
+The **Terminal** is an app where you control your computer by typing instead of clicking. Everything you do in Finder or File Explorer, you can also do here.
+
+To open it:
+
+- **Mac:** press **⌘ Space**, type `Terminal`, press Enter.
+- **Windows:** open the Start menu, type `Terminal` (or `PowerShell` on older Windows), press Enter.
+
+It's always "in" one folder at a time, like a Finder window. Try these, pressing Enter after each:
+
+| What it does | Mac | Windows (PowerShell) |
+| --- | --- | --- |
+| Which folder am I in? | `pwd` | `pwd` |
+| What's in this folder? | `ls` | `ls` |
+| Go into a folder | `cd Documents` | `cd Documents` |
+| Go back up one folder | `cd ..` | `cd ..` |
+| Open this folder in Finder / File Explorer | `open .` | `explorer .` |
+
+Try it: `cd Documents`, then `ls`, then `cd GitHub`, then `ls` again. You should see the repos you've cloned this semester.
+
+Some things to note:
+
+- **`.` means "this folder" and `..` means "the folder above".**
+- **Folder names with spaces need quotes:** `cd "My Projects"`.
+- **Press Tab to finish a name** you've started typing. It saves typing and spelling mistakes.
+- **The up arrow brings back your last command.**
+- **Hidden files** like `.env` don't show with plain `ls`. On a Mac use `ls -a`; in PowerShell use `ls -Force`.
+
+This is also where your AI agent runs commands when it works on your project. When it asks permission to run something, it's asking to type a command here.
+
+#### Install the Vercel CLI
+
+A **CLI** (command-line interface) is a program you use by typing commands in the Terminal. GitHub Desktop and the Vercel website are graphical: you click. Git and Vercel also have CLI versions that do the same things with typed commands. Your AI agent mostly works through CLIs, which is why it can run Git and Vercel for you.
+
+The Vercel CLI needs Node.js, the program that runs JavaScript outside the browser.
+
+1. Download and install the **LTS** version from [nodejs.org](https://nodejs.org).
+2. Open the Terminal and install the Vercel CLI (same command on Mac and Windows):
+
+```text
+npm install -g vercel
+```
+
+*npm is Node's app store for code. `install -g vercel` means install Vercel's CLI for the whole laptop, not just this project.*
+
+3. Log in, and pick **Continue with GitHub** in the browser window that opens:
+
+```text
+vercel login
+```
+
+4. In the Terminal, go to your repo's folder and link it to your Vercel project:
+
+```text
+cd Documents/GitHub/ask-me
+vercel link
+```
+
+5. Run it:
+
+```text
+vercel dev
+```
+
+Open the address it prints, usually `http://localhost:3000`. That's your local environment, and it reads your key from `.env`. Press **Ctrl+C** in the Terminal to stop it.
+
+Some things to note:
+
+- If `npm` says "command not found", close the Terminal and open a new one after installing Node.
+- If `npm install -g` says "permission denied", ask your agent to fix it. Don't use `sudo` unless you know why.
+- You can also ask your agent to do steps 2, 4 and 5 for you. You have to do `vercel login` yourself, because it signs in as you.
+
 ### 6. Put it on Vercel
 
 1. Commit and push.
@@ -319,7 +407,7 @@ AI_GATEWAY_API_KEY=the-class-key
 - Paste the whole `.env` into Vercel again, the same way, and redeploy.
 - Ask your agent to add the `api/decide.js` server from [[Exercise - Build with Jev]] to the same repo: "Add api/decide.js as described in this exercise. The key is in .env as AI_GATEWAY_API_KEY. Don't open or print .env." One project, two servers, two keys.
 - It's shared by the whole class and has a spending limit, so one call when someone presses a button, never on every keystroke. If you think it's leaked, tell me and I'll replace it.
-- Make `.env.example` with both names and fake values, and commit it. That's how a teammate, or an agent, knows which keys the project needs.
+- Add `AI_GATEWAY_API_KEY` with a fake value to `.env.example` too, and commit it. That's how a teammate, or an agent, knows which keys the project needs.
 
 Check it:
 
