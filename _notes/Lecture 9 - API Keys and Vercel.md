@@ -33,28 +33,20 @@ Some things to note:
 
 So this is what a site does with your password:
 
-| When you | The site |
-| --- | --- |
-| Sign up | Hashes your password and saves only the hash |
-| Sign in | Hashes whatever you just typed, and compares it with the saved hash |
-| Type the right password | Gets the same hash, so it lets you in |
-| Type anything else | Gets a different hash, so it doesn't |
+1. **When you sign up**, it hashes your password and saves only the hash.
+2. **When you sign in**, it hashes whatever you just typed and compares it with the saved hash.
+3. **If you typed the right password**, the hashes match, so it lets you in.
+4. **If you typed anything else**, the hashes don't match, so it doesn't.
 
-The site sees your password for a moment while it hashes it, but never keeps it. If someone steals its database, they get hashes, not passwords.
+The site sees your password for a moment while it hashes it, but it never stores it. If someone steals its database, they get hashes, not passwords.
 
-Real sites go a bit further. They add some random text to each password before hashing it (called a **salt**), and use hash functions that are deliberately slow, so that guessing millions of passwords takes too long. The Computerphile video at the end of L8 covers this. With Sign in with Google, none of it is your problem: Google stores the hash, and your app never sees a password at all.
+Real sites go a bit further. They add some random text to each password before hashing it (called a **salt**), and use hash functions that are deliberately slow, so that guessing millions of passwords takes too long. With Sign in with Google, none of it is your problem: Google stores the hash, and your app never sees a password at all.
 
 ### Hash functions do get broken
 
-SHA-256's older sibling, **SHA-1**, was the standard for years. In February 2017, researchers at Google and CWI Amsterdam published [two different PDF files with the same SHA-1 hash](https://shattered.io). Finding them took about nine quintillion attempts, roughly what one processor would do in 6,500 years. Once two different files can share a hash, the hash can't be trusted to tell them apart, so browsers, GitHub and others moved to SHA-256. Git named every commit with SHA-1 and is still slowly moving off it.
+SHA-256's older sibling, **SHA-1**, was the standard for years. In February 2017, researchers at Google and CWI Amsterdam published [two different PDF files with the same SHA-1 hash](https://shattered.io). Finding them took about nine quintillion attempts, roughly what one processor would do in 6,500 years. Once two different files can share a hash, the hash can't be trusted to tell them apart, so browsers, GitHub and others moved to SHA-256.
 
-"Broken" here means two inputs with the same hash. It doesn't mean anyone can work backwards from a hash to a password.
-
-### Could AI break SHA-256?
-
-- **It's an unlikely job for AI.** Models are good at finding patterns, and a good hash function is designed so its output has none. SHA-1 was broken by people finding a weakness in how it was designed, not by learning from examples.
-- **If SHA-256 did break**, a lot would have to move at once: Bitcoin, HTTPS certificates, the checks that make sure a software update is genuine. There's already a replacement, SHA-3, standardised in 2015.
-- **The more realistic long-term worry is quantum computers**, and they threaten encryption like RSA far more than they threaten hash functions.
+"Broken" here means that people found two inputs with the same hash, i.e. a collision. It doesn't mean anyone can work backwards from a hash to a password.
 
 ---
 
@@ -69,55 +61,99 @@ SHA-256's older sibling, **SHA-1**, was the standard for years. In February 2017
 
 ## API keys
 
-- Sign-in is for people. When your app makes a request to an API that is not free, the program uses a **key** instead of an ID and password.
-- In the three kinds of proof from L8, a key is "something you know", for a program. Whoever has the key is should be able to access the service, as far as the API server is concerned. No second factor, no confirmation email.
+- Sign-in is for people. When your app makes a request to an API that is not free, the program uses an **API Key** instead of an ID and password.
+- In the three kinds of proof from L8, a key is "something you know", for a program. Keys are usually not tied to a person - whoever has the key is should be able to access the service, as far as the API server is concerned. No second factor, no confirmation email.
 - So keeping it secret is its only protection. The API server trusts the key, and it's your job to make sure only your app has it.
+- Free API keys getting leaked or stolen is not too much of a big deal (worst someone can do is steal your free quota) but for a paid API key, you'll get a bill for the usage.
 
 ### What happens to a key
 
-An **API key** is a long, random string of letters and numbers. It works like an ID card and a password at once: it says which account is asking, and proves that account is allowed to. The company uses it to let you in, count how much you use, and bill you.
+An **API key** is a long, random string of letters and numbers. It works like an ID and a password at the same time: it says which account is asking, and proves that account is allowed to access the API.
 
 From the dashboard to an answer, it goes through four steps:
 
-1. **You make it** in the company's dashboard - today we will use Google AI Studio. Their computer generates a random key. Many companies keep only a hashed copy of it (same idea as passwords in L8), which is why some dashboards, like OpenAI's, only show you a key once.
-2. **You keep it** in `.env` on your laptop and in Vercel's environment variables. Nowhere else.
-3. **Your server sends it with every request**, in a header. This line is in the `api/ask.js` you'll write later today:
+1. **You generate it** in the company's dashboard - today we will use Google AI Studio. Their computer generates a random key. Many companies keep only a hashed copy of it (same idea as passwords in L8), which is why some dashboards, like OpenAI's, only show you a key once.
+2. **You store it securely** in `.env` on your laptop and in Vercel's environment variables. Nowhere else.
+3. **Your app sends it with every request** Without the API key, the API will not send you a response to your request.
+4. **The API server checks it.** The company's server looks the key up, checks it's still active and what it's allowed to do, counts the request against your limit, and only then answers. A missing or wrong key gets rejected - for eg. Gemini answers a bad key with a `400` and "API key not valid".
 
-   ```js
-   "x-goog-api-key": process.env.GEMINI_API_KEY
-   ```
+With a correct key, Gemini sends back a `200` and the answer (trimmed):
 
-   *Send the key from Vercel along with the question.* Jev's server does the same with `Authorization: Bearer ...`: a different label, the same idea.
+```json
+{
+  "candidates": [
+    {
+      "content": {
+        "parts": [{ "text": "Bengaluru is the capital of Karnataka." }],
+        "role": "model"
+      },
+      "finishReason": "STOP"
+    }
+  ],
+  "usageMetadata": { "promptTokenCount": 8, "candidatesTokenCount": 9 }
+}
+```
 
-4. **The company checks it.** Their server looks the key up, checks it's still active and what it's allowed to do, counts the request against your limit, and only then answers. A missing or wrong key gets turned away, usually with `401 Unauthorized`, one of the status codes from [[Exercise - Trace a Request]]. Gemini answers a bad key with a `400` and "API key not valid".
+With a wrong key, it sends back a `400` and an error instead:
 
-### Where it can and can't live
+```json
+{
+  "error": {
+    "code": 400,
+    "message": "API key not valid. Please pass a valid API key.",
+    "status": "INVALID_ARGUMENT"
+  }
+}
+```
 
-**You can't commit your API key to your Github repo**
-- Github Pages free tier requires your projects to be public. Bots scan GitHub for things that look like API keys and they will steal it in minutes. Git commit history keeps a copy even if you delete it with a new commit.
 
-**Even if you don't use a public repo, you can't put your API key into your project.**
-- Anyone can View Source and find it and then start using your API billing.
+## Using API Keys
 
-**You shouldn't paste your API key into a chat with your AI agent.**
+#### You can't commit your API key to your Github repo
+
+Github Pages free tier requires your projects to be public. Bots scan GitHub for things that look like API keys and they will steal it in minutes. Git commit history keeps a copy even if you delete it with a new commit.
+
+#### Even if you don't use a public repo, you can't put your API key into your project.
+
+Anyone can View Source and find it and then start using your API billing.
+
+#### You shouldn't paste your API key into a chat with your AI agent 
+
 Your chat history is sent to the AI company and can end up in your code. Most AI agents will tell you to "rotate" a key if they think you have sent them an API key in the chat - this means disable the key from your API dashboard, then generate a new one.
 
-- Tell your agent the key's **name** (`GEMINI_API_KEY`), never its value.
-- Save the value in the .env file using your text editor. This is one of the few things that you have to do manually instead of using an agent (for security reasons). Agents are told to specifically never read a .env directly.
+#### Then where can an API key be stored?
 
-**Then where can an API key be stored?**
 In a special type of file called `.env` (short for environment) on your laptop, ignored by Git using a file called `.gitignore` that tells Github to ignore some files in your project.
 
-![[Add to Gitignore.png]]
+![Adding .env to .gitignore](assets/img/Add%20to%20Gitignore.png)
+
+Save the value in the .env file using your text editor. This is one of the few things that you have to do manually instead of using an agent (for security reasons). Agents are told to specifically never read a .env directly. Tell your agent the key's **name** (`GEMINI_API_KEY`), never its value.
 
 When you run the project locally, the code uses the .env saved only on your computer to access the API. When you deploy to Vercel, Vercel will not have the API key since it it's not in your repo, and you need to separately add the API key to Vercel in your project settings.
 
-- If it leaks, delete it and make a new one. Unlike your Google password, a key is quick to replace, so don't hesitate even if you are uncertain. Better safe than sorry.
-- **A leaked key spends your money.** Without billing, the worst case is someone using up your daily limit. With billing on, it's a bill.
+If it leaks, delete it and make a new one. Unlike your Google password, a key is quick to replace, so don't hesitate even if you are uncertain. Better safe than sorry.
+
+
+## Environments
+
+An **environment** is a place where your app runs. The same code can run in a few different places - on your computer, on Github Pages, on Vercel, and each place has its own settings, including its own copy of the keys. That's where the name `.env` comes from.
+
+Big companies have several environments, and new code moves through them one by one. When I worked at Microsoft, it went roughly like this:
+
+1. **Local**: your own laptop. Only you can see it.
+2. **Dev**: a shared server where the team's code comes together and gets tested. It usually has test data and test keys, so nothing real can break.
+3. **Dogfood**: the real product, used by people inside the company before anyone else. The name comes from "eating your own dog food", which means using what you make.
+4. **Prod** (production): the version real users get.
+
+For your projects, Vercel gives you a smaller version of this:
+
+1. **Local** is your laptop, at `localhost`. It reads keys from the `.env` file.
+2. **Production** is your real `your-project.vercel.app`. It reads keys from Vercel's environment settings.
+
 
 ## Where does the key go?
 
-L7 ended with Jev picking your theme, and one problem: every model API needs a key. In L5 we said a key in your front-end code is a key you've published. But in L6 your Firebase config sat in your HTML and that was fine. What's the difference?
+In lecture 6 your Firebase config sat in your HTML and that was fine. What's the difference?
 
 | | Firebase config | Model API key |
 | --- | --- | --- |
@@ -125,18 +161,17 @@ L7 ended with Jev picking your theme, and one problem: every model API needs a k
 | What protects you | Your database rules | Nothing, once someone has it |
 | Safe in your page? | Yes | No |
 
-So the key has to live somewhere visitors can't read: a **server**. Your page asks your server, and your server asks the model. It's the round trip from L5 with a model where the database was:
+So the key has to live somewhere visitors can't read: a **server**. Your page asks your server, and your server asks the model. Visitors never see the key or your system prompt.
 
 ```text
-   BROWSER                    YOUR SERVER                 MODEL
-   (their phone)              (holds the key)             (Google's computer)
+   BROWSER                    VERCEL SERVER                 MODEL
+   (user's device)              (holds the key)             (Google's computer)
 
    types a question ───────▶  adds the system prompt ───▶ writes an answer
                               and the key                        │
    sees the answer  ◀──────── sends back JSON ◀────────────────┘
 ```
 
-Visitors never see the key or your system prompt.
 
 You don't have to rent a computer for this. On [Vercel](https://vercel.com), a JavaScript file in a folder called `api` becomes server code: `api/ask.js` in your repo runs at `your-project.vercel.app/api/ask`. This is called a **serverless function**. There is a server, but Vercel looks after it.
 
@@ -207,98 +242,54 @@ GEMINI_API_KEY=paste-your-key-here
 
 Files starting with a dot are hidden in Finder. Press **⌘⇧.** to see them.
 
-### 4. Add the server
+### 4. Ask your agent for the server
 
-Make a folder called `api` with a file called `ask.js` inside it:
+Open the repo in your AI agent and give it this prompt. Fill in the two blanks first: the model name you copied in step 1, and the system prompt you wrote in AI Studio.
 
-```js
-// This file runs on Vercel's computer, never in the visitor's browser.
+```text
+Add a Vercel serverless function at api/ask.js.
 
-const MODEL = "PASTE-THE-MODEL-NAME-HERE";
-
-const SYSTEM_PROMPT = "PASTE THE SYSTEM PROMPT YOU WROTE IN AI STUDIO HERE";
-
-module.exports = async (req, res) => {
-  const text = (req.body && req.body.text) || "";
-
-  if (text.trim() === "" || text.length > 500) {
-    return res.status(400).json({ error: "Ask something under 500 characters." });
-  }
-
-  const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-goog-api-key": process.env.GEMINI_API_KEY
-      },
-      body: JSON.stringify({
-        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-        contents: [{ parts: [{ text: text }] }],
-        generationConfig: { maxOutputTokens: 1000 }
-      })
-    }
-  );
-
-  if (!response.ok) {
-    return res.status(502).json({ error: "The model didn't answer. Try again in a minute." });
-  }
-
-  const data = await response.json();
-  const answer = data.candidates?.[0]?.content?.parts?.[0]?.text;
-  res.json({ answer: answer || "The model didn't return anything. Try asking differently." });
-};
+- It takes a POST with JSON { "text": "..." } and returns JSON { "answer": "..." }.
+- It calls the Gemini API with the model ______.
+- Use this system prompt, kept on the server: ______
+- Read the key from process.env.GEMINI_API_KEY. It's in my .env file. Don't open or print .env.
+- Turn away empty questions and anything over 500 characters, before calling Gemini.
+- Limit the answer to 1000 output tokens.
+- If Gemini fails, return { "error": "..." } with a friendly message instead of crashing.
 ```
 
-Read it out loud:
+Before you accept it, read what it wrote and check:
 
-1. **`MODEL`, `SYSTEM_PROMPT`**: your two decisions, at the top. The system prompt stays on the server.
-2. **`req.body.text`**: what the visitor typed. The `if` turns away empty or very long questions before they cost anything.
-3. **`fetch`**: the same `fetch` from L5, as a `POST` because we're sending something. The key comes from `process.env`, not from the file.
-4. **`maxOutputTokens`**: a limit on the answer's length, which is a limit on cost.
-5. **`data.candidates[0].content.parts[0].text`**: dig the answer out of the JSON, like `temperature_2m` in the weather reply. `?.` means *if a step is missing, stop instead of crashing*.
-6. **`res.json`**: send the answer back to the page.
+1. **The key comes from `process.env.GEMINI_API_KEY`**, and doesn't appear anywhere in the file.
+2. **The model name and system prompt** are at the top, where you can change them.
+3. **There's an `if`** that rejects empty or long questions before the `fetch`. Every call costs something, even on the free tier.
+4. **The answer is dug out of `candidates[0].content.parts[0].text`**, the same path as the sample response earlier.
 
-### 5. Add the page
+If something is missing, tell the agent what, in a sentence. You don't need to fix it yourself.
 
-In `index.html`, inside `<main>`:
+### 5. Ask your agent for the page
 
-```html
-<form id="ask-form">
-  <input id="question" type="text" placeholder="Ask me something" maxlength="500">
-  <button>Ask</button>
-</form>
-<p id="answer"></p>
+Then:
+
+```text
+In index.html, inside <main>, add a form with one text input (max 500 characters),
+an Ask button, and a paragraph below it for the answer.
+
+In scripts.js, when the form is submitted:
+- don't reload the page
+- show "Thinking…" straight away
+- POST the question to /api/ask
+- show the answer, or the error if there is one
+
+Use the existing styles. Don't call Google from the browser.
 ```
 
-In `scripts.js`:
+Check:
 
-```js
-const form = document.querySelector("#ask-form");
-const answer = document.querySelector("#answer");
+1. **The `fetch` goes to `/api/ask`**, your own server. No Google address and no key in `scripts.js`.
+2. **"Thinking…" appears** as soon as you press Ask. Waiting with no feedback feels broken, so this is a design decision as much as a code one.
 
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  answer.textContent = "Thinking…";
-
-  const response = await fetch("/api/ask", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ text: document.querySelector("#question").value })
-  });
-  const data = await response.json();
-
-  answer.textContent = data.answer || data.error;
-});
-```
-
-Read it out loud:
-
-1. **`event.preventDefault()`**: stop the form reloading the page.
-2. **`"Thinking…"`**: show something straight away.
-3. **`fetch("/api/ask")`**: ask your own server. No Google address, no key.
-4. **`data.answer || data.error`**: show the answer, or the error if there isn't one.
+You can't test this by opening `index.html` on its own, because there's no server running `api/ask.js`. Ask your agent to run it with `vercel dev`, which runs your `api` folder and reads `.env` on your laptop, like a small local Vercel.
 
 ### 6. Put it on Vercel
 
@@ -326,7 +317,7 @@ AI_GATEWAY_API_KEY=the-class-key
 ```
 
 - Paste the whole `.env` into Vercel again, the same way, and redeploy.
-- Add the `api/decide.js` server from [[Exercise - Build with Jev]] to the same repo. One project, two servers, two keys.
+- Ask your agent to add the `api/decide.js` server from [[Exercise - Build with Jev]] to the same repo: "Add api/decide.js as described in this exercise. The key is in .env as AI_GATEWAY_API_KEY. Don't open or print .env." One project, two servers, two keys.
 - It's shared by the whole class and has a spending limit, so one call when someone presses a button, never on every keystroke. If you think it's leaked, tell me and I'll replace it.
 - Make `.env.example` with both names and fake values, and commit it. That's how a teammate, or an agent, knows which keys the project needs.
 
@@ -374,37 +365,36 @@ The models behind every AI feature, where they came from, and who owns them.
 
 #### A short history
 
-| When | What happened | Why it mattered |
-| --- | --- | --- |
-| 2017 | Google researchers publish "Attention Is All You Need", describing the **transformer** | The T in GPT. Almost every model on this page is built on it. |
-| 2019 | OpenAI's GPT-2. At first they held back the full model, saying it could be misused | The first time generated text felt worryingly real |
-| 2020 | GPT-3, with 175 billion parameters | Mostly the same method, just much bigger, and it could suddenly do tasks from a couple of examples |
-| Nov 2022 | ChatGPT | A model you'd already heard of, with a chat box and assistant training. About 100 million people used it within two months. |
-| 2023 | GPT-4, the first Claude, and Meta's Llama | Models started passing professional exams, and anyone could download a strong model |
-| 2024 | GPT-4o talks and sees in real time. OpenAI's o1 thinks before answering. | One model for text, voice and images, and the start of reasoning models |
-| Jan 2025 | DeepSeek R1, an open-weights reasoning model from China, reportedly trained for a fraction of what others spent | Nvidia's share price fell about 17% in a day |
-| 2025 | Coding agents like Claude Code, Codex and Cursor's agent mode edit files and run commands for you | The tools you've been building with all semester |
-| Feb 2026 | Sarvam releases 30B and 105B as open weights, trained from scratch in India | A Bengaluru company competing on Indian languages |
-| 2026 | New frontier models from the big companies every few weeks, and new kinds like Jev | Anything in these notes with a version number is already out of date |
+- **2017:** Google researchers publish "Attention Is All You Need", describing the **transformer**. It's the T in GPT, and almost every model on this page is built on it.
+- **2019:** OpenAI's GPT-2. At first they held back the full model, saying it could be misused. The first time generated text felt worryingly real.
+- **2020:** GPT-3, with 175 billion parameters. Mostly the same method, just much bigger, and it could suddenly do tasks from a couple of examples.
+- **Nov 2022:** ChatGPT. A model you'd already heard of, with a chat box and assistant training. About 100 million people used it within two months.
+- **2023:** GPT-4, the first Claude, and Meta's Llama. Models started passing professional exams, and anyone could download a strong model.
+- **2024:** GPT-4o talks and sees in real time, and OpenAI's o1 thinks before answering. One model for text, voice and images, and the start of reasoning models.
+- **Jan 2025:** DeepSeek R1, an open-weights reasoning model from China, reportedly trained for a fraction of what others spent. Nvidia's share price fell about 17% in a day.
+- **2025:** Coding agents like Claude Code, Codex and Cursor's agent mode edit files and run commands for you. The tools you've been building with all semester.
+- **Feb 2026:** Sarvam releases 30B and 105B as open weights, trained from scratch in India. A Bengaluru company competing on Indian languages.
+- **2026:** New frontier models from the big companies every few weeks, and new kinds like Jev. Anything in these notes with a version number is already out of date.
 
 > **Sidenote:** Which of these did you notice happening at the time? What's the first AI product you remember using?
 #### Who makes them
 
-| Company | Models | Based in | Can you download it? |
-| --- | --- | --- | --- |
-| OpenAI | GPT, used in ChatGPT | San Francisco | Mostly no |
-| Anthropic | Claude | San Francisco | No |
-| Google DeepMind | Gemini, and the smaller Gemma | London and California | Gemini no, Gemma yes |
-| Meta | Llama | California | Yes |
-| xAI | Grok | California | Mostly no |
-| Mistral | Mistral | Paris | Some |
-| DeepSeek | DeepSeek | Hangzhou | Yes |
-| Alibaba | Qwen | Hangzhou | Yes |
-| Sarvam AI | Sarvam | Bengaluru | Yes |
+**Mostly closed, you can't download them:**
+- **OpenAI** (San Francisco): GPT, used in ChatGPT
+- **Anthropic** (San Francisco): Claude
+- **Google DeepMind** (London and California): Gemini. Its smaller Gemma models you can download.
+- **xAI** (California): Grok
+
+**Open weights, you can download them:**
+- **Meta** (California): Llama
+- **Mistral** (Paris): Mistral, for some of its models
+- **DeepSeek** (Hangzhou): DeepSeek
+- **Alibaba** (Hangzhou): Qwen
+- **Sarvam AI** (Bengaluru): Sarvam
 
 #### Open weights vs closed
 
-The last column is the big split.
+That split is the big one.
 
 | | Closed (ChatGPT, Claude, Gemini) | Open weights (Llama, DeepSeek, Qwen, Sarvam) |
 | --- | --- | --- |

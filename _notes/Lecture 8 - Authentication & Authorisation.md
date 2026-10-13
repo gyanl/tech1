@@ -1,6 +1,6 @@
 ---
 date: 09-10-2026
-date modified: 09-10-2026
+date modified: 13-10-2026
 feed: show
 key_areas:
   - "Authentication"
@@ -97,7 +97,6 @@ title: "Lecture 8 - Authentication & Authorisation"
   - If you lose your Google account, you lose every app you signed in to with it.
   - Google learns which apps you use.
   - The app depends on Google. If Google changes the rules or goes down, sign-in goes down.
-
 
 ### Which type of login is a design decision
 
