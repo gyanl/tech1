@@ -69,7 +69,7 @@ Everything you've made this semester runs on someone else's computer:
 | Your github.io site | GitHub's (owned by Microsoft) |
 | Your wall and your multiplayer experience | Google's, through Firebase |
 | Your AI server | Vercel's, which rents its computers from Amazon |
-| Gemini | Google's |
+| Sarvam | Sarvam's, in India |
 | Jev | TypeSafe's, reached through Vercel's AI Gateway |
 
 **The cloud** means renting computers from a company instead of owning them. What changes from one service to the next is how much of the work they do for you.
@@ -104,36 +104,36 @@ An **API key** is a long, random string of letters and numbers. It works like an
 
 From the dashboard to an answer, it goes through four steps:
 
-1. **You generate it** in the company's dashboard - today we will use Google AI Studio. Their computer generates a random key. Many companies keep only a hashed copy of it (same idea as passwords in L8), which is why some dashboards, like OpenAI's, only show you a key once.
+1. **You generate it** in the company's dashboard - today we will use Sarvam's. Their computer generates a random key. Many companies keep only a hashed copy of it (same idea as passwords in L8), which is why some dashboards, like OpenAI's, only show you a key once.
 2. **You store it securely** in `.env` on your laptop and in Vercel's environment variables. Nowhere else.
 3. **Your app sends it with every request** Without the API key, the API will not send you a response to your request.
-4. **The API server checks it.** The company's server looks the key up, checks it's still active and what it's allowed to do, counts the request against your limit, and only then answers. A missing or wrong key gets rejected - for eg. Gemini answers a bad key with a `400` and "API key not valid".
+4. **The API server checks it.** The company's server looks the key up, checks it's still active and what it's allowed to do, counts the request against your limit, and only then answers. A missing or wrong key gets rejected - for eg. Sarvam answers a bad key with a `403` and "Invalid or missing authentication credentials".
 
-With a correct key, Gemini sends back a `200` and the answer (trimmed):
+With a correct key, Sarvam sends back a `200` and the answer (trimmed):
 
 ```json
 {
-  "candidates": [
+  "choices": [
     {
-      "content": {
-        "parts": [{ "text": "Bengaluru is the capital of Karnataka." }],
-        "role": "model"
+      "message": {
+        "role": "assistant",
+        "content": "Bengaluru is the capital of Karnataka."
       },
-      "finishReason": "STOP"
+      "finish_reason": "stop"
     }
   ],
-  "usageMetadata": { "promptTokenCount": 8, "candidatesTokenCount": 9 }
+  "model": "sarvam-105b-conversations",
+  "usage": { "prompt_tokens": 12, "completion_tokens": 9, "total_tokens": 21 }
 }
 ```
 
-With a wrong key, it sends back a `400` and an error instead:
+With a wrong key, it sends back a `403` and an error instead:
 
 ```json
 {
   "error": {
-    "code": 400,
-    "message": "API key not valid. Please pass a valid API key.",
-    "status": "INVALID_ARGUMENT"
+    "message": "Invalid or missing authentication credentials",
+    "code": "invalid_api_key_error"
   }
 }
 ```
@@ -158,7 +158,7 @@ In a special type of file called `.env` (short for environment) on your laptop, 
 
 ![Adding .env to .gitignore](assets/img/Add%20to%20Gitignore.png)
 
-Save the value in the .env file using your text editor. This is one of the few things that you have to do manually instead of using an agent (for security reasons). Agents are told to specifically never read a .env directly. Tell your agent the key's **name** (`GEMINI_API_KEY`), never its value.
+Save the value in the .env file using your text editor. This is one of the few things that you have to do manually instead of using an agent (for security reasons). Agents are told to specifically never read a .env directly. Tell your agent the key's **name** (`SARVAM_API_KEY`), never its value.
 
 When you run the project locally, the code uses the .env saved only on your computer to access the API. When you deploy to Vercel, Vercel will not have the API key since it it's not in your repo, and you need to separately add the API key to Vercel in your project settings.
 
@@ -194,7 +194,7 @@ So the key has to live somewhere visitors can't read: a **server**. Your page as
 
 ```text
    BROWSER                    VERCEL SERVER                 MODEL
-   (user's device)              (holds the key)             (Google's computer)
+   (user's device)              (holds the key)             (Sarvam's computer)
 
    types a question ───────▶  adds the system prompt ───▶ writes an answer
                               and the key                        │
@@ -213,8 +213,8 @@ The key goes in an **environment variable**, a value you type into Vercel's dash
 By the end of today, yours will look something like this. These keys are fake:
 
 ```text
-# Gemini, from Google AI Studio
-GEMINI_API_KEY=fake-gemini-key-8f3k2m9x7q1w4e6r
+# Sarvam, from dashboard.sarvam.ai
+SARVAM_API_KEY=sk_fake-sarvam-key-8f3k2m9x7q1w4e6r
 
 # Jev, the class key from the class group
 AI_GATEWAY_API_KEY=fake-gateway-key-2b7n5v1c9z3x8l4k
@@ -223,16 +223,15 @@ AI_GATEWAY_API_KEY=fake-gateway-key-2b7n5v1c9z3x8l4k
 
 ## Class Activity: your own AI server
 
-You'll make a page with one text box. It sends a question to your server, your server asks Gemini, and the answer comes back. The key lives in `.env` on your laptop and in Vercel, and never reaches the browser or GitHub.
+You'll make a page with one text box. It sends a question to your server, your server asks Sarvam, and the answer comes back. The key lives in `.env` on your laptop and in Vercel, and never reaches the browser or GitHub.
 
 ### 1. Get a free key
 
-1. Go to [aistudio.google.com/apikey](https://aistudio.google.com/apikey) and click **Create API key**.
-2. Don't add a billing account. Without one, the worst case is hitting the day's free limit. You can't get a bill.
+1. Sign up at [dashboard.sarvam.ai](https://dashboard.sarvam.ai) and create an API key. It starts with `sk_`.
+2. Every new account gets ₹100 of free credits, which don't expire. That's plenty for today. Don't add a payment method, so the worst case is running out of credits. You can't get a bill.
 3. Don't paste it into your code, the class group, or a chat with your AI agent. It goes into `.env` in step 3.
-4. Copy the exact name of the model you used in AI Studio. Model names change every few months, so take it from there, not from these notes.
 
-On the free tier, Google may use what you send to improve its products. Don't send anything private, yours or anyone else's.
+We'll use the model `sarvam-105b-conversations`, made by Sarvam in Bengaluru and built for chat. Don't send anything private to it, yours or anyone else's.
 
 ### 2. Make a repo
 
@@ -250,7 +249,7 @@ It's web-starter with a few things added:
 2. Replace the fake value with your key. No quotes, no spaces around the `=`:
 
 ```text
-GEMINI_API_KEY=paste-your-key-here
+SARVAM_API_KEY=paste-your-key-here
 ```
 
 3. Open GitHub Desktop. `.env` should not be in the list of changes. If it is, don't commit, and ask me.
@@ -259,26 +258,26 @@ Files starting with a dot are hidden in Finder. Press **⌘⇧.** to see them, o
 
 ### 4. Ask your agent for the server
 
-Open the repo in your AI agent and give it this prompt. Fill in the two blanks first: the model name you copied in step 1, and the system prompt you wrote in AI Studio.
+Open the repo in your AI agent and give it this prompt. Fill in the blank first with your system prompt: what your AI is for and how it should answer.
 
 ```text
 Add a Vercel serverless function at api/ask.js.
 
 - It takes a POST with JSON { "text": "..." } and returns JSON { "answer": "..." }.
-- It calls the Gemini API with the model ______.
+- It calls Sarvam's chat completions API (https://api.sarvam.ai/v1/chat/completions) with the model sarvam-105b-conversations, sending the key in the api-subscription-key header.
 - Use this system prompt, kept on the server: ______
-- Read the key from process.env.GEMINI_API_KEY. It's in my .env file. Don't open or print .env.
-- Turn away empty questions and anything over 500 characters, before calling Gemini.
-- Limit the answer to 1000 output tokens.
-- If Gemini fails, return { "error": "..." } with a friendly message instead of crashing.
+- Read the key from process.env.SARVAM_API_KEY. It's in my .env file. Don't open or print .env.
+- Turn away empty questions and anything over 500 characters, before calling Sarvam.
+- Limit the answer to 1000 tokens with max_tokens.
+- If Sarvam fails, return { "error": "..." } with a friendly message instead of crashing.
 ```
 
 Before you accept it, read what it wrote and check:
 
-1. **The key comes from `process.env.GEMINI_API_KEY`**, and doesn't appear anywhere in the file.
+1. **The key comes from `process.env.SARVAM_API_KEY`**, and doesn't appear anywhere in the file.
 2. **The model name and system prompt** are at the top, where you can change them.
 3. **There's an `if`** that rejects empty or long questions before the `fetch`. Every call costs something, even on the free tier.
-4. **The answer is dug out of `candidates[0].content.parts[0].text`**, the same path as the sample response earlier.
+4. **The answer is dug out of `choices[0].message.content`**, the same path as the sample response earlier.
 
 If something is missing, tell the agent what, in a sentence. You don't need to fix it yourself.
 
@@ -296,12 +295,12 @@ In scripts.js, when the form is submitted:
 - POST the question to /api/ask
 - show the answer, or the error if there is one
 
-Use the existing styles. Don't call Google from the browser.
+Use the existing styles. Don't call Sarvam from the browser.
 ```
 
 Check:
 
-1. **The `fetch` goes to `/api/ask`**, your own server. No Google address and no key in `scripts.js`.
+1. **The `fetch` goes to `/api/ask`**, your own server. No Sarvam address and no key in `scripts.js`.
 2. **"Thinking…" appears** as soon as you press Ask. Waiting with no feedback feels broken, so this is a design decision as much as a code one.
 
 You can't test this by opening `index.html` on its own, because there's no server running `api/ask.js`. Ask your agent to run it with `vercel dev`, which runs your `api` folder and reads `.env` on your laptop, like a small local Vercel.
@@ -383,13 +382,13 @@ Some things to note:
 
 1. Commit and push.
 2. Import the repo into Vercel, following [[Help - Host on Vercel]].
-3. In the project, go to **Settings → Environment Variables**. Open `.env` in your editor, copy everything, and paste it into the **Key** box. Vercel splits it into a name and a value. If it doesn't, add `GEMINI_API_KEY` by hand. Save.
+3. In the project, go to **Settings → Environment Variables**. Open `.env` in your editor, copy everything, and paste it into the **Key** box. Vercel splits it into a name and a value. If it doesn't, add `SARVAM_API_KEY` by hand. Save.
 4. Go to **Deployments**, click **⋯** on the latest one and **Redeploy**. A new variable only reaches deployments made after you add it.
 
 Open your `vercel.app` URL and ask it something. Then check:
 
 - **View Source** and search for your key. It isn't there.
-- **DevTools → Network**: the request went to `/api/ask`, not to Google.
+- **DevTools → Network**: the request went to `/api/ask`, not to Sarvam.
 - **Your phone**: same page, same server.
 
 It won't work on `github.io`, in Simple Web Server, or from a double-clicked `index.html`. Those only serve files, so there's nothing to run `api/ask.js`.
@@ -400,7 +399,7 @@ It won't work on `github.io`, in Simple Web Server, or from a double-clicked `in
 - Add it to `.env` on a new line, under the name used in [[Exercise - Build with Jev]]:
 
 ```text
-GEMINI_API_KEY=your-gemini-key
+SARVAM_API_KEY=your-sarvam-key
 AI_GATEWAY_API_KEY=the-class-key
 ```
 
