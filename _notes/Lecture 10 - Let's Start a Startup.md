@@ -1,6 +1,6 @@
 ---
 date: 27-10-2026
-date modified: 09-10-2026
+date modified: 27-10-2026
 feed: show
 key_areas:
   - "Landing pages"
@@ -14,26 +14,32 @@ title: "Lecture 10 - Let's Start a Startup"
 
 ## Homework Review
 
-Let's look at your AI servers first.
-
-- Show one running on its `vercel.app` URL, with both keys. Then open the repo on github.com: is `.env` anywhere in it?
-- Your startup ideas. Read out "They'd sign up because ___" for one. Does the room believe it?
-
-Today you pick a team and an idea, and leave with your project set up. Before that, three things every team needs: a page that gets people to sign up, a way to plan the work, and a way for three people to work on one repo without overwriting each other.
+- Vercel deployed sites
+- Discuss Final project teams and your startup ideas
 
 ---
 
+## What's a startup?
+
+A startup is a newly formed, temporary business or project launched by an entrepreneur to search for, develop, and validate a repeatable, scalable business model.
+
+Startups rely on the idea that a small, highly motivated team can frequently be more flexible, try more radical ideas, and iterate faster to achieve great outcomes compared to a larger organisation.
+
+A successful startup is one that finds Product Market Fit (PMF). This means that you have made something that solves a problem or fulfils a real need that people have, and they want to use your product.
+
+The design process recommends talking to users as a first step before any prototyping, and many successful startups stay tightly in communication with their customers.
+
 ## Landing pages
 
-A **landing page** is the first page someone sees when they hear about your product. Its job is to get the right people to sign up.
+A **landing page** is the first page someone sees when they look up your product. Its job is to get the right people to sign up.
 
-You have about five seconds. In that time a visitor needs to know:
+In a few seconds, the visitor needs to know:
 
 1. What is this?
 2. Is it for me?
 3. What do I do next?
 
-### Class Activity: take three apart
+### Class Activity: take apart some landing pages
 
 In pairs, open three landing pages: one Indian consumer app (Swiggy, Zepto, CRED), one tool you use (Figma, Notion, Linear), and one small startup you've never heard of. For each one:
 
@@ -46,19 +52,25 @@ In pairs, open three landing pages: one Indian consumer app (Swiggy, Zepto, CRED
 
 ### What's usually on one
 
-| Section | What it does | For your project |
-| --- | --- | --- |
-| Headline and sign-up button | Says what it is and who it's for, in one line | Your "They'd sign up because ___", rewritten as a headline |
-| The product | Screenshots or a short video, so people see it before they commit | Screenshots of your core flow |
-| How it works | Three steps, each with a picture | Landing page, sign in, first use |
-| Sign-up again | For the people who scrolled to the end | The same button |
+| Section                     | What it does                                                      | For your project                                           |
+| --------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------- |
+| Headline and sign-up button | Says what it is and who it's for, in one line                     | Your "They'd sign up because ___", rewritten as a headline |
+| The product                 | Screenshots or a short video, so people see it before they commit | Screenshots of your core flow                              |
+| How it works                | Three steps, each with a picture                                  | Landing page, sign in, first use                           |
+| Sign-up again               | For the people who scrolled to the end                            | The same button                                            |
 
 Some things to note:
 
-- **One button, one action.** "Sign in with Google" can be your sign-up button. You built it in [[Exercise - Sign in with Google]].
-- **Be honest.** No fake testimonials, and no "trusted by 10,000 teams" when it's you and two friends. A real quote from one of the three people who tried it is better anyway.
-- **Design it for the phone first** (L4). Most people will open your link from WhatsApp.
-- **The landing page is the start of a flow.** After the button comes sign-in (L8), then the first screen a new person sees, before they've added anything. That whole flow is what you'll demo.
+**What is your Call to Action?**
+What is the one thing your landing page wants a visitor to do? There should usually be a button for this action in the first fold of the page.
+- "Sign in with Google" can be your sign-up button.
+**Be honest.**
+- No fake testimonials, and no "trusted by 10,000 teams" when it's you and two friends. A real quote from one of the three people who tried it is better anyway.
+**Design it for mobile and desktop**
+Many people will open your link from WhatsApp.
+
+**The landing page is the start of a flow.**
+After the button comes sign-in (L8), then the first screen a new person sees, before they've added anything. That whole flow is what you'll demo.
 
 ### Landing page and app in one repo
 

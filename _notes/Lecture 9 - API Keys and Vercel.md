@@ -1,6 +1,6 @@
 ---
 date: 13-10-2026
-date modified: 13-10-2026
+date modified: 27-10-2026
 feed: show
 key_areas:
   - "API keys and environment variables"
@@ -10,7 +10,6 @@ key_areas:
   - "Startups and MVPs"
 tag: lecture
 title: "Lecture 9 - API Keys and Vercel"
-
 ---
 
 ## Homework Review
@@ -89,7 +88,6 @@ Some things to note:
 - **The layers stack.** Vercel is a PaaS that runs on Amazon's IaaS. Figma, a SaaS, runs on Amazon too.
 - **The more someone else runs, the more their limits become your limits.** Firebase decides how many people can be connected at once, not you. That's a design constraint like any other.
 - For the purpose of this class, we will mostly use Platforms and Backends as a service.
-
 
 ## API keys
 
@@ -219,7 +217,6 @@ SARVAM_API_KEY=sk_fake-sarvam-key-8f3k2m9x7q1w4e6r
 # Jev, the class key from the class group
 AI_GATEWAY_API_KEY=fake-gateway-key-2b7n5v1c9z3x8l4k
 ```
-
 
 ## Class Activity: your own AI server
 
