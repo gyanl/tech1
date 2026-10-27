@@ -19,16 +19,6 @@ title: "Lecture 10 - Let's Start a Startup"
 
 ---
 
-## What's a startup?
-
-A startup is a newly formed, temporary business or project launched by an entrepreneur to search for, develop, and validate a repeatable, scalable business model.
-
-Startups rely on the idea that a small, highly motivated team can frequently be more flexible, try more radical ideas, and iterate faster to achieve great outcomes compared to a larger organisation.
-
-A successful startup is one that finds Product Market Fit (PMF). This means that you have made something that solves a problem or fulfils a real need that people have, and they want to use your product.
-
-The design process recommends talking to users as a first step before any prototyping, and many successful startups stay tightly in communication with their customers.
-
 ## Landing pages
 
 A **landing page** is the first page someone sees when they look up your product. Its job is to get the right people to sign up.
@@ -63,9 +53,11 @@ Some things to note:
 
 **What is your Call to Action?**
 What is the one thing your landing page wants a visitor to do? There should usually be a button for this action in the first fold of the page.
-- "Sign in with Google" can be your sign-up button.
+"Sign in with Google" can be your sign-up button.
+
 **Be honest.**
-- No fake testimonials, and no "trusted by 10,000 teams" when it's you and two friends. A real quote from one of the three people who tried it is better anyway.
+No fake testimonials, and no "trusted by 10,000 teams" when it's you and two friends. A real quote from one of the three people who tried it is better anyway.
+
 **Design it for mobile and desktop**
 Many people will open your link from WhatsApp.
 
@@ -75,6 +67,7 @@ After the button comes sign-in (L8), then the first screen a new person sees, be
 ### Landing page and app in one repo
 
 Keep the landing page at `/` and the product at `/app/`:
+If someone is signed in, send them straight to the app.
 
 ```text
 index.html        ← the landing page
@@ -89,8 +82,6 @@ onAuthStateChanged(auth, (user) => {
   if (user) window.location.href = "/app/";
 });
 ```
-
-*If someone is signed in, send them straight to the app.* It's the same `onAuthStateChanged` from the sign-in exercise.
 
 ---
 
@@ -108,7 +99,17 @@ The **software development lifecycle** (SDLC) is the order software gets made in
 | Ship | Put it live | A URL, a store listing | Checking the live version |
 | Maintain | Fix, improve, repeat | Updates | Watching how it's actually used |
 
-You've been doing this every week, just very quickly. The weather footer in L5 was an idea, a design, a build with AI, a test on your phone, and a push.
+You've been doing this every week, just very quickly. The weather footer in L5 was an idea, a design, a build with AI, a test on your phone, and ship to Github Pages.
+
+## What's a startup?
+
+A startup is a newly formed, temporary business or project launched by an entrepreneur to search for, develop, and validate a repeatable, scalable business model.
+
+Startups rely on the idea that a small, highly motivated team can frequently be more flexible, try more radical ideas, and iterate faster to achieve great outcomes compared to a larger organisation.
+
+A successful startup is one that finds Product Market Fit (PMF). This means that you have made something that solves a problem or fulfils a real need that people have, and they want to use your product.
+
+The design process recommends talking to users as a first step before any prototyping, and many successful startups stay tightly in communication with their customers.
 
 ### Waterfall vs Agile
 
@@ -143,6 +144,28 @@ Write the backlog as **user stories**:
 
 Then split the backlog into **must have** and **nice to have**. Sign-in, the core flow and the landing page are must-haves for every team. Decide the rest today, together, so that cutting something in L11 isn't an argument.
 
+## Estimating time
+
+Once you have a backlog, someone will ask "how long will this take?" Every team gets this wrong, including teams of very experienced engineers. It helps to know why.
+
+**You're estimating something you haven't done before.**
+
+If you'd built this exact thing already, you'd just reuse it. A new product is mostly new problems, and you can't time a problem you haven't met yet.
+
+**The last 10% takes the longest.**
+
+Getting sign-in to work on your laptop takes an hour. Getting it to work on your teammate's phone, on the `vercel.app` domain, with the right errors and edge cases when someone cancels the Google popup, takes the rest of the day.
+
+**AI makes the first version fast, and you only estimate the parts you can see.**
+
+An agent can give you a working core flow in twenty minutes, and that makes it feel like the whole project will take an afternoon. As designers, you'll think of the screens. You won't think of the empty state, the loading state, what happens with no internet, or the hour you lose to a key missing from `.env`.
+
+**Other people's time is the hardest part.**
+
+Waiting for a teammate's pull request, or for users to try your app and give feedback, doesn't show up in anyone's estimate.
+
+> **Sidenote:** Think of a design project where you ran out of time. What did you not see coming?
+
 ---
 
 ## Working on one repo as a team
@@ -159,22 +182,13 @@ In L2 I said merge conflicts start "the moment you are working with other people
 - A **branch** is your own copy of the project, where you can work without breaking `main`. In GitHub Desktop: **Current Branch → New Branch**.
 - A **pull request** asks to merge your branch into `main`, so a teammate can look at it first. After you push a branch, GitHub Desktop shows a **Create Pull Request** button.
 - **Vercel deploys every branch to its own preview URL**, and posts the link on the pull request. Your teammate can try your change on their phone before it goes live.
-
-### Live demo: a conflict on purpose
-
-I need two volunteers and one repo:
-
-1. Both of you change the same line of the same file: the headline in `index.html`.
-2. One of you commits, pushes, and merges first.
-3. The other pulls, and gets a conflict.
-4. Resolve it the way we did in L2: keep the line you want, delete the markers, commit.
+- On the free tier, Vercel deploys automatically from the **main** branch, but only when the Github commit is from the same email ID as the Vercel account. 
 
 ### Habits that avoid most conflicts
 
 - **Pull before you start**, every time you sit down to work.
 - **Small commits, pushed often.** A day's work in one commit is a day's work to untangle.
 - **Split the work by file or by page** where you can: one person on the landing page, one on the app, one on the server.
-- **Don't let three AI agents rewrite `index.html` at the same time.** An agent will happily rewrite a whole file to change one line.
 
 ### Shared accounts and keys
 
@@ -201,18 +215,11 @@ They'd sign up because ___.
 
 The class gets one question per idea. Write down the ones you'd want to work on.
 
-### Teams
-
-Teams of up to 3, formed around the ideas, not just around friends. It helps to have someone who wants to own the design and someone who wants to own the build. All three of you should be talking to the people it's for.
-
 ### Set up before you leave
 
 - One GitHub repo, made from [web-starter](https://github.com/gyanl/web-starter), with everyone as a collaborator
 - A Vercel project connected to it, with your keys added
 - A Firebase project with Google sign-in on, your `vercel.app` domain authorised, and your teammates added
-- A backlog, with sprint 1 marked
-
-Check it worked: each of you pushes one small change on a branch, opens a pull request, and finds the preview link.
 
 ## Homework
 
@@ -224,3 +231,71 @@ Check it worked: each of you pushes one small change on a branch, opens a pull r
   - your backlog, split into the two sprints
 - **Sprint 1:** sign-in and the core flow working end to end, however ugly.
 - [[Exercise - SDLC Stage Mapping]], using one feature from your own project.
+
+### Prompts for checking your idea
+
+Before you write the proposal, ask an AI (Claude, ChatGPT, Gemini) whether your idea can be built in four weeks, and with what. Paste in your pitch from the pitch round first, then try these:
+
+**Is it feasible?**
+
+```text
+Here's my product idea: [paste your pitch].
+I'm a design student with a team of 3. We have 4 weeks, and we build
+with AI help, using plain HTML, CSS and JavaScript.
+What's the hardest part to build? What would you cut to make it
+possible in 4 weeks? What's the smallest version that still
+proves people want it?
+```
+
+**What stack would it use?**
+
+```text
+So far we've used: GitHub and GitHub Pages, Vercel (with serverless
+functions in an api/ folder), Firebase Realtime Database and Firebase
+Google sign-in, Sarvam's API (we have Rs. 100 of free credits), and Jev.
+For my idea, tell me where the data lives, how sign-in works, where it's
+hosted, and which API keys we need. Only add a new tool if none of these
+can do the job, and tell me why.
+```
+
+**What will I underestimate?**
+
+```text
+Here's my core flow: [landing page → sign in → first use, step by step].
+List everything I'll need to build that isn't on a screen in my design:
+states, errors, permissions, data rules. Mark which ones are must-haves.
+```
+
+**Break it into stories**
+
+```text
+Turn this idea into user stories ("As a ___, I want to ___, so that ___"),
+each small enough for one person to build in a day.
+Split them into must have and nice to have.
+```
+
+Some things to note:
+
+- Push back on the answers. If it suggests React, a database you haven't used, or "a simple machine learning model", ask whether the tools above could do it instead.
+- AI is optimistic about time, for the same reasons you are. Treat its estimates as the low end of the range.
+- Feasible to build is not the same as people wanting it. Only the people it's for can tell you that.
+
+### Things you might want to look up
+
+Depending on your idea, some of these will come up. Ask AI to explain them in the context of your project, the same way you did with the prompts above.
+
+| If your idea needs… | Look up |
+| --- | --- |
+| Data only the signed-in person can see | Firebase Realtime Database security rules, using `auth.uid` |
+| A list that updates for everyone at once | Firebase `onValue` listeners (you used these in L6) |
+| Images or files people upload | Firebase Storage, or Cloudinary |
+| AI that writes, translates or speaks Indian languages | Sarvam's text, translation and text-to-speech APIs, and how fast Rs. 100 of credits runs out |
+| AI that picks from options you designed | Jev's `choice`, `boolean` and `score` questions |
+| Keeping a key off the page | Vercel environment variables and serverless functions (L9) |
+| Something that happens at a set time, like a daily reminder | Vercel cron jobs |
+| Sending an email or WhatsApp message | Resend for email; the WhatsApp Business API (slow to get approved) |
+| Payments | Razorpay test mode, and what it takes to go live |
+| Maps or location | The Google Maps JavaScript API, or Leaflet with OpenStreetMap |
+| Working on phones like an app | Progressive Web Apps (PWA), "Add to Home Screen" |
+| Your own domain instead of `vercel.app` | Adding a custom domain on Vercel, and adding it to Firebase's authorised domains |
+| Knowing if anyone uses it | Vercel Analytics, or Google Analytics |
