@@ -39,15 +39,29 @@ So why does anyone make an app?
 
 ## Three ways to make a mobile product
 
-| | Web app | Cross-platform app | Native app |
-| --- | --- | --- | --- |
-| Built with | HTML, CSS and JavaScript, like everything this semester | One codebase (React Native or Flutter) that becomes an iPhone app and an Android app | Swift for iPhone and Kotlin for Android: two separate codebases |
-| Examples | Your final project | Google Pay (Flutter), Discord (React Native) | Apple's own apps, Google Maps |
-| How people get it | A link | The App Store and Play Store | The App Store and Play Store |
-| How updates reach people | Every push, straight away | After store review, when people update | After store review, when people update |
-| Camera, notifications, working offline | Some. On iPhone, notifications only work once it's on the home screen | Most | All |
-| Cost to build | One team | One team, plus some work per platform | Two teams |
-| Feels like the phone | Close, if it's designed well | Close | Exactly |
+### 1. Web app
+
+A web app uses HTML, CSS and JavaScript, like everything this semester. Your final project is one example. People open it through a link, and updates reach them as soon as you push.
+
+- **Cost to build:** One team.
+- **Device features:** Some access to the camera, notifications and offline use. On iPhone, notifications only work once the app is on the home screen.
+- **How it feels:** Close to a phone app, if it's designed well.
+
+### 2. Cross-platform app
+
+A cross-platform app uses one codebase, built with React Native or Flutter, to make both an iPhone app and an Android app. Examples include Google Pay (Flutter) and Discord (React Native). People download it from the App Store or Play Store. Updates reach them after store review, when they update the app.
+
+- **Cost to build:** One team, plus some work per platform.
+- **Device features:** Access to most features, including the camera, notifications and offline use.
+- **How it feels:** Close to the phone's own apps.
+
+### 3. Native app
+
+A native app uses Swift for iPhone and Kotlin for Android, with two separate codebases. Apple's own apps and Google Maps are examples. People download it from the App Store or Play Store. Updates reach them after store review, when they update the app.
+
+- **Cost to build:** Two teams.
+- **Device features:** Full access to features such as the camera, notifications and offline use.
+- **How it feels:** Like the phone's own apps.
 
 Some things to note:
 
@@ -95,12 +109,6 @@ Most student projects skip this part, and most real products don't. In your team
 - **Alt text** on every image that means something. A model can write a first draft (L11), but read it.
 - **Text size.** `rem`, not `px` (L4). Turn up your phone's text size and look again.
 - **A screen reader.** On a Mac, **⌘F5** turns VoiceOver on and off. Listen to your landing page for thirty seconds.
-
-### Speed
-
-- In DevTools, open **Lighthouse** and click **Analyze page load**. Read the Performance and Accessibility scores and the first few suggestions.
-- Throttle to Slow 3G and reload, as in [[Exercise - Trace a Request]]. What does someone see while it loads?
-- The usual cause is images: a 5 MB photo straight from your phone. Resize it before it goes in the repo.
 
 ### Security and privacy
 
