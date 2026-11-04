@@ -1,6 +1,6 @@
 ---
 date: 09-10-2026
-date modified: 08-10-2026
+date modified: 27-10-2026
 feed: show
 tag: project
 title: "Project - Final Project"
@@ -21,7 +21,7 @@ Both are deployed, built mostly by directing AI tools, and presented at Demo Day
 
 - **Introduced (L9, 13 October):** the brief, and what a startup is. Sharpen your ideas.
 - **Kickoff (L10, 27 October):** form teams, pitch ideas, submit a one-page proposal: the problem, who it's for, the core flow, and a sketch of your stack.
-- **Sprint 1 (L11, 3 November):** sign in and the core flow working end to end, however ugly. Live crit.
+- **Sprint 1 (L11, Wednesday 4 November):** sign in and the core flow working end to end, however ugly. Live crit.
 - **Sprint 2 (L12, 17 November):** the landing page, and the product made ship-ready: empty and error states, a security check, polish. Feature freeze at the end of the week.
 - **Demo Day (L13, Friday 27 November, from 2:15pm):** a 7-minute live demo, starting from your landing page, plus your process story, and 3 minutes of Q&A.
 

@@ -1,6 +1,6 @@
 ---
-date: 17-11-2026
-date modified: 09-10-2026
+date: 04-11-2026
+date modified: 04-11-2026
 feed: show
 key_areas:
   - "iOS vs Android platforms"
@@ -11,18 +11,20 @@ key_areas:
   - "Security and privacy"
   - "DNS"
 tag: lecture
-title: "Lecture 12 - Mobile and Shipping"
+title: "Lecture 11 - Mobile and Shipping"
 ---
 
 ## Project check-in
 
-Ten days to Demo Day. Each team gets three minutes, and this time you start on a phone:
+Each team gets three minutes:
 
-1. Open your landing page the way a stranger would, from a link.
-2. Sign up, and show the first screen a new person sees.
-3. Do the core thing.
+1. Read the first line of your proposal: who it's for, and why they'd sign up.
+2. Show what works, live, from your `vercel.app` URL. Sign in and do the core thing, however ugly it is.
+3. Say what's stuck.
 
-Feedback follows [[Rules for Class Crits]]. Then, in your team: what's left on your must-have list, and what are you cutting? This week is your feature freeze. After it, you only fix and polish.
+The rest of us give feedback following [[Rules for Class Crits]]. Then take five minutes in your team for a retro (L10): what will you change about how you're working for sprint 2?
+
+Your [[Exercise - SDLC Stage Mapping]] diagrams: we'll look at two. Where's the designer, and where are they missing?
 
 ---
 
@@ -106,7 +108,7 @@ Most student projects skip this part, and most real products don't. In your team
 
 - **Contrast.** Body text needs a contrast ratio of at least 4.5:1 against its background. Inspect some text in DevTools and click its colour swatch to see the ratio. Check dark mode too (L3).
 - **Keyboard.** Put the mouse away and use Tab and Enter. Can you sign up and do the core thing? Can you always see where you are?
-- **Alt text** on every image that means something. A model can write a first draft (L11), but read it.
+- **Alt text** on every image that means something. A model can write a first draft, but read it.
 - **Text size.** `rem`, not `px` (L4). Turn up your phone's text size and look again.
 - **A screen reader.** On a Mac, **⌘F5** turns VoiceOver on and off. Listen to your landing page for thirty seconds.
 
@@ -114,7 +116,7 @@ Most student projects skip this part, and most real products don't. In your team
 
 - **Rules.** Rerun the `fetch` from [[Exercise - Hack the Wall]] against your own database. Signed out, can you write? Can you read anything you shouldn't?
 - **Keys.** Search your repo on github.com for `AIza`, and check `.env` isn't there (L9).
-- **Your server.** Does it turn away empty and very long requests (L11)?
+- **Your server.** Does it turn away empty and very long requests? We'll try to break these in L12.
 - **What you collect.** List every piece of personal data you store. Do you need all of it? Who can see it? India's Digital Personal Data Protection Act (2023) expects you to collect only what you need and tell people what it's for.
 
 ### A real domain (optional)
@@ -127,19 +129,7 @@ Most student projects skip this part, and most real products don't. In your team
 
 This is DNS from [[Exercise - Trace a Request]]: you're telling the internet's address book that your name points to Vercel's computers. It can take anywhere from a few minutes to a few hours to reach everyone.
 
----
-
-## Demo Day
-
-Friday 27 November. Seven minutes per team, then three minutes of questions.
-
-- **Start from your landing page**, the way a stranger would, and go through sign-up to the core thing.
-- **Tell the story of how you made it:** what you cut, what broke, and what you'd do differently. That's the process documentation from the brief.
-- **Have a backup.** Record your screen going through the whole flow, in case the Wi-Fi, a key or a quota fails on the day.
-- **Practise once with a timer.** Seven minutes goes quickly.
-
 ## Homework
 
-- Everything on your ship-ready list.
+- **Sprint 2:** your landing page, everything on your must-have list working, and your ship-ready list.
 - [[Exercise - Mobile Ecosystem Comparison]], with your own product as the lens.
-- Rehearse your demo.

@@ -1,6 +1,6 @@
 ---
-date: 03-11-2026
-date modified: 09-10-2026
+date: 17-11-2026
+date modified: 04-11-2026
 feed: show
 key_areas:
   - "AI features in products"
@@ -8,20 +8,18 @@ key_areas:
   - "IaaS, PaaS, SaaS"
   - "Scaling and cost"
 tag: lecture
-title: "Lecture 11 - AI Features and the Cloud"
+title: "Lecture 12 - AI Features and the Cloud"
 ---
 
 ## Project check-in
 
-Each team gets three minutes:
+Ten days to Demo Day. Each team gets three minutes, and this time you start on a phone:
 
-1. Read the first line of your proposal: who it's for, and why they'd sign up.
-2. Show what works, live, from your `vercel.app` URL. Sign in and do the core thing, however ugly it is.
-3. Say what's stuck.
+1. Open your landing page the way a stranger would, from a link.
+2. Sign up, and show the first screen a new person sees.
+3. Do the core thing.
 
-The rest of us give feedback following [[Rules for Class Crits]]. Then take five minutes in your team for a retro (L10): what will you change about how you're working for sprint 2?
-
-Your [[Exercise - SDLC Stage Mapping]] diagrams: we'll look at two. Where's the designer, and where are they missing?
+Feedback follows [[Rules for Class Crits]]. Then, in your team: what's left on your must-have list, and what are you cutting? This week is your feature freeze. After it, you only fix and polish.
 
 ---
 
@@ -155,7 +153,19 @@ Some things to note:
 
 > **Sidenote:** Pick an app on your phone. Guess what it runs on, and roughly what it costs them per user each month.
 
+---
+
+## Demo Day
+
+Friday 27 November. Seven minutes per team, then three minutes of questions.
+
+- **Start from your landing page**, the way a stranger would, and go through sign-up to the core thing.
+- **Tell the story of how you made it:** what you cut, what broke, and what you'd do differently. That's the process documentation from the brief.
+- **Have a backup.** Record your screen going through the whole flow, in case the Wi-Fi, a key or a quota fails on the day.
+- **Practise once with a timer.** Seven minutes goes quickly.
+
 ## Homework
 
 - [[Exercise - Add an AI Feature]]. Add it to your final project if it earns its place there, or to something you made earlier in the course.
-- **Sprint 2:** your landing page, and everything on your must-have list working.
+- Finish everything on your ship-ready list.
+- Rehearse your demo.

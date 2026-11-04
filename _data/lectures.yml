@@ -113,20 +113,9 @@
     - "Version control (Git)"
 
 - num: 11
-  title: "AI Features and the Cloud"
-  date: "3 November 2026"
-  slug: "lecture-11-ai-features-and-the-cloud"
-  summary: "A project check-in, what people will do to your AI server, designing the feature, and whose computer it all runs on and what it costs."
-  key_areas:
-    - "AI features in products"
-    - "LLM APIs"
-    - "IaaS, PaaS, SaaS"
-    - "Scaling and cost"
-
-- num: 12
   title: "Mobile and Shipping"
-  date: "17 November 2026"
-  slug: "lecture-12-mobile-and-shipping"
+  date: "4 November 2026"
+  slug: "lecture-11-mobile-and-shipping"
   summary: "Web, cross-platform or native, iOS vs Android and the app stores, then getting your project ready to ship: accessibility, speed, security and a real domain."
   key_areas:
     - "iOS vs Android platforms"
@@ -136,6 +125,17 @@
     - "Performance"
     - "Security and privacy"
     - "DNS"
+
+- num: 12
+  title: "AI Features and the Cloud"
+  date: "17 November 2026"
+  slug: "lecture-12-ai-features-and-the-cloud"
+  summary: "A project check-in, what people will do to your AI server, designing the feature, and whose computer it all runs on and what it costs."
+  key_areas:
+    - "AI features in products"
+    - "LLM APIs"
+    - "IaaS, PaaS, SaaS"
+    - "Scaling and cost"
 
 - num: 13
   title: "Demo Day"
