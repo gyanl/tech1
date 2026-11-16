@@ -7,6 +7,8 @@ title: "Class Schedule"
 
 See also: [[Syllabus]] · [[Lectures]] · [[Grading]]
 
+**Schedule update:** Lecture 12 is on Wednesday 18 November, **11am–1pm IST**, instead of Tuesday 17 November.
+
 Tuesdays, **2:15–4:15pm**. Dates may shift if I'm travelling — I'll give as much notice as possible, and this page stays up to date.
 
 | Week | Date | Lecture |
