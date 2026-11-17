@@ -1,6 +1,11 @@
 ---
+<<<<<<< HEAD
 date: 19-11-2026
 date modified: 18-11-2026
+=======
+date: 18-11-2026
+date modified: 04-11-2026
+>>>>>>> 28d287896449773ebffe9a471eaea278bf6c7e41
 feed: show
 key_areas:
   - "AI features in products"

@@ -1,6 +1,11 @@
 ---
+<<<<<<< HEAD:_notes/Exercise 13 - Add an AI Feature.md
 date: 17-11-2026
 date modified: 18-11-2026
+=======
+date: 18-11-2026
+date modified: 28-09-2026
+>>>>>>> 28d287896449773ebffe9a471eaea278bf6c7e41:_notes/Exercise - Add an AI Feature.md
 feed: show
 tag: exercise
 title: "Exercise 13 - Add an AI Feature"

@@ -8,7 +8,13 @@ title: "Lectures"
 
 See also: [[Syllabus]] · [[Class Schedule]] · [[Grading]]
 
+<<<<<<< HEAD
 One 2-hour session per week, Tuesdays 2:15–4:15pm. No class on 8 and 15 September, 6 October, 20 October (Dussehra), or 10 November (Diwali break). L11 is on Wednesday 4 November and L12 on Thursday 19 November instead of the Tuesday. Demo Day, the final evaluation, is on Friday 27 November from 2:15pm.
+=======
+**Schedule update:** Lecture 12 is on Wednesday 18 November, **11am–1pm IST**, instead of Tuesday 17 November.
+
+One 2-hour session per week, Tuesdays 2:15–4:15pm. No class on 8 and 15 September, 6 October, 20 October (Dussehra), or 10 November (Diwali break). L11 is on Wednesday 4 November instead of the Tuesday. Demo Day, the final evaluation, is on Friday 27 November from 2:15pm.
+>>>>>>> 28d287896449773ebffe9a471eaea278bf6c7e41
 
 <div class="syllabus-list">
 {%- for l in site.data.lectures -%}
