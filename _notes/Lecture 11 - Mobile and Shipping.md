@@ -1,6 +1,6 @@
 ---
 date: 04-11-2026
-date modified: 04-11-2026
+date modified: 18-11-2026
 feed: show
 key_areas:
   - "iOS vs Android platforms"
@@ -21,10 +21,6 @@ Each team gets three minutes:
 1. Read the first line of your proposal: who it's for, and why they'd sign up.
 2. Show what works, live, from your `vercel.app` URL. Sign in and do the core thing, however ugly it is.
 3. Say what's stuck.
-
-The rest of us give feedback following [[Rules for Class Crits]]. Then take five minutes in your team for a retro (L10): what will you change about how you're working for sprint 2?
-
-Your [[Exercise - SDLC Stage Mapping]] diagrams: we'll look at two. Where's the designer, and where are they missing?
 
 ---
 
@@ -80,7 +76,7 @@ Some things to note:
 | Range of devices | A handful of sizes, mostly recent | Thousands, from ₹7,000 phones to foldables |
 | Design guidelines | Human Interface Guidelines | Material Design |
 
-Who are your users? A product for Indian college students that only works well on an iPhone has picked a very small audience. Test on a cheap Android phone, and on Slow 3G ([[Exercise - Trace a Request]]).
+Who are your users? A product for Indian college students that only works well on an iPhone has picked a very small audience. Test on a cheap Android phone, and on Slow 3G.
 
 ### The stores are gatekeepers
 
@@ -114,22 +110,21 @@ Most student projects skip this part, and most real products don't. In your team
 
 ### Security and privacy
 
-- **Rules.** Rerun the `fetch` from [[Exercise - Hack the Wall]] against your own database. Signed out, can you write? Can you read anything you shouldn't?
+- **Rules.** Rerun the `fetch` from [[Exercise 08 - Hack the Wall]] against your own database. Signed out, can you write? Can you read anything you shouldn't?
 - **Keys.** Search your repo on github.com for `AIza`, and check `.env` isn't there (L9).
 - **Your server.** Does it turn away empty and very long requests? We'll try to break these in L12.
 - **What you collect.** List every piece of personal data you store. Do you need all of it? Who can see it? India's Digital Personal Data Protection Act (2023) expects you to collect only what you need and tell people what it's for.
 
 ### A real domain (optional)
 
-`your-project.vercel.app` works, but a name like `hostelorders.in` is easier to say out loud on Demo Day.
+`your-project.vercel.app` works for free, but if you wanted a name like `hostelorders.in`, you could:
 
 1. Buy one from a domain registrar. A `.in` or `.com` costs a few hundred to a thousand rupees a year.
 2. In Vercel, go to **Settings → Domains** and add it. Vercel tells you which DNS records to add at your registrar.
 3. Add the new domain to Firebase's **Authorized domains**, or sign-in will fail on it.
 
-This is DNS from [[Exercise - Trace a Request]]: you're telling the internet's address book that your name points to Vercel's computers. It can take anywhere from a few minutes to a few hours to reach everyone.
+This is DNS from: you're telling the internet's address book that your name points to Vercel's computers. It can take anywhere from a few minutes to a few hours to reach everyone.
 
 ## Homework
 
 - **Sprint 2:** your landing page, everything on your must-have list working, and your ship-ready list.
-- [[Exercise - Mobile Ecosystem Comparison]], with your own product as the lens.

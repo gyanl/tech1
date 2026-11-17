@@ -1,6 +1,6 @@
 ---
-date: 17-11-2026
-date modified: 04-11-2026
+date: 19-11-2026
+date modified: 18-11-2026
 feed: show
 key_areas:
   - "AI features in products"
@@ -38,7 +38,7 @@ Getting a model to ignore its instructions is called **prompt injection**, and n
 
 ### Anyone can call your server
 
-Your key is hidden, but `/api/ask` is a public URL. Anyone can call it, the way you called the wall's database in [[Exercise - Hack the Wall]], and every call uses your quota.
+Your key is hidden, but `/api/ask` is a public URL. Anyone can call it, the way you called the wall's database in [[Exercise 08 - Hack the Wall]], and every call uses your quota.
 
 The Anything API gets hit constantly by bots looking for leaked passwords. Each hit used to cost a model call, so now the code turns them away first:
 
@@ -166,6 +166,6 @@ Friday 27 November. Seven minutes per team, then three minutes of questions.
 
 ## Homework
 
-- [[Exercise - Add an AI Feature]]. Add it to your final project if it earns its place there, or to something you made earlier in the course.
+- [[Exercise 13 - Add an AI Feature]]. Add it to your final project if it earns its place there, or to something you made earlier in the course.
 - Finish everything on your ship-ready list.
 - Rehearse your demo.

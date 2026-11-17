@@ -1,6 +1,6 @@
 ---
 date: 25-08-2026
-date modified: 25-08-2026
+date modified: 18-11-2026
 feed: show
 key_areas:
   - "Responsive web design"
@@ -167,6 +167,6 @@ Finish building your home page designs. Instructor will help with any issues you
 
 ## Homework
 
-Make sure you have finished [[Exercise - Figma to Code]]
+Make sure you have finished [[Exercise 03 - Figma to Code]]
 
-[[Exercise - Unusual Interactions]]
+[[Exercise 04 - Unusual Interactions]]

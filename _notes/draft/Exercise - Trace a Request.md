@@ -1,6 +1,6 @@
 ---
 date: 22-09-2026
-date modified: 09-10-2026
+date modified: 18-11-2026
 feed: show
 tag: exercise
 title: "Exercise - Trace a Request"
@@ -11,7 +11,7 @@ Use the browser's Network tab to observe everything that happens between typing 
 
 ### Steps
 
-1. **Open your own site** (from [[Exercise - Ship a Page with GitHub Pages]]) with DevTools → Network tab open. Hard refresh — **⌘⇧R** / **Ctrl+Shift+R** — so nothing comes from cache.
+1. **Open your own site** (from [[Exercise 01 - Ship a Page with GitHub Pages]]) with DevTools → Network tab open. Hard refresh — **⌘⇧R** / **Ctrl+Shift+R** — so nothing comes from cache.
 2. **Count the requests.** Your "one page" is probably 10–50 separate requests. Identify: the HTML document, CSS files, JavaScript files, images, fonts.
 3. **Read one request fully.** Click the first one: find the request URL, the method (GET), the status code (200), and the response body (your HTML!).
 4. **Break something.** Edit the URL to a page that doesn't exist. Find the 404, and note which *family* it's in — is this your fault or the server's?

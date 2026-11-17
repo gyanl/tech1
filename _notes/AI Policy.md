@@ -1,6 +1,6 @@
 ---
 date: 24-07-2026
-date modified: 04-08-2026
+date modified: 18-11-2026
 feed: show
 title: "AI Policy"
 ---
@@ -21,7 +21,7 @@ Design as a career is changing - along with many other lines of work. Using AI i
 
 - **Generating code with AI** — Claude, Cursor, v0, Lovable, Figma Make, Copilot, whatever works. Switching tools mid-project is fine; tool fluency is part of the point.
 - **Using AI to learn** — asking it to explain code it (or someone else) wrote, decode error messages, compare approaches, or quiz you before a presentation.
-- **Using AI as a research assistant** — for exercises like [[Exercise - Mobile Ecosystem Comparison]], with the caveat below about verification.
+- **Using AI as a research assistant** — with the caveat below about verification.
 - **Iterating in plain language** — a well-written prompt log is a design artifact. Keep yours.
 
 ### Writing is different from code

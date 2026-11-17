@@ -1,6 +1,6 @@
 ---
 date: 27-10-2026
-date modified: 27-10-2026
+date modified: 18-11-2026
 feed: show
 key_areas:
   - "Landing pages"
@@ -67,6 +67,7 @@ After the button comes sign-in (L8), then the first screen a new person sees, be
 ### Landing page and app in one repo
 
 Keep the landing page at `/` and the product at `/app/`:
+
 If someone is signed in, send them straight to the app.
 
 ```text
@@ -182,7 +183,7 @@ In L2 I said merge conflicts start "the moment you are working with other people
 - A **branch** is your own copy of the project, where you can work without breaking `main`. In GitHub Desktop: **Current Branch → New Branch**.
 - A **pull request** asks to merge your branch into `main`, so a teammate can look at it first. After you push a branch, GitHub Desktop shows a **Create Pull Request** button.
 - **Vercel deploys every branch to its own preview URL**, and posts the link on the pull request. Your teammate can try your change on their phone before it goes live.
-- On the free tier, Vercel deploys automatically from the **main** branch, but only when the Github commit is from the same email ID as the Vercel account. 
+- On the free tier, Vercel deploys automatically from the **main** branch, but only when the Github commit is from the same email ID as the Vercel account.
 
 ### Habits that avoid most conflicts
 
@@ -201,11 +202,11 @@ In L2 I said merge conflicts start "the moment you are working with other people
 
 ## Final project kickoff
 
-Open [[Project - Final Project]]. We'll go through it together: a product people sign in to, a landing page that gets them to sign up, check-ins at L11 and L12, and Demo Day on Friday 27 November.
+Open [[Project - Final Project]]. We'll go through it together: a product people sign in to, a landing page that gets them to sign up, check-ins at L11 and L12, and Demo Day on the last day of class - expected to be 27 November.
 
 ### Pitch round
 
-Everyone reads their best idea, in the form from [[Exercise - Final Project Ideas]]:
+Everyone reads their best idea, in the form
 
 ```text
 This is for ___, who currently ___.
@@ -230,7 +231,6 @@ The class gets one question per idea. Write down the ones you'd want to work on.
   - a stack sketch: where the data lives, how sign-in works, where it's hosted, which keys you need
   - your backlog, split into the two sprints
 - **Sprint 1:** sign-in and the core flow working end to end, however ugly.
-- [[Exercise - SDLC Stage Mapping]], using one feature from your own project.
 
 ### Prompts for checking your idea
 
@@ -239,8 +239,8 @@ Before you write the proposal, ask an AI (Claude, ChatGPT, Gemini) whether your 
 **Is it feasible?**
 
 ```text
-Here's my product idea: [paste your pitch].
-I'm a design student with a team of 3. We have 4 weeks, and we build
+Here's my product idea: [explain your pitch].
+I'm a design student with a team of [team size]. We have a few weeks, to build
 with AI help, using plain HTML, CSS and JavaScript.
 What's the hardest part to build? What would you cut to make it
 possible in 4 weeks? What's the smallest version that still

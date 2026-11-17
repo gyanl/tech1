@@ -1,9 +1,9 @@
 ---
 date: 13-10-2026
-date modified: 09-10-2026
+date modified: 18-11-2026
 feed: show
 tag: exercise
-title: "Exercise - Keep Your Keys Out of Git"
+title: "Exercise 12 - Keep Your Keys Out of Git"
 ---
 
 ### API Keys

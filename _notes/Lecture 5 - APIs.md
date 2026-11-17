@@ -1,6 +1,6 @@
 ---
 date: 01-09-2026
-date modified: 02-09-2026
+date modified: 18-11-2026
 feed: show
 key_areas:
   - "Client-server architecture"
@@ -16,8 +16,8 @@ title: "Lecture 5 - APIs"
 
 Let's look at your submissions!
 
-- [[Exercise - Figma to Code]]
-- [[Exercise - Unusual Interactions]]
+- [[Exercise 03 - Figma to Code]]
+- [[Exercise 04 - Unusual Interactions]]
 
 ## Two kinds of website
 
@@ -190,10 +190,10 @@ You will mostly have AI write this - but you should know the rough shape of what
 
 ### Class Exercise: Anything API
 
-[[Exercise - Build with the Anything API]]
+[[Exercise 05 - Build with the Anything API]]
 
 ---
 
 ### Homework: Weather in the Footer
 
-[[Exercise - Weather in the Footer]]
+[[Exercise 06 - Weather in the Footer]]

@@ -1,9 +1,9 @@
 ---
 date: 29-09-2026
-date modified: 29-09-2026
+date modified: 18-11-2026
 feed: show
 tag: exercise
-title: "Exercise - Build with Jev"
+title: "Exercise 10 - Build with Jev"
 ---
 
 ### Make something where a model decides, not writes
@@ -14,7 +14,7 @@ It proves two things: that you can keep a key on a server, and that you can desi
 
 ### Ideas
 
-- **Your theme switcher** from [[Exercise - A Theme That Remembers]] picks one of your themes from a mood the visitor types.
+- **Your theme switcher** from [[Exercise 07 - A Theme That Remembers]] picks one of your themes from a mood the visitor types.
 - **Your realtime Q&A** sorts each new question into a topic, or flags duplicates.
 - **Your crit board** checks whether a comment is actually about the work, and holds back the ones that aren't.
 - **A contact form on your portfolio** that sorts messages into job, collaboration, hello, or spam.
@@ -35,7 +35,7 @@ Or anything else where one of Jev's three question types fits: yes or no, pick o
 
 I'll share a class key in the class group. It has a spending limit, and it's shared by everyone, so:
 
-- **It only goes in two places:** `.env` on your laptop and Vercel's **Settings → Environment Variables**, named `AI_GATEWAY_API_KEY` ([[Exercise - Keep Your Keys Out of Git]]). Never in your page, your repo, a screenshot or a chat with an AI tool.
+- **It only goes in two places:** `.env` on your laptop and Vercel's **Settings → Environment Variables**, named `AI_GATEWAY_API_KEY` ([[Exercise 12 - Keep Your Keys Out of Git]]). Never in your page, your repo, a screenshot or a chat with an AI tool.
 - **Every call spends from the same pot.** A small question costs a fraction of a paisa. The emoji picker, with 255 options, costs about 2 paise a pick. When the limit runs out, it stops working for the whole class.
 - **Don't call it on every keystroke, and don't loop it.** One call when someone presses a button.
 - If you think the key has leaked, tell me straight away and I'll replace it.

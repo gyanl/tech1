@@ -1,6 +1,6 @@
 ---
 date: 13-10-2026
-date modified: 27-10-2026
+date modified: 18-11-2026
 feed: show
 key_areas:
   - "API keys and environment variables"
@@ -14,10 +14,10 @@ title: "Lecture 9 - API Keys and Vercel"
 
 ## Homework Review
 
-- [[Exercise - Unusual Interactions]]
-- [[Exercise - Realtime Web Experience]]
-- [[Exercise - Sign in with Google]]
-- [[Exercise - Build with Jev]] - if you had trouble with this, some of today's lecture will help.
+- [[Exercise 04 - Unusual Interactions]]
+- [[Exercise 09 - Realtime Web Experience]]
+- [[Exercise 10 - Build with Jev]] - if you had trouble with this, some of today's lecture will help.
+- [[Exercise 11 - Sign in with Google]]
 
 ---
 
@@ -393,7 +393,7 @@ It won't work on `github.io`, in Simple Web Server, or from a double-clicked `in
 ## Add the Jev key
 
 - Jev from L7 needs a key too: the class key I'll share in the class group. Same rules, one more line.
-- Add it to `.env` on a new line, under the name used in [[Exercise - Build with Jev]]:
+- Add it to `.env` on a new line, under the name used in [[Exercise 10 - Build with Jev]]:
 
 ```text
 SARVAM_API_KEY=your-sarvam-key
@@ -401,7 +401,7 @@ AI_GATEWAY_API_KEY=the-class-key
 ```
 
 - Paste the whole `.env` into Vercel again, the same way, and redeploy.
-- Ask your agent to add the `api/decide.js` server from [[Exercise - Build with Jev]] to the same repo: "Add api/decide.js as described in this exercise. The key is in .env as AI_GATEWAY_API_KEY. Don't open or print .env." One project, two servers, two keys.
+- Ask your agent to add the `api/decide.js` server from [[Exercise 10 - Build with Jev]] to the same repo: "Add api/decide.js as described in this exercise. The key is in .env as AI_GATEWAY_API_KEY. Don't open or print .env." One project, two servers, two keys.
 - It's shared by the whole class and has a spending limit, so one call when someone presses a button, never on every keystroke. If you think it's leaked, tell me and I'll replace it.
 - Add `AI_GATEWAY_API_KEY` with a fake value to `.env.example` too, and commit it. That's how a teammate, or an agent, knows which keys the project needs.
 
@@ -433,15 +433,15 @@ Check it:
 
 - Walk through [[Project - Final Project]]: a product people sign in to, a landing page that gets them to sign up, deployed on Vercel. An AI feature if it earns its place.
 - Everything so far is a part of it: pages (L1–L4), APIs (L5), a database (L6), sign-in (L8), keys and a server (today).
-- Teams form in L10. Until then, sharpen your [[Exercise - Final Project Ideas|project ideas]].
+- Teams form in L10. Until then, sharpen your project ideas.
 
 ---
 
 ## Homework
 
 - Finish your AI server with both keys, live on Vercel.
-- [[Exercise - Keep Your Keys Out of Git]]
-- Rewrite your best two [[Exercise - Final Project Ideas|project ideas]] as startups. Fill in "They'd sign up because ___" for each, and think about who you'd want to work with.
+- [[Exercise 12 - Keep Your Keys Out of Git]]
+- Rewrite your best two [[Project - Final Project|project ideas]] as startups. Fill in "They'd sign up because ___" for each, and think about who you'd want to work with.
 
 ### Reading: who makes the models
 

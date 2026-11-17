@@ -1,13 +1,13 @@
 ---
 date: 04-08-2026
-date modified: 08-08-2026
+date modified: 18-11-2026
 feed: show
 tag: exercise
-title: "Exercise - Ship a Page with GitHub Pages"
+title: "Exercise 01 - Ship a Page with GitHub Pages"
 ---
 ### Put your website on the real internet — free, today
 
-You already have a repo made from [web-starter](https://github.com/gyanl/web-starter). Now we tell GitHub to serve it as a live website. This is called **GitHub Pages** — free hosting for static sites.
+You already have a repo made from [web-starter](https://github.com/gyanl/web-starter). Now we will use GitHub to publish it as a live website. We will use a GitHub feature called **GitHub Pages**, which provides free hosting for static sites.
 
 ### Publish Steps
 
@@ -26,9 +26,10 @@ You already have a repo made from [web-starter](https://github.com/gyanl/web-sta
 ### Things to keep in mind
 
 - This page is public and Google can find it. No phone numbers, no addresses, nothing you wouldn't put on a poster.
-- If the URL shows a 404, wait a minute and refresh — the first deploy is slow. Still broken? Check that your homepage file is called exactly `index.html`.
+- If the URL shows a 404, wait a minute and refresh, the first deploy can be slow.
+- Still broken? Check that your homepage file is called exactly `index.html`
 - Your username and repo name are part of the URL. This is why we chose sensible ones.
 
 ### Submission
 
-- Your live `github.io` URL, posted to the class group before you leave.
+- Your live `github.io` URL (post to the class group)

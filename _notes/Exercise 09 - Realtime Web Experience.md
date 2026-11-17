@@ -1,9 +1,9 @@
 ---
 date: 22-09-2026
-date modified: 28-09-2026
+date modified: 18-11-2026
 feed: show
 tag: exercise
-title: "Exercise - Realtime Web Experience"
+title: "Exercise 09 - Realtime Web Experience"
 ---
 
 ### Build something several people use at the same time

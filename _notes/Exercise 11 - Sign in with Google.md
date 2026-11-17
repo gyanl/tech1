@@ -1,14 +1,14 @@
 ---
 date: 09-10-2026
-date modified: 09-10-2026
+date modified: 18-11-2026
 feed: show
 tag: exercise
-title: "Exercise - Sign in with Google"
+title: "Exercise 11 - Sign in with Google"
 ---
 
 ### Add Sign in with Google to your multiplayer experience
 
-Take what you built in [[Exercise - Realtime Web Experience]] and make people sign in with Google before they can change anything. Same Firebase project, same github.io URL.
+Take what you built in [[Exercise 09 - Realtime Web Experience]] and make people sign in with Google before they can change anything. Same Firebase project, same github.io URL.
 
 It proves that your rules can finally tell people apart. The Realtime exercise asked "who's allowed to change what?", and until now the honest answer was "anyone". By the end, people can only change their own things.
 
@@ -66,7 +66,7 @@ Read every line before you publish it in **Realtime Database → Rules**. You sh
 
 - **Signed out:** try to do something. What does the page say? It should tell you to sign in, not fail silently.
 - **Someone else:** open it on a friend's phone, signed in as them. They can add their own things but can't change yours.
-- **No page at all:** rerun the "paint as someone else" `fetch` from [[Exercise - Hack the Wall]] against your own database URL. It should come back `Permission denied`.
+- **No page at all:** rerun the "paint as someone else" `fetch` from [[Exercise 08 - Hack the Wall]] against your own database URL. It should come back `Permission denied`.
 
 ### Things to try
 

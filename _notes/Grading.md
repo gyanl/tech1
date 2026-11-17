@@ -1,6 +1,6 @@
 ---
 date: 24-07-2026
-date modified: 29-09-2026
+date modified: 18-11-2026
 feed: show
 title: "Grading"
 ---
@@ -11,35 +11,39 @@ See also: [[Syllabus]] · [[Lectures]]
 
 ### Assessment and Grading Breakdown
 
-| #   | Component                          | Weightage (%) |
-| --- | ---------------------------------- | ------------- |
-| 1   | Attendance and Class Participation | 10%           |
-| 2   | Class Exercises                    | 50%           |
-| 3   | Final Project                      | 40%           |
+| #   | Component           | Weightage (%) |
+| --- | ------------------- | ------------- |
+| 1   | Class Participation | 10%           |
+| 2   | Class Exercises     | 60%           |
+| 3   | Final Project       | 30%           |
 
-*(If the university requires written midterm/endterm exams, weightages will be adjusted and announced in class.)*
-
-#### 1. Attendance and Class Participation (10%)
+#### 1. Class Participation (10%)
 
 Attendance is recorded each session. I have an open door policy — if you need to take a break or leave, feel free to do so. The penalty is that you don't get the attendance credit and don't learn from the material. No distinction is made between excused and unexcused absences.
 
-#### 2. Class Exercises (50%)
+Class participation is my subjective read of how much you participated in the course, contributed to class discussions, and brought interesting ideas to the table.
 
-Weekly build exercises, done mostly in class and finished as homework:
+#### 2. Graded Exercises (60%)
 
-1. [[Exercise - Ship a Page with GitHub Pages]]
-2. [[Exercise - Redesign your Home Page in Figma]]
-3. [[Exercise - Figma to Code]]
-4. [[Exercise - Unusual Interactions]]
-5. [[Exercise - Trace a Request]]
-6. [[Exercise - Realtime Web Experience]]
-7. [[Exercise - API Mashup]] or [[Exercise - Add an AI Feature]]
-8. [[Exercise - Mobile Ecosystem Comparison]]
-9. [[Exercise - SDLC Stage Mapping]]
+The class will have 7 graded exercises. Each is graded out of 10 on outcome quality, understanding demonstrated, and process documentation (including prompt logs). I will consider your best 6 scores.
 
-Each is graded out of 8 on outcome quality, understanding demonstrated, and process documentation (including prompt logs). I will consider your best 6 scores.
+1. [[Exercise 01 - Ship a Page with GitHub Pages]] + [[Exercise 02 - Redesign your Home Page in Figma]] + [[Exercise 03 - Figma to Code]] (considered 1 graded exercise together)
+2. [[Exercise 04 - Unusual Interactions]]
+3. [[Exercise 05 - Build with the Anything API]]
+4. [[Exercise 06 - Weather in the Footer]]
+5. [[Exercise 09 - Realtime Web Experience]]
+6. [[Exercise 10 - Build with Jev]]
+7. [[Exercise 13 - Add an AI Feature]]
 
-#### 3. Final Project (40%)
+**Not Graded**
+These exercises contributed to your learning but did not have a meaningful submission for me to grade.
+
+1. [[Exercise 07 - A Theme That Remembers]]
+2. [[Exercise 08 - Hack the Wall]]
+3. [[Exercise 11 - Sign in with Google]]
+4. [[Exercise 12 - Keep Your Keys Out of Git]]
+
+#### 3. Final Project (30%)
 
 Group project (up to 3 people), built over the last third of the course and presented at Demo Day. See [[Project - Final Project]] for the brief and rubric.
 
@@ -47,8 +51,7 @@ Group project (up to 3 people), built over the last third of the course and pres
 
 See the full [[AI Policy]]. In this course, using AI to generate code is not just allowed — it's the expected way of working. What *is* dishonest:
 
-- Presenting work you can't explain. If you shipped it, you should be able to answer "how does this part work?" at the level this course teaches.
-- Hiding your process. Prompt logs and iteration history are part of every submission.
+- Presenting work you can't explain. If you shipped it, you should be able to answer "why did you do it this way?" at the level this course teaches.
 - Copying another student's project or prompts wholesale.
 
 Cite third-party assets, datasets, templates, and any substantial code you didn't generate yourself. For group projects, each member's contributions must be documented.

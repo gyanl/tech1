@@ -25,7 +25,7 @@ You've been using AI to build all semester. Now: AI as an ingredient *inside* th
 - Designing AI features responsibly: failure states, trust, disclosure
 
 #### Hour 2 — Studio
-- **Exercise:** [[Exercise - Add an AI Feature]] — add one genuinely useful AI feature to something you've built this semester
+- **Exercise:** [[Exercise 13 - Add an AI Feature]] — add one genuinely useful AI feature to something you've built this semester
 - Crit: is this feature better *because* it's AI, or is it AI for AI's sake?
 
 #### Homework

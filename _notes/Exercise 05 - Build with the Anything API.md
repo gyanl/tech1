@@ -1,9 +1,9 @@
 ---
 date: 01-09-2026
-date modified: 01-09-2026
+date modified: 18-11-2026
 feed: show
 tag: exercise
-title: "Exercise - Build with the Anything API"
+title: "Exercise 05 - Build with the Anything API"
 ---
 ### Make a small app powered by an API that returns anything you ask for
 

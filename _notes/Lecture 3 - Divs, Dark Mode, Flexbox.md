@@ -1,6 +1,6 @@
 ---
 date: 18-08-2026
-date modified: 25-08-2026
+date modified: 18-11-2026
 feed: show
 key_areas:
   - "HTML — structure"
@@ -276,4 +276,4 @@ Toggle your OS between light and dark and reload. Every colour in your page shou
 
 ## Homework
 
-- Rebuild your home page layout using divs, classes and flexbox. You are free to use AI coding agents for this exercise. See [[Exercise - Figma to Code]] for more details.
+- Rebuild your home page layout using divs, classes and flexbox. You are free to use AI coding agents for this exercise. See [[Exercise 03 - Figma to Code]] for more details.

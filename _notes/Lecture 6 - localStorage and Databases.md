@@ -1,6 +1,6 @@
 ---
 date: 22-09-2026
-date modified: 09-10-2026
+date modified: 18-11-2026
 feed: show
 key_areas:
   - "Browser storage"
@@ -16,7 +16,7 @@ title: "Lecture 6 - localStorage and Databases"
 
 Let's look at your submissions!
 
-- [[Exercise - Weather in the Footer]]
+- [[Exercise 06 - Weather in the Footer]]
 
 All the sites you have made so far (even with interactivity) reset on refresh.
 
@@ -116,7 +116,7 @@ This makes localStorage good for preferences — a theme, a font size, a dismiss
 
 Add a few colour themes to your site and save the visitor's choice in localStorage, so it's still there after a refresh.
 
-[[Exercise - A Theme That Remembers]]
+[[Exercise 07 - A Theme That Remembers]]
 
 ## Databases: memory for your app
 
@@ -300,4 +300,4 @@ Open `script.js` and you'll find the same three moves as the guestbook: `ref` to
 
 ## Homework
 
-- **Exercise:** [[Exercise - Realtime Web Experience]] — build something that more than one person can use at the same time. It can be a game or another interactive experience.
+- **Exercise:** [[Exercise 09 - Realtime Web Experience]] — build something that more than one person can use at the same time. It can be a game or another interactive experience.

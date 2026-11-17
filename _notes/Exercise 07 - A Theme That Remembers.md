@@ -3,7 +3,7 @@ date: 22-09-2026
 date modified: 22-09-2026
 feed: show
 tag: exercise
-title: "Exercise - A Theme That Remembers"
+title: "Exercise 07 - A Theme That Remembers"
 ---
 
 ### Save a colour theme in localStorage

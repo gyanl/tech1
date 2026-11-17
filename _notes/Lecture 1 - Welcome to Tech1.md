@@ -1,6 +1,6 @@
 ---
 date: 04-08-2026
-date modified: 02-09-2026
+date modified: 18-11-2026
 feed: show
 key_areas:
   - "HTML — structure"
@@ -204,7 +204,7 @@ If you see a 404: wait, refresh, and check your homepage is called exactly `inde
 
 #### Ship something
 
-- **Exercise:** [[Exercise - Ship a Page with GitHub Pages]] — personalise your page, push it, and put it live
+- **Exercise:** [[Exercise 01 - Ship a Page with GitHub Pages]] — personalise your page, push it, and put it live
 - Step-by-step reference you can keep coming back to: [[Help - Publish a Page with GitHub Pages]]
 - Everyone leaves with a URL that works on their phone
 
@@ -212,7 +212,7 @@ If you see a 404: wait, refresh, and check your homepage is called exactly `inde
 #### Homework
 
 - Finish any setup that got stuck
-- [[Exercise - Redesign your Home Page in Figma]] — bring your page into Figma and design it properly. Next week we turn it into CSS.
+- [[Exercise 02 - Redesign your Home Page in Figma]] — bring your page into Figma and design it properly. Next week we turn it into CSS.
 - Apply for the GitHub Student Developer Pack at [GitHub Education · GitHub](https://github.com/education) - free credits and tools; needs your university email/ID - approval can take a few days — apply today.
 
 ---

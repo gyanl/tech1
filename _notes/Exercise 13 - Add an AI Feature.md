@@ -1,10 +1,11 @@
 ---
 date: 17-11-2026
-date modified: 28-09-2026
+date modified: 18-11-2026
 feed: show
 tag: exercise
-title: "Exercise - Add an AI Feature"
+title: "Exercise 13 - Add an AI Feature"
 ---
+
 ### Put a model inside something you've built
 
 Add one AI feature to something you've already made this semester, through your own server on Vercel, as in [[Lecture 9 - API Keys and Vercel]]. The bar: it should be better because it uses a model, not just have a model in it.

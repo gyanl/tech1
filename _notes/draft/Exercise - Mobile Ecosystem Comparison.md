@@ -1,6 +1,6 @@
 ---
 date: 04-11-2026
-date modified: 09-10-2026
+date modified: 18-11-2026
 feed: show
 tag: exercise
 title: "Exercise - Mobile Ecosystem Comparison"

@@ -1,6 +1,6 @@
 ---
 date: 29-09-2026
-date modified: 08-10-2026
+date modified: 18-11-2026
 feed: show
 key_areas:
   - "How LLMs work"
@@ -15,7 +15,7 @@ title: "Lecture 7 - What are LLMs?"
 
 Let's look at your submissions!
 
-- [[Exercise - Realtime Web Experience]]
+- [[Exercise 09 - Realtime Web Experience]]
 
 What did people do to your data that you didn't expect?
 
@@ -33,7 +33,7 @@ Open this in a browser tab:
 https://api.gyanl.com/excuse/late-to-class
 ```
 
-You will get a response in a second or two, and all of you should have a different answer. Look at the field names too. When I tried it, one came back with `"credibility": 8.5` and the other with `"believability": "low"`. You saw the same thing in [[Exercise - Build with the Anything API]].
+You will get a response in a second or two, and all of you should have a different answer. Look at the field names too. When I tried it, one came back with `"credibility": 8.5` and the other with `"believability": "low"`. You saw the same thing in [[Exercise 05 - Build with the Anything API]].
 
 > **Discuss:** When the Anything API invented an excuse for being late to class, did it understand what being late is? What would convince you either way?
 
@@ -431,7 +431,7 @@ Some things to note:
 
 ### Your themes, picked from a sentence
 
-Take your theme switcher from [[Exercise - A Theme That Remembers]]. Instead of three buttons, the visitor types a mood and Jev picks one of your themes:
+Take your theme switcher from [[Exercise 07 - A Theme That Remembers]]. Instead of three buttons, the visitor types a mood and Jev picks one of your themes:
 
 ```json
 {
@@ -478,8 +478,8 @@ Some things to note:
 
 ## Homework
 
-- **Exercise:** [[Exercise - Build with Jev]]. Make something where Jev picks from answers you designed, using the class key.
-- **Project ideas:** [[Exercise - Final Project Ideas]]. Bring three ideas for your final project to Lecture 8.
+- **Exercise:** [[Exercise 10 - Build with Jev]]. Make something where Jev picks from answers you designed, using the class key.
+- **Project ideas:** Ideas for [[Project - Final Project]]. Bring three ideas for your final project to Lecture 8.
 - **Reading:** The Bitter Lesson, below. We'll discuss it at the start of Lecture 8.
 
 ### Reading: The Bitter Lesson
@@ -490,20 +490,20 @@ His argument, roughly: for 70 years, researchers tried to make AI better by buil
 
 Some examples, a few of which you've used:
 
-| Built on what people knew | Replaced by learning from data |
-| --- | --- |
+| Built on what people knew                                                       | Replaced by learning from data                                                                                |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | Photoshop's Magic Wand selects pixels of a similar colour, a rule someone wrote | Select Subject (2018) was trained on photos, and finds the person without being told what a person looks like |
-| Google Translate used to match phrases using rules and statistics about grammar | In 2016 it switched to a neural network trained on translated text, and got much better overnight |
-| Spam filters were lists of banned words written by hand ("FREE!!!", "Viagra") | Filters that learn from mail people mark as spam, starting around 2002 |
-| Photo apps needed you to tag your pictures | Google Photos (2015) let you search "dog" or "beach" in photos nobody had tagged |
-| AlphaGo (2016) learnt partly from thousands of games played by human experts | AlphaGo Zero (2017) learnt only by playing itself, and beat AlphaGo 100 games to 0 |
-| Typeform's logic jumps: "if they pick option B, go to question 7" | Jevform picks the next question from what the person meant |
+| Google Translate used to match phrases using rules and statistics about grammar | In 2016 it switched to a neural network trained on translated text, and got much better overnight             |
+| Spam filters were lists of banned words written by hand ("FREE!!!")             | Filters that learn from mail people mark as spam, starting around 2002                                        |
+| Photo apps needed you to tag your pictures                                      | Google Photos (2015) let you search "dog" or "beach" in photos nobody had tagged                              |
+| AlphaGo (2016) learnt partly from thousands of games played by human experts    | AlphaGo Zero (2017) learnt only by playing itself, and beat AlphaGo 100 games to 0                            |
+| Typeform's logic jumps: "if they pick option B, go to question 7"               | Jevform picks the next question from what the person meant                                                    |
 
 And some places where the built-in, hand-written approach still wins, at least for now:
 
 - The calculator. You don't ask a model to add up your bill.
 - The Anything API's code that checks the JSON is valid, instead of trusting the prompt.
-- Air Canada's refund policy. It should have come from a rule someone wrote, not from a model.
+- Air India's refund policy. It should have come from a rule someone wrote, not from a model.
 
 Bring a few lines on each of these, written by you, not a model:
 

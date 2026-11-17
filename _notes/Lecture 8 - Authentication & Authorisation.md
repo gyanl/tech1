@@ -1,6 +1,6 @@
 ---
 date: 09-10-2026
-date modified: 13-10-2026
+date modified: 18-11-2026
 feed: show
 key_areas:
   - "Authentication"
@@ -12,9 +12,9 @@ title: "Lecture 8 - Authentication & Authorisation"
 
 ## Homework
 
-- [[Exercise - Unusual Interactions]]
-- [[Exercise - Realtime Web Experience]]
-- [[Exercise - Build with Jev]]
+- [[Exercise 04 - Unusual Interactions]]
+- [[Exercise 09 - Realtime Web Experience]]
+- [[Exercise 10 - Build with Jev]]
 
 ---
 
@@ -128,7 +128,7 @@ Ask these about your multiplayer experience once it has sign-in:
 ---
 ## Homework
 
-- [[Exercise - Sign in with Google]]
+- [[Exercise 11 - Sign in with Google]]
 
 ### More: how hashing works
 

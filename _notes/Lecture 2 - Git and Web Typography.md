@@ -1,6 +1,6 @@
 ---
 date: 11-08-2026
-date modified: 25-08-2026
+date modified: 18-11-2026
 feed: show
 key_areas:
   - "Version control (Git)"
@@ -320,4 +320,4 @@ p {
 
 ## Homework
 
-- **Exercise:** [[Exercise - Figma to Code]] — build your Figma design as a real page: a Google Font loaded properly, `rem` for type and spacing, and at least 5 commits with real messages. Includes making Git diverge on purpose and fixing it.
+- **Exercise:** [[Exercise 03 - Figma to Code]] — build your Figma design as a real page: a Google Font loaded properly, `rem` for type and spacing, and at least 5 commits with real messages. Includes making Git diverge on purpose and fixing it.

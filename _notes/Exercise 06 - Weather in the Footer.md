@@ -1,14 +1,14 @@
 ---
 date: 01-09-2026
-date modified: 01-09-2026
+date modified: 18-11-2026
 feed: show
 tag: exercise
-title: "Exercise - Weather in the Footer"
+title: "Exercise 06 - Weather in the Footer"
 ---
 
 ### Put live weather in the footer of your own site
 
-A small strip at the bottom of your page that knows what the sky is doing. Real data, from [Open-Meteo](https://open-meteo.com/), on the site you already shipped in [[Exercise - Ship a Page with GitHub Pages]].
+A small strip at the bottom of your page that knows what the sky is doing. Real data, from [Open-Meteo](https://open-meteo.com/), on the site you already shipped in [[Exercise 01 - Ship a Page with GitHub Pages]].
 
 It's a deliberately small piece of work. The API call is three lines and you'll have AI write them. The exercise is everything around those three lines: deciding what the widget says, what it looks like while it's waiting, and what it does when the internet doesn't answer.
 
@@ -77,7 +77,7 @@ Two things worth knowing before you pick:
 
 ### Things to keep in mind
 
-- **No API key here** — nothing to leak, which is why we're starting with this one. Later APIs won't be so relaxed; that's [[Exercise - Add an AI Feature]]'s problem.
+- **No API key here** — nothing to leak, which is why we're starting with this one. Later APIs won't be so relaxed; that's [[Exercise 13 - Add an AI Feature]]'s problem.
 - **Your footer loads on every page.** Whatever this widget does badly, it does badly site-wide.
 - **A layout that jumps when the data lands is worse than no widget.** Reserve the space.
 
