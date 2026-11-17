@@ -128,11 +128,7 @@
 
 - num: 12
   title: "AI Features and the Cloud"
-<<<<<<< HEAD
   date: "19 November 2026"
-=======
-  date: "18 November 2026"
->>>>>>> 28d287896449773ebffe9a471eaea278bf6c7e41
   slug: "lecture-12-ai-features-and-the-cloud"
   summary: "A project check-in, what people will do to your AI server, designing the feature, and whose computer it all runs on and what it costs."
   key_areas:
