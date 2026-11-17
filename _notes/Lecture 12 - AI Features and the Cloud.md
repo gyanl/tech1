@@ -11,6 +11,8 @@ tag: lecture
 title: "Lecture 12 - AI Features and the Cloud"
 ---
 
+> This page is WIP don't bother reading it yet.
+
 ## Project check-in
 
 Ten days to Demo Day. Each team gets three minutes, and this time you start on a phone:
