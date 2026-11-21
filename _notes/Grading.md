@@ -25,7 +25,7 @@ Class participation is my subjective read of how much you participated in the co
 
 #### 2. Graded Exercises (60%)
 
-The class has 6 graded exercises. Each is graded out of 10 on outcome quality, understanding demonstrated, and process documentation (including prompt logs). All 6 count.
+The class has 6 graded exercises. Each is graded out of 10 on effort made, outcome quality and understanding demonstrated.
 
 1. [[Exercise 01 - Ship a Page with GitHub Pages]] + [[Exercise 02 - Redesign your Home Page in Figma]] + [[Exercise 03 - Figma to Code]] (considered 1 graded exercise together)
 2. [[Exercise 04 - Unusual Interactions]]
@@ -48,7 +48,7 @@ Group project (up to 3 people), built over the last third of the course and pres
 
 ### A note on AI and academic integrity
 
-See the full [[AI Policy]]. In this course, using AI to generate code is not just allowed — it's the expected way of working. What *is* dishonest:
+See the full [[AI Policy]]. In this course, using AI to generate code is not just allowed, it's the expected way of working. What *is* dishonest:
 
 - Presenting work you can't explain. If you shipped it, you should be able to answer "why did you do it this way?" at the level this course teaches.
 - Copying another student's project or prompts wholesale.
