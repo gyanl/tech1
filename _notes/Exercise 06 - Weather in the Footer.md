@@ -77,7 +77,7 @@ Two things worth knowing before you pick:
 
 ### Things to keep in mind
 
-- **No API key here** — nothing to leak, which is why we're starting with this one. Later APIs won't be so relaxed; that's [[Exercise 13 - Add an AI Feature]]'s problem.
+- **No API key here** — nothing to leak, which is why we're starting with this one. Later APIs won't be so relaxed; that's [[Exercise 12 - Keep Your Keys Out of Git]]'s problem.
 - **Your footer loads on every page.** Whatever this widget does badly, it does badly site-wide.
 - **A layout that jumps when the data lands is worse than no widget.** Reserve the space.
 

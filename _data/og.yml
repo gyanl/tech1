@@ -4,23 +4,18 @@ slugs:
   - about
   - class-schedule
   - courses
-  - exercise-a-theme-that-remembers
-  - exercise-add-an-ai-feature
-  - exercise-build-with-jev
-  - exercise-build-with-the-anything-api
-  - exercise-figma-to-code
-  - exercise-final-project-ideas
-  - exercise-hack-the-wall
-  - exercise-keep-your-keys-out-of-git
-  - exercise-mobile-ecosystem-comparison
-  - exercise-realtime-web-experience
-  - exercise-redesign-your-home-page-in-figma
-  - exercise-sdlc-stage-mapping
-  - exercise-ship-a-page-with-github-pages
-  - exercise-sign-in-with-google
-  - exercise-trace-a-request
-  - exercise-unusual-interactions
-  - exercise-weather-in-the-footer
+  - exercise-01-ship-a-page-with-github-pages
+  - exercise-02-redesign-your-home-page-in-figma
+  - exercise-03-figma-to-code
+  - exercise-04-unusual-interactions
+  - exercise-05-build-with-the-anything-api
+  - exercise-06-weather-in-the-footer
+  - exercise-07-a-theme-that-remembers
+  - exercise-08-hack-the-wall
+  - exercise-09-realtime-web-experience
+  - exercise-10-build-with-jev
+  - exercise-11-sign-in-with-google
+  - exercise-12-keep-your-keys-out-of-git
   - grading
   - help-host-on-vercel
   - help-publish-a-page-with-github-pages

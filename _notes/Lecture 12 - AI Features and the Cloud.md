@@ -1,17 +1,15 @@
 ---
 date: 19-11-2026
-date modified: 18-11-2026
+date modified: 21-11-2026
 feed: show
 key_areas:
   - "AI features in products"
   - "LLM APIs"
-  - "IaaS, PaaS, SaaS"
-  - "Scaling and cost"
+  - "Cost per user"
+  - "Business models"
 tag: lecture
 title: "Lecture 12 - AI Features and the Cloud"
 ---
-
-> This page is WIP don't bother reading it yet.
 
 ## Project check-in
 
@@ -82,78 +80,103 @@ And label anything the model wrote. People read more carefully when they know, w
 
 If your final project has an AI feature, write its sentence now, in your team, and decide what each of those four states looks like.
 
-## Sending an image through your server
-
-The Gemini call in your `api/ask.js` can take an image as just another part of the message, next to the text. The image goes in as **base64**, a way of writing a file's bytes as plain text so it can travel inside JSON:
-
-```js
-contents: [{
-  parts: [
-    { text: "Write alt text for this image, in one sentence." },
-    { inlineData: { mimeType: "image/png", data: imageAsBase64 } }
-  ]
-}]
-```
-
-Some things to note:
-
-- **Images cost tokens.** One image can count as a few hundred to over a thousand tokens, depending on its size. A feature that sends a photo every time costs far more than one that sends a sentence.
-- **Models describe images better than they measure them.** They're good at "what is this?" and unreliable at "how many are there?", "which one is on the left?" or reading tiny text.
-- **Generated images still have tells.** Hands, text on signs and logos, and things that should be the same across two pictures often come out wrong. It's getting better quickly.
-- **There's a design angle and an ethical one.** Image models learnt from millions of artists' and photographers' work, mostly without asking them, and the same tools make convincing fake photos of real people. If your product generates images, what it will refuse to make is a design decision.
-
-> **Sidenote:** Alt text is a place where image-in, text-out is clearly good: tedious for people, easy to check, and useful to someone who can't see the image. Can you think of another?
-
 ---
 
-## Whose computer is it?
+## What does one user cost you?
 
-Everything you've made this semester runs on someone else's computer:
+In L9 we saw that everything you've made runs on someone else's computer: GitHub Pages, Firebase, Vercel, Sarvam. Each of them charges in a different way, and once you add them up you know what one person using your product costs you.
 
-| What you made | Whose computer it runs on |
-| --- | --- |
-| Your github.io site | GitHub's (owned by Microsoft) |
-| Your wall and your multiplayer experience | Google's, through Firebase |
-| Your AI server | Vercel's, which rents its computers from Amazon |
-| Gemini | Google's |
-| Jev | TypeSafe's, reached through Vercel's AI Gateway |
+Take a product like the ones you're building: a landing page, sign-in, a Firebase database, and an AI feature through your server. Here is what each part charges:
 
-**The cloud** means renting computers from a company instead of owning them. What changes from one service to the next is how much of the work they do for you.
+| Part | Service | Free until | Then |
+| --- | --- | --- | --- |
+| Landing page | GitHub Pages | Free for public repos | Still free |
+| Sign-in | Firebase Authentication | 50,000 people signing in a month | Pay per person |
+| Database | Firebase Realtime Database | 100 people connected at once, 1 GB stored, 10 GB downloaded a month | $5 per GB stored, $1 per GB downloaded |
+| Your server | Vercel Hobby | 1 million requests a month, personal projects only | Pro, $20 per team member per month |
+| AI feature | Sarvam 105B | Your ₹100 of free credits | ₹10 per million tokens in, ₹25 per million tokens out |
 
-## IaaS, PaaS, SaaS
-
-| | What you rent | What you look after | Examples | What you've used |
-| --- | --- | --- | --- | --- |
-| **IaaS** (infrastructure) | A computer in a data centre | Everything on it: the operating system, the server software, updates, security | AWS EC2, Google Compute Engine, DigitalOcean | Nothing yet |
-| **PaaS** (platform) | A place to run your code | Just your code | Vercel, Render | Your `api/ask.js` from L9 |
-| **Backend as a service** | A ready-made database, sign-in and storage | Your data and your rules | Firebase, Supabase | Your wall, and sign-in from L8 |
-| **SaaS** (software) | A finished product | Nothing. You just use it | Gmail, Figma, Notion | Every day |
+*Prices from each company's pricing page in November 2026. They change, so check them again before you put a number in your pitch.*
 
 Some things to note:
 
-- **Each step down the table is less control and less work.** Startups usually start near the bottom and only rent raw computers when they have to.
-- **The layers stack.** Vercel is a PaaS that runs on Amazon's IaaS. Figma, a SaaS, runs on Amazon too.
-- **The more someone else runs, the more their limits become your limits.** Firebase decides how many people can be connected at once, not you. That's a design constraint like any other.
+- **Most of this is close to free.** A page, a sign-in and a few database reads cost almost nothing per person, even at thousands of users.
+- **The AI feature is the one that grows with every click.** A database read is a fraction of a paisa. A model call costs money each time, and a person who uses the feature more costs you more.
+- **The free limits are often not about money.** Firebase's 100 connections at once and Vercel's "personal projects only" are the first walls a startup hits, before the bill gets large.
 
-## Scale and cost
+### Working out the AI line
 
-What happens when your project goes from 10 people to 10,000?
+Let's do the maths for one call to your L9 server. Say the system prompt and the question together are about 300 tokens, and the answer is about 500:
 
-For a class project, none of these limits matter. For a startup that takes off, each one is the first thing to break:
+```text
+300 tokens in  × ₹10 per million  = ₹0.003
+500 tokens out × ₹25 per million  = ₹0.0125
+One call                          ≈ ₹0.0155
+```
 
-| Service | Free until | Then |
+*Read it as: input is cheap, output costs two and a half times as much, and one answer costs about one and a half paise.*
+
+Now say a person uses the feature 20 times a day:
+
+| Users | Calls a month | Sarvam bill a month |
 | --- | --- | --- |
-| Firebase Realtime Database | 100 people connected at once, 1 GB stored | Pay as you go on the Blaze plan |
-| Vercel | Personal, non-commercial projects | The Pro plan, per team member per month |
-| Gemini | The daily free limit | Pay per token |
+| 10 | 6,000 | about ₹93 |
+| 1,000 | 6 lakh | about ₹9,300 |
+| 1,00,000 | 6 crore | about ₹9.3 lakh |
+
+Your ₹100 of free credits covers the first row for about a month.
 
 Some things to note:
 
-- **AI features cost money every time they're used.** A database read costs almost nothing. A model call costs real money each time, which is why your server turns some requests away.
-- **Usage pricing means a good day can be an expensive day.** Most services let you set a budget alert. Decide, as a design question, what your page says when the limit is hit.
-- **When the cloud goes down, everyone on it goes down.** In October 2025 one Amazon data centre region in the US had a problem, and Snapchat, Fortnite, Roblox and thousands of other apps stopped working for hours. A month later a Cloudflare outage took down X and ChatGPT. Your app is only as reliable as the computers it rents.
+- **The answer is the expensive part.** The `max_tokens` limit you set in L9 is also a cost limit.
+- **Every number here is a design decision.** How long the answers are, how often people need to ask, and whether you send the whole conversation each time all change the bill.
+- **This is why products limit AI features and not logins.** A sign-in costs Firebase almost nothing. A message costs the company every time.
 
-> **Sidenote:** Pick an app on your phone. Guess what it runs on, and roughly what it costs them per user each month.
+## Free plans are designed
+
+You use free plans every day: Figma, Canva, Notion, Spotify, ChatGPT. Each one decides what's free and what you pay for, and those lines are usually drawn where the product starts to cost the company money, or where you've started to depend on it.
+
+| Product | Free | Paid |
+| --- | --- | --- |
+| Figma | A few files, everything you need to learn | Unlimited files, team libraries |
+| Spotify | Every song, with ads and shuffle | No ads, play any song, download |
+| ChatGPT | A limited number of messages on the best model | More messages, newer models |
+
+What goes behind the paywall is a design decision as much as a business one. It decides what a new person can try before they decide your product is worth paying for.
+
+> **Sidenote:** Why do you think Spotify's free plan has every song, but ChatGPT's free plan has a message limit?
+
+## How products pay for themselves
+
+There are four common ways, and each one pulls the design in a different direction:
+
+| Model | Examples | Who pays | What the design wants |
+| --- | --- | --- | --- |
+| Ads | Instagram, YouTube | Advertisers | You to stay longer |
+| Subscription | Spotify, Netflix | You, every month | You to keep coming back |
+| Freemium | Figma, Notion | Some of you | Free users to hit the line and upgrade |
+| A cut of each sale | Swiggy, the App Store | The seller, from each order | More orders |
+
+The App Store's 15–30% cut from L11 is the last row.
+
+### What a user costs to get
+
+Getting someone to sign up costs money too: ads, referral credit, a free first month, a discount on the first order. A user is worth what they pay you before they stop using your product.
+
+If getting a user costs more than that user brings in, growing faster loses you more money. Food delivery apps in India spent years giving big discounts to grow, then raised delivery and platform fees once people were used to ordering.
+
+## Class Activity: price your startup
+
+In your team, make a one-page spreadsheet for your final project:
+
+1. **List every service you use**, with its free limit and what it costs after that.
+2. **Work out the cost a month at 10, 1,000 and 1,00,000 users.** Guess how often a person uses each feature, and write the guess down.
+3. **Pick one way your product would pay for itself** from the table above, and say what's free and what isn't.
+4. **Work out what you'd need to break even:** a price per month, or a number of ads seen per person.
+
+Check every price on the company's own pricing page, not from an AI's answer. AI tools often give old prices for these.
+
+Bring one number to Demo Day: "Each user costs us about ₹__ a month." Expect to be asked how you got it.
 
 ---
 
@@ -168,6 +191,5 @@ Friday 27 November. Seven minutes per team, then three minutes of questions.
 
 ## Homework
 
-- [[Exercise 13 - Add an AI Feature]]. Add it to your final project if it earns its place there, or to something you made earlier in the course.
 - Finish everything on your ship-ready list.
 - Rehearse your demo.

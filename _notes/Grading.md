@@ -25,7 +25,7 @@ Class participation is my subjective read of how much you participated in the co
 
 #### 2. Graded Exercises (60%)
 
-The class will have 7 graded exercises. Each is graded out of 10 on outcome quality, understanding demonstrated, and process documentation (including prompt logs). I will consider your best 6 scores.
+The class has 6 graded exercises. Each is graded out of 10 on outcome quality, understanding demonstrated, and process documentation (including prompt logs). All 6 count.
 
 1. [[Exercise 01 - Ship a Page with GitHub Pages]] + [[Exercise 02 - Redesign your Home Page in Figma]] + [[Exercise 03 - Figma to Code]] (considered 1 graded exercise together)
 2. [[Exercise 04 - Unusual Interactions]]
@@ -33,7 +33,6 @@ The class will have 7 graded exercises. Each is graded out of 10 on outcome qual
 4. [[Exercise 06 - Weather in the Footer]]
 5. [[Exercise 09 - Realtime Web Experience]]
 6. [[Exercise 10 - Build with Jev]]
-7. [[Exercise 13 - Add an AI Feature]]
 
 **Not Graded**
 These exercises contributed to your learning but did not have a meaningful submission for me to grade.

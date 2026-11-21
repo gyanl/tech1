@@ -130,12 +130,12 @@
   title: "AI Features and the Cloud"
   date: "19 November 2026"
   slug: "lecture-12-ai-features-and-the-cloud"
-  summary: "A project check-in, what people will do to your AI server, designing the feature, and whose computer it all runs on and what it costs."
+  summary: "A project check-in, what people will do to your AI server, designing the feature, and the economics of a startup: what one user costs, free plans, and how products pay for themselves."
   key_areas:
     - "AI features in products"
     - "LLM APIs"
-    - "IaaS, PaaS, SaaS"
-    - "Scaling and cost"
+    - "Cost per user"
+    - "Business models"
 
 - num: 13
   title: "Demo Day"
